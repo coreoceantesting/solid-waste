@@ -63,7 +63,7 @@
                                 <div class="col-lg-6">
                                     <div class="p-lg-5 p-4">
                                         <div>
-                                            <h5 class="text-primary">Welcome Back !</h5>
+                                            <h5 class="text-primary">Welcome Backs !</h5>
                                             <p class="text-muted">Sign in to continue to {{ config('app.name') }}.</p>
                                         </div>
 
