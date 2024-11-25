@@ -13,10 +13,10 @@
         <!-- Light Logo-->
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="22" />
+                <img src="{{ asset('admin/images/Panvel_Municipal_Corporation.png') }}" alt="" height="22" />
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('admin/images/logo-light.png') }}" alt="" height="17" />
+                <img src="{{ asset('admin/images/logo.png') }}" alt="" height="50" />
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -33,7 +33,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('dashboard') }}" >
+                    <a class="nav-link menu-link {{ request()->routeIs('dashboard')  ? 'active' : 'collapsed' }}" href="{{ route('dashboard') }}" >
                         <i class="ri-dashboard-2-line"></i>
                         <span data-key="t-dashboards">Dashboard</span>
                     </a>
@@ -41,14 +41,14 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                    <a class="nav-link menu-link {{ request()->routeIs('wards.index')  ? 'active' : 'collapsed' }}" href="#masters" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="masters">
                         <i class="ri-layout-3-line"></i>
                         <span data-key="t-layouts">Masters</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown {{ request()->routeIs('wards.index') ? 'show' : '' }}" id="masters">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('wards.index') }}" class="nav-link" data-key="t-horizontal">Wards</a>
+                                <a href="{{ route('wards.index') }}" class="nav-link {{ request()->routeIs('wards.index') ? 'active' : '' }}" data-key="t-horizontal">Wards</a>
                             </li>
                         </ul>
                     </div>
@@ -57,20 +57,20 @@
 
                 @canany(['users.view', 'roles.view'])
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                    <a class="nav-link menu-link {{ request()->routeIs('users.index') || request()->routeIs('roles.index')  ? 'active' : 'collapsed' }}" href="#usermanagement" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="usermanagement">
                         <i class="bx bx-user-circle"></i>
                         <span data-key="t-layouts">User Management</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarLayouts">
+                    <div class="collapse menu-dropdown {{ request()->routeIs('users.index') ||  request()->routeIs('roles.index')  ? 'show' : '' }}" id="usermanagement">
                         <ul class="nav nav-sm flex-column">
                             @can('users.view')
                                 <li class="nav-item">
-                                    <a href="{{ route('users.index') }}" class="nav-link" data-key="t-horizontal">Users</a>
+                                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}" data-key="t-horizontal">Users</a>
                                 </li>
                             @endcan
                             @can('roles.view')
                                 <li class="nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link" data-key="t-horizontal">Roles</a>
+                                    <a href="{{ route('roles.index') }}" class="nav-link {{ request()->routeIs('roles.index') ? 'active' : '' }}" data-key="t-horizontal">Roles</a>
                                 </li>
                             @endcan
                         </ul>
