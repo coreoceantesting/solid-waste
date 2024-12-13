@@ -20,6 +20,7 @@ class WardController extends Controller
     {
         $wards = Ward::latest()->get();
 
+
         return view('admin.masters.wards')->with(['wards'=> $wards]);
     }
 
@@ -87,6 +88,7 @@ class WardController extends Controller
         {
             DB::beginTransaction();
             $input = $request->validated();
+
             $ward->update( Arr::only( $input, Ward::getFillables() ) );
             DB::commit();
 

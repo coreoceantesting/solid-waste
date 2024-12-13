@@ -15,7 +15,7 @@
             }
 
             .bg-img{
-                background-image: url('{{ asset('admin/images/Tapalbanner.jpg') }}');
+                background-image: url('{{ asset('admin/images/Solid Waste.jpg') }}');
                 background-repeat: no-repeat;
                 background-position: 0%;
                 background-size: cover;

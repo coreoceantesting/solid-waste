@@ -41,7 +41,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('wards.index')  ? 'active' : 'collapsed' }}" href="#masters" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="masters">
+                    <a class="nav-link menu-link {{ request()->routeIs('wards.index') || request()->routeIs('area-type.index')  ? 'active' : 'collapsed' }}" href="#masters" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="masters">
                         <i class="ri-layout-3-line"></i>
                         <span data-key="t-layouts">Masters</span>
                     </a>
@@ -50,6 +50,66 @@
                             <li class="nav-item">
                                 <a href="{{ route('wards.index') }}" class="nav-link {{ request()->routeIs('wards.index') ? 'active' : '' }}" data-key="t-horizontal">Wards</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('area-type.index') }}" class="nav-link {{ request()->routeIs('area-type.index') ? 'active' : '' }}" data-key="t-horizontal">Area Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('collection-type.index') }}" class="nav-link {{ request()->routeIs('area-type.index') ? 'active' : '' }}" data-key="t-horizontal">Collection Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('collection-transport.index') }}" class="nav-link {{ request()->routeIs('collection-transport.index') ? 'active' : '' }}" data-key="t-horizontal">Collection and Transport collection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('census-years.index') }}" class="nav-link {{ request()->routeIs('cenus-years.index') ? 'active' : '' }}" data-key="t-horizontal">Cenus Years</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('types-of-fine-charges.index') }}" class="nav-link {{ request()->routeIs('types-of-fine-charges.index') ? 'active' : '' }}" data-key="t-horizontal">Types oF Fine Charges</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('inspection-type.index') }}" class="nav-link {{ request()->routeIs('inspection-types.index') ? 'active' : '' }}" data-key="t-horizontal">Inspection Types</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('locality-service-type.index') }}" class="nav-link {{ request()->routeIs('locality-service-type') ? 'active' : '' }}" data-key="t-horizontal">Locality Service Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('maintenance-type.index') }}" class="nav-link {{ request()->routeIs('maintenance-type') ? 'active' : '' }}" data-key="t-horizontal">Maintenance Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('pump-type.index') }}" class="nav-link {{ request()->routeIs('pump-type') ? 'active' : '' }}" data-key="t-horizontal">Pump Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('shift-timings.index') }}" class="nav-link {{ request()->routeIs('shift-timings') ? 'active' : '' }}" data-key="t-horizontal">Shift Timings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('types-of-item-solds.index') }}" class="nav-link {{ request()->routeIs('types-of-item-solds') ? 'active' : '' }}" data-key="t-horizontal">Types Of Item Solds</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('vehicle-type.index') }}" class="nav-link {{ request()->routeIs('vehicle-type') ? 'active' : '' }}" data-key="t-horizontal">Vehicle Type</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('vehicles.index') }}" class="nav-link {{ request()->routeIs('vehicles') ? 'active' : '' }}" data-key="t-horizontal">Vehicles</a>
+                            </li>
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('mainprefix.index') }}" class="nav-link {{ request()->routeIs('mainprefix') ? 'active' : '' }}" data-key="t-horizontal">mainprefix</a>
+                            </li>
+                            <li class="nav-item"> --}}
+                                <a href="{{ route('prefix.index') }}" class="nav-link {{ request()->routeIs('prefix') ? 'active' : '' }}" data-key="t-horizontal">Prefix</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('prefix-details.index') }}" class="nav-link {{ request()->routeIs('prefix-details') ? 'active' : '' }}" data-key="t-horizontal">Prefix Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations') ? 'active' : '' }}" data-key="t-horizontal">designations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('collection-centers.index') }}" class="nav-link {{ request()->routeIs('collection-centers') ? 'active' : '' }}" data-key="t-horizontal">collection centers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('slrm-employee-details.index') }}" class="nav-link {{ request()->routeIs('slrm-employee-details') ? 'active' : '' }}" data-key="t-horizontal">slrm employee details</a>
+                            </li>
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations') ? 'active' : '' }}" data-key="t-horizontal">designations</a>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

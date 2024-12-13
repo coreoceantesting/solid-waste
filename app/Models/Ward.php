@@ -11,7 +11,7 @@ class Ward extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'initial'];
+    protected $fillable = ['name', 'beat_number','beat_name','start_point','end_point','total_distance','collection_mode','nearest_collection_center','distance_from_collection_center','beat_animal_count','estimated_number_of_house','beat_population','estimated_beat_residential_count','estimated_beat_commercial_count','estimated_establishment_count'];
 
 
     public static function booted()

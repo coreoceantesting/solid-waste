@@ -23,7 +23,20 @@ class UpdateWardRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'initial' => 'required',
+            'beat_number' => 'required',
+            'beat_name' => 'required',
+            'start_point'=>'required',
+            'end_point' => 'required',
+            'total_distance'=>'required',
+            'collection_mode' => 'required',
+            'nearest_collection_center' => 'required',
+            'distance_from_collection_center' => 'required',
+            'beat_animal_count' => 'required',
+            'estimated_number_of_house' => 'required',
+            'beat_population' => 'required',
+            'estimated_beat_residential_count' => 'required',
+            'estimated_beat_commercial_count' => 'required',
+            'estimated_establishment_count' => 'required',
         ];
     }
 }
