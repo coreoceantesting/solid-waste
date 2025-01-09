@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Masters\StoreVehicles;
 use App\Http\Requests\Admin\Masters\UpdateVehicles;
 use App\Models\vehicles;
-use App\Models\vehicleType;
+use App\Models\VehicleType;
 use App\Models\CapacityOfVehicle;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +20,9 @@ class VehiclesController extends Controller
     public function index()
     {
         $vehicles = vehicles::whereNull('deleted_by')->get();
-        $vehicleType = vehicleType::whereNull('deleted_by')->get();
+        $vehicleType = VehicleType::whereNull('deleted_by')->get();
 
-        return view('admin.masters.vehicles')->with(['vehicles'=> $vehicles, 'vehicleType' => $vehicleType]);
+        return view('admin.masters.vehicles')->with(['vehicles'=> $vehicles, 'VehicleType' => $vehicleType]);
     }
 
     /**
