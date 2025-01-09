@@ -62,7 +62,7 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::resource('area-type', App\Http\Controllers\Admin\Masters\AreaTypeController::class);
 
-    Route::resource('collection-type', App\Http\Controllers\Admin\Masters\collectionTypeController::class);
+    Route::resource('collection-type', App\Http\Controllers\Admin\Masters\CollectionTypeController::class);
 
     Route::resource('collection-transport', App\Http\Controllers\Admin\Masters\CollectionTransportController::class);
 
@@ -74,7 +74,7 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
     Route::resource('inspection-type', App\Http\Controllers\Admin\Masters\InspectionTypesController::class);
 
     Route::resource('locality-service-type', App\Http\Controllers\Admin\Masters\LocalityServiceTypeController::class);
-  
+
     Route::resource('maintenance-type', App\Http\Controllers\Admin\Masters\MaintenanceTypesController::class);
 
     Route::resource('pump-type', App\Http\Controllers\Admin\Masters\PumpTypeController::class);
