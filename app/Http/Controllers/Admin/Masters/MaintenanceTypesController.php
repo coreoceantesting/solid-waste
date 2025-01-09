@@ -19,7 +19,7 @@ class MaintenanceTypesController extends Controller
     {
         $MaintenanceTypes = MaintenanceTypes::whereNull('deleted_by')->get();
 
-        return view('admin.masters.MaintenanceTypes')->with(['MaintenanceTypes'=> $MaintenanceTypes]);
+        return view('admin.masters.maintenanceTypes')->with(['MaintenanceTypes'=> $MaintenanceTypes]);
     }
 
     /**
