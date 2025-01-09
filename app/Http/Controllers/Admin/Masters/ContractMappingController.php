@@ -27,7 +27,7 @@ class ContractMappingController extends Controller
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
         $Ward = Ward::whereNull('deleted_at')->get();
 
-        return view('admin.masters.ContractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward]);
+        return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward]);
     }
 
     /**
