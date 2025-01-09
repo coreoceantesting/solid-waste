@@ -19,7 +19,7 @@ class LocalityServiceTypeController extends Controller
     {
         $localityservicetype = LocalityServiceType::whereNull('deleted_by')->get();
 
-        return view('admin.masters.localityservicetype')->with(['LocalityServiceType'=> $localityservicetype]);
+        return view('admin.masters.localservicetypes')->with(['LocalityServiceType'=> $localityservicetype]);
 
     }
 
