@@ -19,7 +19,7 @@ class PumpTypeController extends Controller
     {
         $PumpType = PumpType::whereNull('deleted_by')->get();
 
-        return view('admin.masters.PumpType')->with(['PumpType'=> $PumpType]);
+        return view('admin.masters.pumpType')->with(['PumpType'=> $PumpType]);
     }
 
     /**
