@@ -88,31 +88,34 @@ class WardController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-   {
-    try {
-        // Retrieve the Ward by ID
-        $ward = Ward::findOrFail($id);
+    {
+        try {
+            // Retrieve the Ward by ID
+            $ward = Ward::findOrFail($id);
 
-        // Retrieve related AreaType for this Ward
-        $areaDetails = AreaDetails::where('area_types_id', $id) // Assuming `ward_id` is the foreign key in `area_types` table
-            ->whereNull('deleted_at')
-            ->get();
+            // Retrieve related AreaDetails for this Ward
+            $areaDetails = AreaDetails::where('ward_id', $id) // Ensure you are using the correct foreign key
+                ->whereNull('deleted_at')
+                ->get();
 
-        // Return the data as a JSON response
-        return response()->json([
-            'result' => 1,
-            'ward' => $ward,
-            'areaDetails' => $areaDetails,
-        ]);
-    } catch (\Exception $e) {
-        // Return error response in case of failure
-        return response()->json([
-            'result' => 0,
-            'message' => 'Error retrieving ward details.',
-            'error' => $e->getMessage(),
-        ]);
+            // Return the data as a JSON response
+            return response()->json([
+                'result' => 1,
+                'ward' => $ward,
+                'areaDetails' => $areaDetails,
+            ]);
+        } catch (\Exception $e) {
+            // Return error response in case of failure
+            return response()->json([
+                'result' => 0,
+                'message' => 'Error retrieving ward details.',
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
-   }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -128,8 +131,7 @@ class WardController extends Controller
             $response = [
                 'result' => 1,
                 'wards' => $wards,
-                'areaDetails'=> $areaDetails,
-                'areaDetails'=>$areaDetails
+                'areaDetails'=> $areaDetails
             ];
         }
         else
@@ -150,13 +152,14 @@ class WardController extends Controller
             $ward = Ward::find($id);  // Corrected: Use Ward model to find the ward by id
             $ward->update($input);
 
-            if (isset($request->household_count) && count($request->household_count) > 0) {
+            if (isset($request->area_type) && count($request->household_count) > 0) {
                 AreaDetails::where('ward_id', $ward->id)->delete(); // Delete existing AreaDetails
                 for ($i = 0; $i < count($request->household_count); $i++) {
                     AreaDetails::create([
                         'area_types_id' => $request->area_type[$i],  // Correct reference for area_type
                         'ward_id' => $ward->id,
                         'area_name' => $request->area_name[$i],
+                        'area_type' => $request->area_type[$i],
                         'household_count' => $request->household_count[$i],
                         'shop_count' => $request->shop_count[$i],
                         'total' => $request->total[$i],
