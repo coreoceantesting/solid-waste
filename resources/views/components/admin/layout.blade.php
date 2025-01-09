@@ -20,7 +20,8 @@
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/select2.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{ asset('admin/css/app.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+    <link href="{{ asset('admin/css/app1.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/font-awesome-all.min.css') }}" rel="stylesheet" type="text/css" />
     @stack('styles')
@@ -36,7 +37,7 @@
 
 
         <div class="main-content">
-            <div class="page-content">
+            <div class="page-content" style="">
                 <div class="container-fluid">
 
 

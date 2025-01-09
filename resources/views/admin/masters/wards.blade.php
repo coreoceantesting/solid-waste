@@ -100,7 +100,7 @@
         <span class="text-danger is-invalid estimated_establishment_count_err"></span>
     </div>
 </div>
-<div class="container mt-5">
+{{-- <div class="container mt-5">
     <div class="card">
         <div class="card-header bg-success text-white">
             <h2>Area Details</h2>
@@ -161,11 +161,34 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 <script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
                         </div>
-                        <div class="card-footer">
+                        <div class="row">
+    <div class="col-12">
+        <h2>Area Details</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Area Type</th>
+                    <th>Area Name</th>
+                    <th>Household Count</th>
+                    <th>Shop Count</th>
+                    <th>Total</th>
+                    <th>
+                        <button class="btn btn-primary btn-sm" type="button" id="addMoreAreaButton">Add More</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="areaTableBody">
+                <!-- Dynamic rows will be appended here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+           <div class="card-footer">
                             <button type="submit" class="btn btn-primary" id="addSubmit">Submit</button>
                             <button type="reset" class="btn btn-warning">Reset</button>
                         </div>
@@ -173,7 +196,9 @@
                 </div>
             </div>
         </div>
+
         {{-- Edit Form --}}
+
         <div class="row" id="editContainer" style="display:none;">
             <div class="col">
                 <form class="form-horizontal form-bordered" method="post" id="editForm">
@@ -269,10 +294,30 @@
                 <span class="text-danger is-invalid estimated_establishment_count_err"></span>
             </div>
         </div>
-
+        <div class="row">
+                                <div class="col-12">
+                                    <h2>Area Details</h2>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Area Type</th>
+                                                <th>Area Name</th>
+                                                <th>Household count</th>
+                                                <th>Shop count</th>
+                                                <th>Total</th>
+                                                <th><button class="btn btn-primary btn-sm" type="button" id="editMoreEditAreaRow">Add More</button></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="editAreaTableBody">
+                                            <!-- Dynamic rows will be appended here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" id="editSubmit">Submit</button>
+                            <button class="btn btn-primary" id="editSubmit">Update</button>
                             <button type="reset" class="btn btn-warning">Reset</button>
                         </div>
                     </div>
@@ -340,6 +385,7 @@
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit ward" data-id="{{ $ward->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete ward" data-id="{{ $ward->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="btn text-danger view-element px-2 py-1" title="View vehicles" data-id="{{ $ward->id }}"><i data-feather="eye"  data-id="{{ $ward->id }}"  data-bs-toggle="modal" data-bs-target=".wardsModel"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -352,6 +398,68 @@
 
 
 
+        {{-- view model --}}
+
+ <div class="modal fade wardsModel" tabindex="-1" role="dialog" aria-labelledby="wardsModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-bottom">
+                <h5 class="modal-title" id="wardsModelLabel">Wards Report</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body" id="stockData">
+                    <!-- First Table: Main Data -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Ward Name</th>
+                                    <th>Beat Number</th>
+                                    <th>Beat Name</th>
+                                    <th>Starting Point</th>
+                                    <th>End Point</th>
+                                    <th>Total Distance</th>
+                                    <th>Collection Mode</th>
+                                    <th>Nearest Collection Center</th>
+                                    <th>Distance From Collection Center</th>
+                                    <th>Beat Animal Count</th>
+                                    <th>Estimated Number Of House</th>
+                                    <th>Beat Population</th>
+                                    <th>Estimated Beat Residential Count</th>
+                                    <th>Estimated Beat Commercial Count</th>
+                                    <th>Estimated Establishment Count</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wardsModel">
+                                <!-- Data will be injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Second Table: Additional Details -->
+                    <div id="additional-info-table" class="mt-4">
+                        <h5 class="modal-title" id="wardsModelLabel">Vehicle Information</h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Area Type</th>
+                                    <th>Area Name</th>
+                                    <th>Household Count</th>
+                                    <th>Shop Count</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="areadetailsModel">
+                                <!-- Additional data will be injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 </x-admin.layout>
 
@@ -414,23 +522,59 @@
                 editFormBehaviour();
                 if (!data.error)
                 {
-                    $("#editForm input[name='edit_model_id']").val(data.ward.id);
-                    $("#editForm input[name='name']").val(data.ward.name);
-                    $("#editForm input[name='beat_number']").val(data.ward.beat_number);
-                    $("#editForm input[name='beat_name']").val(data.ward.beat_name);
-                    $("#editForm input[name='start_point']").val(data.ward.start_point);
-                    $("#editForm input[name='end_point']").val(data.ward.end_point);
-                    $("#editForm input[name='total_distance']").val(data.ward.total_distance);
-                    $("#editForm input[name='collection_mode']").val(data.ward.collection_mode);
-                    $("#editForm input[name='nearest_collection_center']").val(data.ward.nearest_collection_center);
-                    $("#editForm input[name='distance_from_collection_center']").val(data.ward.distance_from_collection_center);
-                    $("#editForm input[name='beat_animal_count']").val(data.ward.beat_animal_count);
-                    $("#editForm input[name='estimated_number_of_house']").val(data.ward.estimated_number_of_house);
-                    $("#editForm input[name='beat_population']").val(data.ward.beat_population);
-                    $("#editForm input[name='estimated_beat_residential_count']").val(data.ward.estimated_beat_residential_count);
-                    $("#editForm input[name='estimated_beat_commercial_count']").val(data.ward.estimated_beat_commercial_count);
-                    $("#editForm input[name='estimated_establishment_count']").val(data.ward.estimated_establishment_count);
+                    $("#editForm input[name='edit_model_id']").val(data.wards.id);
+                    $("#editForm input[name='name']").val(data.wards.name);
+                    $("#editForm input[name='beat_number']").val(data.wards.beat_number);
+                    $("#editForm input[name='beat_name']").val(data.wards.beat_name);
+                    $("#editForm input[name='start_point']").val(data.wards.start_point);
+                    $("#editForm input[name='end_point']").val(data.wards.end_point);
+                    $("#editForm input[name='total_distance']").val(data.wards.total_distance);
+                    $("#editForm input[name='collection_mode']").val(data.wards.collection_mode);
+                    $("#editForm input[name='nearest_collection_center']").val(data.wards.nearest_collection_center);
+                    $("#editForm input[name='distance_from_collection_center']").val(data.wards.distance_from_collection_center);
+                    $("#editForm input[name='beat_animal_count']").val(data.wards.beat_animal_count);
+                    $("#editForm input[name='estimated_number_of_house']").val(data.wards.estimated_number_of_house);
+                    $("#editForm input[name='beat_population']").val(data.wards.beat_population);
+                    $("#editForm input[name='estimated_beat_residential_count']").val(data.wards.estimated_beat_residential_count);
+                    $("#editForm input[name='estimated_beat_commercial_count']").val(data.wards.estimated_beat_commercial_count);
+                    $("#editForm input[name='estimated_establishment_count']").val(data.wards.estimated_establishment_count);
 
+                    let html = "";
+                    $.each(data.areaDetails, function(key, value){
+                        let areaTypeOptions = ''; // Variable to hold area options
+
+                        // Loop through the AreaType data passed from the controller
+                        @foreach($AreaType as $Area)
+                            areaTypeOptions += `<option value="{{ $Area->id }}" ${value['area_type'] == {{ $Area->id }} ? 'selected' : ''}>{{ $Area->Description }}</option>`;
+                        @endforeach
+
+                        html += `
+                            <tr id="editRow${key}">
+                                <td>
+                                      <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
+                                <option value="">Select AreaType</option>
+                                   ${areaTypeOptions}
+                            </select>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control editAreaName" name="area_name[]" value="${value['area_name']}" required />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control editHouseholdCount" required name="household_count[]" value="${value['household_count']}" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control editShopCount" required name="shop_count[]" value="${value['shop_count']}" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control editTotal" required name="total[]" value="${value['total']}" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    $('#editAreaTableBody').append(html);
                 }
                 else
                 {
@@ -443,7 +587,94 @@
         });
     });
 </script>
+<script>
+    // Global counter for row IDs
+    let editRowCounter = 100;
 
+    // Event to add more waste rows (fixed event binding)
+    $('body').on('click', '#editMoreEditAreaRow', function() {
+        // Data should be fetched or replaced dynamically in a real case
+        let value = {
+            area_type: '',      // Default empty value or dynamically populated
+            area_name: '',      // Default empty value or dynamically populated
+            household_count: '',// Default empty value or dynamically populated
+            shop_count: '',     // Default empty value or dynamically populated
+            total: ''           // Default empty value or dynamically populated
+        };
+
+        let html = `
+            <tr id="editRow${editRowCounter}">
+                <td>
+                    <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
+                        <option value="">Select AreaType</option>
+                        @foreach($AreaType as $Area)
+                            <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control editAreaName" name="area_name[]" value="${value['area_name']}" required />
+                </td>
+                <td>
+                    <input type="text" class="form-control editHouseholdCount" required name="household_count[]" value="${value['household_count']}" />
+                </td>
+                <td>
+                    <input type="text" class="form-control editShopCount" required name="shop_count[]" value="${value['shop_count']}" />
+                </td>
+                <td>
+                    <input type="text" class="form-control editTotal" required name="total[]" value="${value['total']}" />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
+                </td>
+            </tr>`;
+        $('#editAreaTableBody').append(html);
+        editRowCounter++;
+    });
+
+    // Event to remove a waste row (fixed event binding)
+    $('body').on('click', '.removeRow', function() {
+        let rowId = $(this).data('id');
+        $(`#editRow${rowId}`).remove();
+    });
+
+    // Event to load and edit waste data (clicking the edit-Area button)
+    $('body').on('click', '.edit-Area', function(e) {
+        e.preventDefault();
+        var Area_id = $(this).data("id");
+        var url = "{{ route('wards.edit', ':area_id') }}".replace(':area_id', Area_id);
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: { '_token': "{{ csrf_token() }}" },
+            beforeSend: function() {
+                $('#preloader').css('opacity', '0.5').css('visibility', 'visible');
+            },
+            success: function(data) {
+                if (!data.error) {
+                    // Populate the form with the waste data
+                    $("#editwardForm input[name='edit_id']").val(data.wards.id);
+                    $("#editwardForm input[name='area_type']").val(data.wards.area_type);
+                    $("#editwardForm input[name='area_name']").val(data.wards.area_name);
+                    $("#editwardForm input[name='household_count']").val(data.wards.household_count);
+                    $("#editwardForm input[name='shop_count']").val(data.wards.shop_count);
+                    $("#editwardForm input[name='total']").val(data.wards.total);
+                    // Populate the table with existing waste rows
+                    $('#areaTableBody').html(data.areaRowsHtml);
+                } else {
+                    alert(data.error);
+                }
+            },
+            error: function() {
+                alert("Something went wrong. Please try again!");
+            },
+            complete: function() {
+                $('#editMoreEditAreaRow').css('opacity', '1').css('visibility', 'visible');
+            }
+        });
+    });
+</script>
 
 <!-- Update -->
 <script>
@@ -490,7 +721,6 @@
     });
 </script>
 
-
 <!-- Delete -->
 <script>
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
@@ -534,6 +764,127 @@
                     },
                 });
             }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        let areaRowCount = 1; // Counter for row IDs
+
+        // Add More Button Functionality
+        $('#addMoreAreaButton').on('click', function () {
+            let html = `<tr id="areaRow${areaRowCount}">
+                            <td>
+                                <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
+                                <option value="">Select AreaType</option>
+                                   @foreach($AreaType as $Area)
+                                   <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
+                                  @endforeach
+                            </select>
+                            </td>
+                            <td>
+                                <input type="text" name="area_name[]" class="form-control" placeholder="Enter Area Name" required>
+                            </td>
+                            <td>
+                                <input type="number" name="household_count[]" class="form-control householdCount" placeholder="Enter Household Count" required>
+                            </td>
+                            <td>
+                                <input type="number" name="shop_count[]" class="form-control shopCount" placeholder="Enter Shop Count" required>
+                            </td>
+                            <td>
+                                <input type="number" name="total[]" class="form-control totalField" placeholder="Total" required>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm removeAreaRow" data-id="${areaRowCount}">Remove</button>
+                            </td>
+                        </tr>`;
+
+            $('#areaTableBody').append(html);
+            areaRowCount++;
+        });
+
+        // Remove Row Functionality
+        $('body').on('click', '.removeAreaRow', function () {
+            const rowId = $(this).data('id');
+            $(`#areaRow${rowId}`).remove();
+        });
+
+        // Automatically calculate the total for each row
+        $('body').on('input', '.householdCount, .shopCount', function () {
+            const row = $(this).closest('tr');
+            const householdCount = parseInt(row.find('.householdCount').val()) || 0;
+            const shopCount = parseInt(row.find('.shopCount').val()) || 0;
+            const total = householdCount + shopCount;
+            row.find('.totalField').val(total);
+        });
+    });
+</script>
+
+
+{{-- view --}}
+<script>
+    $('body').on('click', '.view-element', function() {
+        var model_id = $(this).data("id");  // Ensure that 'data-id' is being passed correctly
+        var url = "{{ route('wards.show', ':model_id') }}".replace(':model_id', model_id);
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {
+                newMaterialRequest: 'new'
+            },
+            beforeSend: function() {
+                $('#preloader').css('opacity', '0.5').css('visibility', 'visible');
+            },
+            success: function(data, textStatus, jqXHR) {
+                if (!data.error) {
+                    // First Table HTML for Main Data
+                    let mainDataHtml = `
+                        <tr>
+                            <td>${data.ward.name ?? 'N/A'}</td>
+                            <td>${data.ward.beat_number ?? 'N/A'}</td>
+                            <td>${data.ward.beat_name ?? 'N/A'}</td>
+                            <td>${data.ward.start_point ?? 'N/A'}</td>
+                            <td>${data.ward.end_point ?? 'N/A'}</td>
+                            <td>${data.ward.total_distance ?? 'N/A'}</td>
+                            <td>${data.ward.collection_mode ?? 'N/A'}</td>
+                            <td>${data.ward.nearest_collection_center ?? 'N/A'}</td>
+                            <td>${data.ward.distance_from_collection_center ?? 'N/A'}</td>
+                            <td>${data.ward.beat_animal_count ?? 'N/A'}</td>
+                            <td>${data.ward.estimated_number_of_house ?? 'N/A'}</td>
+                            <td>${data.ward.beat_population ?? 'N/A'}</td>
+                            <td>${data.ward.estimated_beat_residential_count ?? 'N/A'}</td>
+                            <td>${data.ward.estimated_beat_commercial_count ?? 'N/A'}</td>
+                            <td>${data.ward.estimated_establishment_count ?? 'N/A'}</td>
+                        </tr>
+                    `;
+                    $('#wardsModel').html(mainDataHtml);
+
+                    // Second Table HTML for Additional Details
+                    let additionalDetailsHtml = '';
+                    $.each(data.areaDetails, function(key, value) {
+                        additionalDetailsHtml += `
+                            <tr>
+                                <td>${value.area_type || 'N/A'}</td>
+                                <td>${value.area_name || 'N/A'}</td>
+                                <td>${value.household_count || 'N/A'}</td>
+                                <td>${value.shop_count || 'N/A'}</td>
+                                <td>${value.total || 'N/A'}</td>
+                            </tr>
+                        `;
+                    });
+                    $('#areadetailsModel').html(additionalDetailsHtml);
+
+                } else {
+                    swal("Error!", data.error || "Something went wrong", "error");
+                }
+            },
+            error: function(error, jqXHR, textStatus, errorThrown) {
+                swal("Error!", "Something went wrong while fetching data.", "error");
+            },
+            complete: function() {
+                $('#preloader').css('opacity', '0').css('visibility', 'hidden');
+            },
         });
     });
 </script>

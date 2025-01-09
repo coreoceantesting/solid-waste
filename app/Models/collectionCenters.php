@@ -11,7 +11,7 @@ class collectionCenters extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable = ['p_name', 'p_cat', 'd_of_op', 'decentral', 'p_own' ,'location','p_capacity','inte_with_plant','inte_with_id','wtc','rdf','inte_c_t','Arrangement','pro_num','p_view','m_view','p_code','p_cost','p_prog','a_code','created_at' , 'updated_by' , 'updated_at' , 'deleted_by' , 'deleted_at' , 'ip_address'];
+    protected $fillable = ['p_name', 'p_cat', 'd_of_op', 'decentral', 'p_own' ,'location','p_capacity','inte_with_plant','inte_with_id','wtc','rdf','inte_c_t', 'Arrangement','pro_num','p_view','m_view', 'p_code','p_cost','p_prog','a_code','created_at', 'updated_by' , 'updated_at' , 'deleted_by' , 'deleted_at' , 'ip_address'];
 
     public static function booted()
     {

@@ -107,15 +107,113 @@
                             <li class="nav-item">
                                 <a href="{{ route('slrm-employee-details.index') }}" class="nav-link {{ request()->routeIs('slrm-employee-details') ? 'active' : '' }}" data-key="t-horizontal">slrm employee details</a>
                             </li>
-                            {{-- <li class="nav-item">
+                            <li class="nav-item">
+                                <a href="{{ route('population.index') }}" class="nav-link {{ request()->routeIs('population') ? 'active' : '' }}" data-key="t-horizontal">population</a>
+                            </li>
+                             {{-- <li class="nav-item">
                                 <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations') ? 'active' : '' }}" data-key="t-horizontal">designations</a>
                             </li> --}}
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('vehicle-scheduling-information.index') }}" class="nav-link {{ request()->routeIs('vehicle-scheduling-information') ? 'active' : '' }}" data-key="t-horizontal">Vehicle Scheduling Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('contract-mapping.index') }}" class="nav-link {{ request()->routeIs('contract-mapping') ? 'active' : '' }}" data-key="t-horizontal">Contract Mapping</a>
+                            </li>
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('contract-mapping.index') }}" class="nav-link {{ request()->routeIs('contract-mapping') ? 'active' : '' }}" data-key="t-horizontal">Contract Mapping</a>
+                            </li> --}}
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('waste-details.index') }}" class="nav-link {{ request()->routeIs('waste-details') ? 'active' : '' }}" data-key="t-horizontal">Waste Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('trip-sheet.index') }}" class="nav-link {{ request()->routeIs('trip-sheet') ? 'active' : '' }}" data-key="t-horizontal">Trip Sheet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('vehicle-target.index') }}" class="nav-link {{ request()->routeIs('vehicle-target') ? 'active' : '' }}" data-key="t-horizontal">Vehicle Target</a>
+                            </li> --}}
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('vehicle-target.index') ? 'active' : 'collapsed' }}" href="#transactions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="transactions">
+                        <i class="ri-exchange-line"></i>
+                        <span data-key="t-transactions">Transactions</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('vehicle-target.index') ? 'show' : '' }}" id="transactions">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('vehicle-scheduling-information.index') }}" class="nav-link {{ request()->routeIs('vehicle-scheduling-information.index') ? 'active' : '' }}" data-key="t-transaction-list">Vehicle Information Scheduling</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('contract-mapping.index') }}" class="nav-link {{ request()->routeIs('contract-mapping.index') ? 'active' : '' }}" data-key="t-transaction-details">Contract Mapping</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('waste-details.index') }}" class="nav-link {{ request()->routeIs('waste-details.index') ? 'active' : '' }}" data-key="t-transaction-type">Waste Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('trip-sheet.index') }}" class="nav-link {{ request()->routeIs('trip-sheet.index') ? 'active' : '' }}" data-key="t-transaction-status">Trip Sheet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('vehicle-target.index') }}" class="nav-link {{ request()->routeIs('vehicle-target.index') ? 'active' : '' }}" data-key="t-transaction-category">Vehicle Target</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') ? 'active' : 'collapsed' }}" href="#reports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="reports">
+                        <i class="ri-file-line"></i>
+                        <span data-key="t-reports">Reports</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') ? 'show' : '' }}" id="reports">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('report.collection-scheduling-report') }}" class="nav-link {{ request()->routeIs('report.collection-scheduling-report') ? 'active' : '' }}" data-key="t-monthly-report">Vehicle Collection Scheduling</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('report.trip-sheet-report') }}" class="nav-link {{ request()->routeIs('report.trip-sheet-report') ? 'active' : '' }}" data-key="t-annual-report">Trip Sheet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('report.waste-details-report') }}" class="nav-link {{ request()->routeIs('report.waste-details-report') ? 'active' : '' }}" data-key="t-user-report">Waste Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('report.vehicle-target-report') }}" class="nav-link {{ request()->routeIs('report.vehicle-target-report') ? 'active' : '' }}" data-key="t-department-report">Vehicle Target </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
 
 
                 @canany(['users.view', 'roles.view'])
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('users.index') || request()->routeIs('roles.index')  ? 'active' : 'collapsed' }}" href="#usermanagementnew" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="usermanagement">
+                        <i class="bx bx-user-circle"></i>
+                        <span data-key="t-layouts">User Management</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ request()->routeIs('users.index') ||  request()->routeIs('roles.index')  ? 'show' : '' }}" id="usermanagementnew">
+                        <ul class="nav nav-sm flex-column">
+                            @can('users.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}" data-key="t-horizontal">Users</a>
+                                </li>
+                            @endcan
+                            @can('roles.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('roles.index') }}" class="nav-link {{ request()->routeIs('roles.index') ? 'active' : '' }}" data-key="t-horizontal">Roles</a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </div>
+                </li>
+                @endcan
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar-background"></div>
+</div>
+ @canany(['users.view', 'roles.view'])
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('users.index') || request()->routeIs('roles.index')  ? 'active' : 'collapsed' }}" href="#usermanagement" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="usermanagement">
                         <i class="bx bx-user-circle"></i>
@@ -141,9 +239,6 @@
             </ul>
         </div>
     </div>
-
-    <div class="sidebar-background"></div>
-</div>
 
 
 <div class="vertical-overlay"></div>

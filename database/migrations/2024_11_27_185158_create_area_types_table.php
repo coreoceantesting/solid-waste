@@ -19,9 +19,7 @@ return new class extends Migration
             $table->string('other_value', 100)->nullable();
             $table->string('ip_address')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('users');
-            $table->foreignId('created_at')->nullable()->constrained('users');
             $table->foreignId('updated_by')->nullable()->constrained('users');
-            $table->foreignId('updated_at')->nullable()->constrained('users');
             $table->foreignId('deleted_by')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();

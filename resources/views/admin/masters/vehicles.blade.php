@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Source_of_purchase_date">Source Of Purchase Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="text" placeholder="Enter Source Of Purchase Date">
+                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="date" placeholder="Enter Source Of Purchase Date">
                                     <span class="text-danger is-invalid Source_of_purchase_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Source_of_purchase_date">Source Of Purchase Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="text" placeholder="Enter Source Of Purchase Date">
+                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="date" placeholder="Enter Source Of Purchase Date">
                                     <span class="text-danger is-invalid Source_of_purchase_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -233,7 +233,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" id="editSubmit">Submit</button>
+                            <button class="btn btn-primary" id="editSubmit">Update</button>
                             <button type="reset" class="btn btn-warning">Reset</button>
                         </div>
                     </div>
@@ -299,6 +299,7 @@
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit vehicles" data-id="{{ $Vehi->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete vehicles" data-id="{{ $Vehi->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="btn text-danger view-element px-2 py-1" title="View vehicles" data-id="{{ $Vehi->id }}"><i data-feather="eye"  data-id="{{ $Vehi->id }}"  data-bs-toggle="modal" data-bs-target=".vehicalModel"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -308,8 +309,66 @@
                 </div>
             </div>
         </div>
+      
+       {{-- view model --}}
+       <div class="modal fade vehicalModel" tabindex="-1" role="dialog" aria-labelledby="vehicalModelLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title" id="vehicalModelLabel">Vehicle Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body" id="stockData">
+                        <!-- First Table: Main Data -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Vehicle Type</th>
+                                        <th>Vehicle Number</th>
+                                        <th>Engine Number</th>
+                                        <th>Vehicle Regional Number</th>
+                                        <th>Vehicle Standard Weight</th>
+                                        <th>Manufacturer</th>
+                                        <th>Vehicle Tracking</th>
+                                        <th>Department Owned Vehicle</th>
+                                        <th>Purchase Date</th>
+                                        <th>Purchase Price</th>
+                                        <th>Source of Purchase Date</th>
+                                        <th>Assest Code</th>
+                                        <th>Chassis Number</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="VehicleModel">
+                                    <!-- Data will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
 
+                        <!-- Second Table: Additional Details -->
+                        <div id="additional-info-table" class="mt-4">
+                                <h5 class="modal-title" id="vehicalModelLabel">Waste Management Details</h5>
 
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Waste Type</th>
+                                        <th>Capacity in kg</th>
+                                        <th>Total Capacity</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="WasteManageMentModel">
+                                    <!-- Additional data will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- /.modal-body -->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
 </x-admin.layout>
@@ -440,7 +499,7 @@
                     <input type="number" class="form-control editWasteQuantity" name="capacity_in_kg[]" required />
                 </td>
                 <td>
-                    <input type="number" class="form-control editWasteUnit" required name="total_capacity[]" />
+                    <input type="number" class="form-control editWasteUnit"  required name="total_capacity[]" />
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
@@ -615,3 +674,71 @@
         $(`#wasteRow${rowId}`).remove();
     });
 });</script>
+
+{{-- view --}}
+<script>
+    $('body').on('click', '.view-element', function(){
+        var model_id = $(this).attr("data-id");
+        var url = "{{ route('vehicles.show', ':model_id') }}";
+
+        $.ajax({
+            url: url.replace(':model_id', model_id),
+            type: 'GET',
+            data: {
+                newMaterialRequest: 'new'
+            },
+            beforeSend: function() {
+                $('#preloader').css('opacity', '0.5');
+                $('#preloader').css('visibility', 'visible');
+            },
+            success: function(data, textStatus, jqXHR) {
+                if (!data.error) {
+                    // First Table HTML for Main Data
+                    let mainDataHtml = `
+                        <tr>
+                            <td>${data.vehicles.Vehicle_Type}</td>
+                            <td>${data.vehicles.Vehicle_number}</td>
+                            <td>${data.vehicles.Engine_number}</td>
+                            <td>${data.vehicles.vehicle_Reg_Number}</td>
+                            <td>${data.vehicles.vehicle_standard_weight}</td>
+                            <td>${data.vehicles.Manufacturer}</td>
+                            <td>${data.vehicles.vehicle_tracking}</td>
+                            <td>${data.vehicles.Department_owned_vehicle}</td>
+                            <td>${data.vehicles.purchase_date}</td>
+                            <td>${data.vehicles.purchase_price}</td>
+                            <td>${data.vehicles.Source_of_purchase_date}</td>
+                            <td>${data.vehicles.Asset_code}</td>
+                            <td>${data.vehicles.chassis_number}</td>
+                            <td>${data.vehicles.Remarks}</td>
+                        </tr>
+                    `;
+                    $('#VehicleModel').html(mainDataHtml);
+
+                    // Second Table HTML for Additional Details
+                    let additionalDetailsHtml = '';
+                    $.each(data.CapacityOfVehicle, function(key, value) {
+                        additionalDetailsHtml += `
+                            <tr>
+                                <td>${value.waste_types}</td>
+                                <td>${value.capacity_in_kg}</td>
+                                <td>${value.total_capacity}</td>
+
+                            </tr>
+                        `;
+                    });
+                    $('#WasteManageMentModel').html(additionalDetailsHtml);
+
+                } else {
+                    swal("Error!", data.error, "error");
+                }
+            },
+            error: function(error, jqXHR, textStatus, errorThrown) {
+                swal("Error!", "Something went wrong", "error");
+            },
+            complete: function() {
+                $('#preloader').css('opacity', '0');
+                $('#preloader').css('visibility', 'hidden');
+            },
+        });
+    });
+</script>

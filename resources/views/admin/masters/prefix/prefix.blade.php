@@ -27,6 +27,11 @@
                                     <span class="text-danger is-invalid Description_err"></span>
                                 </div>
                                 <div class="col-md-4">
+                                    <label class="col-form-label" for="Zone">Zone<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="Zone" name="Zone" type="text" placeholder="Enter Zone">
+                                    <span class="text-danger is-invalid Zone_err"></span>
+                                </div>
+                                <div class="col-md-4">
                                     <label class="col-form-label" for="Status">Status<span class="text-danger">*</span></label>
                                     <select class="form-control" id="Status" name="Status" required>
                                         <option value="" disabled selected>Select status</option>
@@ -71,6 +76,11 @@
                                     <span class="text-danger is-invalid Description_err"></span>
                                 </div>
                                 <div class="col-md-4">
+                                    <label class="col-form-label" for="Zone">Zone<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="Zone" name="Zone" type="text" placeholder="Enter Zone">
+                                    <span class="text-danger is-invalid Zone_err"></span>
+                                </div>
+                                <div class="col-md-4">
                                     <label class="col-form-label" for="Status">Status<span class="text-danger">*</span></label>
                                     <select class="form-control" id="Status" name="Status" required>
                                         <option value="" disabled selected>Select status</option>
@@ -83,7 +93,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary" id="editSubmit">Submit</button>
+                            <button class="btn btn-primary" id="editSubmit">Update</button>
                             <button type="reset" class="btn btn-warning">Reset</button>
                         </div>
                     </div>
@@ -112,6 +122,7 @@
                                         <th>Sr.No</th>
                                         <th>Prefix Name</th>
                                         <th>Description</th>
+                                        <th>Zone</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -122,6 +133,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $Pref->Prefix_Name }}</td>
                                             <td>{{ $Pref->Description }}</td>
+                                            <td>{{ $Pref->Zone }}</td>
                                             <td>{{ $Pref->Status}}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit Prefix" data-id="{{ $Pref->id }}"><i data-feather="edit"></i></button>
@@ -203,6 +215,7 @@
                     $("#editForm input[name='edit_model_id']").val(data.Prefix.id);
                     $("#editForm input[name='Prefix_Name']").val(data.Prefix.Prefix_Name);
                     $("#editForm input[name='Description']").val(data.Prefix.Description);
+                    $("#editForm input[name='Zone']").val(data.Prefix.Zone);
                     $("#editForm select[name='Status']").val(data.Prefix.Status);
                 }
                 else

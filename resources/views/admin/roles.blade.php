@@ -4,6 +4,12 @@
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
+    <style>
+        .page-content{
+            padding:0px;
+        }
+    </style>
+
     <!-- Add Form Start -->
     <div class="row" id="addContainer" style="display:none;">
         <div class="col-sm-12">

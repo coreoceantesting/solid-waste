@@ -12,7 +12,6 @@
                             <img src="{{ asset('admin/images/logo-dark.png') }}" alt="" height="17" />
                         </span>
                     </a>
-
                     <a href="index.html" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="{{ asset('admin/images/logo-sm.png') }}" alt="" height="22" />
@@ -22,7 +21,6 @@
                         </span>
                     </a>
                 </div>
-
                 <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger" id="topnav-hamburger-icon">
                     <span class="hamburger-icon">
                         <span></span>
@@ -30,7 +28,6 @@
                         <span></span>
                     </span>
                 </button>
-
                 <!-- App Search-->
                 <form class="app-search d-none d-md-block">
                     <div class="position-relative d-none">
@@ -46,7 +43,6 @@
                                     Recent Searches
                                 </h6>
                             </div>
-
                             <div class="dropdown-item bg-transparent text-wrap">
                                 <a href="index.html" class="btn btn-soft-primary btn-sm rounded-pill">how to setup
                                     <i class="mdi mdi-magnify ms-1"></i></a>
@@ -59,32 +55,27 @@
                                     Pages
                                 </h6>
                             </div>
-
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="ri-bubble-chart-line align-middle fs-18 text-muted me-2"></i>
                                 <span>Analytics Dashboard</span>
                             </a>
-
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="ri-lifebuoy-line align-middle fs-18 text-muted me-2"></i>
                                 <span>Help Center</span>
                             </a>
-
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
                                 <i class="ri-user-settings-line align-middle fs-18 text-muted me-2"></i>
                                 <span>My account settings</span>
                             </a>
-
                             <!-- item-->
                             <div class="dropdown-header mt-2">
                                 <h6 class="text-overflow text-muted mb-2 text-uppercase">
                                     Members
                                 </h6>
                             </div>
-
                             <div class="notification-list">
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
@@ -125,7 +116,6 @@
                                 </a>
                             </div>
                         </div>
-
                         <div class="text-center pt-3 pb-1">
                             <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results
                                 <i class="ri-arrow-right-line ms-1"></i></a>
@@ -133,7 +123,6 @@
                     </div>
                 </form>
             </div>
-
             <div class="d-flex align-items-center">
                 <div class="dropdown d-md-none topbar-head-dropdown header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,28 +141,23 @@
                         </form>
                     </div>
                 </div>
-
-
                 <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
                         <i class="bx bx-fullscreen fs-22"></i>
                     </button>
                 </div>
-
                 <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" id="change-theme-button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode d-none">
                         <i class="bx bx-moon fs-22"></i>
                     </button>
                 </div>
-
-
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="rounded-circle header-profile-user" src="{{ asset('admin/images/users/avatar-1.jpg') }}" alt="Header Avatar" />
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-semibold user-name-text">{{ ucfirst(auth()->user()->name) }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ auth()->user()->roles[0]->name }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ auth()->user()->roles[0]->name ?? "" }}</span>
                             </span>
                         </span>
                     </button>
@@ -197,9 +181,6 @@
         </div>
     </div>
 </header>
-
-
-
 <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

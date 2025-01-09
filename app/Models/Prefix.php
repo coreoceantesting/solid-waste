@@ -11,7 +11,7 @@ class Prefix extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['Prefix_Name', 'Description', 'Status'];
+    protected $fillable = ['Prefix_Name', 'Description','Zone','Status'];
 
     public static function booted()
     {

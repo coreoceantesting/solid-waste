@@ -75,7 +75,29 @@ class VehiclesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            // Retrieve the VehicleSchedulingInformation by ID
+            $vehicles = vehicles::findOrFail($id);
+
+            // Retrieve related VehicleInformation for this vehicle scheduling ID
+            $CapacityOfVehicle = CapacityOfVehicle::where('vehicle_id', $id)
+                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
+                                                    ->get();
+
+            // Return the data as a JSON response
+            return response()->json([
+                'result' => 1,
+                'vehicles' => $vehicles,
+                'CapacityOfVehicle' => $CapacityOfVehicle,
+            ]);
+        } catch (\Exception $e) {
+            // Return error response in case of failure
+            return response()->json([
+                'result' => 0,
+                'message' => 'Error retrieving vehicle scheduling information.',
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -112,8 +134,7 @@ class VehiclesController extends Controller
             $vehicle = vehicles::find($id); // Save vehicle first and get the ID if necessary
             $vehicle->update($input);
             if (isset($request->total_capacity) && count($request->total_capacity) > 0) {
-                CapacityOfVehicle::where('vehicle_id', $vehicle->id)->delete();
-
+            CapacityOfVehicle::where('vehicle_id', $vehicle->id)->delete();
                 for ($i = 0; $i < count($request->total_capacity); $i++) {
 
                         CapacityOfVehicle::create([

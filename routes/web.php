@@ -74,7 +74,7 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
     Route::resource('inspection-type', App\Http\Controllers\Admin\Masters\InspectionTypesController::class);
 
     Route::resource('locality-service-type', App\Http\Controllers\Admin\Masters\LocalityServiceTypeController::class);
-
+  
     Route::resource('maintenance-type', App\Http\Controllers\Admin\Masters\MaintenanceTypesController::class);
 
     Route::resource('pump-type', App\Http\Controllers\Admin\Masters\PumpTypeController::class);
@@ -100,6 +100,19 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::resource('designations', App\Http\Controllers\Admin\Masters\DesignationController::class);
 
+    Route::resource('population', App\Http\Controllers\Admin\Masters\PopulationController::class);
+
+    Route::resource('vehicle-scheduling-information', App\Http\Controllers\Admin\Masters\VehicleSchedulingInformationController::class);
+
+    Route::resource('contract-mapping', App\Http\Controllers\Admin\Masters\ContractMappingController::class);
+
+    Route::resource('waste-details', App\Http\Controllers\Admin\Masters\WasteDetailsController::class);
+
+    Route::resource('trip-sheet', App\Http\Controllers\Admin\Masters\TripSheetController::class);
+
+    Route::resource('vehicle-target', App\Http\Controllers\Admin\Masters\VehicleTargetController::class);
+
+
     // Route::resource('load.waste.items', App\Http\Controllers\Admin\Masters\DesignationController::class);
     // Route::post('/store', [SlrmEmployeeDetailController::class, 'store']);
 
@@ -113,6 +126,15 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
     Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
     // Route::get('vehicles/{waste_id}/edit', [VehicleController::class, 'edit'])->name('vehicles.edit');
     // Route::get('vehicles/{waste_id}/edit', [VehicleController::class, 'edit'])->name('vehicles.edit');
+
+    // route for report
+    Route::get('reports/collection-scheduling-report', [App\Http\Controllers\Admin\ReportsController::class, 'collectionSchedulingReport'])->name('report.collection-scheduling-report');
+
+    Route::get('reports/trip-sheet-report', [App\Http\Controllers\Admin\ReportsController::class, 'TripSheetReport'])->name('report.trip-sheet-report');
+
+    Route::get('reports/waste-details-report', [App\Http\Controllers\Admin\ReportsController::class, 'WasteDetailsReport'])->name('report.waste-details-report');
+
+    Route::get('reports/vehicle-target-report', [App\Http\Controllers\Admin\ReportsController::class, 'VehicleTargetReport'])->name('report.vehicle-target-report');
 
 
 });

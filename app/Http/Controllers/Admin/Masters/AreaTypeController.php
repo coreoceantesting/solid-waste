@@ -20,7 +20,7 @@ class AreaTypeController extends Controller
     {
         $AreaType = AreaType::whereNull('deleted_by')->get();
 
-        return view('admin.masters.AreaType')->with(['AreaType'=> $AreaType, 'AreaType' => $AreaType]);
+        return view('admin.masters.areaType')->with(['AreaType'=> $AreaType]);
     }
 
     /**
