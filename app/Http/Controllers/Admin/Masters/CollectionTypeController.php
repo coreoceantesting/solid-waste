@@ -10,7 +10,7 @@ use App\Models\CollectionType;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
-class CollectionTypeController extends Controller
+class collectionTypeController extends Controller
 {
     /**
      * Display a listing of the resource.

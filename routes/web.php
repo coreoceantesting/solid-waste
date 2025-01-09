@@ -62,7 +62,7 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::resource('area-type', App\Http\Controllers\Admin\Masters\AreaTypeController::class);
 
-    Route::resource('collection-type', App\Http\Controllers\Admin\Masters\CollectionTypeController::class);
+    Route::resource('collection-type', App\Http\Controllers\Admin\Masters\collectionTypeController::class);
 
     Route::resource('collection-transport', App\Http\Controllers\Admin\Masters\CollectionTransportController::class);
 
