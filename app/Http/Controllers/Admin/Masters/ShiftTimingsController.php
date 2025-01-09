@@ -19,7 +19,7 @@ class ShiftTimingsController extends Controller
     {
         $ShiftTimings = ShiftTimings::whereNull('deleted_by')->get();
 
-        return view('admin.masters.ShiftTimings')->with(['ShiftTimings'=> $ShiftTimings]);
+        return view('admin.masters.shiftTimings')->with(['ShiftTimings'=> $ShiftTimings]);
     }
 
     /**
