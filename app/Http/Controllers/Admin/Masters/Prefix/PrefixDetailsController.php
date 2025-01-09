@@ -26,7 +26,7 @@ class PrefixDetailsController extends Controller
 
         $prefixs = Prefix::get();
 
-        return view('admin.masters.prefix.PrefixDetails')->with(['prefixDetails'=> $prefixDetails, 'prefixs' => $prefixs]);
+        return view('admin.masters.prefix.prefixDetails')->with(['prefixDetails'=> $prefixDetails, 'prefixs' => $prefixs]);
     }
 
     /**
