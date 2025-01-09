@@ -19,7 +19,7 @@ class VehicleTypeController extends Controller
     {
         $VehicleType = VehicleType::whereNull('deleted_by')->get();
 
-        return view('admin.masters.VehicleType')->with(['VehicleType'=> $VehicleType]);
+        return view('admin.masters.vehicleType')->with(['VehicleType'=> $VehicleType]);
 
     }
 
