@@ -20,8 +20,8 @@
                                     <label class="col-form-label" for="Vehicle_Type">Vehicle Type<span class="text-danger">*</span></label>
                                     <select name="Vehicle_Type" id="Vehicle_Type" class="form-control">
                                         <option value="">Select Vehicle Type </option>
-                                        @foreach ($vehicleType as $type )
-                                            <option value="{{ $type->name }}">{{ $type->name }} </option>
+                                        @foreach ($VehicleType as $Vehicle )
+                                            <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
                                         @endforeach
                                     </select>
                                     {{-- <input class="form-control" id="Vehicle_Type" name="Vehicle_Type" type="text" placeholder="Enter Vehicle Type"> --}}
@@ -140,8 +140,8 @@
                                     <label class="col-form-label" for="Vehicle_Type">Vehicle Type<span class="text-danger">*</span></label>
                                     <select name="Vehicle_Type" id="Vehicle_Type" class="form-control">
                                         <option value="">Select Vehicle Type </option>
-                                        @foreach ($vehicleType as $type )
-                                            <option value="{{ $type->name }}">{{ $type->name }} </option>
+                                        @foreach ($VehicleType as $Vehicle )
+                                            <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
                                         @endforeach
                                     </select>
                                     {{-- <input class="form-control" id="Vehicle_Type" name="Vehicle_Type" type="text" placeholder="Enter Vehicle Type"> --}}
@@ -309,7 +309,7 @@
                 </div>
             </div>
         </div>
-      
+
        {{-- view model --}}
        <div class="modal fade vehicalModel" tabindex="-1" role="dialog" aria-labelledby="vehicalModelLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
