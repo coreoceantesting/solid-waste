@@ -21,7 +21,7 @@ class TypesOfItemSoldController extends Controller
     {
         $TypesOfItemSold = TypesOfItemSold::whereNull('deleted_by')->get();
 
-       return view('admin.masters.TypesOfItemSold')->with(['TypesOfItemSold'=> $TypesOfItemSold]);
+       return view('admin.masters.typesOfItemSold')->with(['TypesOfItemSold'=> $TypesOfItemSold]);
 
     }
 
