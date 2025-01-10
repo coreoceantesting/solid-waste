@@ -438,25 +438,26 @@
 <script>
     $(document).ready(function () {
         let populationRowCount = 1; // Counter for unique row IDs
+        let defaultRowAdded = false; // Flag to check if default row is already added
 
-        // Add More Button Functionality
-        $('#addMorePopulationButton').on('click', function () {
+        // Function to add a row (Default or on button click)
+        function appendPopulationRow() {
             let html = `<tr id="populationRow${populationRowCount}">
                             <td>
-                            <select name="zone[]" class="form-select AddFormSelectZone" required>
-                            <option value="">Select Zone</option>
-                                  @foreach($Prefix as $Pre)
-                            <option value="{{ $Pre->id }}">{{ $Pre->Zone }}</option>
-                           @endforeach
-                          </select>
+                                <select name="zone[]" class="form-select AddFormSelectZone" required>
+                                    <option value="">Select Zone</option>
+                                    @foreach($Prefix as $Pre)
+                                        <option value="{{ $Pre->id }}">{{ $Pre->Zone }}</option>
+                                    @endforeach
+                                </select>
                             </td>
                             <td>
-                                  <select name="ward[]" class="form-select AddFormSelectward" required>
-                            <option value="">Select ward</option>
-                                  @foreach($wards as $ward)
-                            <option value="{{ $ward->id }}">{{ $ward->name }}</option>
-                           @endforeach
-                          </select>
+                                <select name="ward[]" class="form-select AddFormSelectward" required>
+                                    <option value="">Select ward</option>
+                                    @foreach($wards as $ward)
+                                        <option value="{{ $ward->id }}">{{ $ward->name }}</option>
+                                    @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input type="text" name="colony[]" class="form-control" placeholder="Enter colony" required>
@@ -471,9 +472,19 @@
                                 <button type="button" class="btn btn-danger btn-sm removePopulationRow" data-id="${populationRowCount}">Remove</button>
                             </td>
                         </tr>`;
-
-            $('#populationTableBody').append(html); // Append the new row to the table body
+            $('#populationTableBody').append(html); // Add the row to the table body
             populationRowCount++; // Increment the row counter for unique IDs
+        }
+
+        // Add the first row by default when the page loads
+        if (!defaultRowAdded) {
+            appendPopulationRow(); // Add the default row
+            defaultRowAdded = true; // Set the flag to true after adding the default row
+        }
+
+        // "Add More" Button functionality (after default row is added)
+        $('#addMorePopulationButton').on('click', function () {
+            appendPopulationRow(); // Add a new row when the button is clicked
         });
 
         // Remove Row Functionality
