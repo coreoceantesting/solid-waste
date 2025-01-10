@@ -804,60 +804,59 @@
 
 {{-- add more vehicle details in edit --}}
 <script>
-    // Global counter for row IDs
-    let editRowCounter = 100;
+    $(document).ready(function () {
+        let vehicleRowCounter = 1; // Row counter for unique IDs
 
-    // Event to add more vehicle rows (fixed event binding)
-    $('body').on('click', '#editMoreEditvehicleRow', function() {
-        let value = {
-            vehicle_type: '',      // Default empty value or dynamically populated
-            available_count: '',   // Default empty value or dynamically populated
-            required_count: '',    // Default empty value or dynamically populated
-        };
+        // Function to create a new row
+        function createNewRow(rowId) {
+            return `
+                <tr id="vehicleRow${rowId}">
+                    <td>
+                        <select name="vehicle_type[]" class="form-select" required>
+                            <option value="">Select Vehicle Type</option>
+                            @foreach($VehicleType as $Vehicle)
+                                <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="available_count[]" placeholder="Available Count" required />
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="required_count[]" placeholder="Required Count" required />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm removeRow" data-id="${rowId}">Remove</button>
+                    </td>
+                </tr>
+            `;
+        }
 
-        let html = `
-            <tr id="editRow${editRowCounter}">
-                <td>
-                    <select name="vehicle_type[]" class="form-select AddFormSelectVehicle" required>
-                        <option value="">Select VehicleType</option>
-                        @foreach($VehicleType as $Vehicle)
-                            <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
-                        @endforeach
-                    </select>
-                </td>
-                <td>
-                    <input type="number" class="form-control editAvailbeCount" name="available_count[]" value="${value['available_count']}" required />
-                </td>
-                <td>
-                    <input type="number" class="form-control editRequiredCount" name="required_count[]" value="${value['required_count']}" required />
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
-                </td>
-            </tr>
-        `;
-        $('#editVehicleTableBody').append(html);
-        editRowCounter++;
-    });
+        // Step 1: Add the first row on page load (one-time display)
+        $('#vehicleTableBody').append(createNewRow(vehicleRowCounter));
+        vehicleRowCounter++;
 
-    // Event to remove a vehicle row (fixed event binding)
-    $('body').on('click', '.removeRow', function() {
-        let rowId = $(this).data('id');
-        $(`#editRow${rowId}`).remove();
+        // Step 2: Add new rows on "Add More" button click
+        $('#addMoreVehicleButton').on('click', function () {
+            $('#vehicleTableBody').append(createNewRow(vehicleRowCounter));
+            vehicleRowCounter++;
+        });
+
+        // Step 3: Remove a row when the "Remove" button is clicked
+        $('body').on('click', '.removeRow', function () {
+            const rowId = $(this).data('id');
+            $(`#vehicleRow${rowId}`).remove();
+        });
     });
 </script>
+
 {{--Add more employeee details in edit --}}
 <script>
-    let editRowCounterEmp = 100;
+    let editRowCounterEmp = 100; // Row counter for unique IDs
+    const defaultRowAdded = false; // Flag to check if default row has been added
 
-    // Event to add more employee rows
-    $('body').on('click', '#editMoreEditemployeeRow', function() {
-        let value = {
-            designation: '',      // Default empty value or dynamically populated
-            available_count: '',  // Default empty value or dynamically populated
-            required_count: '',   // Default empty value or dynamically populated
-        };
-
+    // Function to append a row (default or on button click)
+    function appendEmployeeRow() {
         let html = `
             <tr id="editRow${editRowCounterEmp}">
                 <td>
@@ -869,27 +868,39 @@
                     </select>
                 </td>
                 <td>
-                    <input type="number" class="form-control editAvailbeCount" name="emp_available_count[]" value="${value['available_count']}" required />
+                    <input type="number" class="form-control editAvailbeCount" name="emp_available_count[]" placeholder="Available Count" value="" required />
                 </td>
                 <td>
-                    <input type="number" class="form-control editRequiredCount" name="emp_required_count[]" value="${value['required_count']}" required />
+                    <input type="number" class="form-control editRequiredCount" name="emp_required_count[]" placeholder="Required Count" value="" required />
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounterEmp}">Remove</button>
                 </td>
             </tr>
         `;
-        $('#editEmployeeTableBody').append(html);
+        $('#employeeTableBody').append(html); // Add row to table body
         editRowCounterEmp++;
+    }
+
+    // Add a default row when page loads
+    $(document).ready(function () {
+        if (!defaultRowAdded) {
+            appendEmployeeRow(); // Add the first row by default
+        }
     });
 
-    // Event to remove a vehicle row
-    $('body').on('click', '.removeRow', function() {
+    // Add more rows on button click
+    $('body').on('click', '#addMoreEmployeeButton', function () {
+        appendEmployeeRow();
+    });
+
+    // Remove a row when 'Remove' button is clicked
+    $('body').on('click', '.removeRow', function () {
         let rowId = $(this).data('id');
-        $(`#editRow${rowId}`).remove();
+        $(`#editRow${rowId}`).remove(); // Remove the row with the given ID
     });
-
 </script>
+
 
 <!-- Update -->
 <script>
