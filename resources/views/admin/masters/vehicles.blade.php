@@ -644,37 +644,47 @@
         });
     });
 </script>
-<script> $(document).ready(function() {
-    let wasteRowCount = 1;
+<script>
+    $(document).ready(function () {
+        let wasteRowCount = 1; // Row counter
 
-    // Add More Button Functionality
-    $('#addMoreWasteButton').on('click', function() {
-        let html = `<tr id="wasteRow${wasteRowCount}">
-                        <td>
-                            <input type="text" name="waste_types[]" class="form-control" placeholder="Enter Waste Type" required>
-                        </td>
-                        <td>
-                            <input type="number" name="capacity_in_kg[]" class="form-control" placeholder="Enter Capacity (kg)" required>
-                        </td>
-                        <td>
-                            <input type="number" name="total_capacity[]" class="form-control" placeholder="Enter Total Capacity" required>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-sm removeWasteRow" data-id="${wasteRowCount}">Remove</button>
-                        </td>
-                    </tr>`;
+        // Function to create a new row
+        function createNewRow(rowId) {
+            return `
+                <tr id="wasteRow${rowId}">
+                    <td>
+                        <input type="text" name="waste_types[]" class="form-control" placeholder="Enter Waste Type" required>
+                    </td>
+                    <td>
+                        <input type="number" name="capacity_in_kg[]" class="form-control" placeholder="Enter Capacity (kg)" required>
+                    </td>
+                    <td>
+                        <input type="number" name="total_capacity[]" class="form-control" placeholder="Enter Total Capacity" required>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm removeWasteRow" data-id="${rowId}">Remove</button>
+                    </td>
+                </tr>
+            `;
+        }
 
-        $('#wasteTableBody').append(html);
+        // Add one default row on page load
+        $('#wasteTableBody').append(createNewRow(wasteRowCount));
         wasteRowCount++;
-    });
 
-    // Remove Row Functionality
-    $('body').on('click', '.removeWasteRow', function() {
-        const rowId = $(this).data('id');
-        $(`#wasteRow${rowId}`).remove();
-    });
-});</script>
+        // Add More Button Functionality
+        $('#addMoreWasteButton').on('click', function () {
+            $('#wasteTableBody').append(createNewRow(wasteRowCount));
+            wasteRowCount++;
+        });
 
+        // Remove Row Functionality
+        $('body').on('click', '.removeWasteRow', function () {
+            const rowId = $(this).data('id');
+            $(`#wasteRow${rowId}`).remove();
+        });
+    });
+</script>
 {{-- view --}}
 <script>
     $('body').on('click', '.view-element', function(){
