@@ -563,17 +563,18 @@
 <script>
     $(document).ready(function () {
         let vehicleRowCount = 1; // Counter for unique row IDs
+        let defaultRowAdded = false; // Flag to check if default row is already added
 
-        // Add More Button Functionality
-        $('#addMoreVehicleButton').on('click', function () {
+        // Function to append the default or new vehicle row
+        function appendVehicleRow() {
             let html = `<tr id="vehicleRow${vehicleRowCount}">
                             <td>
                                 <select name="beat_number[]" class="form-select AddFormSelectDesignation" required>
                                     <option value="">Select BeatNumber</option>
                                   @foreach($Ward as $Wa)
-                                 <option value="{{ $Wa->beat_number}}">{{ $Wa->beat_number}}</option>
-                                @endforeach
-                              </select>
+                                     <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                                  @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input type="text" name="employee_name[]" class="form-control" placeholder="Enter employee name" required>
@@ -581,30 +582,38 @@
                             <td>
                                 <input type="text" name="waste_gen_type[]" class="form-control" placeholder="Enter waste generated type" required>
                             </td>
-                              <td>
-                                <input type="time" name="in_time[]" class="form-control" placeholder="Enter In Time" required>
+                            <td>
+                                <input type="time" name="in_time[]" class="form-control" required>
                             </td>
-                              <td>
-                                <input type="time" name="out_time[]" class="form-control" placeholder="Enter Out Time" required>
+                            <td>
+                                <input type="time" name="out_time[]" class="form-control" required>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-sm removeVehicleRow" data-id="${vehicleRowCount}">Remove</button>
                             </td>
                         </tr>`;
-
-            $('#vehicleTableBody').append(html); // Append the new row to the table body
+            $('#vehicleTableBody').append(html); // Append the row to the table body
             vehicleRowCount++; // Increment the row counter for unique IDs
+        }
+
+        // Add the first row by default when the page loads
+        if (!defaultRowAdded) {
+            appendVehicleRow(); // Add the default row initially
+            defaultRowAdded = true; // Set the flag to true to prevent adding more rows by default
+        }
+
+        // Add More Button functionality (after the default row)
+        $('#addMoreVehicleButton').on('click', function () {
+            appendVehicleRow(); // Add a new row when the button is clicked
         });
 
-        // Remove Row Functionality
+        // Remove Row functionality
         $('body').on('click', '.removeVehicleRow', function () {
             const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
             $(`#vehicleRow${rowId}`).remove(); // Remove the corresponding row
         });
     });
 </script>
-
-
 
 {{-- view --}}
 <script>
