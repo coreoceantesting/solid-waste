@@ -472,23 +472,52 @@
     $(document).ready(function () {
         let vehicletargetRowCount = 1; // Counter for unique row IDs
 
+        // Automatically add the first row when the page loads
+        let initialHtml = `<tr id="vehicletargetRow${vehicletargetRowCount}">
+                                <td>
+                                    <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                        <option value="">Select Vehicle Number</option>
+                                        @foreach($vehicles as $vehi)
+                                            <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
+                                        <option value="">Select Beat Number</option>
+                                        @foreach($Ward as $Wa)
+                                            <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm removevehicletargetRow" data-id="${vehicletargetRowCount}">Remove</button>
+                                </td>
+                            </tr>`;
+        $('#VehicleTargetTableBody').append(initialHtml); // Append the first row to the table body
+        vehicletargetRowCount++; // Increment the row counter for unique IDs
+
         // Add More Button Functionality
         $('#addMoreVehicleTargetButton').on('click', function () {
             let html = `<tr id="vehicletargetRow${vehicletargetRowCount}">
                             <td>
                                 <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
-                                 <option value="">Select VehicleNumber</option>
-                                @foreach($vehicles as $vehi)
-                               <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
-                            @endforeach
-                          </select>
+                                    <option value="">Select Vehicle Number</option>
+                                    @foreach($vehicles as $vehi)
+                                        <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                                    @endforeach
+                                </select>
                             </td>
                             <td>
                                 <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
-                                 <option value="">Select BeatNumber</option>
-                                @foreach($Ward as $Wa)
-                               <option value="{{ $Wa->beat_number}}">{{ $Wa->beat_number }}</option>
-                            @endforeach
+                                    <option value="">Select Beat Number</option>
+                                    @foreach($Ward as $Wa)
+                                        <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                                    @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
