@@ -275,6 +275,7 @@
                    $.each(data.TaskMapping, function(key, value) {
                    let CapacityOfVehicleOptions = ''; // Variable to hold vehicle type options
                    // Loop through VehicleType data dynamically from the controller
+                   //
                    @foreach($CapacityOfVehicle as $Capacity)
                    CapacityOfVehicleOptions += `<option value="{{ $Capacity->waste_types }}" ${value['waste_type'] == "{{ $Capacity->waste_types }}" ? 'selected' : ''}>{{ $Capacity->waste_types }}</option>`;
                   @endforeach
