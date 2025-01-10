@@ -516,7 +516,33 @@
     $(document).ready(function () {
         let SegregationRowCount = 1; // Counter for unique row IDs
 
-        // Add More Button Functionality
+        // Automatically show the first row when the page loads
+        let html = `<tr id="SegregationRow${SegregationRowCount}">
+                        <td>
+                            <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
+                                <option value="">Select WasteType</option>
+                                @foreach($CapacityOfVehicle as $Capacity)
+                                    <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>
+                        </td>
+                        <td>
+                            <input type="text" name="waste_sub_type2[]" class="form-control" placeholder="Enter waste sub type2" required>
+                        </td>
+                        <td>
+                            <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm removeSegregationRow" data-id="${SegregationRowCount}">Remove</button>
+                        </td>
+                    </tr>`;
+        $('#SegregationTableBody').append(html); // Append the first row to the table body
+        SegregationRowCount++; // Increment the row counter for unique IDs
+
+        // Add More Button Functionality (now only for adding extra rows after initial load)
         $('#addMoreSegregationButton').on('click', function () {
             let html = `<tr id="SegregationRow${SegregationRowCount}">
                             <td>
@@ -572,6 +598,7 @@
         }
     });
 </script>
+
 {{-- views --}}
 <script>
     $('body').on('click', '.view-element', function () {
