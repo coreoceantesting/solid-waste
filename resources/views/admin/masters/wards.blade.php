@@ -657,58 +657,65 @@
     });
 </script>
 {{----Add more functionality in the wards----}}
-    <script>
-        $(document).ready(function () {
-            let areaRowCount = 1; // Counter for row IDs
+<script>
+    $(document).ready(function () {
+        let areaRowCount = 1; // Counter for row IDs
 
-            // Add More Button Functionality
-            $('#addMoreAreaButton').on('click', function () {
-                let html = `<tr id="areaRow${areaRowCount}">
-                                <td>
-                                    <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
-                                    <option value="">Select AreaType</option>
-                                       @foreach($AreaType as $Area)
-                                       <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
-                                      @endforeach
-                                </select>
-                                </td>
-                                <td>
-                                    <input type="text" name="area_name[]" class="form-control" placeholder="Enter Area Name" required>
-                                </td>
-                                <td>
-                                    <input type="number" name="household_count[]" class="form-control householdCount" placeholder="Enter Household Count" required>
-                                </td>
-                                <td>
-                                    <input type="number" name="shop_count[]" class="form-control shopCount" placeholder="Enter Shop Count" required>
-                                </td>
-                                <td>
-                                    <input type="number" name="total[]" class="form-control totalField" placeholder="Total" required>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger btn-sm removeAreaRow" data-id="${areaRowCount}">Remove</button>
-                                </td>
-                            </tr>`;
+        // Function to create a new row
+        function createNewRow(rowId) {
+            return `<tr id="areaRow${rowId}">
+                        <td>
+                            <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
+                                <option value="">Select AreaType</option>
+                                @foreach($AreaType as $Area)
+                                <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="area_name[]" class="form-control" placeholder="Enter Area Name" required>
+                        </td>
+                        <td>
+                            <input type="number" name="household_count[]" class="form-control householdCount" placeholder="Enter Household Count" required>
+                        </td>
+                        <td>
+                            <input type="number" name="shop_count[]" class="form-control shopCount" placeholder="Enter Shop Count" required>
+                        </td>
+                        <td>
+                            <input type="number" name="total[]" class="form-control totalField" placeholder="Total" required>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm removeAreaRow" data-id="${rowId}">Remove</button>
+                        </td>
+                    </tr>`;
+        }
 
-                $('#areaTableBody').append(html);
-                areaRowCount++;
-            });
+        // Automatically add one row on page load
+        $('#areaTableBody').append(createNewRow(areaRowCount));
+        areaRowCount++;
 
-            // Remove Row Functionality
-            $('body').on('click', '.removeAreaRow', function () {
-                const rowId = $(this).data('id');
-                $(`#areaRow${rowId}`).remove();
-            });
-
-            // Automatically calculate the total for each row
-            $('body').on('input', '.householdCount, .shopCount', function () {
-                const row = $(this).closest('tr');
-                const householdCount = parseInt(row.find('.householdCount').val()) || 0;
-                const shopCount = parseInt(row.find('.shopCount').val()) || 0;
-                const total = householdCount + shopCount;
-                row.find('.totalField').val(total);
-            });
+        // Add More Button Functionality
+        $('#addMoreAreaButton').on('click', function () {
+            $('#areaTableBody').append(createNewRow(areaRowCount));
+            areaRowCount++;
         });
-    </script>
+
+        // Remove Row Functionality
+        $('body').on('click', '.removeAreaRow', function () {
+            const rowId = $(this).data('id');
+            $(`#areaRow${rowId}`).remove();
+        });
+
+        // Automatically calculate the total for each row
+        $('body').on('input', '.householdCount, .shopCount', function () {
+            const row = $(this).closest('tr');
+            const householdCount = parseInt(row.find('.householdCount').val()) || 0;
+            const shopCount = parseInt(row.find('.shopCount').val()) || 0;
+            const total = householdCount + shopCount;
+            row.find('.totalField').val(total);
+        });
+    });
+</script>
 {{-- views --}}
 <script>
   $('body').on('click', '.view-element', function() {
