@@ -652,16 +652,36 @@
     $(document).ready(function () {
         let tripsheetRowCount = 1; // Counter for unique row IDs
 
+        // Automatically add the first row when the page loads
+        let initialHtml = `<tr id="tripsheetRow${tripsheetRowCount}">
+                                <td>
+                                    <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
+                                        <option value="">Select WasteType</option>
+                                        @foreach($CapacityOfVehicle as $Capacity)
+                                            <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm removetripsheetRow" data-id="${tripsheetRowCount}">Remove</button>
+                                </td>
+                            </tr>`;
+        $('#BreakUpTableBody').append(initialHtml); // Append the first row to the table body
+        tripsheetRowCount++; // Increment the row counter for unique IDs
+
         // Add More Button Functionality
         $('#addMoreBreakUpButton').on('click', function () {
             let html = `<tr id="tripsheetRow${tripsheetRowCount}">
                             <td>
-                               <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
+                                <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
                                     <option value="">Select WasteType</option>
-                                  @foreach($CapacityOfVehicle as $Capacity)
-                                 <option value="{{ $Capacity->waste_types}}">{{ $Capacity->waste_types }}</option>
-                                @endforeach
-                              </select>
+                                    @foreach($CapacityOfVehicle as $Capacity)
+                                        <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
+                                    @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>
@@ -681,6 +701,7 @@
             $(`#tripsheetRow${rowId}`).remove(); // Remove the corresponding row
             calculateTotalVolume(); // Recalculate total volume after removal
         });
+
         // Event listener to calculate total volume when the volume input field is updated
         $('body').on('input', '.volumeInput', function () {
             calculateTotalVolume(); // Recalculate total volume whenever a volume input changes
