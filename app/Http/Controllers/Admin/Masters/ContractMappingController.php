@@ -77,7 +77,6 @@ class ContractMappingController extends Controller
         }
 
     }
-
     /**
      * Display the specified resource.
      */

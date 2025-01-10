@@ -250,8 +250,6 @@
 
     });
 </script>
-
-
 <!-- Edit -->
 <script>
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
@@ -272,73 +270,69 @@
                     $("#editForm input[name='edit_model_id']").val(data.ContractMapping.id);
                     $("#editForm input[name='contract_number']").val(data.ContractMapping.contract_number);
 
-                      // Dynamically generate vehicle details rows
-                       let TaskMapping = "";
-                       $.each(data.TaskMapping, function(key, value) {
-                        let wasteTypeOptions = ''; // Variable to hold vehicle type options
+                    // Dynamically generate vehicle details rows
+                   let taskmapping = "";
+                   $.each(data.TaskMapping, function(key, value) {
+                   let CapacityOfVehicleOptions = ''; // Variable to hold vehicle type options
+                   // Loop through VehicleType data dynamically from the controller
+                   @foreach($CapacityOfVehicle as $Capacity)
+                   CapacityOfVehicleOptions += `<option value="{{ $Capacity->waste_types }}" ${value['waste_type'] == "{{ $Capacity->waste_types }}" ? 'selected' : ''}>{{ $Capacity->waste_types }}</option>`;
+                  @endforeach
 
-                        // Loop through VehicleType data dynamically from the controller
-                        @foreach($CapacityOfVehicle as $Capacity)
-                         wasteTypeOptions += `<option value="{{ $Capacity->id }}" ${value['waste_type'] == {{ $Capacity->id }} ? 'selected' : ''}>{{ $Capacity->waste_types }}</option>`;
-                        @endforeach
+                let BeatNumberOptions = ''; // Variable to hold vehicle type options
+    // Loop through VehicleType data dynamically from the controller
+                @foreach($Ward as $Wa)
+                BeatNumberOptions += `<option value="{{ $Wa->beat_number }}" ${value['beat_number'] == "{{ $Wa->beat_number }}" ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
+               @endforeach
 
+             // Append HTML for each row dynamically
+             taskmapping += `
+             <tr id="editRow${key}">
+             <td>
+                <input type="text" class="form-control editZone" required name="zone[]" value="${value['zone']}" />
+             </td>
+             <td>
+                <input type="text" class="form-control editWard" required name="ward[]" value="${value['ward']}" />
+             </td>
+             <td>
+                <input type="text" class="form-control editColony" required name="colony[]" value="${value['colony']}" />
+             </td>
+             <td>
+                <input type="text" class="form-control editSociety" required name="society[]" value="${value['society']}" />
+             </td>
+             <td>
+                <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" />
+             </td>
+            <td>
+                <select name="waste_type[]" class="form-select AddFormWasteTypes" required>
+                    <option value="">Select WasteTypes</option>
+                    ${CapacityOfVehicleOptions}
+                </select>
+             </td>
+             <td>
+                <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" />
+             </td>
+             <td>
+                <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
+                    <option value="">Select BeatNumber</option>
+                    ${BeatNumberOptions}
+                </select>
+             </td>
+             <td>
+                <input type="number" class="form-control editEmployeeCount" required name="employee_count[]" value="${value['employee_count']}" />
+             </td>
+             <td>
+                <input type="number" class="form-control editVehicleCount" required name="vehicle_count[]" value="${value['vehicle_count']}" />
+             </td>
+             <td>
+                <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
+            </td>
+        </tr>
+     `;
+    });
 
-                        let beatNumberOptions = ''; // Variable to hold vehicle type options
-
-                        // Loop through VehicleType data dynamically from the controller
-                        @foreach($Ward as $Wa)
-                        beatNumberOptions += `<option value="{{ $Wa->id }}" ${value['beat_number'] == {{ $Wa->id }} ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
-                        @endforeach
-
-                        // Append HTML for each row dynamically
-                        TaskMapping += `
-                            <tr id="editRow${key}">
-                                <td>
-                                    <input type="text" class="form-control editzone" name="zone[]" value="${value['zone']}" required />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required />
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control editcolony" required name="colony[]" value="${value['colony']}" />
-                                 </td>
-                                  <td>
-                                    <input type="text" class="form-control editsociety" required name="society[]" value="${value['society']}" />
-                                 </td>
-                                  <td>
-                                    <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" />
-                                 </td>
-                                 <td>
-                                  <select name="waste_type[]" class="form-select AddFormSelectwasteType" required>
-                                        <option value="">Select wastetypes</option>
-                                        ${wasteTypeOptions}
-                                    </select>
-                                 </td>
-                                 <td>
-                                    <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" />
-                                 </td>
-                                 <td>
-                                    <select name="beat_number[]" class="form-select AddFormSelectbeatnumber" required>
-                                        <option value="">Select beatnumber</option>
-                                        ${beatNumberOptions}
-                                    </select>
-                                 </td>
-                                 <td>
-                                    <input type="number" class="form-control editEmployeeCount" required name="employee_count[]" value="${value['employee_count']}" />
-                                 </td>
-                                  <td>
-                                    <input type="number" class="form-control editVehicleCount" required name="vehicle_count[]" value="${value['vehicle_count']}" />
-                                 </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
-                                </td>
-                            </tr>
-                        `;
-                    });
-
-                    // Append the generated HTML to the vehicle table body
-                    $('#edittaskmappingBody').html(TaskMapping);
-
+// Append the generated HTML to the vehicle table body
+  $('#edittaskmappingBody').html(taskmapping);
                 }
                 else
                 {
@@ -351,7 +345,8 @@
         });
     });
 </script>
-{{-- add more Task Mapping in edit --}}
+
+{{-- add more Task Maping in edit --}}
 <script>
     // Global counter for row IDs
     let editRowCounter = 100;
@@ -361,53 +356,52 @@
         let value = {
             zone: '',      // Default empty value or dynamically populated
             ward: '',   // Default empty value or dynamically populated
-            colony: '',
+            colony: '',    // Default empty value or dynamically populated
             society: '',      // Default empty value or dynamically populated
             task: '',   // Default empty value or dynamically populated
             waste_type: '',
-            garbage_volume: '',      // Default empty value or dynamically populated
-            beat_number: '',   // Default empty value or dynamically populated
-            employee_count: '',
-            vehicle_count: ''    // Default empty value or dynamically populated
+            garbage_volume: '',    // Default empty value or dynamically populated
+            beat_number: '',      // Default empty value or dynamically populated
+            employee_count: '',   // Default empty value or dynamically populated
+            vehicle_count: '',
         };
 
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                  <input type="text" class="form-control editzone" name="zone[]" value="${value['zone']}" required />
+                    <input type="text" class="form-control editzone" name="zone[]" value="${value['zone']}" required />
                 </td>
-                <td>
+                 <td>
                     <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required />
                 </td>
-                <td>
+                 <td>
                     <input type="text" class="form-control editcolony" name="colony[]" value="${value['colony']}" required />
                 </td>
-                <td>
-                    <input type="text" class="form-control editsocietyt" name="society[]" value="${value['society']}" required />
-                </td>
                  <td>
+                    <input type="text" class="form-control editsociety" name="society[]" value="${value['society']}" required />
+                </td>
+                <td>
                     <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required />
                 </td>
-                 <td>
-                     <select name="waste_type[]" class="form-select AddFormSelectWasteType" required>
-                                    <option value="">Select wastetype</option>
-                                  @foreach($CapacityOfVehicle as $Capacity)
-                                 <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                                @endforeach
-                              </select>
+                <td>
+                  <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                 <option value="">Select VehicleNumber</option>
+                                @foreach($CapacityOfVehicle as $Capacity)
+                               <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
+                            @endforeach
+                          </select>
                 </td>
                 <td>
-                    <select name="beat_number[]" class="form-select AddFormSelectWasteType" required>
-                                    <option value="">Select wastetype</option>
-                                  @foreach($Ward as $Wa)
-                                 <option value="{{ $Wa->beat_number  }}">{{ $Wa->beat_number }}</option>
-                                @endforeach
-                              </select>
+                    <input type="number" class="form-control editGarbageVolume" name="garbage_volume[]" value="${value['garbage_volume']}" required />
                 </td>
-                 <td>
-                    <input type="number" class="form-control editBeatNumber" name="beat_number[]" value="${value['beat_number']}" required />
+                <td>
+                     <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
+                                 <option value="">Select BeatNumber</option>
+                                @foreach($Ward as $Wa)
+                               <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                            @endforeach
                 </td>
-                 <td>
+                <td>
                     <input type="number" class="form-control editEmployeeCount" name="employee_count[]" value="${value['employee_count']}" required />
                 </td>
                 <td>
