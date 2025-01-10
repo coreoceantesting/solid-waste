@@ -524,9 +524,10 @@
 <script>
     $(document).ready(function () {
         let taskRowCount = 1; // Counter for unique row IDs
+        let defaultRowAdded = false; // Flag to check if default row is already added
 
-        // Add More Button Functionality
-        $('#addtaskmapping').on('click', function () {
+        // Function to append the default or new task row
+        function appendTaskRow() {
             let html = `<tr id="taskRow${taskRowCount}">
                             <td>
                                 <input type="text" name="zone[]" class="form-control" placeholder="Enter zone" required>
@@ -547,9 +548,9 @@
                                  <select name="waste_type[]" class="form-select AddFormSelectWasteType" required>
                                     <option value="">Select wastetype</option>
                                   @foreach($CapacityOfVehicle as $Capacity)
-                                 <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                                @endforeach
-                              </select>
+                                     <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
+                                  @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input type="text" name="garbage_volume[]" class="form-control" placeholder="Enter Garbage Volume" required>
@@ -566,7 +567,7 @@
                                 <input type="text" name="employee_count[]" class="form-control" placeholder="Enter Employee Count" required>
                             </td>
                             <td>
-                                <input type="text" name="vehicle_count[]" class="form-control" placeholder="Enter vehicle  Count" required>
+                                <input type="text" name="vehicle_count[]" class="form-control" placeholder="Enter vehicle Count" required>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-sm removetaskRow" data-id="${taskRowCount}">Remove</button>
@@ -575,9 +576,20 @@
 
             $('#taskmappingBody').append(html); // Append the new row to the table body
             taskRowCount++; // Increment the row counter for unique IDs
+        }
+
+        // Initially add the first row by default when the page loads
+        if (!defaultRowAdded) {
+            appendTaskRow(); // Add the default row initially
+            defaultRowAdded = true; // Set the flag to true to prevent adding more rows by default
+        }
+
+        // Add More Button functionality (after the default row)
+        $('#addtaskmapping').on('click', function () {
+            appendTaskRow(); // Add a new row when the button is clicked
         });
 
-        // Remove Row Functionality
+        // Remove Row functionality
         $('body').on('click', '.removetaskRow', function () {
             const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
             $(`#taskRow${rowId}`).remove(); // Remove the corresponding row
