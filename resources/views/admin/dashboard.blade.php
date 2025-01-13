@@ -63,7 +63,7 @@
                                             Users
                                         </p>
                                         <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="28.05">0</span>k
+                                            <span class="counter-value" data-target="0">0</span>k
                                         </h2>
                                         <p class="mb-0 text-muted">
                                             <span class="badge bg-light text-success mb-0"><i class="ri-arrow-up-line align-middle"></i>
@@ -97,7 +97,7 @@
                                             Sessions
                                         </p>
                                         <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="97.66">0</span>k
+                                            <span class="counter-value" data-target="0">0</span>k
                                         </h2>
                                         <p class="mb-0 text-muted">
                                             <span class="badge bg-light text-danger mb-0">
@@ -135,8 +135,8 @@
                                             Duration
                                         </p>
                                         <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="3">0</span>m
-                                            <span class="counter-value" data-target="40">0</span>sec
+                                            <span class="counter-value" data-target="0">0</span>m
+                                            <span class="counter-value" data-target="0">0</span>sec
                                         </h2>
                                         <p class="mb-0 text-muted">
                                             <span class="badge bg-light text-danger mb-0">
@@ -171,7 +171,7 @@
                                             Bounce Rate
                                         </p>
                                         <h2 class="mt-4 ff-secondary fw-semibold">
-                                            <span class="counter-value" data-target="33.48">0</span>%
+                                            <span class="counter-value" data-target="0">0</span>%
                                         </h2>
                                         <p class="mb-0 text-muted">
                                             <span class="badge bg-light text-success mb-0">

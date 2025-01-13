@@ -76,7 +76,7 @@
                     background-image: none;
                     background-color: #fff;
                     height: auto;
-                    display: flex: 
+                    display: flex:
                     justify-content: center;
                 }
 
@@ -280,7 +280,7 @@
             document.getElementById('password-addon').addEventListener('click', function () {
                 var passwordInput = document.getElementById('password');
                 var icon = this.querySelector('i');
-                
+
                 if (passwordInput.type === 'password') {
                     passwordInput.type = 'text';
                     icon.classList.remove('fa-eye');
