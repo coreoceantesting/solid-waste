@@ -40,6 +40,11 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
         return view('form16');
     });
 
+
+    // Route::get('/form17', function () {
+    //     return view('admin/masters/form17');
+    // });
+
     Route::get('/collectionCenter', function () {
         return view('admin/masters/collectionCenter');
     });
@@ -111,6 +116,8 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
     Route::resource('trip-sheet', App\Http\Controllers\Admin\Masters\TripSheetController::class);
 
     Route::resource('vehicle-target', App\Http\Controllers\Admin\Masters\VehicleTargetController::class);
+
+    Route::resource('form17', App\Http\Controllers\Admin\Masters\form17controller::class);
 
 
     // Route::resource('load.waste.items', App\Http\Controllers\Admin\Masters\DesignationController::class);

@@ -45,7 +45,7 @@
                         <i class="ri-layout-3-line"></i>
                         <span data-key="t-layouts">Masters</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ request()->routeIs('wards.index') ? 'show' : '' }}" id="masters">
+                    <div class="collapse menu-dropdown {{ request()->routeIs('wards.index') || request()->routeIs('area-type.index') || request()->routeIs('collection-type.index') || request()->routeIs('collection-transport.index') || request()->routeIs('census-years.index') || request()->routeIs('types-of-fine-charges.index') || request()->routeIs('inspection-type.index') || request()->routeIs('locality-service-type.index') || request()->routeIs('maintenance-type.index') || request()->routeIs('pump-type.index') || request()->routeIs('shift-timings.index') || request()->routeIs('types-of-item-solds.index') || request()->routeIs('vehicle-type.index') || request()->routeIs('vehicles.index') || request()->routeIs('prefix.index') || request()->routeIs('prefix-details.index') || request()->routeIs('designations.index') || request()->routeIs('collection-centers.index') || request()->routeIs('slrm-employee-details.index') || request()->routeIs('population.index') || request()->routeIs('form17.index') ? 'show' : '' }}" id="masters">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('wards.index') }}" class="nav-link {{ request()->routeIs('wards.index') ? 'active' : '' }}" data-key="t-horizontal">Wards</a>
@@ -54,7 +54,7 @@
                                 <a href="{{ route('area-type.index') }}" class="nav-link {{ request()->routeIs('area-type.index') ? 'active' : '' }}" data-key="t-horizontal">Area Type</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('collection-type.index') }}" class="nav-link {{ request()->routeIs('area-type.index') ? 'active' : '' }}" data-key="t-horizontal">Collection Type</a>
+                                <a href="{{ route('collection-type.index') }}" class="nav-link {{ request()->routeIs('collection-type.index') ? 'active' : '' }}" data-key="t-horizontal">Collection Type</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('collection-transport.index') }}" class="nav-link {{ request()->routeIs('collection-transport.index') ? 'active' : '' }}" data-key="t-horizontal">Collection and Transport collection</a>
@@ -109,6 +109,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('population.index') }}" class="nav-link {{ request()->routeIs('population') ? 'active' : '' }}" data-key="t-horizontal">population</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('form17.index') }}" class="nav-link {{ request()->routeIs('form17') ? 'active' : '' }}" data-key="t-horizontal">form17</a>
                             </li>
                              {{-- <li class="nav-item">
                                 <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations') ? 'active' : '' }}" data-key="t-horizontal">designations</a>
