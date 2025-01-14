@@ -7,7 +7,7 @@
         <div class="col-md-4">
             <div class="card card-animate bg-success">
                 <div class="card-body">
-                    <h6 class="fw-medium text-dark mb-3">Vehicle Scheduling Information(वाहन शेड्यूलिंग सूचना)</h6>
+                    <h6 class="fw-medium text-dark mb-3">Vehicle Scheduling Information</h6>
                     <div class="d-flex justify-content-between">
                         <h2 class="fw-semibold text-dark">0</h2>
                     </div>
@@ -18,7 +18,7 @@
         <div class="col-md-4">
             <div class="card card-animate bg-primary">
                 <div class="card-body">
-                    <h6 class="fw-medium text-dark mb-3">Contract Mapping(अनुबंध मानचित्रण)</h6>
+                    <h6 class="fw-medium text-dark mb-3">Contract Mapping</h6>
                     <div class="d-flex justify-content-between">
                         <h2 class="fw-semibold text-dark">0</h2>
                     </div>
@@ -29,7 +29,7 @@
         <div class="col-md-4">
             <div class="card card-animate bg-danger">
                 <div class="card-body">
-                    <h6 class="fw-medium text-dark mb-3">Waste Details(अपशिष्ट विवरण)</h6>
+                    <h6 class="fw-medium text-dark mb-3">Waste Details</h6>
                     <div class="d-flex justify-content-between">
                         <h2 class="fw-semibold text-dark">0</h2>
                     </div>
