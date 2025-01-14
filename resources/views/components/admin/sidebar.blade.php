@@ -114,11 +114,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('vehicle-target.index') ? 'active' : 'collapsed' }}" href="#transactions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="transactions">
+                    <a class="nav-link menu-link {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('trip-sheet.index') || request()->routeIs('vehicle-target.index') ? 'active' : 'collapsed' }}" href="#transactions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="transactions">
                         <i class="ri-exchange-line"></i>
                         <span data-key="t-transactions">Transactions</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('vehicle-target.index') ? 'show' : '' }}" id="transactions">
+                    <div class="collapse menu-dropdown {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('trip-sheet.index') || request()->routeIs('vehicle-target.index') ? 'show' : '' }}" id="transactions">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('vehicle-scheduling-information.index') }}" class="nav-link {{ request()->routeIs('vehicle-scheduling-information.index') ? 'active' : '' }}" data-key="t-transaction-list">Vehicle Information Scheduling</a>
@@ -140,11 +140,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') ? 'active' : 'collapsed' }}" href="#reports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="reports">
+                    <a class="nav-link menu-link {{ request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.trip-sheet-report') || request()->routeIs('report.waste-details-report') || request()->routeIs('report.vehicle-target-report') ? 'active' : 'collapsed' }}" href="#reports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="reports">
                         <i class="ri-file-line"></i>
                         <span data-key="t-reports">Reports</span>
                     </a>
-                    <div class="collapse menu-dropdown {{ request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.collection-scheduling-report') ? 'show' : '' }}" id="reports">
+                    <div class="collapse menu-dropdown {{ request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.trip-sheet-report') || request()->routeIs('report.waste-details-report') || request()->routeIs('report.vehicle-target-report') ? 'show' : '' }}" id="reports">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('report.collection-scheduling-report') }}" class="nav-link {{ request()->routeIs('report.collection-scheduling-report') ? 'active' : '' }}" data-key="t-monthly-report">Vehicle Collection Scheduling</a>
