@@ -117,7 +117,7 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::resource('vehicle-target', App\Http\Controllers\Admin\Masters\VehicleTargetController::class);
 
-    Route::resource('form17', App\Http\Controllers\Admin\Masters\form17controller::class);
+    // Route::resource('form17', App\Http\Controllers\Admin\Masters\form17controller::class);
 
 
     // Route::resource('load.waste.items', App\Http\Controllers\Admin\Masters\DesignationController::class);
