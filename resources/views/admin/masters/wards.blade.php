@@ -366,7 +366,7 @@
 
                             <!-- Second Table: Additional Details -->
                             <div id="additional-info-table" class="mt-4">
-                                <h5 class="modal-title" id="wardsModelLabel">Vehicle Information</h5>
+                                <h5 class="modal-title" id="wardsModelLabel">Area Details</h5>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
