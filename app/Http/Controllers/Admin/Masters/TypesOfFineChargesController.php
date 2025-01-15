@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Masters\StoreTypesOfFineCharges;
 use App\Http\Requests\Admin\Masters\UpdateTypesOfFineCharges;
 use App\Models\TypesOfFineCharges;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-
 
 class TypesOfFineChargesController extends Controller
 {
@@ -19,8 +17,7 @@ class TypesOfFineChargesController extends Controller
     public function index()
     {
         $TypesOfFineCharges = TypesOfFineCharges::whereNull('deleted_by')->get();
-
-        return view('admin.masters.TypesOfFineCharges')->with(['TypesOfFineCharges'=> $TypesOfFineCharges]);
+        return view('admin.masters.TypesOfFineCharges')->with(['TypesOfFineCharges' => $TypesOfFineCharges]);
     }
 
     /**
@@ -28,7 +25,7 @@ class TypesOfFineChargesController extends Controller
      */
     public function create()
     {
-        //
+        // Optional: Return a view for creating a new record
     }
 
     /**
@@ -36,18 +33,16 @@ class TypesOfFineChargesController extends Controller
      */
     public function store(StoreTypesOfFineCharges $request)
     {
-        try
-        {
-
+        try {
             DB::beginTransaction();
-            $input = $request->validated();
-            TypesOfFineCharges::create( $input );
-            DB::commit();
 
-            return response()->json(['success'=> 'Types Of Fine Charges created successfully!']);
-        }
-        catch(\Exception $e)
-        {
+            $input = $request->validated();
+            TypesOfFineCharges::create($input);
+
+            DB::commit();
+            return response()->json(['success' => 'Types Of Fine Charges created successfully!']);
+        } catch (\Exception $e) {
+            DB::rollBack();
             return $this->respondWithAjax($e, 'creating', 'Types Of Fine Charges');
         }
     }
@@ -57,7 +52,7 @@ class TypesOfFineChargesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Optional: Return details of a specific record
     }
 
     /**
@@ -65,19 +60,16 @@ class TypesOfFineChargesController extends Controller
      */
     public function edit(string $id)
     {
-        $TypesOfFineCharges =  DB::table('types_of_fine_charges')->where('id', $id)->first();
-        if ($TypesOfFineCharges)
-        {
-            $response = [
+        $TypesOfFineCharges = TypesOfFineCharges::find($id);
+
+        if ($TypesOfFineCharges) {
+            return response()->json([
                 'result' => 1,
                 'TypesOfFineCharges' => $TypesOfFineCharges,
-            ];
+            ]);
         }
-        else
-        {
-            $response = ['result' => 0];
-        }
-        return $response;
+
+        return response()->json(['result' => 0]);
     }
 
     /**
@@ -85,18 +77,18 @@ class TypesOfFineChargesController extends Controller
      */
     public function update(UpdateTypesOfFineCharges $request, string $id)
     {
-        try
-        {
+        try {
             DB::beginTransaction();
-            $input = $request->validated();
-            DB::table('Types_Of_Fine_Charges')->where('id', $id)->update($input);
-            DB::commit();
 
-            return response()->json(['success'=> 'TypesOfFineCharges updated successfully!']);
-        }
-        catch(\Exception $e)
-        {
-            return $this->respondWithAjax($e, 'updating', 'TypesOfFineCharges');
+            $input = $request->validated();
+            $fineCharge = TypesOfFineCharges::findOrFail($id);
+            $fineCharge->update($input);
+
+            DB::commit();
+            return response()->json(['success' => 'Types Of Fine Charges updated successfully!']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return $this->respondWithAjax($e, 'updating', 'Types Of Fine Charges');
         }
     }
 
@@ -104,21 +96,32 @@ class TypesOfFineChargesController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {try
-        {
+    {
+        try {
             DB::beginTransaction();
-            DB::table('Types_Of_Fine_Charges')->where('id', $id)->update([
+
+            $fineCharge = TypesOfFineCharges::findOrFail($id);
+            $fineCharge->update([
                 'deleted_by' => auth()->user()->id,
                 'deleted_at' => now(),
-
             ]);
-            DB::commit();
 
-            return response()->json(['success'=> 'TypesOfFineCharges deleted successfully!']);
+            DB::commit();
+            return response()->json(['success' => 'Types Of Fine Charges deleted successfully!']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return $this->respondWithAjax($e, 'deleting', 'Types Of Fine Charges');
         }
-        catch(\Exception $e)
-        {
-            return $this->respondWithAjax($e, 'deleting', 'TypesOfFineCharges');
-        }
+    }
+
+    /**
+     * Handle exceptions and respond with JSON.
+     */
+    protected function respondWithAjax(\Exception $e, string $action, string $resource)
+    {
+        return response()->json([
+            'error' => true,
+            'message' => "An error occurred while $action the $resource. Details: {$e->getMessage()}",
+        ], 500);
     }
 }
