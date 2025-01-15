@@ -85,7 +85,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="m_number">Mobile Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="m_number" name="m_number" type="number" placeholder="Enter Mobile Number">
+                                    {{-- <input class="form-control" id="m_number" name="m_number" maxlength="10" type="number" placeholder="Enter Mobile Number"> --}}
+                                    <input class="form-control" type="tel" name="m_number" id="m_number" maxlength="10" placeholder="Enter Mobile Number" required>
                                     <span class="text-danger is-invalid m_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -105,7 +106,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="pin_code">Pin Code<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="pin_code" name="pin_code" type="text" placeholder="Enter pin code">
+                                    <input class="form-control" id="pin_code" name="pin_code" maxlength="6" type="text" placeholder="Enter pin code"
+                                           oninput="validatePinCode(this)" onkeypress="return isNumberKey(event)">
                                     <span class="text-danger is-invalid pin_code_err"></span>
                                 </div>
                             </div>
@@ -148,12 +150,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <h4 class="card-title d-flex align-items-center custom-card-title">
-                                    <i class="bi bi-plus-circle"></i>
-                                    Edit Employee Information
-                                </h4>
-                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <!-- Plus Icon -->
+                                    <i class="bi bi-plus-circle" style="color: white; background-color: green; border-radius: 50%; padding: 5px; font-size: 20px; margin-right: 10px;"></i>
+                                <!-- Card Title -->
+                                 <h4 class="card-title m-0">Edit Employee Information</h4>
+                               </div>
                             <div class="card-body">
                                 <div class="mb-3 row">
                                     <div class="col-md-4">
@@ -192,7 +194,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="m_number">Mobile Number<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="m_number" name="m_number" type="number" placeholder="Enter Mobile Number">
+                                        {{-- <input class="form-control" id="m_number" name="m_number" type="number" maxlength="10" placeholder="Enter Mobile Number"> --}}
+                                        <input class="form-control" type="tel" name="m_number" id="m_number" maxlength="10" placeholder="Enter Mobile Number" required>
                                         <span class="text-danger is-invalid m_number_err"></span>
                                     </div>
                                     <div class="col-md-4">
@@ -212,7 +215,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="pin_code">Pin Code<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="pin_code" name="pin_code" type="text" placeholder="Enter Pin Code">
+                                        <input class="form-control" id="pin_code" name="pin_code" maxlength="6" type="text" placeholder="Enter pin code"
+                                               oninput="validatePinCode(this)" onkeypress="return isNumberKey(event)">
                                         <span class="text-danger is-invalid pin_code_err"></span>
                                     </div>
                                 </div>
