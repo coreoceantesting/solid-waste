@@ -19,19 +19,20 @@ class UpdateVehicleSchedulingInformation extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-        return [
-            'vehicle_type'=>'required',
-            'vehicle_number'=>'required',
-            'schedule_form'=>'required',
-            'schedule_to'=>'required',
-            'recurrence'=>'required',
-            'beat_number'=>'required',
-            'employee_name'=>'required',
-            'waste_gen_type'=>'required',
-            'in_time'=>'required',
-            'out_time'=>'required'
-        ];
-    }
+   public function rules(): array
+{
+    return [
+        'vehicle_type' => 'required',
+        'vehicle_number' => 'required',
+        'schedule_form' => 'required',
+        'schedule_to' => 'required',
+        'recurrence' => 'required',
+        'beat_number' => 'required|', // Only numbers
+        'employee_name' => 'required', // Only alphabets and spaces
+        'waste_gen_type' => 'required', // Only alphabets and spaces
+        'in_time' => 'required',
+        'out_time' => 'required',
+    ];
+}
+
 }

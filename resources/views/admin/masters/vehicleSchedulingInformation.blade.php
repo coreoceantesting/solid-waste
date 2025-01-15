@@ -380,13 +380,13 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required />
+                                    <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required  oninput="validateEmployeeName(this)"/>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control editWasteGenType" required name="waste_gen_type[]" value="${value['waste_gen_type']}" />
+                                    <input type="text" class="form-control editWasteGenType" required name="waste_gen_type[]" value="${value['waste_gen_type']}" required oninput="validateEmployeeName(this)"/>
                                 </td>
                                 <td>
-                                    <input type="time" class="form-control editInTime" required name="in_time[]" value="${value['in_time']}" />
+                                    <input type="time" class="form-control editInTime" required name="in_time[]" value="${value['in_time']}" required/>
                                 </td>
                                 <td>
                                     <input type="time" class="form-control editOutTime" required name="out_time[]" value="${value['out_time']}" />
@@ -441,10 +441,10 @@
                               </select>
                 </td>
                 <td>
-                    <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required />
+                    <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required oninput="validateEmployeeName(this)"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control editWasteGenerationType" name="waste_gen_type[]" value="${value['waste_gen_type']}" required />
+                    <input type="text" class="form-control editWasteGenerationType" name="waste_gen_type[]" value="${value['waste_gen_type']}" required oninput="validateEmployeeName(this)" />
                 </td>
                 <td>
                     <input type="Time" class="form-control editInTime" name="in_time[]" value="${value['in_time']}" required />
@@ -518,7 +518,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this ward?",
+            title: "Are you sure to delete this Vehicle Scheduling Information?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
@@ -577,10 +577,10 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="employee_name[]" class="form-control" placeholder="Enter employee name" required>
+                                <input type="text" name="employee_name[]" class="form-control" placeholder="Enter employee name" required oninput="validateEmployeeName(this)">
                             </td>
                             <td>
-                                <input type="text" name="waste_gen_type[]" class="form-control" placeholder="Enter waste generated type" required>
+                                <input type="text" name="waste_gen_type[]" class="form-control" placeholder="Enter waste generated type" required oninput="validateEmployeeName(this)">
                             </td>
                             <td>
                                 <input type="time" name="in_time[]" class="form-control" required>
@@ -674,5 +674,10 @@
         });
     });
 </script>
-
+<script>
+    function validateEmployeeName(input) {
+        // Replace any non-alphabet or non-space characters with an empty string
+        input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
+    }
+    </script>
 
