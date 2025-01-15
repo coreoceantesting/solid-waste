@@ -232,6 +232,7 @@
                         <!-- Form Buttons -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-warning">Reset</button>
                             {{-- <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancel</button> --}}
                         </div>
                     </form>
