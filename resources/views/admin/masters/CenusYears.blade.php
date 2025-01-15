@@ -18,17 +18,17 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Description">Description<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description">
+                                    <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description" oninput="this.value=this.value.replace(/\D/g, '')" maxlength="10" minlength="10">
                                     <span class="text-danger is-invalid Description_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Description_regional">Description Regional<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Description_regional" name="Description_regional" type="text" placeholder="Enter Description regional">
+                                    <input class="form-control" id="Description_regional" name="Description_regional" type="number" placeholder="Enter Description regional" oninput="this.value=this.value.replace(/\D/g, '')" maxlength="10" minlength="10">
                                     <span class="text-danger is-invalid Description_regional_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Value">Value<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Value" name="value" type="text" placeholder="Enter Value">
+                                    <input class="form-control" id="Value" name="value" type="number" placeholder="Enter Value"oninput="this.value=this.value.replace(/\D/g, '')" maxlength="10" minlength="10">
                                     <span class="text-danger is-invalid value_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -63,17 +63,18 @@
                             <div class="mb-3 row">
                             <div class="col-md-4">
                                     <label class="col-form-label" for="Description">Description<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description">
+                                    <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description"  oninput="this.value=this.value.replace(/\D/g, '')" maxlength="10" minlength="10">
+
                                     <span class="text-danger is-invalid Description_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Description_regional">Description Regional<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Description_regional" name="Description_regional" type="text" placeholder="Enter Description regional">
+                                    <input class="form-control" id="Description_regional" name="Description_regional" type="number" placeholder="Enter Description regional"oninput="this.value=this.value.replace(/\D/g, '')" maxlength="10" minlength="10">
                                     <span class="text-danger is-invalid Description_regional_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Value">Value<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Value" name="value" type="text" placeholder="Enter Value">
+                                    <input class="form-control" id="Value" name="value" type="number" placeholder="Enter Value"oninput="this.value=this.value.replace(/\D/g, '')" maxlength="10" minlength="10">
                                     <span class="text-danger is-invalid value_err"></span>
                                 </div>
                                 <div class="col-md-4">
