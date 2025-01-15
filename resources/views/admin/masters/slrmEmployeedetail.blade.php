@@ -20,7 +20,7 @@
                                     <select class="form-control" name="collection_center" id="collection_center">
                                         <option value="">select collection centers</option>
                                          @foreach ($SlrmEmployeeDetails as $SlrmEmployee)
-                                            <option value="{{$SlrmEmployee->id}}">{{$SlrmEmployee->p_name}}</option>
+                                            <option value="{{$SlrmEmployee->p_name}}">{{$SlrmEmployee->p_name}}</option>
                                          @endforeach
                                     </select>
                                     <span class="text-danger is-invalid collection_center_err"></span>
@@ -31,7 +31,7 @@
                                     <select class="form-control" name="designation" id="designation">
                                         <option value="">select Designation</option>
                                          @foreach ($designations as $designation)
-                                            <option value="{{$designation->id}}">{{$designation->name}}</option>
+                                            <option value="{{$designation->name}}">{{$designation->name}}</option>
                                          @endforeach
                                     </select>
                                     <span class="text-danger is-invalid designation_err"></span>

@@ -668,7 +668,7 @@
                             <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
                                 <option value="">Select AreaType</option>
                                 @foreach($AreaType as $Area)
-                                <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
+                                <option value="{{ $Area->id}}">{{ $Area->Description }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -762,7 +762,7 @@
                     $.each(data.areaDetails, function(key, value) {
                         areaDetailsHtml += `
                             <tr>
-                                <td>${value.area_type}</td>
+                                <td>${value.Description}</td>
                                 <td>${value.area_name}</td>
                                 <td>${value.household_count}</td>
                                 <td>${value.shop_count}</td>

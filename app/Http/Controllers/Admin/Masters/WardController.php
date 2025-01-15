@@ -94,9 +94,15 @@ class WardController extends Controller
             $ward = Ward::findOrFail($id);
 
             // Retrieve related AreaDetails for this Ward
-            $areaDetails = AreaDetails::where('ward_id', $id) // Ensure you are using the correct foreign key
-                ->whereNull('deleted_at')
-                ->get();
+            // $areaDetails = AreaDetails::join('area_types', 'area_details.area_types_id', '=', 'area_types.id')
+            //   ->where('area_details.ward_id', $id)
+            //   ->select('area_details.*', 'area_types.Description')
+            //   ->get();
+
+            $areaDetails = AreaDetails::join('area_types','area_details.area_types_id','=','area_types.id')
+               ->where('area_details.ward_id',$id)
+               ->select('area_details.*','area_types.Description')
+               ->get();
 
             // Return the data as a JSON response
             return response()->json([
@@ -113,9 +119,6 @@ class WardController extends Controller
             ]);
         }
     }
-
-
-
 
     /**
      * Show the form for editing the specified resource.
