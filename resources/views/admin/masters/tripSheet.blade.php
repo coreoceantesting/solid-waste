@@ -65,17 +65,17 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="entry_weight">Entry Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="entry_weight" name="entry_weight" type="text" placeholder="Enter Entry Weight">
+                                    <input class="form-control" id="entry_weight" name="entry_weight" type="number" placeholder="Enter Entry Weight">
                                     <span class="text-danger is-invalid entry_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="exit_weight">Exit Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="exit_weight" name="exit_weight" type="text" placeholder="Enter Exit Weight">
+                                    <input class="form-control" id="exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
                                     <span class="text-danger is-invalid exit_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="total_garbage">Total Garbage<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="total_garbage" name="total_garbage" type="text" placeholder="Enter Total Garbage">
+                                    <input class="form-control" id="total_garbage" name="total_garbage" type="number" placeholder="Enter Total Garbage">
                                     <span class="text-danger is-invalid total_garbage_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="weight_slip_number">Weight Slip Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="weight_slip_number" name="weight_slip_number" type="text" placeholder="Enter Weight Slip Number">
+                                    <input class="form-control" id="weight_slip_number" name="weight_slip_number" type="number" placeholder="Enter Weight Slip Number">
                                     <span class="text-danger is-invalid weight_slip_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -198,17 +198,17 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="entry_weight">Entry Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="entry_weight" name="entry_weight" type="text" placeholder="Enter entry weight">
+                                    <input class="form-control" id="entry_weight" name="entry_weight" type="number" placeholder="Enter entry weight">
                                     <span class="text-danger is-invalid entry_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="exit_weight">Exit Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="exit_weight" name="exit_weight" type="text" placeholder="Enter Exit Weight">
+                                    <input class="form-control" id="exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
                                     <span class="text-danger is-invalid exit_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="total_garbage">Total Garbage<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="total_garbage" name="total_garbage" type="text" placeholder="Enter Total Garbage">
+                                    <input class="form-control" id="total_garbage" name="total_garbage" type="number" placeholder="Enter Total Garbage">
                                     <span class="text-danger is-invalid total_garbage_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="weight_slip_number">Weight Slip Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="weight_slip_number" name="weight_slip_number" type="text" placeholder="Enter Weight Slip Number">
+                                    <input class="form-control" id="weight_slip_number" name="weight_slip_number" type="number" placeholder="Enter Weight Slip Number">
                                     <span class="text-danger is-invalid weight_slip_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
