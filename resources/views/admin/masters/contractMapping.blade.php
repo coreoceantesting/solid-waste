@@ -71,7 +71,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="contract_number">Contract Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="contract_number" name="contract_number" type="text" placeholder="Enter contract number">
+                                    <input class="form-control" id="contract_number" name="contract_number" type="number" placeholder="Enter contract number">
                                     <span class="text-danger is-invalid contract_number_err"></span>
                                 </div>
                             </div>
@@ -291,19 +291,19 @@
              taskmapping += `
              <tr id="editRow${key}">
              <td>
-                <input type="text" class="form-control editZone" required name="zone[]" value="${value['zone']}" />
+                <input type="text" class="form-control editZone" required name="zone[]" value="${value['zone']}" required oninput="validateEmployeeName(this)"/>
              </td>
              <td>
-                <input type="text" class="form-control editWard" required name="ward[]" value="${value['ward']}" />
+                <input type="text" class="form-control editWard" required name="ward[]" value="${value['ward']}" required oninput="validateEmployeeName(this)"/>
              </td>
              <td>
-                <input type="text" class="form-control editColony" required name="colony[]" value="${value['colony']}" />
+                <input type="text" class="form-control editColony" required name="colony[]" value="${value['colony']}" required oninput="validateEmployeeName(this)"/>
              </td>
              <td>
-                <input type="text" class="form-control editSociety" required name="society[]" value="${value['society']}" />
+                <input type="text" class="form-control editSociety" required name="society[]" value="${value['society']}" required oninput="validateEmployeeName(this)"/>
              </td>
              <td>
-                <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" />
+                <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
              </td>
             <td>
                 <select name="waste_type[]" class="form-select AddFormWasteTypes" required>
@@ -312,7 +312,7 @@
                 </select>
              </td>
              <td>
-                <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" />
+                <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" required/>
              </td>
              <td>
                 <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
@@ -321,10 +321,10 @@
                 </select>
              </td>
              <td>
-                <input type="number" class="form-control editEmployeeCount" required name="employee_count[]" value="${value['employee_count']}" />
+                <input type="number" class="form-control editEmployeeCount" required name="employee_count[]" value="${value['employee_count']}" required/>
              </td>
              <td>
-                <input type="number" class="form-control editVehicleCount" required name="vehicle_count[]" value="${value['vehicle_count']}" />
+                <input type="number" class="form-control editVehicleCount" required name="vehicle_count[]" value="${value['vehicle_count']}" required/>
              </td>
              <td>
                 <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
@@ -371,19 +371,19 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                    <input type="text" class="form-control editzone" name="zone[]" value="${value['zone']}" required />
+                    <input type="text" class="form-control editzone" name="zone[]" value="${value['zone']}" required oninput="validateEmployeeName(this)" />
                 </td>
                  <td>
-                    <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required />
+                    <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required oninput="validateEmployeeName(this)"/>
                 </td>
                  <td>
-                    <input type="text" class="form-control editcolony" name="colony[]" value="${value['colony']}" required />
+                    <input type="text" class="form-control editcolony" name="colony[]" value="${value['colony']}" required oninput="validateEmployeeName(this)" />
                 </td>
                  <td>
-                    <input type="text" class="form-control editsociety" name="society[]" value="${value['society']}" required />
+                    <input type="text" class="form-control editsociety" name="society[]" value="${value['society']}" required oninput="validateEmployeeName(this)" />
                 </td>
                 <td>
-                    <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required />
+                    <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
                 </td>
                 <td>
                   <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
@@ -475,7 +475,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this ward?",
+            title: "Are you sure to delete this Contract Mapping?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
@@ -526,22 +526,22 @@
         function appendTaskRow() {
             let html = `<tr id="taskRow${taskRowCount}">
                             <td>
-                                <input type="text" name="zone[]" class="form-control" placeholder="Enter zone" required>
+                                <input type="text" name="zone[]" class="form-control" placeholder="Enter zone" required oninput="validateEmployeeName(this)"/>
                             </td>
                             <td>
-                                <input type="text" name="ward[]" class="form-control" placeholder="Enter ward" required>
+                                <input type="text" name="ward[]" class="form-control" placeholder="Enter ward" required oninput="validateEmployeeName(this)"/>
                             </td>
                             <td>
-                                <input type="text" name="colony[]" class="form-control" placeholder="Enter colony" required>
+                                <input type="text" name="colony[]" class="form-control" placeholder="Enter colony" required oninput="validateEmployeeName(this)"/>
                             </td>
                             <td>
-                                <input type="text" name="society[]" class="form-control" placeholder="Enter society" required>
+                                <input type="text" name="society[]" class="form-control" placeholder="Enter society" required oninput="validateEmployeeName(this)"/>
                             </td>
                             <td>
-                                <input type="text" name="task[]" class="form-control" placeholder="Enter task" required>
+                                <input type="text" name="task[]" class="form-control" placeholder="Enter task" required oninput="validateEmployeeName(this)"/>
                             </td>
                             <td>
-                                 <select name="waste_type[]" class="form-select AddFormSelectWasteType" required>
+                                 <select name="waste_type[]" class="form-select AddFormSelectWasteType" required/>
                                     <option value="">Select wastetype</option>
                                   @foreach($CapacityOfVehicle as $Capacity)
                                      <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
@@ -549,10 +549,10 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="garbage_volume[]" class="form-control" placeholder="Enter Garbage Volume" required>
+                                <input type="number" name="garbage_volume[]" class="form-control" placeholder="Enter Garbage Volume" required/>
                             </td>
                              <td>
-                                <select name="beat_number[]" class="form-select AddFormSelectWasteType" required>
+                                <select name="beat_number[]" class="form-select AddFormSelectWasteType" required/>
                                     <option value="">Select wastetype</option>
                                   @foreach($Ward as $Wa)
                                  <option value="{{ $Wa->beat_number  }}">{{ $Wa->beat_number }}</option>
@@ -560,10 +560,10 @@
                               </select>
                             </td>
                             <td>
-                                <input type="text" name="employee_count[]" class="form-control" placeholder="Enter Employee Count" required>
+                                <input type="number" name="employee_count[]" class="form-control" placeholder="Enter Employee Count" required/>
                             </td>
                             <td>
-                                <input type="text" name="vehicle_count[]" class="form-control" placeholder="Enter vehicle Count" required>
+                                <input type="number" name="vehicle_count[]" class="form-control" placeholder="Enter vehicle Count" required/>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-sm removetaskRow" data-id="${taskRowCount}">Remove</button>
@@ -659,3 +659,9 @@
         });
     });
 </script>
+<script>
+    function validateEmployeeName(input) {
+        // Replace any non-alphabet or non-space characters with an empty string
+        input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
+    }
+    </script>
