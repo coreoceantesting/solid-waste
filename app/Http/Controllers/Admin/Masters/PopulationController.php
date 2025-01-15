@@ -11,6 +11,7 @@ use App\Models\Prefix;
 use App\Models\Ward;
 use App\Models\CensusYears;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PopulationController extends Controller
 {
@@ -147,26 +148,32 @@ class PopulationController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $select_year)
-    {
-        try {
-            DB::beginTransaction();
+{
+    try {
+        DB::beginTransaction();
 
-            $population = Population::where('select_year',$select_year)->get();
-            if (!$population) {
-                return response()->json(['error' => 'Population not found'], 404);
-            }
+        // Try to find the population with the select_year
+        $population = Population::where('select_year', $select_year)->first();
 
-            $population->update([
-                'deleted_by' => auth()->user()->select_year,
-                'deleted_at' => now(),
-            ]);
-
-            DB::commit();
-
-            return response()->json(['success' => 'Population deleted successfully!']);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['error' => $e->getMessage()], 500);
+        if (!$population) {
+            return response()->json(['error' => 'Population not found'], 404);
         }
+
+        // Soft delete population or you can call the delete() method
+        $population->deleted_by = auth()->user()->id;  // Assuming the 'deleted_by' field should store the user ID
+        $population->deleted_at = now();  // Soft delete timestamp
+        $population->save(); // Update the deletion fields
+
+        // Or, if you want to actually delete the record completely, you can call:
+        // $population->delete();
+
+        DB::commit();
+
+        return response()->json(['success' => 'Population deleted successfully!']);
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return response()->json(['error' => 'Something went wrong: ' . $e->getMessage()], 500);
     }
+}
+
 }

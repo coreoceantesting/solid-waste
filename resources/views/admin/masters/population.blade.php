@@ -144,7 +144,7 @@
                                         <td>{{ $popu->total_population }}</td>
                                         <td>
                                             <button class="edit-element btn text-secondary px-2 py-1" title="Edit Population" data-id="{{ $popu->select_year }}"><i data-feather="edit"></i></button>
-                                            {{-- <button class="btn text-danger rem-element px-2 py-1" title="Delete Population" data-id="{{ $popu->select_year }}"><i data-feather="trash-2"></i> </button> --}}
+                                           <button class="btn text-danger rem-element px-2 py-1" title="Delete Population" data-id="{{ $popu->select_year }}"><i data-feather="trash-2"></i> </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -390,48 +390,43 @@
 
 <script>
     $("#populationTable").on("click", ".rem-element", function(e) {
-        e.preventDefault();
-        swal({
-            title: "Are you sure to delete this CollectionType?",
-            // text: "Make sure if you have filled Vendor details before proceeding further",
-            icon: "info",
-            buttons: ["Cancel", "Confirm"]
-        })
-        .then((justTransfer) =>
-        {
-            if (justTransfer)
-            {
-                var model_id = $(this).attr("data-id");
-                var url = "{{ route('population.destroy', ":model_id") }}";
+    e.preventDefault();
+    swal({
+        title: "Are you sure to delete this CollectionType?",
+        icon: "info",
+        buttons: ["Cancel", "Confirm"]
+    })
+    .then((justTransfer) => {
+        if (justTransfer) {
+            var model_id = $(this).attr("data-id");
 
-                $.ajax({
-                    url: url.replace(':model_id', model_id),
-                    type: 'POST',
-                    data: {
-                        '_method': "DELETE",
-                        '_token': "{{ csrf_token() }}"
-                    },
-                    success: function(data, textStatus, jqXHR) {
-                        if (!data.error && !data.error2) {
-                            swal("Success!", data.success, "success")
-                                .then((action) => {
-                                    window.location.reload();
-                                });
-                        } else {
-                            if (data.error) {
-                                swal("Error!", data.error, "error");
-                            } else {
-                                swal("Error!", data.error2, "error");
-                            }
-                        }
-                    },
-                    error: function(error, jqXHR, textStatus, errorThrown) {
-                        swal("Error!", "Something went wrong", "error");
-                    },
-                });
-            }
-        });
+            // Correct the URL generation using string replacement
+            var url = "{{ route('population.destroy', ':model_id') }}".replace(':model_id', model_id);
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    '_method': "DELETE",
+                    '_token': "{{ csrf_token() }}"
+                },
+                success: function(data) {
+                    if (!data.error) {
+                        swal("Success!", data.success, "success")
+                            .then(() => {
+                                window.location.reload(); // Reload the page after successful deletion
+                            });
+                    } else {
+                        swal("Error!", data.error, "error");
+                    }
+                },
+                error: function() {
+                    swal("Error!", "Something went wrong", "error");
+                },
+            });
+        }
     });
+});
 </script>
 
 {{-- Add form for Population details --}}
