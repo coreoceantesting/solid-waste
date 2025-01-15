@@ -392,7 +392,7 @@
     $("#populationTable").on("click", ".rem-element", function(e) {
     e.preventDefault();
     swal({
-        title: "Are you sure to delete this CollectionType?",
+        title: "Are you sure to delete this population?",
         icon: "info",
         buttons: ["Cancel", "Confirm"]
     })
