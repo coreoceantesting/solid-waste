@@ -4,10 +4,10 @@
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
             <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+     <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
         <!-- Add Form -->
         <div class="row" id="addContainer" style="display:none;">
             <div class="col-sm-12">
@@ -232,7 +232,7 @@
                         <!-- Form Buttons -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancel</button>
+                            {{-- <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancel</button> --}}
                         </div>
                     </form>
                 </div>
@@ -815,7 +815,7 @@
                         <select name="vehicle_type[]" class="form-select" required>
                             <option value="">Select Vehicle Type</option>
                             @foreach($VehicleType as $Vehicle)
-                                <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
+                                <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -863,7 +863,7 @@
                     <select name="designation[]" class="form-select AddFormSelectdesignation" required>
                         <option value="">Select Designation</option>
                         @foreach($Designation as $Desi)
-                            <option value="{{ $Desi->id }}">{{ $Desi->name }}</option>
+                            <option value="{{ $Desi->name  }}">{{ $Desi->name }}</option>
                         @endforeach
                     </select>
                 </td>
@@ -953,7 +953,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this CollectionType?",
+            title: "Are you sure to delete this Collection Center?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]
@@ -1008,7 +1008,7 @@
                                  <select name="vehicle_type[]" class="form-select AddFormSelectVehicleType" required>
                         <option value="">Select VehicleType</option>
                         @foreach($VehicleType as $Vehicle)
-                            <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
+                            <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }}</option>
                         @endforeach
                     </select>
                             </td>
@@ -1047,7 +1047,7 @@
                                   <select name="designation[]" class="form-select AddFormSelectDesignation" required>
                                     <option value="">Select designation</option>
                                   @foreach($Designation as $Desi)
-                                 <option value="{{ $Desi->id }}">{{ $Desi->name }}</option>
+                                 <option value="{{ $Desi->name }}">{{ $Desi->name }}</option>
                                 @endforeach
                               </select>
                             </td>
