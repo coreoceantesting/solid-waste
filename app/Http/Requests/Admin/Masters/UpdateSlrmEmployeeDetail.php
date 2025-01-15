@@ -28,7 +28,7 @@ class UpdateSlrmEmployeeDetail extends FormRequest
                 'required',
                 'alpha_num', // Allows only alphanumeric characters (letters and numbers)
             ],
-            'title' => 'required',
+            'title' => 'required|alpha',
             'f_name' => [
                 'required',
                 'alpha', // Allows only alphabetic characters
@@ -81,6 +81,7 @@ class UpdateSlrmEmployeeDetail extends FormRequest
         'email_id.email' => 'Please enter a valid email address.',
         'email_id.regex' => 'Please enter a valid email in the format: solid@domain.com.',
         'pin_code.digits' => 'The pin code must be exactly 6 digits.',
+        'title' => 'The title only contain the alphabetic character'
     ];
 }
 }
