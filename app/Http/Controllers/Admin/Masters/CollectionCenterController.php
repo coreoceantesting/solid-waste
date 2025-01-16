@@ -135,103 +135,103 @@ class CollectionCenterController extends Controller
      * Edit the specified resource.
      */
     public function edit(string $id)
-{
-    $collectionCenters = DB::table('collection_centers')->where('id', $id)->first();
-    $VehicleDetails = DB::table('vehicle_details')->whereNull('deleted_at')->where('collection_id', $id)->get();
-    $EmployeeDetails = DB::table('employee_details')->whereNull('deleted_at')->where('collection_id', $id)->get();
+    {
+        $collectionCenters = DB::table('collection_centers')->where('id', $id)->first();
+        $VehicleDetails = DB::table('vehicle_details')->whereNull('deleted_at')->where('collection_id', $id)->get();
+        $EmployeeDetails = DB::table('employee_details')->whereNull('deleted_at')->where('collection_id', $id)->get();
 
-    if ($collectionCenters) {
-        return response()->json([
-            'result' => 1,
-            'collectionCenters' => $collectionCenters,
-            'vehicleDetails' => $VehicleDetails,
-            'employeedetails' => $EmployeeDetails
-        ]);
-    } else {
-        return response()->json(['result' => 0]);
+        if ($collectionCenters) {
+            return response()->json([
+                'result' => 1,
+                'collectionCenters' => $collectionCenters,
+                'vehicleDetails' => $VehicleDetails,
+                'employeedetails' => $EmployeeDetails
+            ]);
+        } else {
+            return response()->json(['result' => 0]);
+        }
     }
-}
 
-public function update(UpdateCollectionCenter $request, string $id)
-{
-    try {
-        DB::beginTransaction();
+    public function update(UpdateCollectionCenter $request, string $id)
+    {
+        try {
+            DB::beginTransaction();
 
-        // Validate the request input
-        $input = $request->validated();
+            // Validate the request input
+            $input = $request->validated();
 
-        // Find the collection center by ID
-        $collectionCenters = collectionCenters::find($id);
-        if (!$collectionCenters) {
-            return response()->json(['error' => 'Collection center not found']);
-        }
-
-        // File Upload: p_view
-        if ($request->hasFile('p_views')) {
-
-
-            $Doc = $request->file('p_views');
-            $DocPath = $Doc->store('p_view', 'public');
-            $input['p_view'] = $DocPath;
-
-            // Delete the old file if it exists
-            if ($collectionCenters->p_view && Storage::disk('public')->exists($collectionCenters->p_view)) {
-                Storage::disk('public')->delete($collectionCenters->p_view);
+            // Find the collection center by ID
+            $collectionCenters = collectionCenters::find($id);
+            if (!$collectionCenters) {
+                return response()->json(['error' => 'Collection center not found']);
             }
-        }
 
-        // File Upload: m_view
-        if ($request->hasFile('m_views')) {
-            $Doc = $request->file('m_views');
-            $DocPath = $Doc->store('m_view', 'public');
-            $input['m_view'] = $DocPath;
+            // File Upload: p_view
+            if ($request->hasFile('p_views')) {
 
-            // Delete the old file if it exists
-            if ($collectionCenters->m_view && Storage::disk('public')->exists($collectionCenters->m_view)) {
-                Storage::disk('public')->delete($collectionCenters->m_view);
+
+                $Doc = $request->file('p_views');
+                $DocPath = $Doc->store('p_view', 'public');
+                $input['p_view'] = $DocPath;
+
+                // Delete the old file if it exists
+                if ($collectionCenters->p_view && Storage::disk('public')->exists($collectionCenters->p_view)) {
+                    Storage::disk('public')->delete($collectionCenters->p_view);
+                }
             }
-        }
 
-        // Update the collection center details
-        $collectionCenters->update($input);
+            // File Upload: m_view
+            if ($request->hasFile('m_views')) {
+                $Doc = $request->file('m_views');
+                $DocPath = $Doc->store('m_view', 'public');
+                $input['m_view'] = $DocPath;
 
-        // Update Vehicle Details
-        if (isset($request->vehicle_type) && count($request->available_count) > 0) {
-            VehicleDetails::where('collection_id', $collectionCenters->id)->delete();
-            for ($i = 0; $i < count($request->vehicle_type); $i++) {
-                VehicleDetails::create([
-                    'collection_id' => $collectionCenters->id,
-                    'vehicle_id' => $request->vehicle_type[$i],
-                    'vehicle_type' => $request->vehicle_type[$i],
-                    'available_count' => $request->available_count[$i],
-                    'required_count' => $request->required_count[$i],
-                    'ip_address' => $request->ip(),
-                ]);
+                // Delete the old file if it exists
+                if ($collectionCenters->m_view && Storage::disk('public')->exists($collectionCenters->m_view)) {
+                    Storage::disk('public')->delete($collectionCenters->m_view);
+                }
             }
-        }
 
-        // Update Employee Details
-        if (isset($request->designation) && count($request->available_count) > 0) {
-            EmployeeDetails::where('collection_id', $collectionCenters->id)->delete();
-            for ($i = 0; $i < count($request->designation); $i++) {
-                EmployeeDetails::create([
-                    'collection_id' => $collectionCenters->id,
-                    'designation_id' => $request->designation[$i],
-                    'designation' => $request->designation[$i],
-                    'available_count' => $request->emp_available_count[$i],
-                    'required_count' => $request->emp_required_count[$i],
-                    'ip_address' => $request->ip(),
-                ]);
+            // Update the collection center details
+            $collectionCenters->update($input);
+
+            // Update Vehicle Details
+            if (isset($request->vehicle_type) && count($request->available_count) > 0) {
+                VehicleDetails::where('collection_id', $collectionCenters->id)->delete();
+                for ($i = 0; $i < count($request->vehicle_type); $i++) {
+                    VehicleDetails::create([
+                        'collection_id' => $collectionCenters->id,
+                        'vehicle_id' => $request->vehicle_type[$i],
+                        'vehicle_type' => $request->vehicle_type[$i],
+                        'available_count' => $request->available_count[$i],
+                        'required_count' => $request->required_count[$i],
+                        'ip_address' => $request->ip(),
+                    ]);
+                }
             }
-        }
 
-        DB::commit();
-        return response()->json(['success' => 'Collection center updated successfully!']);
-    } catch (\Exception $e) {
-        DB::rollBack();
-        return response()->json(['error' => 'Something went wrong', 'message' => $e->getMessage()]);
+            // Update Employee Details
+            if (isset($request->designation) && count($request->available_count) > 0) {
+                EmployeeDetails::where('collection_id', $collectionCenters->id)->delete();
+                for ($i = 0; $i < count($request->designation); $i++) {
+                    EmployeeDetails::create([
+                        'collection_id' => $collectionCenters->id,
+                        'designation_id' => $request->designation[$i],
+                        'designation' => $request->designation[$i],
+                        'available_count' => $request->emp_available_count[$i],
+                        'required_count' => $request->emp_required_count[$i],
+                        'ip_address' => $request->ip(),
+                    ]);
+                }
+            }
+
+            DB::commit();
+            return response()->json(['success' => 'Collection center updated successfully!']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['error' => 'Something went wrong', 'message' => $e->getMessage()]);
+        }
     }
-}
 
     /**
      * Remove the specified resource from storage.

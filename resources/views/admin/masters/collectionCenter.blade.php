@@ -209,7 +209,7 @@
                                                 <select name="vehicle_type[]" class="form-select AddFormSelectVehicleType" required>
                                                     <option value="">Select Vehicle Type</option>
                                                     @foreach($VehicleType as $Vehicle)
-                                                        <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }}</option>
+                                                        <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -247,7 +247,7 @@
                                                 <select name="designation[]" class="form-select AddFormSelectDesignation" required>
                                                     <option value="">Select designation</option>
                                                     @foreach($Designation as $Desi)
-                                                        <option value="{{ $Desi->name }}">{{ $Desi->name }}</option>
+                                                        <option value="{{ $Desi->id }}">{{ $Desi->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -759,7 +759,9 @@
 
                         // Loop through VehicleType data dynamically from the controller
                         @foreach($VehicleType as $Vehicle)
-                            vehicleTypeOptions += `<option value="{{ $Vehicle->id }}" ${value['vehicle_type'] == {{ $Vehicle->id }} ? 'selected' : ''}>{{ $Vehicle->name }}</option>`;
+                        console.log(value['vehicle_type']);
+
+                            vehicleTypeOptions+= `<option value="{{ $Vehicle->id }}" ${value['vehicle_type'] == {{ $Vehicle->id }} ? 'selected' : ''}>{{ $Vehicle->name }}</option>`;
                         @endforeach
 
                         // Append HTML for each row dynamically
@@ -796,8 +798,9 @@
 
                         // Loop through VehicleType data dynamically from the controller
                         @foreach($Designation as $Desi)
-                            designationOptions += `<option value="{{ $Desi->id }}" ${value['designation'] == {{ $Desi->id }} ? 'selected' : ''}>{{ $Desi->name }}</option>`;
+                            designationOptions+= `<option value="{{ $Desi->id }}" ${value['designation'] == {{ $Desi->id }} ? 'selected' : ''}>{{ $Desi->name }}</option>`;
                         @endforeach
+
 
                         // Append HTML for each row dynamically
                         employeedetails += `
@@ -857,7 +860,7 @@
                         <select name="vehicle_type[]" class="form-select" required>
                             <option value="">Select Vehicle Type</option>
                             @foreach($VehicleType as $Vehicle)
-                                <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }}</option>
+                                <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -902,7 +905,7 @@
                     <select name="designation[]" class="form-select AddFormSelectdesignation" required>
                         <option value="">Select Designation</option>
                         @foreach($Designation as $Desi)
-                            <option value="{{ $Desi->name  }}">{{ $Desi->name }}</option>
+                            <option value="{{ $Desi->id  }}">{{ $Desi->name }}</option>
                         @endforeach
                     </select>
                 </td>
@@ -1033,7 +1036,7 @@
                         <select name="vehicle_type[]" class="form-select AddFormSelectVehicleType" required>
                             <option value="">Select Vehicle Type</option>
                             @foreach($VehicleType as $Vehicle)
-                                <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }}</option>
+                                <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
                             @endforeach
                         </select>
                     </td>
@@ -1072,7 +1075,7 @@
                         <select name="designation[]" class="form-select AddFormSelectDesignation" required>
                             <option value="">Select designation</option>
                             @foreach($Designation as $Desi)
-                                <option value="{{ $Desi->name }}">{{ $Desi->name }}</option>
+                                <option value="{{ $Desi->id }}">{{ $Desi->name }}</option>
                             @endforeach
                         </select>
                     </td>
