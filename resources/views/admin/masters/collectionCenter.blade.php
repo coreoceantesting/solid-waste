@@ -1153,7 +1153,7 @@
                     $.each(data.VehicleDetails, function(key, value) {
                         vehicleDetailsHtml += `
                             <tr>
-                                <td>${value.vehicle_type}</td>
+                                <td>${value.name}</td>
                                 <td>${value.available_count}</td>
                                 <td>${value.required_count}</td>
                             </tr>
@@ -1166,7 +1166,7 @@
                     $.each(data.EmployeeDetails, function(key, value) {
                         employeeDetailsHtml += `
                             <tr>
-                                <td>${value.designation}</td>
+                                <td>${value.name}</td>
                                 <td>${value.available_count}</td>
                                 <td>${value.required_count}</td>
                             </tr>

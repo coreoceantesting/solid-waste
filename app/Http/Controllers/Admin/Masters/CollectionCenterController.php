@@ -106,13 +106,18 @@ class CollectionCenterController extends Controller
             $collectionCenters = collectionCenters::findOrFail($id);
 
             // Retrieve related VehicleInformation for this vehicle scheduling ID
-            $VehicleDetails = VehicleDetails::where('collection_id', $id)
-                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
-                                                    ->get();
+            // $VehicleDetails = VehicleDetails::where('collection_id', $id)
+            //                                         ->whereNull('deleted_at')  // Ensure deleted data is not included
+            //                                         ->get();
+            $VehicleDetails = VehicleDetails::join('vehicle_types','vehicle_details.vehicle_id','=','vehicle_types.id')
+                                              ->where('vehicle_details.collection_id',$id)
+                                              ->select('vehicle_details.*','vehicle_types.name')
+                                              ->get();
 
-            $EmployeeDetails = EmployeeDetails::where('collection_id', $id)
-                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
-                                                    ->get();
+            $EmployeeDetails = EmployeeDetails::join('designations','employee_details.designation_id','=','designations.id')
+                                                ->where('employee_details.collection_id',$id)
+                                                ->select('employee_details.*','designations.name')  // Ensure deleted data is not included
+                                                ->get();
 
             // Return the data as a JSON response
             return response()->json([
