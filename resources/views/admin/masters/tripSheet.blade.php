@@ -386,6 +386,12 @@
                                 <tbody id="BreakUpModel">
                                     <!-- Additional data will be injected here -->
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="1" class="text-right"><strong>Total Volume</strong></td>
+                                        <td id="totalViewVolume"></td> <!-- Total Volume will be displayed here -->
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -758,12 +764,17 @@
 
                     // Populate the Second Table: Segregation Data
                     let BreakUpHtml = '';
+                    let totalVolume = 0;
+
                     if (Array.isArray(data.BreakUp) && data.BreakUp.length > 0) {
                         $.each(data.BreakUp, function (key, value) {
+                            let volume = parseFloat(value.volume) || 0; // Ensure numeric volume
+                            totalVolume += volume;
+
                             BreakUpHtml += `
                                 <tr>
                                     <td>${value.waste_type || 'N/A'}</td>
-                                    <td>${value.volume || 'N/A'}</td>
+                                    <td>${volume.toFixed(2)}</td>
                                 </tr>
                             `;
                         });
@@ -771,6 +782,8 @@
                         BreakUpHtml = `<tr><td colspan="2" class="text-center">No data available</td></tr>`;
                     }
                     $('#BreakUpModel').html(BreakUpHtml);
+                    $('#totalViewVolume').html(totalVolume)
+                    $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");
                 }

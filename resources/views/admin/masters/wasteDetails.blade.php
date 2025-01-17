@@ -237,8 +237,7 @@
 
                             <!-- Second Table: Additional Details -->
                             <div id="additional-info-table" class="mt-4">
-                                    <h5 class="modal-title" id="wastedetailsLabel">Task Mapping</h5>
-
+                                <h5 class="modal-title">Task Mapping</h5>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -249,22 +248,21 @@
                                         </tr>
                                     </thead>
                                     <tbody id="SegregationModel">
-                                        {{-- <thead><tr><th>Total volume</th></tr></thead> --}}
                                         <!-- Additional data will be injected here -->
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <td colspan="3" class="text-right"><strong>Total Volume</strong></td>
-                                            <td id="totalVolume">0</td> <!-- Total Volume will be injected here -->
+                                            <td id="totalViewVolume"></td> <!-- Total Volume will be displayed here -->
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
                         </div>
-                    </div><!-- /.modal-body -->
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>
+        </div>
 </x-admin.layout>
 
 {{-- Add --}}
@@ -619,8 +617,11 @@
                 $('#preloader').css('opacity', '0.5').css('visibility', 'visible');
             },
             success: function (data) {
+                // Check if data is correct
+                console.log(data);
+
                 if (data.result === 1) {
-                    // Populate the First Table: Waste Details
+                    // Populate First Table: Waste Details
                     let mainDataHtml = `
                         <tr>
                             <td>${data.WasteDetails.collection_center || 'N/A'}</td>
@@ -631,27 +632,32 @@
                     `;
                     $('#wastedetailsModel').html(mainDataHtml);
 
-                    // Populate the Second Table: Segregation Data
+                    // Populate Second Table: Segregation Data
                     let segregationHtml = '';
-                    let totalVolum = 0;
-                    $.each(data.Segregation, function (key, value) {
-                        totalVolum = totalVolum + parseFloat(value.volume);
-                        segregationHtml += `
-                            <tr>
-                                <td>${value.waste_type || 'N/A'}</td>
-                                <td>${value.waste_sub_type1 || 'N/A'}</td>
-                                <td>${value.waste_sub_type2 || 'N/A'}</td>
-                                <td>${value.volume || 'N/A'}</td>
-                                <td>${totalVolum || 'N/A'}</td>
-                            </tr>
-                        `;
-                    });
-                    // segregationHtml += `
-                    //         <tr>
-                    //             <td>${totalVolum || 'N/A'}</td>
-                    //         </tr>
-                    //     `;
+                    let totalVolume = 0;
+
+                    // Check if Segregation exists
+                    if (data.Segregation && Array.isArray(data.Segregation)) {
+                        $.each(data.Segregation, function (key, value) {
+                            let volume = parseFloat(value.volume) || 0; // Ensure numeric volume
+                            totalVolume += volume;
+
+                            segregationHtml += `
+                                <tr>
+                                    <td>${value.waste_type || 'N/A'}</td>
+                                    <td>${value.waste_sub_type1 || 'N/A'}</td>
+                                    <td>${value.waste_sub_type2 || 'N/A'}</td>
+                                    <td>${volume.toFixed(2)}</td>
+                                </tr>
+                            `;
+                        });
+                    } else {
+                        segregationHtml = '<tr><td colspan="4">No segregation data available.</td></tr>';
+                    }
+
                     $('#SegregationModel').html(segregationHtml);
+                    $('#totalViewVolume').html(totalVolume)
+                    $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");
                 }
@@ -664,7 +670,6 @@
             },
         });
     });
-</script>
-
+  </script>
 
 
