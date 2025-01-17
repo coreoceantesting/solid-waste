@@ -249,8 +249,15 @@
                                         </tr>
                                     </thead>
                                     <tbody id="SegregationModel">
+                                        {{-- <thead><tr><th>Total volume</th></tr></thead> --}}
                                         <!-- Additional data will be injected here -->
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3" class="text-right"><strong>Total Volume</strong></td>
+                                            <td id="totalVolume">0</td> <!-- Total Volume will be injected here -->
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -626,16 +633,24 @@
 
                     // Populate the Second Table: Segregation Data
                     let segregationHtml = '';
+                    let totalVolum = 0;
                     $.each(data.Segregation, function (key, value) {
+                        totalVolum = totalVolum + parseFloat(value.volume);
                         segregationHtml += `
                             <tr>
                                 <td>${value.waste_type || 'N/A'}</td>
                                 <td>${value.waste_sub_type1 || 'N/A'}</td>
                                 <td>${value.waste_sub_type2 || 'N/A'}</td>
                                 <td>${value.volume || 'N/A'}</td>
+                                <td>${totalVolum || 'N/A'}</td>
                             </tr>
                         `;
                     });
+                    // segregationHtml += `
+                    //         <tr>
+                    //             <td>${totalVolum || 'N/A'}</td>
+                    //         </tr>
+                    //     `;
                     $('#SegregationModel').html(segregationHtml);
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");

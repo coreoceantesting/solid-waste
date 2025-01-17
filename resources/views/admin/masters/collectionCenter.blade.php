@@ -14,7 +14,6 @@
                 <div class="card">
                     <form class="theme-form" name="addForm" id="addForm" enctype="multipart/form-data">
                         @csrf
-
                         <!-- Plant Details -->
                         <div class="card-header">
                          <h4 class="card-title">Add Plant Details</h4>
@@ -766,7 +765,7 @@
 
                         // Append HTML for each row dynamically
                         vehicledetail += `
-                            <tr id="editRow${key}">
+                            <tr id="editVehicleRow${key}">
                                 <td>
                                     <select name="vehicle_type[]" class="form-select AddFormSelectvehicleType" required>
                                         <option value="">Select vehicleType</option>
@@ -804,7 +803,7 @@
 
                         // Append HTML for each row dynamically
                         employeedetails += `
-                            <tr id="editRow${key}">
+                            <tr id="editEmployeeRow${key}">
                                 <td>
                                     <select name="designation[]" class="form-select AddFormdesignation" required>
                                         <option value="">Select vehicleType</option>
@@ -855,7 +854,7 @@
         };
 
         let html = `
-            <tr id="editRow${editVehicleDetials}">
+            <tr id="editVehicleRow${editVehicleDetials}">
                  <td>
                         <select name="vehicle_type[]" class="form-select" required>
                             <option value="">Select Vehicle Type</option>
@@ -876,14 +875,14 @@
             </tr>
         `;
         $('#editVehicleTableBody').append(html);
-        editVehicleTableBody++;
+        editVehicleDetials++;
     });
 
 
     // Event to remove a vehicle row (fixed event binding)
     $('body').on('click', '.removeVehicleRow', function() {
         let rowId = $(this).data('id');
-        $(`#editRow${rowId}`).remove();
+        $(`#editVehicleRow${rowId}`).remove();
     });
 </script>
 {{-- add more Employee details in edit --}}
@@ -900,7 +899,7 @@
         };
 
         let html = `
-            <tr id="editRow${editEmployeeDetials}">
+            <tr id="editEmployeeRow${editEmployeeDetials}">
                  <td>
                     <select name="designation[]" class="form-select AddFormSelectdesignation" required>
                         <option value="">Select Designation</option>
@@ -921,14 +920,14 @@
             </tr>
         `;
         $('#editEmployeeTableBody').append(html);
-        editEmployeeTableBody++;
+        editEmployeeDetials++;
     });
 
 
     // Event to remove a vehicle row (fixed event binding)
     $('body').on('click', '.removeEmployeeRow', function() {
         let rowId = $(this).data('id');
-        $(`#editRow${rowId}`).remove();
+        $(`#editEmployeeRow${rowId}`).remove();
     });
 </script>
 <!-- Update -->
