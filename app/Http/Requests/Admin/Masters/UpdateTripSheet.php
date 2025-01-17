@@ -33,7 +33,7 @@ class UpdateTripSheet extends FormRequest
             'total_garbage' => 'required',
             'driver_name' => 'required',
             'weight_slip_number' => 'required',
-            'file_upload' => 'required',
+            // 'file_upload' => 'required',
             'waste_segregated' => 'required',
             'waste_type' => 'required',
             'volume' => 'required'
