@@ -128,8 +128,8 @@
                                             <td>{{ $Cenus->value }}</td>
                                             <td>{{ $Cenus->other_value }}</td>
                                             <td>
-                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit CenusYears" data-id="{{ $Cenus->id }}"><i data-feather="edit"></i></button>
-                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete CenusYears" data-id="{{ $Cenus->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="edit-element btn text-secondary px-2 py-1" title="Edit Cenus Years" data-id="{{ $Cenus->id }}"><i data-feather="edit"></i></button>
+                                                <button class="btn text-danger rem-element px-2 py-1" title="Delete Cenus Years" data-id="{{ $Cenus->id }}"><i data-feather="trash-2"></i> </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -139,9 +139,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
 </x-admin.layout>
 
@@ -274,7 +271,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this CensusYears?",
+            title: "Are you sure to delete this Census Years?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]

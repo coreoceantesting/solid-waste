@@ -93,7 +93,7 @@ class CenusyearsController extends Controller
             DB::table('census_years')->where('id', $id)->update($input);
             DB::commit();
 
-            return response()->json(['success'=> 'Cenusyears updated successfully!']);
+            return response()->json(['success'=> 'Cenus years updated successfully!']);
         }
         catch(\Exception $e)
         {
