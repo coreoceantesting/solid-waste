@@ -491,7 +491,7 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" id="editSubmit" class="btn btn-primary">Update</button>
-                                <button id="btnCancel" class="btn btn-danger" style="display:none;" type="button" onclick="cancelAction()">Cancel</button>
+                                <button type="reset" class="btn btn-warning">Reset</button>
                             </div>
                         </div>
                     </div>
@@ -508,6 +508,7 @@
                             <div class="col-sm-6">
                                 <div class="">
                                     <button id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></button>
+                                    <button id="btnCancel" class="btn btn-danger" style="display:none;">Cancel</button>
                                 </div>
                             </div>
                         </div>
