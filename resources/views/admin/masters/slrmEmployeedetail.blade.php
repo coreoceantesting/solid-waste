@@ -117,7 +117,7 @@
                         <!-- Form Buttons -->
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancel</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </form>
                 </div>
@@ -223,6 +223,7 @@
                             </div>
                               <div class="card-footer">
                                 <button type="submit" id="editSubmit" class="btn btn-primary">Update</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </div>
                     </div>
