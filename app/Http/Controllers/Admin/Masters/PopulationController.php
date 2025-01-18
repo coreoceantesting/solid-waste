@@ -83,11 +83,17 @@ class PopulationController extends Controller
             //                   ->whereNull('deleted_at') // Ensure deleted data is not included
             //                   ->get();
 
+            $population = Population :: join ('wards','populations.ward' , '=' , 'wards.id')
+                        ->join('prefixes','populations.zone','=','prefixes.id')
+                        ->where('populations.select_year', $select_year)
+                        ->select('populations.*','wards.name','prefixes.Zone')
+                        ->get();
+
             // Return the data as a JSON response
             return response()->json([
                 'result' => 1,
                 'year' => $select_year,
-                'Population' => $Population,  // Send Population data
+                'Population' => $population,  // Send Population data
                 // 'BreakUp' => $BreakUp,  // Uncomment if you need BreakUp data
             ]);
         } catch (\Exception $e) {

@@ -569,8 +569,8 @@
                         $.each(data.Population, function (key, value) {
                             segregationDataHtml += `
                                 <tr>
-                                    <td>${value.zone || 'N/A'}</td>
-                                    <td>${value.ward || 'N/A'}</td>
+                                    <td>${value.Zone || 'N/A'}</td>
+                                    <td>${value.name || 'N/A'}</td>
                                     <td>${value.colony || 'N/A'}</td>
                                     <td>${value.society || 'N/A'}</td>
                                     <td>${value.population || 'N/A'}</td>
