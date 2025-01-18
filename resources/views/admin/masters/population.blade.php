@@ -59,7 +59,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" onclick="closeForm()">Cancel</button>
+                        <button type="reset" class="btn btn-secondary">reset</button>
                     </div>
                 </form>
             </div>
@@ -111,6 +111,7 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" id="editSubmit" class="btn btn-primary">Update</button>
+                            <button type="reset" class="btn btn-secondary">reset</button>
                         </div>
                     </div>
                 </div>
@@ -162,7 +163,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header border-bottom">
-                    <h5 class="modal-title" id="tripSheetLabel">Trip Sheet</h5>
+                    <h5 class="modal-title" id="populationLabel">Population</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -172,46 +173,30 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Trip Date</th>
-                                        <th>Beat Number</th>
-                                        <th>Vehicle Number</th>
-                                        <th>Collection Center</th>
-                                        <th>In Time</th>
-                                        <th>Out Time</th>
-                                        <th>Entry Weight</th>
-                                        <th>Exit Weight</th>
-                                        <th>Total Garbage</th>
-                                        <th>Driver Name</th>
-                                        <th>Weight Slip Number</th>
-                                        <th>File Upload</th>
-                                        <th>Waste Segregated</th>
+                                        <th>Select year</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tripSheetModel">
+                                <tbody id="mainData">
                                     <!-- Data will be injected here -->
                                 </tbody>
                             </table>
                         </div>
-
                         <!-- Second Table: Additional Details -->
                         <div id="additional-info-table" class="mt-4">
-                            <h5>Break Up</h5>
+                            <h5>Population Details</h5>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Waste Type</th>
-                                        <th>Volume</th>
+                                        <th>Zone</th>
+                                        <th>Ward</th>
+                                        <th>Colony</th>
+                                        <th>Society</th>
+                                        <th>Total Population</th>
                                     </tr>
                                 </thead>
-                                <tbody id="BreakUpModel">
+                                <tbody id="populationData">
                                     <!-- Additional data will be injected here -->
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="1" class="text-right"><strong>Total Volume</strong></td>
-                                        <td id="totalViewVolume"></td> <!-- Total Volume will be displayed here -->
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -219,6 +204,7 @@
             </div>
         </div>
     </div>
+
 
 </x-admin.layout>
 
@@ -551,6 +537,62 @@
         $('body').on('click', '.removePopulationRow', function () {
             const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
             $(`#populationRow${rowId}`).remove(); // Remove the corresponding row
+        });
+    });
+</script>
+{{-- views --}}
+<script>
+    $('body').on('click', '.view-element', function () {
+        var model_id = $(this).data("id");
+        var url = "{{ route('population.show', ':model_id') }}".replace(':model_id', model_id);
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            beforeSend: function () {
+                $('#preloader').css('opacity', '0.5').css('visibility', 'visible');
+            },
+            success: function (data) {
+                if (data.result === 1) {
+                    // Populate the First Table: Population Details
+                    let mainDataHtml = `
+                        <tr>
+                            <td>${data.year || 'N/A'}</td>
+                        </tr>
+                    `;
+                    $('#mainData').html(mainDataHtml);  // Inject into correct table
+
+                    // Populate the Second Table: Segregation Data
+                    let segregationDataHtml = ''; // Initialize variable for Segregation Data
+
+                    if (Array.isArray(data.Population) && data.Population.length > 0) {
+                        $.each(data.Population, function (key, value) {
+                            segregationDataHtml += `
+                                <tr>
+                                    <td>${value.zone || 'N/A'}</td>
+                                    <td>${value.ward || 'N/A'}</td>
+                                    <td>${value.colony || 'N/A'}</td>
+                                    <td>${value.society || 'N/A'}</td>
+                                    <td>${value.population || 'N/A'}</td>
+                                </tr>
+                            `;
+                        });
+                        $('#populationData').html(segregationDataHtml); // Inject segregation data
+                    } else {
+                        // If no segregation data found, display message
+                        segregationDataHtml = `<tr><td colspan="5" class="text-center">No data available</td></tr>`;
+                        $('#populationData').html(segregationDataHtml);
+                    }
+                } else {
+                    swal("Error!", data.message || "Data not found.", "error");
+                }
+            },
+            error: function () {
+                swal("Error!", "Something went wrong while fetching the data.", "error");
+            },
+            complete: function () {
+                $('#preloader').css('opacity', '0').css('visibility', 'hidden');
+            },
         });
     });
 </script>

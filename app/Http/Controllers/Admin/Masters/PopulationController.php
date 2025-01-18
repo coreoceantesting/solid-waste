@@ -72,10 +72,34 @@ class PopulationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $select_year)
     {
-        //
+        try {
+            // Retrieve the Population data by ID (ensure 'id' is the correct identifier)
+            $Population = Population::where('select_year', $select_year)->get(); // Assuming `id` is the primary key
+            //  dd($Population);
+            // Optional: Retrieve related BreakUp data if necessary
+            // $BreakUp = BreakUp::where('population_id', $id)
+            //                   ->whereNull('deleted_at') // Ensure deleted data is not included
+            //                   ->get();
+
+            // Return the data as a JSON response
+            return response()->json([
+                'result' => 1,
+                'year' => $select_year,
+                'Population' => $Population,  // Send Population data
+                // 'BreakUp' => $BreakUp,  // Uncomment if you need BreakUp data
+            ]);
+        } catch (\Exception $e) {
+            // Return error response in case of failure
+            return response()->json([
+                'result' => 0,
+                'message' => 'Error retrieving Population data.',
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
