@@ -61,7 +61,7 @@ class SlrmEmployeeDetailController extends Controller
             SlrmEmployeeDetails::create( $input );
             DB::commit();
 
-            return response()->json(['success'=> 'SlrmEmployeeDetails created successfully!']);
+            return response()->json(['success'=> 'Slrm Employee Details created successfully!']);
         }
         catch(\Exception $e)
         {

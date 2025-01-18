@@ -145,6 +145,7 @@
                                         <td>
                                             <button class="edit-element btn text-secondary px-2 py-1" title="Edit Population" data-id="{{ $popu->select_year }}"><i data-feather="edit"></i></button>
                                            <button class="btn text-danger rem-element px-2 py-1" title="Delete Population" data-id="{{ $popu->select_year }}"><i data-feather="trash-2"></i> </button>
+                                           <button class="btn text-danger view-element px-2 py-1" title="View Population" data-id="{{ $popu->select_year }}"><i data-feather="eye"  data-id="{{ $popu->select_year }}"  data-bs-toggle="modal" data-bs-target=".population"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -155,6 +156,70 @@
             </div>
         </div>
     </div>
+
+     {{-- view model --}}
+     <div class="modal fade population" tabindex="-1" role="dialog" aria-labelledby="populationLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title" id="tripSheetLabel">Trip Sheet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body" id="stockData">
+                        <!-- First Table: Main Data -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Trip Date</th>
+                                        <th>Beat Number</th>
+                                        <th>Vehicle Number</th>
+                                        <th>Collection Center</th>
+                                        <th>In Time</th>
+                                        <th>Out Time</th>
+                                        <th>Entry Weight</th>
+                                        <th>Exit Weight</th>
+                                        <th>Total Garbage</th>
+                                        <th>Driver Name</th>
+                                        <th>Weight Slip Number</th>
+                                        <th>File Upload</th>
+                                        <th>Waste Segregated</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tripSheetModel">
+                                    <!-- Data will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Second Table: Additional Details -->
+                        <div id="additional-info-table" class="mt-4">
+                            <h5>Break Up</h5>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Waste Type</th>
+                                        <th>Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="BreakUpModel">
+                                    <!-- Additional data will be injected here -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="1" class="text-right"><strong>Total Volume</strong></td>
+                                        <td id="totalViewVolume"></td> <!-- Total Volume will be displayed here -->
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </x-admin.layout>
 
 {{-- Add --}}
@@ -392,7 +457,7 @@
     $("#populationTable").on("click", ".rem-element", function(e) {
     e.preventDefault();
     swal({
-        title: "Are you sure to delete this population?",
+        title: "Are you sure to delete this p\opulation?",
         icon: "info",
         buttons: ["Cancel", "Confirm"]
     })

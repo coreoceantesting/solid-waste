@@ -140,12 +140,23 @@
                                 <div class="mb-3 row">
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="collection_center">Collection Center<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center">
+                                        <select class="form-control" name="collection_center" id="collection_center">
+                                        <option value="">select collection centers</option>
+                                         @foreach ($SlrmEmployeeDetails as $SlrmEmployee)
+                                            <option value="{{$SlrmEmployee->p_name}}">{{$SlrmEmployee->p_name}}</option>
+                                         @endforeach
+                                        </select>
                                         <span class="text-danger is-invalid collection_center_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="designation">Designation<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="designation" name="designation" type="text" placeholder="Enter designation">
+                                                <label class="col-form-label" for="designation">Designation<span class="text-danger">*</span></label>
+                                            {{-- <input class="form-control" id="designation" name="designation" type="text" placeholder="Enter Designation"> --}}
+                                            <select class="form-control" name="designation" id="designation">
+                                                <option value="">select Designation</option>
+                                                @foreach ($designations as $designation)
+                                                    <option value="{{$designation->name}}">{{$designation->name}}</option>
+                                                @endforeach
+                                            </select>
                                         <span class="text-danger is-invalid designation_err"></span>
                                     </div>
                                 </div>
@@ -400,8 +411,8 @@
                 if (!data.error)
                 {
                     $("#editForm input[id='edit_model_id']").val(data.slrmemployee.id);
-                    $("#editForm input[name='collection_center']").val(data.slrmemployee.collection_center);
-                    $("#editForm input[name='designation']").val(data.slrmemployee.designation);
+                    $("#editForm select[name='collection_center']").val(data.slrmemployee.collection_center);
+                    $("#editForm select[name='designation']").val(data.slrmemployee.designation);
                     $("#editForm input[name='emp_code']").val(data.slrmemployee.emp_code);
                     $("#editForm input[name='title']").val(data.slrmemployee.title);
                     $("#editForm input[name='f_name']").val(data.slrmemployee.f_name);
