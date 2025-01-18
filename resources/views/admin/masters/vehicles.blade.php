@@ -268,13 +268,13 @@
                                         <th>Vehicle Standard Weight</th>
                                         <th>Manufacturer</th>
                                         <th>Vehicle Tracking</th>
-                                        <th>Department Owned Vehicle</th>
+                                        {{-- <th>Department Owned Vehicle</th>
                                         <th>Purchase Date</th>
                                         <th>Purchase Price</th>
                                         <th>Source Of Purchase Date</th>
                                         <th>Asset Code</th>
                                         <th>Chassis Number</th>
-                                        <th>Remarks</th>
+                                        <th>Remarks</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -289,13 +289,13 @@
                                         <td>{{$Vehi->vehicle_standard_weight}}</td>
                                         <td>{{$Vehi->Manufacturer}}</td>
                                         <td>{{$Vehi->vehicle_tracking}}</td>
-                                        <td>{{$Vehi->Department_owned_vehicle}}</td>
+                                        {{-- <td>{{$Vehi->Department_owned_vehicle}}</td>
                                         <td>{{$Vehi->purchase_date}}</td>
                                         <td>{{$Vehi->purchase_price}}</td>
                                         <td>{{$Vehi->Source_of_purchase_date}}</td>
                                         <td>{{$Vehi->Asset_code}}</td>
                                         <td>{{$Vehi->chassis_number}}</td>
-                                        <td>{{$Vehi->Remarks}}</td>
+                                        <td>{{$Vehi->Remarks}}</td> --}}
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit vehicles" data-id="{{ $Vehi->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete vehicles" data-id="{{ $Vehi->id }}"><i data-feather="trash-2"></i> </button>

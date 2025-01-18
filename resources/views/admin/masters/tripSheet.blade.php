@@ -299,10 +299,10 @@
                                         <th>Entry Weight</th>
                                         <th>Exit Weight</th>
                                         <th>Total Garbage</th>
-                                        <th>Driver Name</th>
+                                        {{-- <th>Driver Name</th>
                                         <th>Weight Slip Number</th>
                                         <th>File Upload</th>
-                                        <th>Waste Segregated</th>
+                                        <th>Waste Segregated</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -318,10 +318,10 @@
                                             <td>{{ $Trip->out_time }}</td>
                                             <td>{{ $Trip->entry_weight }}</td>
                                             <td>{{ $Trip->exit_weight }}</td>
-                                            <td>{{ $Trip->total_garbage }}</td>
+                                            {{-- <td>{{ $Trip->total_garbage }}</td>
                                             <td>{{ $Trip->driver_name }}</td>
                                             <td>{{ $Trip->weight_slip_number }}</td>
-                                            <td>{{ $Trip->file_upload }}</td>
+                                            <td>{{ $Trip->file_upload }}</td> --}}
                                             <td>{{ $Trip->waste_segregated }}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit TypesOfFineCharges" data-id="{{ $Trip->id }}"><i data-feather="edit"></i></button>

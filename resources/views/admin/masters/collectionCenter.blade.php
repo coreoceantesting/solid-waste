@@ -525,7 +525,7 @@
                                         <th>Decentralize</th>
                                         <th>Plant Ownership</th>
                                         <th>location</th>
-                                        <th>Required Plant Capacity</th>
+                                        {{-- <th>Required Plant Capacity</th>
                                         <th>Whether Part Of Integrated (Y/N)</th>
                                         <th>Integrated With Plant ID</th>
                                         <th>wtc</th>
@@ -538,7 +538,7 @@
                                         <th>project code</th>
                                         <th>project cost</th>
                                         <th>project progress</th>
-                                        <th>assest code</th>
+                                        <th>assest code</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -554,7 +554,7 @@
                                             <td>{{ $collection->decentral}}</td>
                                             <td>{{ $collection->p_own}}</td>
                                             <td>{{ $collection->location}}</td>
-                                            <td>{{ $collection->p_capacity}}</td>
+                                            {{-- <td>{{ $collection->p_capacity}}</td>
                                             <td>{{ $collection->inte_with_plant}}</td>
                                             <td>{{ $collection->inte_with_id}}</td>
                                             <td>{{ $collection->wtc}}</td>
@@ -567,7 +567,7 @@
                                             <td>{{ $collection->p_code}}</td>
                                             <td>{{ $collection->p_cost}}</td>
                                             <td>{{ $collection->p_prog}}</td>
-                                            <td>{{ $collection->a_code}}</td>
+                                            <td>{{ $collection->a_code}}</td> --}}
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit CollectionCenter" data-id="{{ $collection->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete CollectionCenter" data-id="{{ $collection->id }}"><i data-feather="trash-2"></i></button>

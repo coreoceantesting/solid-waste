@@ -284,13 +284,13 @@
                                         <th>Total distance</th>
                                         <th>Collection Mode</th>
                                         <th>Nearest Collection Center</th>
-                                        <th>Distance From Collection Center</th>
+                                        {{-- <th>Distance From Collection Center</th>
                                         <th>Beat Animal Count</th>
                                         <th>Estimated No.of house/Establishment Preparing compost</th>
                                         <th>Beat Population</th>
                                         <th>Estimated Beat Residential Count</th>
                                         <th>Estimated Beat Commercial Count</th>
-                                        <th>Estimated establishment Count</th>
+                                        <th>Estimated establishment Count</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -306,13 +306,13 @@
                                             <td>{{ $ward->total_distance }}</td>
                                             <td>{{ $ward->collection_mode}}</td>
                                             <td>{{ $ward->nearest_collection_center}}</td>
-                                            <td>{{ $ward->distance_from_collection_center}}</td>
+                                            {{-- <td>{{ $ward->distance_from_collection_center}}</td>
                                             <td>{{ $ward->beat_animal_count}}</td>
                                             <td>{{ $ward->estimated_number_of_house}}</td>
                                             <td>{{ $ward->beat_population}}</td>
                                             <td>{{ $ward->estimated_beat_residential_count}}</td>
                                             <td>{{ $ward->estimated_beat_commercial_count}}</td>
-                                            <td>{{ $ward->estimated_establishment_count}}</td>
+                                            <td>{{ $ward->estimated_establishment_count}}</td> --}}
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit ward" data-id="{{ $ward->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete ward" data-id="{{ $ward->id }}"><i data-feather="trash-2"></i> </button>
