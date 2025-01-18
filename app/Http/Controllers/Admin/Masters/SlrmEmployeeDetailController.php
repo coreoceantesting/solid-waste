@@ -75,7 +75,29 @@ class SlrmEmployeeDetailController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            // Retrieve the SlrmEmployeeDetails by ID
+            $SlrmEmployeeDetails = SlrmEmployeeDetails::findOrFail($id);
+
+            // Retrieve related BreakUp data if necessary
+            // $BreakUp = BreakUp::where('trip_sheet_id', $id)
+            //                   ->whereNull('deleted_at') // Ensure deleted data is not included
+            //                   ->get();
+
+            // Return the data as a JSON response
+            return response()->json([
+                'result' => 1,
+                'SlrmEmployeeDetails' => $SlrmEmployeeDetails,
+                // 'BreakUp' => $BreakUp,
+            ]);
+        } catch (\Exception $e) {
+            // Return error response in case of failure
+            return response()->json([
+                'result' => 0,
+                'message' => 'Error retrieving Slrm Employee Details.',
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**

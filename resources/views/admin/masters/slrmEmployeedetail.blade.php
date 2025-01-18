@@ -257,11 +257,11 @@
                                         <th>Middle Name</th>
                                         <th>Last Name</th>
                                         <th>Gender</th>
-                                        <th>Mobile Number</th>
+                                        {{-- <th>Mobile Number</th>
                                         <th>Email Id</th>
                                         <th>Address</th>
                                         <th>Address One</th>
-                                        <th>Pin Code</th>
+                                        <th>Pin Code</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -277,14 +277,15 @@
                                             <td>{{ $slrm->m_name}}</td>
                                             <td>{{ $slrm->l_name}}</td>
                                             <td>{{ $slrm->gender}}</td>
-                                            <td>{{ $slrm->m_number}}</td>
+                                            {{-- <td>{{ $slrm->m_number}}</td>
                                             <td>{{ $slrm->email_id}}</td>
                                             <td>{{ $slrm->address}}</td>
                                             <td>{{ $slrm->address_one}}</td>
-                                            <td>{{ $slrm->pin_code}}</td>
+                                            <td>{{ $slrm->pin_code}}</td> --}}
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit slrmemployeedetail" data-id="{{ $slrm->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete slrmemployeedetail" data-id="{{ $slrm->id }}"><i data-feather="trash-2"></i> </button>
+                                                <button class="btn text-danger view-element px-2 py-1" title="View slrmemployeedetail" data-id="{{ $slrm->id }}"><i data-feather="eye"  data-id="{{ $slrm->id }}"  data-bs-toggle="modal" data-bs-target=".slrmemployeedetail"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -295,8 +296,46 @@
             </div>
         </div>
 
-
-
+  {{-- view model --}}
+  <div class="modal fade slrmemployeedetail" tabindex="-1" role="dialog" aria-labelledby="slrmemployeedetailLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-bottom">
+                <h5 class="modal-title" id="slrmemployeedetailLabel">Trip Sheet</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body" id="stockData">
+                    <!-- First Table: Employee Details -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Designation</th>
+                                    <th>Collection Center</th>
+                                    <th>Employee Code</th>
+                                    <th>Title</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Last Name</th>
+                                    <th>Gender</th>
+                                    <th>Mobile Number</th>
+                                    <th>Email Id</th>
+                                    <th>Address</th>
+                                    <th>Address One</th>
+                                    <th>Pin Code</th>
+                                </tr>
+                            </thead>
+                            <tbody id="slrmemployeedetail">
+                                <!-- Data will be injected here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </x-admin.layout>
 
@@ -477,6 +516,52 @@
                     },
                 });
             }
+        });
+    });
+</script>
+{{-- views --}}
+<script>
+    $('body').on('click', '.view-element', function () {
+        var model_id = $(this).data("id");
+        var url = "{{ route('slrm-employee-details.show', ':model_id') }}".replace(':model_id', model_id);
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            beforeSend: function () {
+                $('#preloader').css('opacity', '0.5').css('visibility', 'visible');
+            },
+            success: function (data) {
+                if (data.result === 1) {
+                    // Populate the First Table: Employee Details
+                    let mainDataHtml = `
+                        <tr>
+                            <td>${data.SlrmEmployeeDetails.designation || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.collection_center || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.emp_code || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.title || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.f_name || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.m_name || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.l_name || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.gender || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.m_number || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.email_id || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.address || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.address_one || 'N/A'}</td>
+                            <td>${data.SlrmEmployeeDetails.pin_code || 'N/A'}</td>
+                        </tr>
+                    `;
+                    $('#slrmemployeedetail').html(mainDataHtml); // Populating the table with employee data
+                } else {
+                    swal("Error!", data.message || "Data not found.", "error");
+                }
+            },
+            error: function () {
+                swal("Error!", "Something went wrong while fetching the data.", "error");
+            },
+            complete: function () {
+                $('#preloader').css('opacity', '0').css('visibility', 'hidden');
+            },
         });
     });
 </script>
