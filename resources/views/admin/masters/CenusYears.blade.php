@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">Cenus Years</x-slot>
-    <x-slot name="heading">Cenus Years</x-slot>
+    <x-slot name="title">Census Years</x-slot>
+    <x-slot name="heading">Census Years</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -56,7 +56,7 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Cenus Years</h4>
+                            <h4 class="card-title">Edit Census Years</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">

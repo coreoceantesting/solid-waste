@@ -460,22 +460,22 @@
                     $("#editForm input[name='estimated_beat_commercial_count']").val(data.wards.estimated_beat_commercial_count);
                     $("#editForm input[name='estimated_establishment_count']").val(data.wards.estimated_establishment_count);
 
-                    // Dynamically generate vehicle details rows
-                       let areadetails = "";
-                        $.each(data.areaDetails, function(key, value) {
+                      // Dynamically generate vehicle details rows
+                    let areaDetails = "";
+                    $.each(data.areaDetails, function(key, value) {
                         let areaTypeOptions = ''; // Variable to hold vehicle type options
 
-                        // Loop through VehicleType data dynamically from the controller
+                        // Loop through AreaType data dynamically from the controller
                         @foreach($AreaType as $Area)
-                          areaTypeOptions += `<option value="{{ $Area->id }}" ${value['area_type'] == {{ $Area->id }} ? 'selected' : ''}>{{ $Area->Description }}</option>`;
+                            areaTypeOptions += `<option value="{{ $Area->id }}" ${value['area_type'] == {{ $Area->id }} ? 'selected' : ''}>{{ $Area->Description }}</option>`;
                         @endforeach
 
                         // Append HTML for each row dynamically
-                         areadetails+= `
+                        areaDetails += `
                             <tr id="editRow${key}">
                                 <td>
                                     <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
-                                        <option value="">Select vehicleType</option>
+                                        <option value="">Select Area Type</option>
                                         ${areaTypeOptions}
                                     </select>
                                 </td>
@@ -489,7 +489,7 @@
                                     <input type="number" class="form-control editShopCount" required name="shop_count[]" value="${value['shop_count']}" />
                                 </td>
                                 <td>
-                                    <input type="number" class="form-control editTotal" required name="total[]" value="${value['total']}" />
+                                    <input type="number" class="form-control editTotal" required name="total[]" value="${value['total']}" readonly />
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
@@ -498,19 +498,36 @@
                         `;
                     });
 
-                    // Append the generated HTML to the vehicle table body
-                    $('#editAreaTableBody').html(areadetails);
+                    // Append the generated HTML to the table body
+                    $('#editAreaTableBody').html(areaDetails);
 
-                }
-                else
-                {
+                    // Recalculate total for each row
+                    recalculateTotal();
+                } else {
                     alert(data.error);
                 }
             },
             error: function(error, jqXHR, textStatus, errorThrown) {
-                alert("Some thing went wrong");
+                alert("Something went wrong");
             },
         });
+    });
+
+    // Recalculate totals whenever the values change
+    function recalculateTotal() {
+        // Recalculate for each row
+        $('body').on('input', '.editHouseholdCount, .editShopCount', function() {
+            const row = $(this).closest('tr');
+            const householdCount = parseInt(row.find('.editHouseholdCount').val()) || 0;
+            const shopCount = parseInt(row.find('.editShopCount').val()) || 0;
+            const total = householdCount + shopCount;
+            row.find('.editTotal').val(total); // Update the total field
+        });
+    }
+
+    // Initialize total calculation on page load
+    $(document).ready(function() {
+        recalculateTotal();
     });
 </script>
 
@@ -519,50 +536,51 @@
     // Global counter for row IDs
     let editRowCounter = 100;
 
-    // Event to add more vehicle rows (fixed event binding)
-    $('body').on('click', '#editMoreEditAreaRow', function() {
+    // Event to add more rows
+    $('body').on('click', '#editMoreEditAreaRow', function () {
         let value = {
             area_type: '',      // Default empty value or dynamically populated
-            area_name: '',   // Default empty value or dynamically populated
+            area_name: '',      // Default empty value or dynamically populated
             household_count: '',
             shop_count: '',
-            total: '',     // Default empty value or dynamically populated
+            total: '',          // Default empty value or dynamically populated
         };
 
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
                     <select name="area_type[]" class="form-select AddFormSelectVehicle" required>
-                        <option value="">Select areatype</option>
+                        <option value="">Select Area Type</option>
                         @foreach($AreaType as $Area)
                             <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
                         @endforeach
                     </select>
                 </td>
                 <td>
-                    <input type="text" class="form-control editAvailbeCount" name="area_name[]" value="${value['area_name']}" required />
+                    <input type="text" class="form-control areaName" name="area_name[]" value="${value['area_name']}" placeholder="Enter Area Name" required />
                 </td>
                 <td>
-                    <input type="number" class="form-control editRequiredCount" name="household_count[]" value="${value['household_count']}" required />
-                </td>
-                 <td>
-                    <input type="number" class="form-control editRequiredCount" name="shop_count[]" value="${value['shop_count']}" required />
+                    <input type="number" class="form-control householdCount" name="household_count[]" value="${value['household_count']}" placeholder="Enter Household Count" required />
                 </td>
                 <td>
-                    <input type="number" class="form-control editRequiredCount" name="total[]" value="${value['total']}" required />
+                    <input type="number" class="form-control shopCount" name="shop_count[]" value="${value['shop_count']}" placeholder="Enter Shop Count" required />
+                </td>
+                <td>
+                    <input type="number" class="form-control totalField" name="total[]" value="${value['total']}" placeholder="Total" readonly required />
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
                 </td>
             </tr>
         `;
+
         $('#editAreaTableBody').append(html);
         editRowCounter++;
     });
 
-    // Event to remove a vehicle row (fixed event binding)
-    $('body').on('click', '.removeRow', function() {
-        let rowId = $(this).data('id');
+    // Event to remove a row
+    $('body').on('click', '.removeRow', function () {
+        const rowId = $(this).data('id');
         $(`#editRow${rowId}`).remove();
     });
 </script>
