@@ -47,7 +47,7 @@
                     </a>
                     <div class="collapse menu-dropdown {{ request()->routeIs('wards.index') || request()->routeIs('area-type.index') || request()->routeIs('collection-type.index') || request()->routeIs('collection-transport.index') || request()->routeIs('census-years.index') || request()->routeIs('types-of-fine-charges.index') || request()->routeIs('inspection-type.index') || request()->routeIs('locality-service-type.index') || request()->routeIs('maintenance-type.index') || request()->routeIs('pump-type.index') || request()->routeIs('shift-timings.index') || request()->routeIs('types-of-item-solds.index') || request()->routeIs('vehicle-type.index') || request()->routeIs('vehicles.index') || request()->routeIs('prefix.index') || request()->routeIs('prefix-details.index') || request()->routeIs('designations.index') || request()->routeIs('collection-centers.index') || request()->routeIs('slrm-employee-details.index') || request()->routeIs('population.index') || request()->routeIs('form17.index') ? 'show' : '' }}" id="masters">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('wards.index') }}" class="nav-link {{ request()->routeIs('wards.index') ? 'active' : '' }}" data-key="t-horizontal">Wards</a>
                             </li>
                             <li class="nav-item">
@@ -88,14 +88,14 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('vehicles.index') }}" class="nav-link {{ request()->routeIs('vehicles.index') ? 'active' : '' }}" data-key="t-horizontal">Vehicles</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
-                                <a href="{{ route('prefix.index') }}" class="nav-link {{ request()->routeIs('prefix.index') ? 'active' : '' }}" data-key="t-horizontal">Prefix</a>
+                                <a href="{{ route('prefix.index') }}" class="nav-link {{ request()->routeIs('prefix.index') ? 'active' : '' }}" data-key="t-horizontal">Prefix Type</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('prefix-details.index') }}" class="nav-link {{ request()->routeIs('prefix-details.index') ? 'active' : '' }}" data-key="t-horizontal">Prefix Details</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations.index') ? 'active' : '' }}" data-key="t-horizontal">Designations</a>
                             </li>
                             <li class="nav-item">
@@ -106,7 +106,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('population.index') }}" class="nav-link {{ request()->routeIs('population.index') ? 'active' : '' }}" data-key="t-horizontal">Population</a>
-                            </li>
+                            </li> --}}
                             {{-- <li class="nav-item">
                                 <a href="{{ route('form17.index') }}" class="nav-link {{ request()->routeIs('form17.index') ? 'active' : '' }}" data-key="t-horizontal">Form 17</a>
                             </li> --}}
