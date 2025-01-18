@@ -122,7 +122,7 @@
                                         <th>Sr.No</th>
                                         <th>Prefix Name</th>
                                         <th>Description</th>
-                                        <th>Zone</th>
+                                        {{-- <th>Zone</th> --}}
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -133,7 +133,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $Pref->Prefix_Name }}</td>
                                             <td>{{ $Pref->Description }}</td>
-                                            <td>{{ $Pref->Zone }}</td>
+                                            {{-- <td>{{ $Pref->Zone }}</td> --}}
                                             <td>{{ $Pref->Status}}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit Prefix" data-id="{{ $Pref->id }}"><i data-feather="edit"></i></button>
