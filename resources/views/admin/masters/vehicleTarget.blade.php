@@ -290,16 +290,10 @@
                         VehicleTarget += `
                             <tr id="editRow${key}">
                                 <td>
-                                <select name="vehicle_number[]" class="form-select AddFormvehicleNumber" required>
-                                        <option value="">Select vehicleNumber</option>
-                                        ${VehicleNumberOptions}
-                                    </select>
+                                 <input type="number" class="form-control editGarbageVolumne" required name="vehicle_number[]" value="${value['vehicle_number']}" />
                                 </td>
                                 <td>
-                                    <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
-                                        <option value="">Select BeatNumber</option>
-                                        ${BeatNumberOptions}
-                                    </select>
+                                     <input type="number" class="form-control editGarbageVolumne" required name="beat_number[]" value="${value['beat_number']}" />
                                 </td>
                                 <td>
                                     <input type="number" class="form-control editGarbageVolumne" required name="garbage_volumne[]" value="${value['garbage_volumne']}" />
@@ -343,19 +337,10 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                     <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
-                                 <option value="">Select VehicleNumber</option>
-                                @foreach($vehicles as $vehi)
-                               <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
-                            @endforeach
-                          </select>
+                    <input type="number" class="form-control editGarbageVolume" name="vehicle_number[]" value="${value['vehicle_number']}" required />
                 </td>
                 <td>
-                   <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
-                                 <option value="">Select BeatNumber</option>
-                                @foreach($Ward as $Wa)
-                               <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
-                            @endforeach
+                  <input type="number" class="form-control editGarbageVolume" name="beat_number[]" value="${value['beat_number']}" required />
                 </td>
                 <td>
                     <input type="number" class="form-control editGarbageVolume" name="garbage_volumne[]" value="${value['garbage_volumne']}" required />
@@ -475,20 +460,10 @@
         // Automatically add the first row when the page loads
         let initialHtml = `<tr id="vehicletargetRow${vehicletargetRowCount}">
                                 <td>
-                                    <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
-                                        <option value="">Select Vehicle Number</option>
-                                        @foreach($vehicles as $vehi)
-                                            <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="number" name="vehicle_number[]" class="form-control" placeholder="Enter Vehicle Number" required>
                                 </td>
                                 <td>
-                                    <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
-                                        <option value="">Select Beat Number</option>
-                                        @foreach($Ward as $Wa)
-                                            <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat Number" required>
                                 </td>
                                 <td>
                                     <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
@@ -504,20 +479,10 @@
         $('#addMoreVehicleTargetButton').on('click', function () {
             let html = `<tr id="vehicletargetRow${vehicletargetRowCount}">
                             <td>
-                                <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
-                                    <option value="">Select Vehicle Number</option>
-                                    @foreach($vehicles as $vehi)
-                                        <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
-                                    @endforeach
-                                </select>
+                              <input type="number" name="vehicle_number[]" class="form-control" placeholder="Enter Vehicle Number" required>
                             </td>
                             <td>
-                                <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
-                                    <option value="">Select Beat Number</option>
-                                    @foreach($Ward as $Wa)
-                                        <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat Number" required>
                             </td>
                             <td>
                                 <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>

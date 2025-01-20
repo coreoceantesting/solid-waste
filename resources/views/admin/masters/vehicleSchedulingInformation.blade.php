@@ -17,24 +17,24 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
-                                        <select class="form-select" name="vehicle_type" id="vehicle_type">
+                                    <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type">
+                                        {{-- <select class="form-select" name="vehicle_type" id="vehicle_type">
                                         <option value="">select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid vehicle_type_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="text" placeholder="Enter Vehicle number"> --}}
-                                    <select class="form-select" name="vehicle_number" id="vehicle_number">
+                                    <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle number">
+                                    {{-- <select class="form-select" name="vehicle_number" id="vehicle_number">
                                         <option value="">select vehicle number</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -107,24 +107,24 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
-                                      <select class="form-control" name="vehicle_type" id="vehicle_type">
+                                    <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type">
+                                      {{-- <select class="form-control" name="vehicle_type" id="vehicle_type">
                                         <option value="">select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid vehicle_type_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="text" placeholder="Enter Vehicle Number"> --}}
-                                    <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                    <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number">
+                                    {{-- <select class="form-control" name="vehicle_number" id="vehicle_number">
                                         <option value="">select vehicle number</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -352,8 +352,8 @@
                 if (!data.error)
                 {
                     $("#editForm input[name='edit_model_id']").val(data.vehicleSchedulingInformation.id);
-                    $("#editForm select[name='vehicle_type']").val(data.vehicleSchedulingInformation.vehicle_type);
-                    $("#editForm select[name='vehicle_number']").val(data.vehicleSchedulingInformation.vehicle_number);
+                    $("#editForm input[name='vehicle_type']").val(data.vehicleSchedulingInformation.vehicle_type);
+                    $("#editForm input[name='vehicle_number']").val(data.vehicleSchedulingInformation.vehicle_number);
                     $("#editForm input[name='schedule_form']").val(data.vehicleSchedulingInformation.schedule_form);
                     $("#editForm input[name='schedule_to']").val(data.vehicleSchedulingInformation.schedule_to);
                     $("#editForm select[name='recurrence']").val(data.vehicleSchedulingInformation.recurrence);
@@ -374,10 +374,7 @@
                         vehicledetail += `
                             <tr id="editRow${key}">
                                 <td>
-                                    <select name="beat_number[]" class="form-select AddFormbeatNumber" required>
-                                        <option value="">Select beatNumber</option>
-                                        ${beatNumberOptions}
-                                    </select>
+                                    <input type="number" class="form-control editEmployeeName" name="beat_number[]" value="${value['beat_number']}" required />
                                 </td>
                                 <td>
                                     <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required  oninput="validateEmployeeName(this)"/>
@@ -433,12 +430,7 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                  <select name="beat_number[]" class="form-select AddFormSelectDesignation" required>
-                                    <option value="">Select BeatNumber</option>
-                                  @foreach($Ward as $Wa)
-                                 <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number}}</option>
-                                @endforeach
-                              </select>
+                 <input type="number" class="form-control editEmployeeName" name="beat_number[]" value="${value['beat_number']}" required />
                 </td>
                 <td>
                     <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required oninput="validateEmployeeName(this)"/>
@@ -569,12 +561,7 @@
         function appendVehicleRow() {
             let html = `<tr id="vehicleRow${vehicleRowCount}">
                             <td>
-                                <select name="beat_number[]" class="form-select AddFormSelectDesignation" required>
-                                    <option value="">Select BeatNumber</option>
-                                  @foreach($Ward as $Wa)
-                                     <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
-                                  @endforeach
-                                </select>
+                                <input type="number" name="beat_number[]" class="form-control" placeholder="Enter employee name" required >
                             </td>
                             <td>
                                 <input type="text" name="employee_name[]" class="form-control" placeholder="Enter employee name" required oninput="validateEmployeeName(this)">

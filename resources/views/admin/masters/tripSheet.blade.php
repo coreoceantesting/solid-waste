@@ -22,35 +22,35 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="beat_number">Beat Number<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="beat_number" name="beat_number" type="text" placeholder="Enter Beat Number"> --}}
-                                    <select class="form-control" name="beat_number" id="beat_number">
+                                    <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number">
+                                    {{-- <select class="form-control" name="beat_number" id="beat_number">
                                         <option value="">select Beat Number</option>
                                          @foreach ($Ward as $Wa)
                                             <option value="{{$Wa->beat_number}}">{{$Wa->beat_number}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid beat_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="text" placeholder="Enter Vehicle Number"> --}}
-                                    <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                    <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number">
+                                    {{-- <select class="form-control" name="vehicle_number" id="vehicle_number">
                                         <option value="">select Vehicle Number</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="collection_center">Collection Center<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center"> --}}
-                                    <select class="form-control" name="collection_center" id="collection_center">
+                                    <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center">
+                                    {{-- <select class="form-control" name="collection_center" id="collection_center">
                                         <option value="">select collection center</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid collection_center_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -155,35 +155,35 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="beat_number">Beat Number<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="beat_number" name="beat_number" type="text" placeholder="Enter Beat Number"> --}}
-                                    <select class="form-control" name="beat_number" id="beat_number">
+                                    <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number">
+                                    {{-- <select class="form-control" name="beat_number" id="beat_number">
                                         <option value="">select Beat Number</option>
                                          @foreach ($Ward as $Wa)
                                             <option value="{{$Wa->beat_number}}">{{$Wa->beat_number}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid beat_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="text" placeholder="Enter Vehicle Number"> --}}
-                                    <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                    <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number">
+                                    {{-- <select class="form-control" name="vehicle_number" id="vehicle_number">
                                         <option value="">select Vehicle Number</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="collection_center">collection center<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter collection center"> --}}
-                                    <select class="form-control" name="collection_center" id="collection_center">
+                                    <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter collection center">
+                                    {{-- <select class="form-control" name="collection_center" id="collection_center">
                                         <option value="">select collection center</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
-                                    </select>
+                                    </select> --}}
                                     <span class="text-danger is-invalid collection_center_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -463,9 +463,9 @@
                 {
                     $("#editForm input[id='edit_model_id']").val(data.TripSheet.id);
                     $("#editForm input[name='trip_date']").val(data.TripSheet.trip_date);
-                    $("#editForm select[name='beat_number']").val(data.TripSheet.beat_number);
-                    $("#editForm select[name='vehicle_number']").val(data.TripSheet.vehicle_number);
-                    $("#editForm select[name='collection_center']").val(data.TripSheet.collection_center);
+                    $("#editForm input[name='beat_number']").val(data.TripSheet.beat_number);
+                    $("#editForm input[name='vehicle_number']").val(data.TripSheet.vehicle_number);
+                    $("#editForm input[name='collection_center']").val(data.TripSheet.collection_center);
                     $("#editForm input[name='in_time']").val(data.TripSheet.in_time);
                     $("#editForm input[name='out_time']").val(data.TripSheet.out_time);
                     $("#editForm input[name='entry_weight']").val(data.TripSheet.entry_weight);
@@ -532,12 +532,7 @@
         let html = `
             <tr id="editRow${editBreakupCounter}">
                 <td>
-                    <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
-                                    <option value="">Select WasteType</option>
-                                  @foreach($CapacityOfVehicle as $Capacity)
-                                 <option value="{{ $Capacity->waste_types}}">{{ $Capacity->waste_types }}</option>
-                                @endforeach
-                              </select>
+                    <input type="number" class="form-control editvolume" name="waste_type[]" value="${value['waste_type']}" required />
                 </td>
                 <td>
                     <input type="number" class="form-control editvolume" name="volume[]" value="${value['volume']}" required />
@@ -661,12 +656,7 @@
         // Automatically add the first row when the page loads
         let initialHtml = `<tr id="tripsheetRow${tripsheetRowCount}">
                                 <td>
-                                    <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
-                                        <option value="">Select WasteType</option>
-                                        @foreach($CapacityOfVehicle as $Capacity)
-                                            <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                                        @endforeach
-                                    </select>
+                                      <input type="number" name="waste_type[]" class="form-control volumeInput" placeholder="Enter volume" required>
                                 </td>
                                 <td>
                                     <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>

@@ -551,12 +551,7 @@
         $('#addMoreSegregationButton').on('click', function () {
             let html = `<tr id="SegregationRow${SegregationRowCount}">
                             <td>
-                                <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
-                                    <option value="">Select WasteType</option>
-                                    @foreach($CapacityOfVehicle as $Capacity)
-                                        <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                                    @endforeach
-                                </select>
+                                 <input type="text" name="waste_type[]" class="form-control" placeholder="Enter waste type" required>
                             </td>
                             <td>
                                 <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>

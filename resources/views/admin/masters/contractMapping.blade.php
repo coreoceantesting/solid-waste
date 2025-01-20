@@ -306,19 +306,13 @@
                 <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
              </td>
             <td>
-                <select name="waste_type[]" class="form-select AddFormWasteTypes" required>
-                    <option value="">Select WasteTypes</option>
-                    ${CapacityOfVehicleOptions}
-                </select>
+                 <input type="number" class="form-control editGarbageVolume" required name="waste_type[]" value="${value['waste_type']}" required/>
              </td>
              <td>
                 <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" required/>
              </td>
              <td>
-                <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
-                    <option value="">Select BeatNumber</option>
-                    ${BeatNumberOptions}
-                </select>
+                <input type="number" class="form-control editEmployeeCount" required name="beat_number[]" value="${value['beat_number']}" required/>
              </td>
              <td>
                 <input type="number" class="form-control editEmployeeCount" required name="employee_count[]" value="${value['employee_count']}" required/>
@@ -386,22 +380,13 @@
                     <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
                 </td>
                 <td>
-                  <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
-                                 <option value="">Select VehicleNumber</option>
-                                @foreach($CapacityOfVehicle as $Capacity)
-                               <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                            @endforeach
-                          </select>
+                    <input type="text" class="form-control edittask" name="waste_type[]" value="${value['waste_type']}" required />
                 </td>
                 <td>
                     <input type="number" class="form-control editGarbageVolume" name="garbage_volume[]" value="${value['garbage_volume']}" required />
                 </td>
                 <td>
-                     <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
-                                 <option value="">Select BeatNumber</option>
-                                @foreach($Ward as $Wa)
-                               <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
-                            @endforeach
+                     <input type="number" class="form-control editEmployeeCount" name="beat_number[]" value="${value['beat_number']}" required />
                 </td>
                 <td>
                     <input type="number" class="form-control editEmployeeCount" name="employee_count[]" value="${value['employee_count']}" required />
@@ -541,23 +526,13 @@
                                 <input type="text" name="task[]" class="form-control" placeholder="Enter task" required oninput="validateEmployeeName(this)"/>
                             </td>
                             <td>
-                                 <select name="waste_type[]" class="form-select AddFormSelectWasteType" required/>
-                                    <option value="">Select wastetype</option>
-                                  @foreach($CapacityOfVehicle as $Capacity)
-                                     <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                                  @endforeach
-                                </select>
+                                <input type="text" name="waste_type[]" class="form-control" placeholder="Enter task" required oninput="validateEmployeeName(this)"/>
                             </td>
                             <td>
                                 <input type="number" name="garbage_volume[]" class="form-control" placeholder="Enter Garbage Volume" required/>
                             </td>
                              <td>
-                                <select name="beat_number[]" class="form-select AddFormSelectWasteType" required/>
-                                    <option value="">Select wastetype</option>
-                                  @foreach($Ward as $Wa)
-                                 <option value="{{ $Wa->beat_number  }}">{{ $Wa->beat_number }}</option>
-                                @endforeach
-                              </select>
+                                <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat number" required/>
                             </td>
                             <td>
                                 <input type="number" name="employee_count[]" class="form-control" placeholder="Enter Employee Count" required/>
