@@ -47,7 +47,7 @@
                     </a>
                     <div class="collapse menu-dropdown {{ request()->routeIs('wards.index') || request()->routeIs('area-type.index') || request()->routeIs('collection-type.index') || request()->routeIs('collection-transport.index') || request()->routeIs('census-years.index') || request()->routeIs('types-of-fine-charges.index') || request()->routeIs('inspection-type.index') || request()->routeIs('locality-service-type.index') || request()->routeIs('maintenance-type.index') || request()->routeIs('pump-type.index') || request()->routeIs('shift-timings.index') || request()->routeIs('types-of-item-solds.index') || request()->routeIs('vehicle-type.index') || request()->routeIs('vehicles.index') || request()->routeIs('prefix.index') || request()->routeIs('prefix-details.index') || request()->routeIs('designations.index') || request()->routeIs('collection-centers.index') || request()->routeIs('slrm-employee-details.index') || request()->routeIs('population.index') || request()->routeIs('form17.index') ? 'show' : '' }}" id="masters">
                         <ul class="nav nav-sm flex-column">
-                            {{-- <li class="nav-item">
+                             {{-- <li class="nav-item">
                                 <a href="{{ route('wards.index') }}" class="nav-link {{ request()->routeIs('wards.index') ? 'active' : '' }}" data-key="t-horizontal">Wards</a>
                             </li>
                             <li class="nav-item">
@@ -82,13 +82,13 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('types-of-item-solds.index') }}" class="nav-link {{ request()->routeIs('types-of-item-solds.index') ? 'active' : '' }}" data-key="t-horizontal">Types of Item Sold</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a href="{{ route('vehicle-type.index') }}" class="nav-link {{ request()->routeIs('vehicle-type.index') ? 'active' : '' }}" data-key="t-horizontal">Vehicle Type</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('vehicles.index') }}" class="nav-link {{ request()->routeIs('vehicles.index') ? 'active' : '' }}" data-key="t-horizontal">Vehicles</a>
-                            </li> --}}
+                            </li>
                             <li class="nav-item">
                                 <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations.index') ? 'active' : '' }}" data-key="t-horizontal">Designations</a>
                             </li>
