@@ -90,6 +90,12 @@
                                 <a href="{{ route('vehicles.index') }}" class="nav-link {{ request()->routeIs('vehicles.index') ? 'active' : '' }}" data-key="t-horizontal">Vehicles</a>
                             </li> --}}
                             <li class="nav-item">
+                                <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations.index') ? 'active' : '' }}" data-key="t-horizontal">Designations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('collection-centers.index') }}" class="nav-link {{ request()->routeIs('collection-centers.index') ? 'active' : '' }}" data-key="t-horizontal">Collection Centers</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('prefix.index') }}" class="nav-link {{ request()->routeIs('prefix.index') ? 'active' : '' }}" data-key="t-horizontal">Prefix Type</a>
                             </li>
                             <li class="nav-item">
@@ -100,14 +106,14 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('collection-centers.index') }}" class="nav-link {{ request()->routeIs('collection-centers.index') ? 'active' : '' }}" data-key="t-horizontal">Collection Centers</a>
-                            </li>
-                            <li class="nav-item">
+                            </li> --}}
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('slrm-employee-details.index') }}" class="nav-link {{ request()->routeIs('slrm-employee-details.index') ? 'active' : '' }}" data-key="t-horizontal">SLRM Employee Details</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('population.index') }}" class="nav-link {{ request()->routeIs('population.index') ? 'active' : '' }}" data-key="t-horizontal">Population</a>
-                            </li> --}}
-                            {{-- <li class="nav-item">
+                            </li> -
+                             <li class="nav-item">
                                 <a href="{{ route('form17.index') }}" class="nav-link {{ request()->routeIs('form17.index') ? 'active' : '' }}" data-key="t-horizontal">Form 17</a>
                             </li> --}}
                         </ul>
