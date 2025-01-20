@@ -121,7 +121,7 @@
                     <div class="collapse menu-dropdown {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('trip-sheet.index') || request()->routeIs('vehicle-target.index') ? 'show' : '' }}" id="transactions">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('vehicle-scheduling-information.index') }}" class="nav-link {{ request()->routeIs('vehicle-scheduling-information.index') ? 'active' : '' }}" data-key="t-transaction-list">Vehicle Information Scheduling</a>
+                                <a href="{{ route('vehicle-scheduling-information.index') }}" class="nav-link {{ request()->routeIs('vehicle-scheduling-information.index') ? 'active' : '' }}" data-key="t-transaction-list">Collection Scheduling</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('contract-mapping.index') }}" class="nav-link {{ request()->routeIs('contract-mapping.index') ? 'active' : '' }}" data-key="t-transaction-details">Contract Mapping</a>

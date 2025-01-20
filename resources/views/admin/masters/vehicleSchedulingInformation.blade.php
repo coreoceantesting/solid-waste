@@ -17,13 +17,13 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type">
-                                        {{-- <select class="form-select" name="vehicle_type" id="vehicle_type">
+                                    {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
+                                        <select class="form-select" name="vehicle_type" id="vehicle_type">
                                         <option value="">select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
                                          @endforeach
-                                    </select> --}}
+                                    </select>
                                     <span class="text-danger is-invalid vehicle_type_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -108,12 +108,12 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
                                     <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type">
-                                      {{-- <select class="form-control" name="vehicle_type" id="vehicle_type">
+                                      <select class="form-control" name="vehicle_type" id="vehicle_type">
                                         <option value="">select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
                                          @endforeach
-                                    </select> --}}
+                                    </select>
                                     <span class="text-danger is-invalid vehicle_type_err"></span>
                                 </div>
                                 <div class="col-md-4">
