@@ -290,7 +290,10 @@
                         VehicleTarget += `
                             <tr id="editRow${key}">
                                 <td>
-                                 <input type="number" class="form-control editGarbageVolumne" required name="vehicle_number[]" value="${value['vehicle_number']}" />
+                                 <select name="vehicle_number[]" class="form-select AddFormvehicleNumber" required>
+                                        <option value="">Select vehicleNumber</option>
+                                        ${VehicleNumberOptions}
+                                    </select>
                                 </td>
                                 <td>
                                      <input type="number" class="form-control editGarbageVolumne" required name="beat_number[]" value="${value['beat_number']}" />
@@ -337,7 +340,12 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                    <input type="number" class="form-control editGarbageVolume" name="vehicle_number[]" value="${value['vehicle_number']}" required />
+                    <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                 <option value="">Select VehicleNumber</option>
+                                @foreach($vehicles as $vehi)
+                               <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                            @endforeach
+                          </select>
                 </td>
                 <td>
                   <input type="number" class="form-control editGarbageVolume" name="beat_number[]" value="${value['beat_number']}" required />
@@ -460,7 +468,12 @@
         // Automatically add the first row when the page loads
         let initialHtml = `<tr id="vehicletargetRow${vehicletargetRowCount}">
                                 <td>
-                                    <input type="number" name="vehicle_number[]" class="form-control" placeholder="Enter Vehicle Number" required>
+                                   <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                 <option value="">Select VehicleNumber</option>
+                                 @foreach($vehicles as $vehi)
+                                <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                               @endforeach
+                             </select>
                                 </td>
                                 <td>
                                     <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat Number" required>
@@ -479,7 +492,12 @@
         $('#addMoreVehicleTargetButton').on('click', function () {
             let html = `<tr id="vehicletargetRow${vehicletargetRowCount}">
                             <td>
-                              <input type="number" name="vehicle_number[]" class="form-control" placeholder="Enter Vehicle Number" required>
+                             <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                 <option value="">Select VehicleNumber</option>
+                                @foreach($vehicles as $vehi)
+                               <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                            @endforeach
+                          </select>
                             </td>
                             <td>
                                 <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat Number" required>

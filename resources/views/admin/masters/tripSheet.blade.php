@@ -33,24 +33,24 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number">
-                                    {{-- <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                    {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
+                                    <select class="form-control" name="vehicle_number" id="vehicle_number">
                                         <option value="">select Vehicle Number</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
                                          @endforeach
-                                    </select> --}}
+                                    </select>
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="collection_center">Collection Center<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center">
-                                    {{-- <select class="form-control" name="collection_center" id="collection_center">
+                                    {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center"> --}}
+                                    <select class="form-control" name="collection_center" id="collection_center">
                                         <option value="">select collection center</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
-                                    </select> --}}
+                                    </select>
                                     <span class="text-danger is-invalid collection_center_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -166,24 +166,24 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number">
-                                    {{-- <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                    {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
+                                     <select class="form-control" name="vehicle_number" id="vehicle_number">
                                         <option value="">select Vehicle Number</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
                                          @endforeach
-                                    </select> --}}
+                                    </select>
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="collection_center">collection center<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter collection center">
-                                    {{-- <select class="form-control" name="collection_center" id="collection_center">
+                                    {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter collection center"> --}}
+                                    <select class="form-control" name="collection_center" id="collection_center">
                                         <option value="">select collection center</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
-                                    </select> --}}
+                                    </select>
                                     <span class="text-danger is-invalid collection_center_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -463,8 +463,8 @@
                 {
                     $("#editForm input[id='edit_model_id']").val(data.TripSheet.id);
                     $("#editForm input[name='trip_date']").val(data.TripSheet.trip_date);
-                    $("#editForm input[name='beat_number']").val(data.TripSheet.beat_number);
-                    $("#editForm input[name='vehicle_number']").val(data.TripSheet.vehicle_number);
+                    $("#editForm select[name='beat_number']").val(data.TripSheet.beat_number);
+                    $("#editForm select[name='vehicle_number']").val(data.TripSheet.vehicle_number);
                     $("#editForm input[name='collection_center']").val(data.TripSheet.collection_center);
                     $("#editForm input[name='in_time']").val(data.TripSheet.in_time);
                     $("#editForm input[name='out_time']").val(data.TripSheet.out_time);
