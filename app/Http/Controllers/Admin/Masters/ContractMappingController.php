@@ -11,6 +11,7 @@ use App\Models\TaskMapping;
 use App\Models\SlrmEmployeeDetails;
 use App\Models\CapacityOfVehicle;
 use App\Models\Ward;
+use App\Models\Prefix;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
@@ -26,8 +27,9 @@ class ContractMappingController extends Controller
         $SlrmEmployeeDetails = SlrmEmployeeDetails::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
         $Ward = Ward::whereNull('deleted_at')->get();
+        $Prefix = Prefix::whereNull('deleted_at')->get();
 
-        return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward]);
+        return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward, 'Prefix'=>$Prefix]);
     }
 
     /**

@@ -280,18 +280,28 @@
                    CapacityOfVehicleOptions += `<option value="{{ $Capacity->waste_types }}" ${value['waste_type'] == "{{ $Capacity->waste_types }}" ? 'selected' : ''}>{{ $Capacity->waste_types }}</option>`;
                   @endforeach
 
-                let BeatNumberOptions = ''; // Variable to hold vehicle type options
-    // Loop through VehicleType data dynamically from the controller
-                @foreach($Ward as $Wa)
-                BeatNumberOptions += `<option value="{{ $Wa->beat_number }}" ${value['beat_number'] == "{{ $Wa->beat_number }}" ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
-               @endforeach
+                 let BeatNumberOptions = ''; // Variable to hold vehicle type options
+               // Loop through VehicleType data dynamically from the controller
+                 @foreach($Ward as $Wa)
+                 BeatNumberOptions += `<option value="{{ $Wa->beat_number }}" ${value['beat_number'] == "{{ $Wa->beat_number }}" ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
+                 @endforeach
 
              // Append HTML for each row dynamically
+
+                let ZoneOptions = ''; // Variable to hold vehicle type options
+               // Loop through VehicleType data dynamically from the controller
+                 @foreach($Prefix as $Pref)
+                 ZoneOptions += `<option value="{{ $Pref->Zone }}" ${value['zone'] == "{{ $Pref->Zone }}" ? 'selected' : ''}>{{ $Pref->Zone }}</option>`;
+                 @endforeach
+
              //
              taskmapping += `
              <tr id="editRow${key}">
              <td>
-                <input type="text" class="form-control editZone" required name="zone[]" value="${value['zone']}" required oninput="validateEmployeeName(this)"/>
+                <select name="zone[]" class="form-select AddFormZone" required>
+                    <option value="">Select zone</option>
+                    ${ZoneOptions}
+                </select>
              </td>
              <td>
                 <input type="text" class="form-control editWard" required name="ward[]" value="${value['ward']}" required oninput="validateEmployeeName(this)"/>
@@ -306,7 +316,7 @@
                 <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
              </td>
             <td>
-                 <input type="number" class="form-control editGarbageVolume" required name="waste_type[]" value="${value['waste_type']}" required/>
+                 <input type="text" class="form-control editGarbageVolume" required name="waste_type[]" value="${value['waste_type']}" required/>
              </td>
              <td>
                 <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" required/>
@@ -365,7 +375,10 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                    <input type="text" class="form-control editzone" name="zone[]" value="${value['zone']}" required oninput="validateEmployeeName(this)" />
+                    <select name="zone[]" class="form-select AddFormZone" required>
+                    <option value="">Select zone</option>
+                    ${ZoneOptions}
+                </select>
                 </td>
                  <td>
                     <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required oninput="validateEmployeeName(this)"/>
@@ -511,7 +524,12 @@
         function appendTaskRow() {
             let html = `<tr id="taskRow${taskRowCount}">
                             <td>
-                                <input type="text" name="zone[]" class="form-control" placeholder="Enter zone" required oninput="validateEmployeeName(this)"/>
+                                <select name="zone[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select zone</option>
+                                  @foreach($Prefix as $Pref)
+                                     <option value="{{ $Pref->Zone }}">{{ $Pref->Zone}}</option>
+                                  @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input type="text" name="ward[]" class="form-control" placeholder="Enter ward" required oninput="validateEmployeeName(this)"/>
