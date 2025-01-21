@@ -237,7 +237,7 @@
 
                             <!-- Second Table: Additional Details -->
                             <div id="additional-info-table" class="mt-4">
-                                <h5 class="modal-title">Task Mapping</h5>
+                                <h5 class="modal-title">Segregation</h5>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>

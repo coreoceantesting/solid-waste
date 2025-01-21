@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">Vehicles Scheduling Information</x-slot>
-    <x-slot name="heading">Vehicles Scheduling Information</x-slot>
+    <x-slot name="title">Collection Scheduling</x-slot>
+    <x-slot name="heading">Collection Scheduling</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -11,7 +11,7 @@
                     <form class="theme-form" name="addForm" id="addForm" enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
-                            <h4 class="card-title">Add Vehicles Scheduling Information</h4>
+                            <h4 class="card-title">Add Collection Scheduling</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
@@ -100,14 +100,14 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit vehicle</h4>
+                            <h4 class="card-title">Edit Collection Scheduling</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type">
+                                    {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
                                       <select class="form-control" name="vehicle_type" id="vehicle_type">
                                         <option value="">select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
@@ -243,7 +243,7 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header border-bottom">
-                        <h5 class="modal-title" id="vehicalModelLabel">Vehicle Scheduling Information</h5>
+                        <h5 class="modal-title" id="vehicalModelLabel">Collection Scheduling </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
