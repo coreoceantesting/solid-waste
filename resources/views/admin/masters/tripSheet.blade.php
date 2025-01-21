@@ -297,7 +297,7 @@
                                         <th>In Time</th>
                                         <th>Out Time</th>
                                         <th>Entry Weight</th>
-                                        <th>Exit Weight</th>
+                                        {{-- <th>Exit Weight</th> --}}
                                         <th>Total Garbage</th>
                                         {{-- <th>Driver Name</th>
                                         <th>Weight Slip Number</th>
@@ -316,7 +316,7 @@
                                             <td>{{ $Trip->collection_center }}</td>
                                             <td>{{ $Trip->in_time }}</td>
                                             <td>{{ $Trip->out_time }}</td>
-                                            <td>{{ $Trip->entry_weight }}</td>
+                                            {{-- <td>{{ $Trip->entry_weight }}</td> --}}
                                             <td>{{ $Trip->exit_weight }}</td>
                                             {{-- <td>{{ $Trip->total_garbage }}</td>
                                             <td>{{ $Trip->driver_name }}</td>
