@@ -30,12 +30,20 @@ class ContractMappingController extends Controller
         $Ward = Ward::whereNull('deleted_at')->get();
         // $Prefix = Prefix::whereNull('deleted_at')->get();
 
-        $Prefix = DB::table('prefixes')->where('Prefix_Name','Zn')->first();
-        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
-        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->first();
-        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
-        return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward, 'Prefix'=>$Prefix,'PrefixDetails'=>$PrefixDetails]);
-    }
+        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Zn')->first();
+        $ZoneDetails = [];
+        if ($ZonePrefix) {
+            $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->get();
+        }
+
+// Retrieve Waste Type Prefix Details
+        $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->first();
+        $WasteTypeDetails = [];
+        if ($WasteTypePrefix) {
+            $WasteTypeDetails = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->get();
+        }
+        return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward, 'ZonePrefix'=>$ZonePrefix,'ZoneDetails'=>$ZoneDetails,'WasteTypePrefix'=>$WasteTypePrefix,'WasteTypeDetails'=>$WasteTypeDetails]);
+         }
 
     /**
      * Show the form for creating a new resource.
@@ -94,9 +102,25 @@ class ContractMappingController extends Controller
             $ContractMapping = ContractMapping::findOrFail($id);
 
             // Retrieve related VehicleInformation for this vehicle scheduling ID
-            $TaskMapping = TaskMapping::where('contract_mapping_id', $id)
-                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
-                                                    ->get();
+            // $TaskMapping = TaskMapping::where('contract_mapping_id', $id)
+            //                                         ->whereNull('deleted_at')  // Ensure deleted data is not included
+            //                                         ->get();
+
+
+            $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.Main_Prefix')
+            ->join('prefix_details as waste_details', 'task_mappings.waste_type', '=', 'waste_details.Main_Prefix')
+            ->where('task_mappings.contract_mapping_id', $id)
+            ->select(
+                'task_mappings.*',
+                'zone_details.value as zone_value',
+                'waste_details.value as waste_type_value'
+            )
+            ->get();
+
+            // $TaskMapping = TaskMapping::join('prefix_details','task_mappings.waste_type','=','prefix_details.Main_Prefix')
+            //              ->where('task_mappings.contract_mapping_id',$id)
+            //              ->select('task_mappings.*','prefix_details.value')
+            //              ->get();
 
             // Return the data as a JSON response
             return response()->json([
@@ -108,7 +132,7 @@ class ContractMappingController extends Controller
             // Return error response in case of failure
             return response()->json([
                 'result' => 0,
-                'message' => 'Error retrieving vehicle scheduling information.',
+                'message' => 'Error retrieving task mapping.',
                 'error' => $e->getMessage(),
             ]);
         }

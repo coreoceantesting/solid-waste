@@ -290,15 +290,15 @@
 
                 let ZoneOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
-                 @foreach($PrefixDetails as $Prefix)
-                 ZoneOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['zone'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                 @foreach($ZoneDetails as $Zone)
+                 ZoneOptions += `<option value="{{ $Zone->Main_Prefix }}" ${value['zone'] == "{{ $Zone->Main_Prefix }}" ? 'selected' : ''}>{{ $Zone->value }}</option>`;
                  @endforeach
 
 
                 let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
-                 @foreach($PrefixDetails as $Prefix)
-                 wastetypeOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['waste_type'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                 @foreach($WasteTypeDetails as $WasteType)
+                 wastetypeOptions += `<option value="{{ $WasteType->Main_Prefix }}" ${value['waste_type'] == "{{ $WasteType->Main_Prefix }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
                  @endforeach
 
              //
@@ -429,7 +429,7 @@
         editRowCounter++;
     });
 
-    // Event to remove a vehicle row (fixed event binding)
+    // Event to remove a vehicle row (fixed event binding)/
     $('body').on('click', '.removeRow', function() {
         let rowId = $(this).data('id');
         $(`#editRow${rowId}`).remove();
@@ -539,8 +539,8 @@
                             <td>
                                 <select name="zone[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select zone</option>
-                                  @foreach($PrefixDetails as $Prefix)
-                                     <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                  @foreach($ZoneDetails as $Zone)
+                                     <option value="{{ $Zone->Main_Prefix }}">{{ $Zone->value}}</option>
                                   @endforeach
                                 </select>
                             </td>
@@ -559,8 +559,8 @@
                             <td>
                                 <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
-                                  @foreach($PrefixDetails as $Prefix)
-                                     <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                  @foreach($WasteTypeDetails as $WasteType)
+                                     <option value="{{ $WasteType->Main_Prefix }}">{{ $WasteType->value}}</option>
                                   @endforeach
                                 </select>
                             </td>
@@ -637,12 +637,12 @@
                         $.each(response.TaskMapping, function(index, task) {
                             additionalDetailsHtml += `
                                 <tr>
-                                    <td>${task.zone || 'N/A'}</td>
+                                    <td>${task.zone_value || 'N/A'}</td>
                                     <td>${task.ward || 'N/A'}</td>
                                     <td>${task.colony || 'N/A'}</td>
                                     <td>${task.society || 'N/A'}</td>
                                     <td>${task.task || 'N/A'}</td>
-                                    <td>${task.waste_type || 'N/A'}</td>
+                                    <td>${task.waste_type_value || 'N/A'}</td>
                                     <td>${task.garbage_volume || 'N/A'}</td>
                                     <td>${task.beat_number || 'N/A'}</td>
                                     <td>${task.employee_count || 'N/A'}</td>

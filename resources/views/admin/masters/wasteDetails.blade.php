@@ -651,7 +651,7 @@
 
                             segregationHtml += `
                                 <tr>
-                                    <td>${value.waste_type || 'N/A'}</td>
+                                    <td>${value.value || 'N/A'}</td>
                                     <td>${value.waste_sub_type1 || 'N/A'}</td>
                                     <td>${value.waste_sub_type2 || 'N/A'}</td>
                                     <td>${volume.toFixed(2)}</td>
