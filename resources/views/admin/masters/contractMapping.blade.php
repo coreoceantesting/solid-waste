@@ -290,8 +290,8 @@
 
                 let ZoneOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
-                 @foreach($Prefix as $Pref)
-                 ZoneOptions += `<option value="{{ $Pref->Zone }}" ${value['zone'] == "{{ $Pref->Zone }}" ? 'selected' : ''}>{{ $Pref->Zone }}</option>`;
+                 @foreach($PrefixDetails as $Prefix)
+                 ZoneOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['zone'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
                  @endforeach
 
              //
@@ -526,8 +526,8 @@
                             <td>
                                 <select name="zone[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select zone</option>
-                                  @foreach($Prefix as $Pref)
-                                     <option value="{{ $Pref->Zone }}">{{ $Pref->Zone}}</option>
+                                  @foreach($PrefixDetails as $Prefix)
+                                     <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
                                   @endforeach
                                 </select>
                             </td>

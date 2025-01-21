@@ -26,11 +26,11 @@
                                     <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description">
                                     <span class="text-danger is-invalid Description_err"></span>
                                 </div>
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <label class="col-form-label" for="Zone">Zone<span class="text-danger">*</span></label>
                                     <input class="form-control" id="Zone" name="Zone" type="text" placeholder="Enter Zone">
                                     <span class="text-danger is-invalid Zone_err"></span>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Status">Status<span class="text-danger">*</span></label>
                                     <select class="form-control" id="Status" name="Status" required>
@@ -75,11 +75,11 @@
                                     <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description">
                                     <span class="text-danger is-invalid Description_err"></span>
                                 </div>
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <label class="col-form-label" for="Zone">Zone<span class="text-danger">*</span></label>
                                     <input class="form-control" id="Zone" name="Zone" type="text" placeholder="Enter Zone">
                                     <span class="text-danger is-invalid Zone_err"></span>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Status">Status<span class="text-danger">*</span></label>
                                     <select class="form-control" id="Status" name="Status" required>
@@ -122,7 +122,7 @@
                                         <th>Sr.No</th>
                                         <th>Prefix Name</th>
                                         <th>Description</th>
-                                        <th>Zone</th>
+                                        {{-- <th>Zone</th> --}}
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -133,7 +133,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $Pref->Prefix_Name }}</td>
                                             <td>{{ $Pref->Description }}</td>
-                                            <td>{{ $Pref->Zone }}</td>
+                                            {{-- <td>{{ $Pref->Zone }}</td> --}}
                                             <td>{{ $Pref->Status}}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit Prefix" data-id="{{ $Pref->id }}"><i data-feather="edit"></i></button>

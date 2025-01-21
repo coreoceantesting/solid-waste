@@ -19,6 +19,7 @@ class PrefixController extends Controller
     {
         $Prefix = Prefix::whereNull('deleted_by')->get();
 
+
         return view('admin.masters.prefix.prefix')->with(['Prefix'=> $Prefix]);
     }
 

@@ -24,7 +24,7 @@ class UpdatePrefixRequest extends FormRequest
         return [
             'Prefix_Name' => 'required',
             'Description' => 'required',
-            'Zone' => 'required',
+            // 'Zone' => 'required',
             'Status' => 'required'
         ];
     }
