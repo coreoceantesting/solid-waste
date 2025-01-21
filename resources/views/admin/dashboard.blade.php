@@ -38,7 +38,9 @@
         </div>
     </div>
 
-
+<style>element.style {
+    overflow: hidden;
+}</style>
     @push('scripts')
     @endpush
 </x-admin.layout>
