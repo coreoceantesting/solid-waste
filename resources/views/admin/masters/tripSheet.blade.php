@@ -482,10 +482,20 @@
                      let totalVolum = 0;
                     $.each(data.BreakUp, function(key, value) {
 
+                        let wastetypeOptions = ''; // Variable to hold vehicle type options
+               // Loop through VehicleType data dynamically from the controller
+                       @foreach($PrefixDetails as $Prefix)
+                       wastetypeOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['waste_type'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                       @endforeach
+
+
                         BreakUp += `
                             <tr id="editRow${key}">
                                 <td>
-                                    <input type="text" class="form-control editWasteType" name="waste_type[]" value="${value['waste_type']}" required />
+                                    <select name="waste_type[]" class="form-select AddFormWasteType" required>
+                                     <option value="">Select WasteType</option>
+                                    ${wastetypeOptions}
+                                   </select>
                                 </td>
                                 <td>
                                     <input type="number" class="form-control editVolume" name="volume[]" value="${value['volume']}" required />
@@ -532,7 +542,10 @@
         let html = `
             <tr id="editRow${editBreakupCounter}">
                 <td>
-                    <input type="number" class="form-control editvolume" name="waste_type[]" value="${value['waste_type']}" required />
+                     <select name="waste_type[]" class="form-select AddFormWasteType" required>
+                                     <option value="">Select WasteType</option>
+                                    ${wastetypeOptions}
+                    </select>
                 </td>
                 <td>
                     <input type="number" class="form-control editvolume" name="volume[]" value="${value['volume']}" required />
@@ -656,7 +669,12 @@
         // Automatically add the first row when the page loads
         let initialHtml = `<tr id="tripsheetRow${tripsheetRowCount}">
                                 <td>
-                                      <input type="number" name="waste_type[]" class="form-control volumeInput" placeholder="Enter volume" required>
+                                        <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
+                                        <option value="">Select waste type</option>
+                                    @foreach($PrefixDetails as $Prefix)
+                                        <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                    @endforeach
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>
@@ -672,12 +690,12 @@
         $('#addMoreBreakUpButton').on('click', function () {
             let html = `<tr id="tripsheetRow${tripsheetRowCount}">
                             <td>
-                                <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
-                                    <option value="">Select WasteType</option>
-                                    @foreach($CapacityOfVehicle as $Capacity)
-                                        <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
+                                    <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
+                                        <option value="">Select waste type</option>
+                                    @foreach($PrefixDetails as $Prefix)
+                                        <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
                                     @endforeach
-                                </select>
+                                    </select>
                             </td>
                             <td>
                                 <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>

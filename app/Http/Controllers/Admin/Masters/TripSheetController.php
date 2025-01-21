@@ -12,6 +12,8 @@ use App\Models\Ward;
 use App\Models\vehicles;
 use App\Models\collectionCenters;
 use App\Models\CapacityOfVehicle;
+use App\Models\Prefix;
+use App\Models\PrefixDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +27,11 @@ class TripSheetController extends Controller
         $vehicles = vehicles::whereNull('deleted_at')->get();
         $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
-        return view('admin.masters.tripSheet')->with(['TripSheet' => $TripSheet, 'BreakUp' => $BreakUp,'Ward'=> $Ward,'vehicles'=>$vehicles,'collectionCenters'=>$collectionCenters,'CapacityOfVehicle'=>$CapacityOfVehicle]);
+
+        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->first();
+        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
+
+        return view('admin.masters.tripSheet')->with(['TripSheet' => $TripSheet, 'BreakUp' => $BreakUp,'Ward'=> $Ward,'vehicles'=>$vehicles,'collectionCenters'=>$collectionCenters,'CapacityOfVehicle'=>$CapacityOfVehicle,'Prefix'=>$Prefix ,'PrefixDetails'=> $PrefixDetails ]);
     }
 
     public function store(StoreTripSheet $request)

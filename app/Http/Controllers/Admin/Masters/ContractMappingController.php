@@ -31,7 +31,8 @@ class ContractMappingController extends Controller
         // $Prefix = Prefix::whereNull('deleted_at')->get();
 
         $Prefix = DB::table('prefixes')->where('Prefix_Name','Zn')->first();
-
+        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
+        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->first();
         $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
         return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward, 'Prefix'=>$Prefix,'PrefixDetails'=>$PrefixDetails]);
     }

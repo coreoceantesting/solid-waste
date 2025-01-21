@@ -333,11 +333,20 @@
                       let totalVolum = 0;
                       $.each(data.Segregation, function(key, value) {
 
+                        let wastetypeOptions = ''; // Variable to hold vehicle type options
+               // Loop through VehicleType data dynamically from the controller
+                       @foreach($PrefixDetails as $Prefix)
+                       wastetypeOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['waste_type'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                       @endforeach
+
                         // Append HTML for each row dynamically
                         Segregation += `
                             <tr id="editRow${key}">
                                 <td>
-                                    <input type="text" class="form-control editWasteType" name="waste_type[]" value="${value['waste_type']}" required />
+                                     <select name="waste_type[]" class="form-select AddFormWasteType" required>
+                                     <option value="">Select WasteType</option>
+                                    ${wastetypeOptions}
+                                   </select>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control editWasteSubType1" name="waste_sub_type1[]" value="${value['waste_sub_type1']}" required />
@@ -389,12 +398,10 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                 <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
-                                    <option value="">Select WasteType</option>
-                                    @foreach($CapacityOfVehicle as $Capacity)
-                                        <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                                    @endforeach
-                                </select>
+                  <select name="waste_type[]" class="form-select AddFormWasteType" required>
+                                     <option value="">Select WasteType</option>
+                                    ${wastetypeOptions}
+                                   </select>
                 </td>
                 <td>
                     <input type="text" class="form-control editWasteSubType1" name="waste_sub_type1[]" value="${value['waste_sub_type1']}" required />
@@ -524,12 +531,12 @@
         // Automatically show the first row when the page loads
         let html = `<tr id="SegregationRow${SegregationRowCount}">
                         <td>
-                            <select name="waste_type[]" class="form-select AddFormSelectCapacityOfVehicle" required>
-                                <option value="">Select WasteType</option>
-                                @foreach($CapacityOfVehicle as $Capacity)
-                                    <option value="{{ $Capacity->waste_types }}">{{ $Capacity->waste_types }}</option>
-                                @endforeach
-                            </select>
+                             <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select waste type</option>
+                                  @foreach($PrefixDetails as $Prefix)
+                                     <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                  @endforeach
+                                </select>
                         </td>
                         <td>
                             <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>
@@ -551,7 +558,12 @@
         $('#addMoreSegregationButton').on('click', function () {
             let html = `<tr id="SegregationRow${SegregationRowCount}">
                             <td>
-                                 <input type="text" name="waste_type[]" class="form-control" placeholder="Enter waste type" required>
+                                  <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select waste type</option>
+                                  @foreach($PrefixDetails as $Prefix)
+                                     <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                  @endforeach
+                                </select>
                             </td>
                             <td>
                                 <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>

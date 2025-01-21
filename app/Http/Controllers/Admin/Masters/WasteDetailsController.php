@@ -10,6 +10,8 @@ use App\Models\WasteDetails;
 use App\Models\Segregation;
 use App\Models\collectionCenters;
 use App\Models\CapacityOfVehicle;
+use App\Models\Prefix;
+use App\Models\PrefixDetails;
 use Illuminate\Support\Facades\DB;
 
 class WasteDetailsController extends Controller
@@ -24,11 +26,15 @@ class WasteDetailsController extends Controller
         $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
 
+        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->first();
+        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
+
         return view('admin.masters.wasteDetails')->with([
             'WasteDetails' => $WasteDetails,
             'Segregation' => $Segregation,
             'collectionCenters'=>$collectionCenters,
             'CapacityOfVehicle'=>$CapacityOfVehicle,
+            'PrefixDetails'=>$PrefixDetails,
         ]);
     }
 
