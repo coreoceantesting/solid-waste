@@ -304,7 +304,7 @@
                                         <th>File Upload</th>
                                         <th>Waste Segregated</th> --}}
                                         <th>Action</th>
-                                    </tr>
+                                    399                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($TripSheet as $Trip)

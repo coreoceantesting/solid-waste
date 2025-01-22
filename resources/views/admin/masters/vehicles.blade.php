@@ -266,8 +266,8 @@
                                         <th>Vehicle Regional Number</th>
                                         <th>Engine Number</th>
                                         <th>Vehicle Standard Weight</th>
-                                        <th>Manufacturer</th>
-                                        <th>Vehicle Tracking</th>
+                                        {{-- <th>Manufacturer</th>
+                                        <th>Vehicle Tracking</th> --}}
                                         {{-- <th>Department Owned Vehicle</th>
                                         <th>Purchase Date</th>
                                         <th>Purchase Price</th>
@@ -287,8 +287,8 @@
                                         <td>{{$Vehi->vehicle_Reg_Number}}</td>
                                         <td>{{$Vehi->Engine_number}}</td>
                                         <td>{{$Vehi->vehicle_standard_weight}}</td>
-                                        <td>{{$Vehi->Manufacturer}}</td>
-                                        <td>{{$Vehi->vehicle_tracking}}</td>
+                                        {{-- <td>{{$Vehi->Manufacturer}}</td>
+                                        <td>{{$Vehi->vehicle_tracking}}</td> --}}
                                         {{-- <td>{{$Vehi->Department_owned_vehicle}}</td>
                                         <td>{{$Vehi->purchase_date}}</td>
                                         <td>{{$Vehi->purchase_price}}</td>
@@ -453,10 +453,20 @@
 
                     let html = "";
                     $.each(data.wasteManagements, function(key, value){
+
+                        let wastetypeOptions = ''; // Variable to hold vehicle type options
+               // Loop through VehicleType data dynamically from the controller
+                       @foreach($PrefixDetails as $Prefix)
+                       wastetypeOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['waste_types'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                       @endforeach
+
                         html += `
                             <tr id="editRow${key}">
                                 <td>
-                                    <input type="text" class="form-control editWasteCategory" name="waste_types[]" value="${value['waste_types']}" required />
+                                   <select name="waste_types[]" class="form-select AddFormWasteType" required>
+                                     <option value="">Select WasteType</option>
+                                    ${wastetypeOptions}
+                                   </select>
                                 </td>
                                 <td>
                                     <input type="number" class="form-control editWasteQuantity" name="capacity_in_kg[]" value="${value['capacity_in_kg']}" required />
@@ -493,7 +503,10 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                    <input type="text" class="form-control editWasteCategory" name="waste_types[]" required />
+                   <select name="waste_types[]" class="form-select AddFormWasteType" required>
+                                     <option value="">Select WasteType</option>
+                                    ${wastetypeOptions}
+                                   </select>
                 </td>
                 <td>
                     <input type="number" class="form-control editWasteQuantity" name="capacity_in_kg[]" required />
@@ -644,6 +657,7 @@
         });
     });
 </script>
+{{-- add more functionality in the vehicle form --}}
 <script>
     $(document).ready(function () {
         let wasteRowCount = 1; // Row counter
@@ -653,7 +667,12 @@
             return `
                 <tr id="wasteRow${rowId}">
                     <td>
-                        <input type="text" name="waste_types[]" class="form-control" placeholder="Enter Waste Type" required>
+                        <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select waste type</option>
+                                  @foreach($PrefixDetails as $Prefix)
+                                     <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                  @endforeach
+                        </select>
                     </td>
                     <td>
                         <input type="number" name="capacity_in_kg[]" class="form-control" placeholder="Enter Capacity (kg)" required>
@@ -729,7 +748,7 @@
                     $.each(data.CapacityOfVehicle, function(key, value) {
                         additionalDetailsHtml += `
                             <tr>
-                                <td>${value.waste_types}</td>
+                                <td>${value.value}</td>
                                 <td>${value.capacity_in_kg}</td>
                                 <td>${value.total_capacity}</td>
 

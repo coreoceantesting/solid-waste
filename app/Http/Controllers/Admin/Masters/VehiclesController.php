@@ -8,6 +8,8 @@ use App\Http\Requests\Admin\Masters\StoreVehicles;
 use App\Http\Requests\Admin\Masters\UpdateVehicles;
 use App\Models\vehicles;
 use App\Models\VehicleType;
+use App\Models\Prefix;
+use App\Models\PrefixDetails;
 use App\Models\CapacityOfVehicle;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +24,10 @@ class VehiclesController extends Controller
         $vehicles = vehicles::whereNull('deleted_by')->get();
         $vehicleType = VehicleType::whereNull('deleted_by')->get();
 
-        return view('admin.masters.vehicles')->with(['vehicles'=> $vehicles, 'VehicleType' => $vehicleType]);
+        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->first();
+        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
+
+        return view('admin.masters.vehicles')->with(['vehicles'=> $vehicles, 'VehicleType' => $vehicleType,'Prefix' =>$Prefix ,'PrefixDetails'=>$PrefixDetails]);
     }
 
     /**
@@ -79,11 +84,14 @@ class VehiclesController extends Controller
             // Retrieve the VehicleSchedulingInformation by ID
             $vehicles = vehicles::findOrFail($id);
 
-            // Retrieve related VehicleInformation for this vehicle scheduling ID
-            $CapacityOfVehicle = CapacityOfVehicle::where('vehicle_id', $id)
-                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
-                                                    ->get();
-
+            // // Retrieve related VehicleInformation for this vehicle scheduling ID
+            // $CapacityOfVehicle = CapacityOfVehicle::where('vehicle_id', $id)
+            //                                         ->whereNull('deleted_at')  // Ensure deleted data is not included
+            //                                         ->get();
+              $CapacityOfVehicle = CapacityOfVehicle::join('prefix_details','capacity_of_vehicles.waste_types','=','prefix_details.Main_Prefix')
+                                 ->where('capacity_of_vehicles.vehicle_id',$id)
+                                 ->select('capacity_of_vehicles.*','prefix_details.value')
+                                 ->get();
             // Return the data as a JSON response
             return response()->json([
                 'result' => 1,

@@ -3,11 +3,11 @@
     <x-slot name="heading">Collection Center</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
-            <!-- Bootstrap CSS -->
+            {{-- <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
      <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> --}}
         <!-- Add Form -->
         <div class="row" id="addContainer" style="display:none;">
             <div class="col-sm-12">
