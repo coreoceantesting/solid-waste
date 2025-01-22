@@ -86,7 +86,7 @@ class WasteDetailsController extends Controller
     public function show(string $id)
     {
         try {
-            // Retrieve the VehicleSchedulingInformation by ID
+            // Retrieve the VehicleSchedulingInformation by ID//
             $WasteDetails = WasteDetails::findOrFail($id);
 
             // Retrieve related VehicleInformation for this vehicle scheduling ID
