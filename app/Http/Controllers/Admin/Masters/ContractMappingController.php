@@ -40,7 +40,7 @@ class ContractMappingController extends Controller
         $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->first();
         $WasteTypeDetails = [];
         if ($WasteTypePrefix) {
-            $WasteTypeDetails = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->get();
+            $WasteTypeDetails[] = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->get();
         }
         return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward, 'ZonePrefix'=>$ZonePrefix,'ZoneDetails'=>$ZoneDetails,'WasteTypePrefix'=>$WasteTypePrefix,'WasteTypeDetails'=>$WasteTypeDetails]);
          }
