@@ -303,8 +303,7 @@
                                         <th>Weight Slip Number</th>
                                         <th>File Upload</th>
                                         <th>Waste Segregated</th> --}}
-                                        <th>Action</th>
-                                    399                                    </tr>
+                                        <th>Action</th>                                   </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($TripSheet as $Trip)
