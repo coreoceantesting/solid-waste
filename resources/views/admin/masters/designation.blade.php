@@ -18,7 +18,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="name">Designation Name<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter vehicle Name">
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter Designation">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -54,7 +54,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="name">Designation Name<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder=" Enter Designation Name ">
+                                    <input class="form-control" id="name" name="name" type="text" placeholder=" Enter Designation ">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
                                 <div class="col-md-4">
