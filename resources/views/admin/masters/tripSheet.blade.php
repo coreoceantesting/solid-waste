@@ -34,7 +34,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
-                                    <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                    <select class="form-select" name="vehicle_number" id="vehicle_number">
                                         <option value="">select Vehicle Number</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
@@ -45,7 +45,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="collection_center">Collection Center<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center"> --}}
-                                    <select class="form-control" name="collection_center" id="collection_center">
+                                    <select class="form-select" name="collection_center" id="collection_center">
                                         <option value="">select collection center</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
@@ -167,7 +167,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
-                                     <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                     <select class="form-select" name="vehicle_number" id="vehicle_number">
                                         <option value="">select Vehicle Number</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
@@ -178,7 +178,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="collection_center">collection center<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter collection center"> --}}
-                                    <select class="form-control" name="collection_center" id="collection_center">
+                                    <select class="form-select" name="collection_center" id="collection_center">
                                         <option value="">select collection center</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>

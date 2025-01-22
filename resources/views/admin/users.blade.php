@@ -5,12 +5,12 @@
 
     <style>
         .page-content{
-            padding: 10px 1.5rem;
-    background-color: var(--vz-secondary-bg);
-    -webkit-box-shadow: var(--vz-page-title-box-shadow);
-    box-shadow: var(--vz-page-title-box-shadow);
-    border-bottom: 1px solid var(--vz-page-title-border);
-    margin: -23px -1.5rem 1.5rem -1.5rem;
+        padding: 10px 1.5rem;
+        background-color: var(--vz-secondary-bg);
+       -webkit-box-shadow: var(--vz-page-title-box-shadow);
+        box-shadow: var(--vz-page-title-box-shadow);
+        border-bottom: 1px solid var(--vz-page-title-border);
+        margin: -23px -1.5rem 1.5rem -1.5rem;
         }
     </style>
 

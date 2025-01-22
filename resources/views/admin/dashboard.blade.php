@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h6 class="fw-medium text-dark mb-3">Vehicle Scheduling Information</h6>
                     <div class="d-flex justify-content-between">
-                        <h2 class="fw-semibold text-dark">0</h2>
+                        <h2 class="fw-semibold text-dark">{{ $vehicalScheduleInformationCount }}</h2>
                     </div>
                 </div>
             </div>

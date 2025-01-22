@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="plant_category">Plant Category<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="p_cat" id="plant_category" >
+                                    <select class="form-select" name="p_cat" id="plant_category" >
                                         <option value="" >Select Plant Category</option>
                                         <option value="X">X</option>
                                         <option value="Y">Y</option>
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="decentralize">Decentralize<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="decentral" id="decentralize">
+                                    <select class="form-select" name="decentral" id="decentralize">
                                         <option value=""  >Select Decentralize</option>
                                         <option value="X">X</option>
                                         <option value="Y">Y</option>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="p_own" id="plant_ownership">
+                                    <select class="form-select" name="p_own" id="plant_ownership">
                                         <option value=""  >Select Plant Ownership</option>
                                         <option value="X">X</option>
                                         <option value="Y">Y</option>
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="location">Location<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="location" id="location">
+                                    <select class="form-select" name="location" id="location">
                                         <option value="" >Select Location</option>
                                         <option value="X">X</option>
                                         <option value="Y">Y</option>
@@ -92,7 +92,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="whether_part_of_integrated_y_n">Whether Part Of Integrated (Y/N)<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="inte_with_plant" id="whether_part_of_integrated_y_n">
+                                    <select class="form-select" name="inte_with_plant" id="whether_part_of_integrated_y_n">
                                         <option value="" >Select Whether Part Of Integrated (Y/N)</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="integrated_with_plant_id">Integrated With Plant ID<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="inte_with_id" id="integrated_with_plant_id">
+                                    <select class="form-select" name="inte_with_id" id="integrated_with_plant_id">
                                         <option value="" >Select Integrated With Plant ID</option>
                                         <option value="X">X</option>
                                         <option value="Y">Y</option>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="is_rdf_also_wtc_y_n">Is RDF Also WTC (Y/N)<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="wtc" id="is_rdf_also_wtc_y_n">
+                                    <select class="form-select" name="wtc" id="is_rdf_also_wtc_y_n">
                                         <option value="" >Select Is RDF Also WTC (Y/N)</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="its_integrated_with_C_T_y_n">Its Integrated With C T (Y/N)<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="inte_c_t" id="its_integrated_with_C_T(y/n)">
+                                    <select class="form-select" name="inte_c_t" id="its_integrated_with_C_T(y/n)">
                                         <option value="" >Select Integrated With C T (Y/N)</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -134,7 +134,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="arrangement_if_integrated">Arrangement if Integrated<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="Arrangement" id="Arrangement_if_integrated">
+                                    <select class="form-select" name="Arrangement" id="Arrangement_if_integrated">
                                         <option value="" >Select Arrangement if Integrated</option>
                                         <option value="X">X</option>
                                         <option value="Y">Y</option>
@@ -296,7 +296,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="plant_category">Plant Category<span class="text-danger">*</span></label>
-                                        <select name="p_cat" id="plant_category" class="form-control">
+                                        <select name="p_cat" id="plant_category" class="form-select">
                                             <option value="" >Select Plant Category</option>
                                             <option value="X">X</option>
                                             <option value="Y">Y</option>
@@ -311,7 +311,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="decentralize">Decentralize<span class="text-danger">*</span></label>
-                                        <select name="decentral" id="decentralize" class="form-control">
+                                        <select name="decentral" id="decentralize" class="form-select">
                                             <option value="" >Select Decentralize</option>
                                             <option value="X">X</option>
                                             <option value="Y">Y</option>
@@ -321,7 +321,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
-                                        <select name="p_own" id="plant_ownership" class="form-control">
+                                        <select name="p_own" id="plant_ownership" class="form-select">
                                             <option value="" >Select Plant Ownership</option>
                                             <option value="X">X</option>
                                             <option value="Y">Y</option>
@@ -331,7 +331,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="location">Location<span class="text-danger">*</span></label>
-                                        <select name="location" id="location" class="form-control">
+                                        <select name="location" id="location" class="form-select">
                                             <option value="" >Select Location</option>
                                             <option value="X">X</option>
                                             <option value="Y">Y</option>
@@ -353,7 +353,7 @@
                                 <div class="mb-3 row">
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="whether_part_of_integrated">Whether Part Of Integrated (Y/N)<span class="text-danger">*</span></label>
-                                        <select name="inte_with_plant" id="whether_part_of_integrated" class="form-control">
+                                        <select name="inte_with_plant" id="whether_part_of_integrated" class="form-select">
                                             <option value="" >Select Plant Category</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -362,7 +362,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="integrated_with_plant_id">Integrated With Plant ID<span class="text-danger">*</span></label>
-                                        <select name="inte_with_id" id="integrated_with_plant_id" class="form-control">
+                                        <select name="inte_with_id" id="integrated_with_plant_id" class="form-select">
                                             <option value="">Select Integrated With Plant ID</option>
                                             <option value="X">X</option>
                                             <option value="Y">Y</option>
@@ -372,7 +372,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="is_rdf_also_wtc">Is RDF Also WTC (Y/N)<span class="text-danger">*</span></label>
-                                        <select name="wtc" id="is_rdf_also_wtc" class="form-control">
+                                        <select name="wtc" id="is_rdf_also_wtc" class="form-select">
                                             <option value="" >Is RDF Also WTC (Y/N)</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -386,7 +386,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="its_integrated_with_C_T">Its Integrated With C T (Y/N)<span class="text-danger">*</span></label>
-                                        <select name="inte_c_t" id="its_integrated_with_C_T(y/n)" class="form-control">
+                                        <select name="inte_c_t" id="its_integrated_with_C_T(y/n)" class="form-select">
                                             <option value="" >Select Plant Category</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -395,7 +395,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="Arrangement_if_integrated">Arrangement If Integrated<span class="text-danger">*</span></label>
-                                        <select name="Arrangement" id="Arrangement_if_integrated" class="form-control">
+                                        <select name="Arrangement" id="Arrangement_if_integrated" class="form-select">
                                             <option value="">Select Arrangement If Integrated</option>
                                             <option value="X">X</option>
                                             <option value="Y">Y</option>

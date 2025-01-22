@@ -18,7 +18,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Vehicle_Type">Vehicle Type<span class="text-danger">*</span></label>
-                                    <select name="Vehicle_Type" id="Vehicle_Type" class="form-control">
+                                    <select name="Vehicle_Type" id="Vehicle_Type" class="form-select">
                                         <option value="">Select Vehicle Type </option>
                                         @foreach ($VehicleType as $Vehicle )
                                             <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
@@ -138,7 +138,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Vehicle_Type">Vehicle Type<span class="text-danger">*</span></label>
-                                    <select name="Vehicle_Type" id="Vehicle_Type" class="form-control">
+                                    <select name="Vehicle_Type" id="Vehicle_Type" class="form-select">
                                         <option value="">Select Vehicle Type </option>
                                         @foreach ($VehicleType as $Vehicle )
                                             <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>

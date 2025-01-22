@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class DashboardController extends Controller
 {
 
     public function index()
     {
-        return view('admin.dashboard');
+        $vehicalScheduleInformationCount = DB::table('vehicle_scheduling_information')->whereNull('deleted_at')->count();
+
+        return view('admin.dashboard')->with([
+            'vehicalScheduleInformationCount' => $vehicalScheduleInformationCount
+        ]);
     }
 
     public function changeThemeMode()
