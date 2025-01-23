@@ -638,12 +638,12 @@
                         $.each(response.TaskMapping, function(index, task) {
                             additionalDetailsHtml += `
                                 <tr>
-                                    <td>${task.zone || 'N/A'}</td>
+                                    <td>${task?.zone?.value || 'N/A'}</td>
                                     <td>${task.ward || 'N/A'}</td>
                                     <td>${task.colony || 'N/A'}</td>
                                     <td>${task.society || 'N/A'}</td>
                                     <td>${task.task || 'N/A'}</td>
-                                    <td>${task.waste_type || 'N/A'}</td>
+                                    <td>${task?.waste_type?.value || 'N/A'}</td>
                                     <td>${task.garbage_volume || 'N/A'}</td>
                                     <td>${task.beat_number || 'N/A'}</td>
                                     <td>${task.employee_count || 'N/A'}</td>
