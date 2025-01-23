@@ -13,6 +13,10 @@ class Segregation extends Model
 
     protected $fillable = ['waste_type','waste_detail_id' ,'waste_sub_type1', 'waste_sub_type2', 'volume','created_by' , 'created_at' , 'updated_by' , 'updated_at' , 'deleted_by' , 'deleted_at' , 'ip_address'];
 
+    public function WasteType(){
+        return $this->belongsTo(PrefixDetails::class, 'waste_type', 'Main_Prefix');
+    }
+
     public static function booted()
     {
         static::created(function (self $user)
