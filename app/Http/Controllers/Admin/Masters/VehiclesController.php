@@ -22,6 +22,7 @@ class VehiclesController extends Controller
     public function index()
     {
         $vehicles = vehicles::whereNull('deleted_by')->get();
+        
         $vehicleType = VehicleType::whereNull('deleted_by')->get();
 
         $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
