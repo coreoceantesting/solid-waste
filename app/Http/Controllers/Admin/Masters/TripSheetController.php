@@ -93,7 +93,7 @@ class TripSheetController extends Controller
             // Return error response in case of failure
             return response()->json([
                 'result' => 0,
-                'message' => 'Error retrieving in the Breakup.',
+                'message' => 'Error retrieving in Breakup.',
                 'error' => $e->getMessage(),
             ]);
         }
