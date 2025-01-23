@@ -33,7 +33,7 @@ class ContractMappingController extends Controller
         $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Zn')->first();
         $ZoneDetails = [];
         if ($ZonePrefix) {
-            $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->get();
+            $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();
         }
 // Retrieve Waste Type Prefix Details
         $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->first();
