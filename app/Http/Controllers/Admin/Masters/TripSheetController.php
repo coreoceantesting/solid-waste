@@ -71,29 +71,38 @@ class TripSheetController extends Controller
     public function show(string $id)
     {
         try {
-            // Retrieve the VehicleSchedulingInformation by ID
+            // Retrieve the TripSheet by ID
             $TripSheet = TripSheet::findOrFail($id);
 
-            // Retrieve related VehicleInformation for this vehicle scheduling ID
-            $BreakUp = BreakUp::with(['WasteType'])->where('trip_sheet_id', $id)
-                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
-                                                    ->get();
+            // Retrieve related BreakUp data with WasteType relationship
+            $BreakUp = BreakUp::with('WasteType') // Ensure WasteType relationship is defined in the BreakUp model
+                ->where('trip_sheet_id', $id)
+                ->whereNull('deleted_at') // If soft deletes are enabled, consider using ->withoutTrashed()
+                ->get();
 
+            // Return the data as a JSON response
             return response()->json([
                 'result' => 1,
-                'TripSheet' => $TripSheet ,
+                'TripSheet' => $TripSheet,
                 'BreakUp' => $BreakUp,
             ]);
-        } catch (\Exception $e) {
-            // Return error response in case of failure
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Handle case where TripSheet is not found
             return response()->json([
                 'result' => 0,
-                'message' => 'Error retrieving in Breakup.',
+                'message' => 'TripSheet not found.',
                 'error' => $e->getMessage(),
-            ]);
+            ], 404);
+        } catch (\Exception $e) {
+            // Handle other exceptions
+            return response()->json([
+                'result' => 0,
+                'message' => 'An error occurred while retrieving the data.',
+                'error' => $e->getMessage(),
+            ], 500);
         }
-
     }
+
 
 
 
