@@ -71,42 +71,31 @@ class TripSheetController extends Controller
     public function show(string $id)
     {
         try {
-            // Retrieve the TripSheet by ID
+            // Retrieve the VehicleSchedulingInformation by ID
             $TripSheet = TripSheet::findOrFail($id);
 
-            // Retrieve related BreakUp data with WasteType relationship
-            $BreakUp = BreakUp::with('WasteType') // Ensure WasteType relationship is defined in the BreakUp model
-                ->where('trip_sheet_id', $id)
-                ->whereNull('deleted_at') // If soft deletes are enabled, consider using ->withoutTrashed()
-                ->get();
+            // Retrieve related VehicleInformation for this vehicle scheduling ID
+            $BreakUp = BreakUp::with(['WasteType'])->where('trip_sheet_id', $id)
+                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
+                                                    ->get();
 
-            // Return the data as a JSON response
             return response()->json([
                 'result' => 1,
-                'TripSheet' => $TripSheet,
+                'TripSheet' => $TripSheet ,
                 'BreakUp' => $BreakUp,
             ]);
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            // Handle case where TripSheet is not found
-            return response()->json([
-                'result' => 0,
-                'message' => 'TripSheet not found.',
-                'error' => $e->getMessage(),
-            ], 404);
         } catch (\Exception $e) {
-            // Handle other exceptions
+            // Return error response in case of failure
             return response()->json([
                 'result' => 0,
-                'message' => 'An error occurred while retrieving the data.',
+                'message' => 'Error retrieving in Breakup.',
                 'error' => $e->getMessage(),
-            ], 500);
+            ]);
         }
+
     }
 
-
-
-
-
+    
     public function edit(string $id)
     {
         $TripSheet = DB::table('trip_sheets')->where('id', $id)->first();
