@@ -84,14 +84,15 @@ class VehiclesController extends Controller
             // Retrieve the VehicleSchedulingInformation by ID
             $vehicles = vehicles::findOrFail($id);
 
-            // // Retrieve related VehicleInformation for this vehicle scheduling ID
-            // $CapacityOfVehicle = CapacityOfVehicle::where('vehicle_id', $id)
-            //                                         ->whereNull('deleted_at')  // Ensure deleted data is not included
-            //                                         ->get();
-              $CapacityOfVehicle = CapacityOfVehicle::join('prefix_details','capacity_of_vehicles.waste_types','=','prefix_details.Main_Prefix')
-                                 ->where('capacity_of_vehicles.vehicle_id',$id)
-                                 ->select('capacity_of_vehicles.*','prefix_details.value')
-                                 ->get();
+            // // Retrieve related VehicleInformation for this vehicle scheduling
+
+            $CapacityOfVehicle = CapacityOfVehicle::with(['WasteTypes'])->where('vehicle_id', $id)
+                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
+                                                    ->get();
+            //   $CapacityOfVehicle = CapacityOfVehicle::join('prefix_details','capacity_of_vehicles.waste_types','=','prefix_details.Main_Prefix')
+            //                      ->where('capacity_of_vehicles.vehicle_id',$id)
+            //                      ->select('capacity_of_vehicles.*','prefix_details.value')
+            //                      ->get();
             // Return the data as a JSON response
             return response()->json([
                 'result' => 1,
