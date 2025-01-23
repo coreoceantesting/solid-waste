@@ -109,18 +109,13 @@ class ContractMappingController extends Controller
             $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.Main_Prefix')
             ->join('prefix_details as waste_details', 'task_mappings.waste_type', '=', 'waste_details.Main_Prefix')
             ->where('task_mappings.contract_mapping_id', $id)
-            ->whereNull('zone_details.deleted_at')  // Ensure we're not fetching deleted records
-            ->whereNull('waste_details.deleted_at') // Ensure we're not fetching deleted records
-            ->whereNull('task_mappings.deleted_at') // Ensure we're not fetching deleted task mappings
             ->select(
-                'task_mappings.*', // Select only necessary columns to avoid duplication
-                 // Add other necessary task_mappings columns here
+                'task_mappings.*',
                 'zone_details.value as zone_value',
                 'waste_details.value as waste_type_value'
             )
-            ->groupBy('task_mappings.id', 'zone_details.value', 'waste_details.value') // Group by the task mapping ID and the related fields
+            ->distinct()
             ->get();
-
 
            // ->whereNull('prefix_details.deleted_at','task_mappings.deleted_at')
             // $TaskMapping = TaskMapping::join('prefix_details','task_mappings.waste_type','=','prefix_details.Main_Prefix')
