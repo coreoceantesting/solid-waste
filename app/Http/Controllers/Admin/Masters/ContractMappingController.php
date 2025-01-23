@@ -97,35 +97,27 @@ class ContractMappingController extends Controller
     public function show(string $id)
     {
         try {
-            // Retrieve the VehicleSchedulingInformation by ID
+            // Retrieve the ContractMapping by ID (with soft delete handling)
             $ContractMapping = ContractMapping::findOrFail($id);
 
-            // Retrieve related VehicleInformation for this vehicle scheduling ID
-            $TaskMapping = TaskMapping::where('contract_mapping_id', $id)
-                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
-                                                    ->get();
-
-
-            // $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.Main_Prefix')
-            // ->join('prefix_details as waste_details', 'task_mappings.waste_type', '=', 'waste_details.Main_Prefix')
-            // ->where('task_mappings.contract_mapping_id', $id)
-            // ->select(
-            //     'task_mappings.*',
-            //     'zone_details.value as zone_value',
-            //     'waste_details.value as waste_type_value'
-            // )
-            // ->get();
-
-           // ->whereNull('prefix_details.deleted_at','task_mappings.deleted_at')
-            // $TaskMapping = TaskMapping::join('prefix_details','task_mappings.waste_type','=','prefix_details.Main_Prefix')
-            //              ->where('task_mappings.contract_mapping_id',$id)
-            //              ->select('task_mappings.*','prefix_details.value')
-            //              ->get();
+            // Retrieve related TaskMapping data with proper joins and soft delete handling
+            $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.Main_Prefix')
+                ->join('prefix_details as waste_details', 'task_mappings.waste_type', '=', 'waste_details.Main_Prefix')
+                ->where('task_mappings.contract_mapping_id', $id)
+                ->whereNull('zone_details.deleted_at')  // Filter out deleted zone details
+                ->whereNull('waste_details.deleted_at') // Filter out deleted waste details
+                ->whereNull('task_mappings.deleted_at') // Filter out deleted task mappings
+                ->select(
+                    'task_mappings.*',
+                    'zone_details.value as zone_value',
+                    'waste_details.value as waste_type_value'
+                )
+                ->get();
 
             // Return the data as a JSON response
             return response()->json([
                 'result' => 1,
-                'ContractMapping' => $ContractMapping ,
+                'ContractMapping' => $ContractMapping,
                 'TaskMapping' => $TaskMapping,
             ]);
         } catch (\Exception $e) {
@@ -143,21 +135,20 @@ class ContractMappingController extends Controller
      */
     public function edit(string $id)
     {
-        $ContractMapping =  DB::table('contract_mappings')->where('id', $id)->whereNull('deleted_at')->first();
-        $TaskMapping = DB::table('task_mappings')->whereNull('deleted_at')->where('contract_mapping_id', $id)->get();
-        if ($ContractMapping)
-        {
-            $response = [
+        // Retrieve ContractMapping and TaskMapping, excluding soft-deleted records
+        $ContractMapping = ContractMapping::where('id', $id)->whereNull('deleted_at')->first();
+        $TaskMapping = TaskMapping::whereNull('deleted_at')->where('contract_mapping_id', $id)->get();
+
+        // Return response in a consistent format
+        if ($ContractMapping) {
+            return response()->json([
                 'result' => 1,
                 'ContractMapping' => $ContractMapping,
-                'TaskMapping'=> $TaskMapping
-            ];
+                'TaskMapping' => $TaskMapping
+            ]);
+        } else {
+            return response()->json(['result' => 0]);
         }
-        else
-        {
-            $response = ['result' => 0];
-        }
-        return $response;
     }
 
     /**
