@@ -16,11 +16,11 @@ class TaskMapping extends Model
     protected $fillable = ['zone','contract_mapping_id','ward', 'colony', 'society', 'task', 'waste_type', 'garbage_volume','beat_number','employee_count','vehicle_count', 'created_by' , 'created_at' , 'updated_by' , 'updated_at' , 'deleted_by' , 'deleted_at' , 'ip_address'];
 
     public function zone(){
-        return $this->belongsTo(PrefixDetails::class, 'zone', 'Main_Prefix');
+        return $this->belongsTo(PrefixDetails::class, 'zone', 'id');
     }
 
     public function wasteType(){
-        return $this->belongsTo(PrefixDetails::class, 'waste_type', 'Main_Prefix');
+        return $this->belongsTo(PrefixDetails::class, 'waste_type', 'id');
     }
 
     public static function booted()

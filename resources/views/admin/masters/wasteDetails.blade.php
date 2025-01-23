@@ -336,7 +336,7 @@
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                        @foreach($PrefixDetails as $Prefix)
-                       wastetypeOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['waste_type'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                       wastetypeOptions += `<option value="{{ $Prefix->id }}" ${value['waste_type'] == "{{ $Prefix->id }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
                        @endforeach
 
                         // Append HTML for each row dynamically
@@ -534,7 +534,7 @@
                              <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
                                   @foreach($PrefixDetails as $Prefix)
-                                     <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                     <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
                                   @endforeach
                                 </select>
                         </td>

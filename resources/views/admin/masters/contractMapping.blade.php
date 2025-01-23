@@ -291,7 +291,7 @@
                 let ZoneOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                  @foreach($ZoneDetails as $Zone)
-                 ZoneOptions += `<option value="{{ $Zone->Main_Prefix }}" ${value['zone'] == "{{ $Zone->Main_Prefix}}" ? 'selected' : ''}>{{ $Zone->value }}</option>`;
+                 ZoneOptions += `<option value="{{ $Zone->id }}" ${value['zone'] == "{{ $Zone->id}}" ? 'selected' : ''}>{{ $Zone->value }}</option>`;
                  @endforeach
 
 
@@ -299,7 +299,7 @@
                // Loop through VehicleType data dynamically from the controller
 
                  @foreach($WasteTypeDetails as $WasteType)
-                 wastetypeOptions += `<option value="{{ $WasteType->Main_Prefix}}" ${value['waste_type'] == "{{ $WasteType->Main_Prefix }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
+                 wastetypeOptions += `<option value="{{ $WasteType->id}}" ${value['waste_type'] == "{{ $WasteType->id }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
                  @endforeach
 
              //
@@ -541,7 +541,7 @@
                                 <select name="zone[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select zone</option>
                                   @foreach($ZoneDetails as $Zone)
-                                     <option value="{{ $Zone->Main_Prefix }}">{{ $Zone->value}}</option>
+                                     <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
                                   @endforeach
                                 </select>
                             </td>
@@ -561,7 +561,7 @@
                                 <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
                                   @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->Main_Prefix }}">{{ $WasteType->value}}</option>
+                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                   @endforeach
                                 </select>
                             </td>
