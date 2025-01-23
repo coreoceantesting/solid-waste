@@ -75,14 +75,14 @@ class TripSheetController extends Controller
             $TripSheet = TripSheet::findOrFail($id);
 
             // Retrieve related VehicleInformation for this vehicle scheduling ID
-            // $BreakUp = BreakUp::where('trip_sheet_id', $id)
-            //                                         ->whereNull('deleted_at')  // Ensure deleted data is not included
-            //                                         ->get();
+            $BreakUp = BreakUp::with(['WasteType'])->where('trip_sheet_id', $id)
+                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
+                                                    ->get();
 
-            $BreakUp = BreakUp::join('prefix_details','break_ups.waste_type','=','prefix_details.Main_Prefix')
-                      ->where('break_ups.trip_sheet_id',$id)
-                      ->select('break_ups.*','prefix_details.value')
-                      ->get();
+            // $BreakUp = BreakUp::join('prefix_details','break_ups.waste_type','=','prefix_details.Main_Prefix')
+            //           ->where('break_ups.trip_sheet_id',$id)
+            //           ->select('break_ups.*','prefix_details.value')
+            //           ->get();
             // Return the data as a JSON response
             return response()->json([
                 'result' => 1,

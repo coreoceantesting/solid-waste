@@ -780,7 +780,7 @@
 
                             BreakUpHtml += `
                                 <tr>
-                                    <td>${value.value || 'N/A'}</td>
+                                    <td>${value?.waste_type?.value || 'N/A'}</td>
                                     <td>${volume.toFixed(2)}</td>
                                 </tr>
                             `;
