@@ -30,7 +30,7 @@ class ContractMappingController extends Controller
         $Ward = Ward::whereNull('deleted_at')->get();
         // $Prefix = Prefix::whereNull('deleted_at')->get();
 
-        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Zn')->first();
+        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Zn')->whereNull('deleted_at')->first();
         $ZoneDetails = [];
         if ($ZonePrefix) {
             $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();
