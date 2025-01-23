@@ -291,7 +291,7 @@
                 let ZoneOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                  @foreach($ZoneDetails as $Zone)
-                 ZoneOptions += `<option value="{{ $Zone->Zone}}" ${value['zone'] == {{ $Zone->Zone}} ? 'selected' : ''}>{{ $Zone->value }}</option>`;
+                 ZoneOptions += `<option value="{{ $Zone->zone}}" ${value['zone'] == {{ $Zone->zone}} ? 'selected' : ''}>{{ $Zone->value }}</option>`;
                  @endforeach
 
 
