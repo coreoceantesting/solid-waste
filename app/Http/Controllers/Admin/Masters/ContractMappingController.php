@@ -36,10 +36,10 @@ class ContractMappingController extends Controller
             $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();
         }
 // Retrieve Waste Type Prefix Details
-        $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->first();
+        $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->whereNull('deleted_at')->first();
         $WasteTypeDetails = [];
         if ($WasteTypePrefix) {
-            $WasteTypeDetails = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->get();
+            $WasteTypeDetails = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->whereNull('deleted_at')->get();
         }
         return view('admin.masters.contractMapping')->with(['ContractMapping'=> $ContractMapping,'TaskMapping'=> $taskmappings,'SlrmEmployeeDetails'=>$SlrmEmployeeDetails,'CapacityOfVehicle'=>$CapacityOfVehicle,'Ward'=>$Ward, 'ZonePrefix'=>$ZonePrefix,'ZoneDetails'=>$ZoneDetails,'WasteTypePrefix'=>$WasteTypePrefix,'WasteTypeDetails'=>$WasteTypeDetails]);
          }
