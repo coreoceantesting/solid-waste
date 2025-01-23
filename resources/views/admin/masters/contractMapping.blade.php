@@ -291,14 +291,14 @@
                 let ZoneOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                  @foreach($ZoneDetails as $Zone)
-                 ZoneOptions += `<option value="{{ $Zone->id }}" ${value['zone'] == {{ $Zone->id}} ? 'selected' : ''}>{{ $Zone->value }}</option>`;
+                 ZoneOptions += `<option value="{{ $Zone->Zone}}" ${value['zone'] == {{ $Zone->Zone}} ? 'selected' : ''}>{{ $Zone->value }}</option>`;
                  @endforeach
 
 
                 let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                  @foreach($WasteTypeDetails as $WasteType)
-                 wastetypeOptions += `<option value="{{ $WasteType->id}}" ${value['waste_type'] == {{ $WasteType->id }} ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
+                 wastetypeOptions += `<option value="{{ $WasteType->WasteType}}" ${value['waste_type'] == {{ $WasteType->WasteType }} ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
                  @endforeach
 
              //
