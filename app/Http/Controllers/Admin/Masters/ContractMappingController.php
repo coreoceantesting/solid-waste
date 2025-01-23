@@ -142,7 +142,7 @@ class ContractMappingController extends Controller
      */
     public function edit(string $id)
     {
-        $ContractMapping =  DB::table('contract_mappings')->where('id', $id)->first();
+        $ContractMapping =  DB::table('contract_mappings')->where('id', $id)->whereNull('deleted_at')->first();
         $TaskMapping = DB::table('task_mappings')->whereNull('deleted_at')->where('contract_mapping_id', $id)->get();
         if ($ContractMapping)
         {
