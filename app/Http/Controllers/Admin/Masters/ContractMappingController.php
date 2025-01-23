@@ -114,7 +114,8 @@ class ContractMappingController extends Controller
                 'zone_details.value as zone_value',
                 'waste_details.value as waste_type_value'
             )
-            ->get();
+            ->whereNull('prefix_details.deleted_at','task_mappings.deleted_at')->get();
+
 
             // $TaskMapping = TaskMapping::join('prefix_details','task_mappings.waste_type','=','prefix_details.Main_Prefix')
             //              ->where('task_mappings.contract_mapping_id',$id)
