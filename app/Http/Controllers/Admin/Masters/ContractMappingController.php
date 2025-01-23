@@ -101,22 +101,22 @@ class ContractMappingController extends Controller
             $ContractMapping = ContractMapping::findOrFail($id);
 
             // Retrieve related VehicleInformation for this vehicle scheduling ID
-            // $TaskMapping = TaskMapping::where('contract_mapping_id', $id)
-            //                                         ->whereNull('deleted_at')  // Ensure deleted data is not included
-            //                                         ->get();
+            $TaskMapping = TaskMapping::where('contract_mapping_id', $id)
+                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
+                                                    ->get();
 
 
-            $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.Main_Prefix')
-            ->where('task_mappings.contract_mapping_id', $id)
-            ->select(
-                'task_mappings.*',
-                'zone_details.value as zone_value',
-                'waste_details.value as waste_type_value'
-            )
-            ->whereNull('prefix_details.deleted_at')
-            ->whereNull('task_mappings.deleted_at')
-            ->whereNull('deleted_at')
-            ->get();
+            // $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.Main_Prefix')
+            // ->where('task_mappings.contract_mapping_id', $id)
+            // ->select(
+            //     'task_mappings.*',
+            //     'zone_details.value as zone_value',
+            //     'waste_details.value as waste_type_value'
+            // )
+            // ->whereNull('prefix_details.deleted_at')
+            // ->whereNull('task_mappings.deleted_at')
+            // ->whereNull('deleted_at')
+            // ->get();
 
             // $TaskMapping = TaskMapping::where('task_mappings.contract_mapping_id', $id)->first();
 
