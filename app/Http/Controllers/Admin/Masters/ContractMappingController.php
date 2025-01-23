@@ -106,7 +106,7 @@ class ContractMappingController extends Controller
             //                                         ->get();
 
 
-            $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.id')
+            $TaskMapping = TaskMapping::join('prefix_details as zone_details', 'task_mappings.zone', '=', 'zone_details.Main_Prefix')
             ->where('task_mappings.contract_mapping_id', $id)
             ->select(
                 'task_mappings.*',
