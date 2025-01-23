@@ -113,8 +113,8 @@ class ContractMappingController extends Controller
             ->whereNull('waste_details.deleted_at') // Ensure we're not fetching deleted records
             ->whereNull('task_mappings.deleted_at') // Ensure we're not fetching deleted task mappings
             ->select(
-                'task_mappings.zone', // Select only necessary columns to avoid duplication
-                'task_mappings.waste_type', // Add other necessary task_mappings columns here
+                'task_mappings.*', // Select only necessary columns to avoid duplication
+                 // Add other necessary task_mappings columns here
                 'zone_details.value as zone_value',
                 'waste_details.value as waste_type_value'
             )
