@@ -26,8 +26,8 @@ class WasteDetailsController extends Controller
         $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
 
-        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->first();
-        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
+        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
+        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
 
         return view('admin.masters.wasteDetails')->with([
             'WasteDetails' => $WasteDetails,
