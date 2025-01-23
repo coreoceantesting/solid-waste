@@ -101,7 +101,7 @@ class ContractMappingController extends Controller
             $ContractMapping = ContractMapping::findOrFail($id);
 
             // Retrieve related VehicleInformation for this vehicle scheduling ID
-            $TaskMapping = TaskMapping::where('contract_mapping_id', $id)
+            $TaskMapping = TaskMapping::with(['zone', 'wasteType'])->where('contract_mapping_id', $id)
                                                     ->whereNull('deleted_at')  // Ensure deleted data is not included
                                                     ->get();
 
