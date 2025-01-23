@@ -462,9 +462,9 @@
                 {
                     $("#editForm input[id='edit_model_id']").val(data.TripSheet.id);
                     $("#editForm input[name='trip_date']").val(data.TripSheet.trip_date);
-                    $("#editForm select[name='beat_number']").val(data.TripSheet.beat_number);
+                    $("#editForm input[name='beat_number']").val(data.TripSheet.beat_number);
                     $("#editForm select[name='vehicle_number']").val(data.TripSheet.vehicle_number);
-                    $("#editForm input[name='collection_center']").val(data.TripSheet.collection_center);
+                    $("#editForm select[name='collection_center']").val(data.TripSheet.collection_center);
                     $("#editForm input[name='in_time']").val(data.TripSheet.in_time);
                     $("#editForm input[name='out_time']").val(data.TripSheet.out_time);
                     $("#editForm input[name='entry_weight']").val(data.TripSheet.entry_weight);
@@ -484,7 +484,7 @@
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                        @foreach($PrefixDetails as $Prefix)
-                       wastetypeOptions += `<option value="{{ $Prefix->Main_Prefix }}" ${value['waste_type'] == "{{ $Prefix->Main_Prefix }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                       wastetypeOptions += `<option value="{{ $Prefix->id }}" ${value['waste_type'] == "{{ $Prefix->id }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
                        @endforeach
 
 
@@ -671,7 +671,7 @@
                                         <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                         <option value="">Select waste type</option>
                                     @foreach($PrefixDetails as $Prefix)
-                                        <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                        <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
                                     @endforeach
                                     </select>
                                 </td>
@@ -692,7 +692,7 @@
                                     <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                         <option value="">Select waste type</option>
                                     @foreach($PrefixDetails as $Prefix)
-                                        <option value="{{ $Prefix->Main_Prefix }}">{{ $Prefix->value}}</option>
+                                        <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
                                     @endforeach
                                     </select>
                             </td>
