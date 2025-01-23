@@ -90,14 +90,14 @@ class WasteDetailsController extends Controller
             $WasteDetails = WasteDetails::findOrFail($id);
 
             // Retrieve related VehicleInformation for this vehicle scheduling ID
-            // $Segregation = Segregation::where('waste_detail_id', $id)
-            //                                         ->whereNull('deleted_at')  // Ensure deleted data is not included
-            //                                         ->get();
+            $Segregation = Segregation::with(['WasteType'])->where('waste_detail_id', $id)
+                                                    ->whereNull('deleted_at')  // Ensure deleted data is not included
+                                                    ->get();
 
-            $Segregation = Segregation::join('prefix_details','segregations.waste_type','=','prefix_details.Main_Prefix')
-                         ->where('segregations.waste_detail_id',$id)
-                         ->select('segregations.*','prefix_details.value')
-                         ->get();
+            // $Segregation = Segregation::join('prefix_details','segregations.waste_type','=','prefix_details.Main_Prefix')
+            //              ->where('segregations.waste_detail_id',$id)
+            //              ->select('segregations.*','prefix_details.value')
+            //              ->get();
             // Return the data as a JSON response
             return response()->json([
                 'result' => 1,
