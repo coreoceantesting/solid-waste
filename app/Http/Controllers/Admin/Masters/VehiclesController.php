@@ -24,8 +24,8 @@ class VehiclesController extends Controller
         $vehicles = vehicles::whereNull('deleted_by')->get();
         $vehicleType = VehicleType::whereNull('deleted_by')->get();
 
-        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->first();
-        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->get();
+        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
+        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
 
         return view('admin.masters.vehicles')->with(['vehicles'=> $vehicles, 'VehicleType' => $vehicleType,'Prefix' =>$Prefix ,'PrefixDetails'=>$PrefixDetails]);
     }
