@@ -560,7 +560,7 @@
         editBreakupCounter++;
     });
 
-
+    //
     // Event to remove a vehicle row (fixed event binding)
     $('body').on('click', '.removeRow', function() {
         let rowId = $(this).data('id');
