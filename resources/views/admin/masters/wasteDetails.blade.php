@@ -423,11 +423,29 @@
         editRowCounter++;
     });
 
-    // Event to remove a vehicle row (fixed event binding)
-    $('body').on('click', '.removeRow', function() {
+    $('body').on('click', '.removeRow', function () {
         let rowId = $(this).data('id');
         $(`#editRow${rowId}`).remove();
+        calculateTotalVolumeEdit(); // Recalculate the total volume after removing a row
     });
+
+    // Event to recalculate the total volume when any volume field is updated
+    $('body').on('input', 'input[name="volume[]"]', function () {
+        calculateTotalVolumeEdit();
+    });
+
+    function calculateTotalVolumeEdit() {
+        let totalVolume = 0;
+        // Iterate through each volume field and sum up the values
+        $('input[name="volume[]"]').each(function () {
+            let volume = parseFloat($(this).val());
+            if (!isNaN(volume)) {
+                totalVolume += volume;
+            }
+        });
+        // Update the total volume field
+        $('#editTotalVolumeField').val(totalVolume.toFixed(2)); // Display total volume with 2 decimal places
+    }
 </script>
 
 
