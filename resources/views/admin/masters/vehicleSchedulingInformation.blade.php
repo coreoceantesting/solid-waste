@@ -108,7 +108,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
-                                      <select class="form-control" name="vehicle_type" id="vehicle_type">
+                                      <select class="form-select" name="vehicle_type" id="vehicle_type">
                                         <option value="">select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
@@ -119,7 +119,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
-                                       <select class="form-control" name="vehicle_number" id="vehicle_number">
+                                       <select class="form-select" name="vehicle_number" id="vehicle_number">
                                         <option value="">select vehicle number</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
@@ -510,7 +510,7 @@
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
         e.preventDefault();
         swal({
-            title: "Are you sure to delete this Vehicle Scheduling Information?",
+            title: "Are you sure to delete this Collection Scheduling?",
             // text: "Make sure if you have filled Vendor details before proceeding further",
             icon: "info",
             buttons: ["Cancel", "Confirm"]

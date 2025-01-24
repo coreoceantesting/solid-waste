@@ -68,11 +68,11 @@ class VehicleSchedulingInformationController extends Controller
 
             DB::commit();
 
-            return response()->json(['success'=> 'Vehicle Scheduling Information created successfully!']);
+            return response()->json(['success'=> 'Collection Scheduling created successfully!']);
         }
         catch(\Exception $e)
         {
-            return $this->respondWithAjax($e, 'creating', 'Vehicle Scheduling Information');
+            return $this->respondWithAjax($e, 'creating', 'Collection Scheduling');
         }
 
     }
@@ -173,11 +173,11 @@ public function show(string $id)
               }
             DB::commit();
 
-            return response()->json(['success'=> 'vehicle scheduling information updated successfully!']);
+            return response()->json(['success'=> 'Collection Scheduling updated successfully!']);
         }
         catch(\Exception $e)
         {
-            return $this->respondWithAjax($e, 'updating', 'VehicleSchedulingInformation');
+            return $this->respondWithAjax($e, 'updating', 'Collection Scheduling');
         }
     }
 
@@ -196,11 +196,11 @@ public function show(string $id)
             ]);
             DB::commit();
 
-            return response()->json(['success'=> 'vehicle scheduling information successfully!']);
+            return response()->json(['success'=> 'Collection Scheduling!']);
         }
         catch(\Exception $e)
         {
-            return $this->respondWithAjax($e, 'deleting', 'VehicleSchedulingInformation');
+            return $this->respondWithAjax($e, 'deleting', 'Collection Scheduling');
 
     }
 
