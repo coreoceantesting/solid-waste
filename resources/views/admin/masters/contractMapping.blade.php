@@ -386,10 +386,12 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                    <select name="zone[]" class="form-select AddFormZone" required>
-                    <option value="">Select zone</option>
-                    ${ZoneOptions}
-                </select>
+                    <select name="zone[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select zone</option>
+                                  @foreach($ZoneDetails as $Zone)
+                                     <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
+                                  @endforeach
+                     </select>
                 </td>
                  <td>
                     <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required oninput="validateEmployeeName(this)"/>
@@ -404,10 +406,12 @@
                     <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
                 </td>
                 <td>
-                    <select name="waste_type[]" class="form-select AddFormWasteType" required>
-                    <option value="">Select WasteType</option>
-                    ${wastetypeOptions}
-                </select>
+                    <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select waste type</option>
+                                  @foreach($WasteTypeDetails as $WasteType)
+                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
+                                  @endforeach
+                     </select>
                 </td>
                 <td>
                     <input type="number" class="form-control editGarbageVolume" name="garbage_volume[]" value="${value['garbage_volume']}" required />

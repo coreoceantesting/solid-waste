@@ -503,10 +503,12 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                   <select name="waste_types[]" class="form-select AddFormWasteType" required>
-                                     <option value="">Select WasteType</option>
-                                    ${wastetypeOptions}
-                                   </select>
+                    <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select waste type</option>
+                                  @foreach($PrefixDetails as $Prefix)
+                                     <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
+                                  @endforeach
+                        </select>
                 </td>
                 <td>
                     <input type="number" class="form-control editWasteQuantity" name="capacity_in_kg[]" required />
