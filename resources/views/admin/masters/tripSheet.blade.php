@@ -525,7 +525,7 @@
     });
 </script>
 
-
+{{--  --}}
 {{-- add more vehicle details in edit --}}
 <script>
     // Global counter for row IDs
