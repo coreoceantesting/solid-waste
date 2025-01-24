@@ -44,11 +44,11 @@ class PrefixController extends Controller
             Prefix::create( $input );
             DB::commit();
 
-            return response()->json(['success'=> 'Prefix created successfully!']);
+            return response()->json(['success'=> 'Prefix Type created successfully!']);
         }
         catch(\Exception $e)
         {
-            return $this->respondWithAjax($e, 'creating', 'Prefix');
+            return $this->respondWithAjax($e, 'creating', 'Prefix Type');
         }
 
     }
@@ -93,11 +93,11 @@ class PrefixController extends Controller
             DB::table('prefixes')->where('id', $id)->update($input);
             DB::commit();
 
-            return response()->json(['success'=> 'prefixes updated successfully!']);
+            return response()->json(['success'=> 'prefix Type updated successfully!']);
         }
         catch(\Exception $e)
         {
-            return $this->respondWithAjax($e, 'updating', 'prefixes');
+            return $this->respondWithAjax($e, 'updating', 'prefix Type');
         }
 
     }
@@ -117,11 +117,11 @@ class PrefixController extends Controller
             ]);
             DB::commit();
 
-            return response()->json(['success'=> 'prefixes deleted successfully!']);
+            return response()->json(['success'=> 'prefix Type deleted successfully!']);
         }
         catch(\Exception $e)
         {
-            return $this->respondWithAjax($e, 'deleting', 'prefixes');
+            return $this->respondWithAjax($e, 'deleting', 'prefix Type');
 
 
     }
