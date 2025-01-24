@@ -414,7 +414,6 @@
     });
 </script>
 
-
 <!-- Edit -->
 <script>
     $("#buttons-datatables").on("click", ".edit-element", function(e) {
@@ -480,7 +479,7 @@
                             </tr>
                         `;
                     });
-                    $('#editWasteTableBody').append(html);
+                    $('#editWasteTableBody').html(html);
 
                 }
                 else
@@ -530,40 +529,40 @@
         $(`#editRow${rowId}`).remove();
     });
 
-    // Event to load and edit waste data (clicking the edit-waste button)
-    $('body').on('click', '.edit-waste', function(e) {
-        e.preventDefault();
-        var waste_id = $(this).data("id");
-        var url = "{{ route('vehicles.edit', ':waste_id') }}".replace(':waste_id', waste_id);
+    // // Event to load and edit waste data (clicking the edit-waste button)
+    // $('body').on('click', '.edit-waste', function(e) {
+    //     e.preventDefault();
+    //     var waste_id = $(this).data("id");
+    //     var url = "{{ route('vehicles.edit', ':waste_id') }}".replace(':waste_id', waste_id);
 
-        $.ajax({
-            url: url,
-            type: 'GET',
-            data: { '_token': "{{ csrf_token() }}" },
-            beforeSend: function() {
-                $('#preloader').css('opacity', '0.5').css('visibility', 'visible');
-            },
-            success: function(data) {
-                if (!data.error) {
-                    // Populate the form with the waste data
-                    $("#editWasteForm input[name='edit_id']").val(data.vehicles.id);
-                    $("#editWasteForm input[name='waste_types']").val(data.vehicles.waste_types);
-                    $("#editWasteForm input[name='capacity_in_kg']").val(data.vehicles.capacity_in_kg);
-                    $("#editWasteForm input[name='total_capacity']").val(data.vehicles.total_capacity);
-                    // Populate the table with existing waste rows
-                    $('#wasteTableBody').html(data.wasteRowsHtml);
-                } else {
-                    alert(data.error);
-                }
-            },
-            error: function() {
-                alert("Something went wrong. Please try again!");
-            },
-            complete: function() {
-                $('#addMoreEditWasteRow').css('opacity', '1').css('visibility', 'visible');
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: url,
+    //         type: 'GET',
+    //         data: { '_token': "{{ csrf_token() }}" },
+    //         beforeSend: function() {
+    //             $('#preloader').css('opacity', '0.5').css('visibility', 'visible');
+    //         },
+    //         success: function(data) {
+    //             if (!data.error) {
+    //                 // Populate the form with the waste data
+    //                 $("#editWasteForm input[name='edit_id']").val(data.vehicles.id);
+    //                 $("#editWasteForm input[name='waste_types']").val(data.vehicles.waste_types);
+    //                 $("#editWasteForm input[name='capacity_in_kg']").val(data.vehicles.capacity_in_kg);
+    //                 $("#editWasteForm input[name='total_capacity']").val(data.vehicles.total_capacity);
+    //                 // Populate the table with existing waste rows
+    //                 $('#wasteTableBody').html(data.wasteRowsHtml);
+    //             } else {
+    //                 alert(data.error);
+    //             }
+    //         },
+    //         error: function() {
+    //             alert("Something went wrong. Please try again!");
+    //         },
+    //         complete: function() {
+    //             $('#addMoreEditWasteRow').css('opacity', '1').css('visibility', 'visible');
+    //         }
+    //     });
+    // });
 
 </script>
 
@@ -612,9 +611,6 @@
     });
 </script>
 
-
-
-{{-- ? --}}
 <!-- Delete -->
 <script>
     $("#buttons-datatables").on("click", ".rem-element", function(e) {
