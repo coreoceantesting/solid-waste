@@ -275,14 +275,15 @@
 
                         // Loop through VehicleType data dynamically from the controller
                         @foreach($vehicles as $vehi)
-                            VehicleNumberOptions += `<option value="{{ $vehi->Vehicle_number }}" ${value['vehicle_number'] == {{ $vehi->Vehicle_number }} ? 'selected' : ''}>{{ $vehi->Vehicle_number }}</option>`;
+                            VehicleNumberOptions += `<option value="{{ $vehi->Vehicle_number }}" ${value['vehicle_number'] == "{{ $vehi->Vehicle_number }}" ? 'selected' : ''}>{{ $vehi->Vehicle_number }}</option>`;
                         @endforeach
+
 
                         let BeatNumberOptions = ''; // Variable to hold vehicle type options
 
 // Loop through VehicleType data dynamically from the controller
                         @foreach($Ward as $Wa)
-                        BeatNumberOptions += `<option value="{{ $Wa->beat_number }}" ${value['beat_number'] == {{ $Wa->beat_number }} ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
+                        BeatNumberOptions += `<option value="{{ $Wa->beat_number }}" ${value['beat_number'] == "{{ $Wa->beat_number }}" ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
                         @endforeach
 
 
