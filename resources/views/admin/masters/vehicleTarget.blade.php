@@ -547,9 +547,18 @@
                                 @endforeach
                             </select>
                             </td>
-                            <td>
-                                <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
-                            </td>
+                             <td>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="garbage_volumne[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-sm removevehicletargetRow" data-id="${vehicletargetRowCount}">Remove</button>
                             </td>
