@@ -64,18 +64,18 @@
                                     <span class="text-danger is-invalid out_time_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="entry_weight">Entry Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="entry_weight" name="entry_weight" type="number" placeholder="Enter Entry Weight">
+                                    <label class="col-form-label" for="add_entry_weight">Entry Weight<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="add_entry_weight" name="entry_weight" type="number" placeholder="Enter Entry Weight">
                                     <span class="text-danger is-invalid entry_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="exit_weight">Exit Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
+                                    <label class="col-form-label" for="add_exit_weight">Exit Weight<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="add_exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
                                     <span class="text-danger is-invalid exit_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="total_garbage">Total Garbage<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="total_garbage" name="total_garbage" type="number" placeholder="Enter Total Garbage">
+                                    <label class="col-form-label" for="add_total_garbage">Total Garbage<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="add_total_garbage" name="total_garbage" type="number" readonly placeholder="Enter Total Garbage">
                                     <span class="text-danger is-invalid total_garbage_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -203,17 +203,17 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="entry_weight">Entry Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="entry_weight" name="entry_weight" type="number" placeholder="Enter entry weight">
+                                    <input class="form-control" id="edit_entry_weight" name="entry_weight" type="number" placeholder="Enter entry weight">
                                     <span class="text-danger is-invalid entry_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="exit_weight">Exit Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
+                                    <input class="form-control" id="edit_exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
                                     <span class="text-danger is-invalid exit_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="total_garbage">Total Garbage<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="total_garbage" name="total_garbage" type="number" placeholder="Enter Total Garbage">
+                                    <input class="form-control" id="edit_total_garbage" name="total_garbage" type="number" placeholder="Enter Total Garbage">
                                     <span class="text-danger is-invalid total_garbage_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -833,5 +833,23 @@
             },
         });
     });
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('body').on('keyup', '#add_entry_weight, #add_exit_weight', function(){
+            let entryWeight = parseInt($('#add_entry_weight').val());
+            let exitWeight = parseInt($('#add_exit_weight').val());
+            let total = entryWeight - exitWeight;
+            $('#add_total_garbage').val(total)
+        });
+
+        $('body').on('keyup', '#edit_entry_weight, #edit_exit_weight', function(){
+            let entryWeight = parseInt($('#edit_entry_weight').val());
+            let exitWeight = parseInt($('#edit_exit_weight').val());
+            let total = entryWeight - exitWeight;
+            $('#edit_total_garbage').val(total)
+        });
+    })
 </script>
 
