@@ -28,10 +28,22 @@ class TripSheetController extends Controller
         $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
 
-        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
-        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
+        // $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
+        // $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
 
-        return view('admin.masters.tripSheet')->with(['TripSheet' => $TripSheet, 'BreakUp' => $BreakUp,'Ward'=> $Ward,'vehicles'=>$vehicles,'collectionCenters'=>$collectionCenters,'CapacityOfVehicle'=>$CapacityOfVehicle,'Prefix'=>$Prefix ,'PrefixDetails'=> $PrefixDetails ]);
+        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Un')->whereNull('deleted_at')->first();
+        $ZoneDetails = [];
+        if ($ZonePrefix) {
+            $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();
+        }
+// Retrieve Waste Type Prefix Details
+        $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->whereNull('deleted_at')->first();
+        $WasteTypeDetails = [];
+        if ($WasteTypePrefix) {
+            $WasteTypeDetails = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->whereNull('deleted_at')->get();
+        }
+
+        return view('admin.masters.tripSheet')->with(['TripSheet' => $TripSheet, 'BreakUp' => $BreakUp,'Ward'=> $Ward,'vehicles'=>$vehicles,'collectionCenters'=>$collectionCenters,'CapacityOfVehicle'=>$CapacityOfVehicle,'ZonePrefix'=>$ZonePrefix,'ZoneDetails'=>$ZoneDetails,'WasteTypePrefix'=>$WasteTypePrefix,'WasteTypeDetails'=>$WasteTypeDetails]);
     }
 
     public function store(StoreTripSheet $request)
@@ -95,7 +107,7 @@ class TripSheetController extends Controller
 
     }
 
-    
+
     public function edit(string $id)
     {
         $TripSheet = DB::table('trip_sheets')->where('id', $id)->first();

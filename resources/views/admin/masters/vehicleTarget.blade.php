@@ -301,8 +301,17 @@
                                         ${BeatNumberOptions}
                                     </select>
                                 </td>
-                                <td>
-                                    <input type="number" class="form-control editGarbageVolumne" required name="garbage_volumne[]" value="${value['garbage_volumne']}" />
+                                 <td>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="garbage_volumne[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
@@ -359,8 +368,17 @@
                           </select>
                 </td>
                 <td>
-                    <input type="number" class="form-control editGarbageVolume" name="garbage_volumne[]" value="${value['garbage_volumne']}" required />
-                </td>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="garbage_volumne[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </td>
                 <td>
                     <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
                 </td>
@@ -492,7 +510,16 @@
                                 </select>
                                 </td>
                                 <td>
-                                    <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="garbage_volumne[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger btn-sm removevehicletargetRow" data-id="${vehicletargetRowCount}">Remove</button>

@@ -26,15 +26,27 @@ class WasteDetailsController extends Controller
         $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
 
-        $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
-        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
+        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Un')->whereNull('deleted_at')->first();
+        $ZoneDetails = [];
+        if ($ZonePrefix) {
+            $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();
+        }
+// Retrieve Waste Type Prefix Details
+        $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->whereNull('deleted_at')->first();
+        $WasteTypeDetails = [];
+        if ($WasteTypePrefix) {
+            $WasteTypeDetails = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->whereNull('deleted_at')->get();
+        }
 
         return view('admin.masters.wasteDetails')->with([
             'WasteDetails' => $WasteDetails,
             'Segregation' => $Segregation,
             'collectionCenters'=>$collectionCenters,
             'CapacityOfVehicle'=>$CapacityOfVehicle,
-            'PrefixDetails'=>$PrefixDetails,
+            'ZonePrefix'=>$ZonePrefix,
+            'ZoneDetails'=>$ZoneDetails,
+            'WasteTypePrefix'=>$WasteTypePrefix ,
+            'WasteTypeDetails'=> $WasteTypeDetails
         ]);
     }
 

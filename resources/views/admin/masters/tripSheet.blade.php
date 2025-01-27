@@ -64,18 +64,75 @@
                                     <span class="text-danger is-invalid out_time_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="add_entry_weight">Entry Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="add_entry_weight" name="entry_weight" type="number" placeholder="Enter Entry Weight">
+                                    <label class="col-form-label" for="add_entry_weight">Entry Weight <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="add_entry_weight"
+                                            name="entry_weight"
+                                            type="number"
+                                            placeholder="Enter Entry Weight"
+                                            min="0"
+                                            max="1000"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-select" id="weight_unit" name="weight_unit" style="max-width: 120px;">
+                                         @foreach ($ZoneDetails as $Zone)
+                                            <option value="{{$Zone->id}}">{{$Zone->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid entry_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="add_exit_weight">Exit Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="add_exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
+                                    {{-- <input class="form-control" id="add_exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight"> --}}
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="add_exit_weight"
+                                            name="exit_weight"
+                                            type="number"
+                                            placeholder="Enter Exit Weight"
+                                            min="0"
+                                            max="1000"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-select" id="weight_unit" name="exit_weight" style="max-width: 120px;">
+                                         @foreach ($ZoneDetails as $Zone)
+                                            <option value="{{$Zone->id}}">{{$Zone->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid exit_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="add_total_garbage">Total Garbage<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="add_total_garbage" name="total_garbage" type="number" readonly placeholder="Enter Total Garbage">
+                                    {{-- <input class="form-control" id="add_total_garbage" name="total_garbage" type="number" readonly placeholder="Enter Total Garbage"> --}}
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="add_total_garbage"
+                                            name="total_garbage"
+                                            type="number"
+                                            readonly
+                                            placeholder="Enter Exit Weight"
+                                            min="0"
+                                            max="1000"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-select" id="weight_unit" name="total_garbage" style="max-width: 120px;">
+                                         @foreach ($ZoneDetails as $Zone)
+                                            <option value="{{$Zone->id}}">{{$Zone->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid total_garbage_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -202,18 +259,75 @@
                                     <span class="text-danger is-invalid out_time_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="entry_weight">Entry Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="edit_entry_weight" name="entry_weight" type="number" placeholder="Enter entry weight">
+                                    <label class="col-form-label" for="edit_entry_weight">Entry Weight <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="add_entry_weight"
+                                            name="entry_weight"
+                                            type="number"
+                                            placeholder="Enter Entry Weight"
+                                            min="0"
+                                            max="1000"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-select" id="weight_unit" name="weight_unit" style="max-width: 120px;">
+                                         @foreach ($ZoneDetails as $Zone)
+                                            <option value="{{$Zone->id}}">{{$Zone->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid entry_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="exit_weight">Exit Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="edit_exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight">
+                                    <label class="col-form-label" for="edit_exit_weight">Exit Weight<span class="text-danger">*</span></label>
+                                    {{-- <input class="form-control" id="add_exit_weight" name="exit_weight" type="number" placeholder="Enter Exit Weight"> --}}
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="edit_exit_weight"
+                                            name="exit_weight"
+                                            type="number"
+                                            placeholder="Enter Exit Weight"
+                                            min="0"
+                                            max="1000"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-select" id="weight_unit" name="exit_weight" style="max-width: 120px;">
+                                         @foreach ($ZoneDetails as $Zone)
+                                            <option value="{{$Zone->id}}">{{$Zone->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid exit_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="total_garbage">Total Garbage<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="edit_total_garbage" name="total_garbage" type="number" placeholder="Enter Total Garbage">
+                                    <label class="col-form-label" for="edit_total_garbage">Total Garbage<span class="text-danger">*</span></label>
+                                    {{-- <input class="form-control" id="add_total_garbage" name="total_garbage" type="number" readonly placeholder="Enter Total Garbage"> --}}
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="edit_total_garbage"
+                                            name="total_garbage"
+                                            type="number"
+                                            readonly
+                                            placeholder="Enter Exit Weight"
+                                            min="0"
+                                            max="1000"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-select" id="weight_unit" name="total_garbage" style="max-width: 120px;">
+                                         @foreach ($ZoneDetails as $Zone)
+                                            <option value="{{$Zone->id}}">{{$Zone->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid total_garbage_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -312,7 +426,7 @@
                                         <th>Weight Slip Number</th>
                                         <th>File Upload</th>
                                         <th>Waste Segregated</th> --}}
-                                        <th>Action</th>                                   </tr>
+                                        <th>Action</th> </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($TripSheet as $Trip)
@@ -492,8 +606,8 @@
 
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
-                       @foreach($PrefixDetails as $Prefix)
-                       wastetypeOptions += `<option value="{{ $Prefix->id }}" ${value['waste_type'] == "{{ $Prefix->id }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                       @foreach($WasteTypeDetails as $WasteType)
+                       wastetypeOptions += `<option value="{{ $WasteType->id }}" ${value['waste_type'] == "{{ $WasteType->id }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
                        @endforeach
 
 
@@ -506,8 +620,20 @@
                                    </select>
                                 </td>
                                 <td>
-                                    <input type="number" class="form-control editVolume" name="volume[]" value="${value['volume']}" required />
-                                </td>
+                                 <div class="input-group">
+                                    <!-- Input field for volume -->
+                                      <input
+                                       type="number"
+                                       class="form-control editVolume"
+                                      name="volume[]"
+                                      value="${value['volume']}"
+                                      placeholder="Enter volume"
+                                      required
+                                     />
+                                <!-- Kilogram unit display -->
+                                   <span class="input-group-text">Kg</span>
+                               </div>
+                               </td>
                                 <td>
                                     <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
                                 </td>
@@ -552,13 +678,22 @@
                 <td>
                        <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                         <option value="">Select waste type</option>
-                                    @foreach($PrefixDetails as $Prefix)
-                                        <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
+                                    @foreach($WasteTypeDetails as $WasteType)
+                                        <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                     @endforeach
                      </select>
                 </td>
-                <td>
-                    <input type="number" class="form-control editvolume" volumeInput name="volume[]" value="${value['volume']}" required />
+                 <td>
+                    <div class="input-group">
+                     <input
+                     type="number"
+                     name="volume[]"
+                     class="form-control volumeInput"
+                     placeholder="Enter volume"
+                     required
+                    >
+                   <span class="input-group-text">Kg</span>
+                   </div>
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger removeRow" data-id="${editBreakupCounter}">Remove</button>
@@ -700,13 +835,22 @@
                                 <td>
                                         <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                         <option value="">Select waste type</option>
-                                    @foreach($PrefixDetails as $Prefix)
-                                        <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
+                                    @foreach($WasteTypeDetails as $WasteType)
+                                        <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                     @endforeach
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="volume[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger btn-sm removetripsheetRow" data-id="${tripsheetRowCount}">Remove</button>
@@ -721,14 +865,23 @@
                             <td>
                                     <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                         <option value="">Select waste type</option>
-                                    @foreach($PrefixDetails as $Prefix)
-                                        <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
+                                    @foreach($WasteTypeDetails as $WasteType)
+                                        <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                     @endforeach
                                     </select>
                             </td>
-                            <td>
-                                <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required>
-                            </td>
+                             <td>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="volume[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-sm removetripsheetRow" data-id="${tripsheetRowCount}">Remove</button>
                             </td>
