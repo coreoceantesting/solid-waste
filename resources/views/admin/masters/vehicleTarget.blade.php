@@ -297,6 +297,10 @@
                                 </td>
                                 <td>
                                      <input type="number" class="form-control editGarbageVolumne" required name="beat_number[]" value="${value['beat_number']}" />
+                                      <select name="beat_number[]" class="form-select AddFormvBeatNumber" required>
+                                        <option value="">Select BeatNumber</option>
+                                        ${BeatNumberOptions}
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="number" class="form-control editGarbageVolumne" required name="garbage_volumne[]" value="${value['garbage_volumne']}" />
@@ -348,7 +352,12 @@
                           </select>
                 </td>
                 <td>
-                  <input type="number" class="form-control editGarbageVolume" name="beat_number[]" value="${value['beat_number']}" required />
+                  <select name="beat_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                 <option value="">Select beatNumber</option>
+                                @foreach($Ward as $Wa)
+                               <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                            @endforeach
+                          </select>
                 </td>
                 <td>
                     <input type="number" class="form-control editGarbageVolume" name="garbage_volumne[]" value="${value['garbage_volumne']}" required />
@@ -468,15 +477,20 @@
         // Automatically add the first row when the page loads
         let initialHtml = `<tr id="vehicletargetRow${vehicletargetRowCount}">
                                 <td>
-                                   <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
-                                 <option value="">Select VehicleNumber</option>
-                                 @foreach($vehicles as $vehi)
-                                <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
-                               @endforeach
-                             </select>
+                                    <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select VehicleNumber</option>
+                                    @foreach($vehicles as $vehi)
+                                    <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                                @endforeach
+                                </select>
                                 </td>
                                 <td>
-                                    <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat Number" required>
+                                    <select name="beat_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select beatNumber</option>
+                                    @foreach($Ward as $Wa)
+                                <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                                @endforeach
+                                </select>
                                 </td>
                                 <td>
                                     <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
@@ -492,15 +506,20 @@
         $('#addMoreVehicleTargetButton').on('click', function () {
             let html = `<tr id="vehicletargetRow${vehicletargetRowCount}">
                             <td>
-                             <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
-                                 <option value="">Select VehicleNumber</option>
-                                @foreach($vehicles as $vehi)
-                               <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
-                            @endforeach
-                          </select>
+                                <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select VehicleNumber</option>
+                                    @foreach($vehicles as $vehi)
+                                <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                                @endforeach
+                            </select>
                             </td>
                             <td>
-                                <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat Number" required>
+                                <select name="beat_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select beatNumber</option>
+                                    @foreach($Ward as $Wa)
+                                <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                                @endforeach
+                            </select>
                             </td>
                             <td>
                                 <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
