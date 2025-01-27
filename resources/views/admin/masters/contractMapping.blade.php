@@ -333,7 +333,10 @@
                 <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" required/>
              </td>
              <td>
-                <input type="number" class="form-control editEmployeeCount" required name="beat_number[]" value="${value['beat_number']}" required/>
+                  <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
+                    <option value="">Select WasteType</option>
+                    ${BeatNumberOptions}
+                </select>
              </td>
              <td>
                 <input type="number" class="form-control editEmployeeCount" required name="employee_count[]" value="${value['employee_count']}" required/>
@@ -417,7 +420,12 @@
                     <input type="number" class="form-control editGarbageVolume" name="garbage_volume[]" value="${value['garbage_volume']}" required />
                 </td>
                 <td>
-                     <input type="number" class="form-control editEmployeeCount" name="beat_number[]" value="${value['beat_number']}" required />
+                      <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
+                                    <option value="">Select Beat Number</option>
+                                  @foreach($Ward as $Wa)
+                                     <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
+                                  @endforeach
+                     </select>
                 </td>
                 <td>
                     <input type="number" class="form-control editEmployeeCount" name="employee_count[]" value="${value['employee_count']}" required />
@@ -573,7 +581,12 @@
                                 <input type="number" name="garbage_volume[]" class="form-control" placeholder="Enter Garbage Volume" required/>
                             </td>
                              <td>
-                                <input type="number" name="beat_number[]" class="form-control" placeholder="Enter beat number" required/>
+                                <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
+                                    <option value="">Select Beat Number</option>
+                                  @foreach($Ward as $Wa)
+                                     <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
+                                  @endforeach
+                             </select>
                             </td>
                             <td>
                                 <input type="number" name="employee_count[]" class="form-control" placeholder="Enter Employee Count" required/>
