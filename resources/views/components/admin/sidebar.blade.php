@@ -50,10 +50,10 @@
                               <li class="nav-item">
                                 <a href="{{ route('wards.index') }}" class="nav-link {{ request()->routeIs('wards.index') ? 'active' : '' }}" data-key="t-horizontal">Wards</a>
                             </li>
-                             {{-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a href="{{ route('area-type.index') }}" class="nav-link {{ request()->routeIs('area-type.index') ? 'active' : '' }}" data-key="t-horizontal">Area Type</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('collection-type.index') }}" class="nav-link {{ request()->routeIs('collection-type.index') ? 'active' : '' }}" data-key="t-horizontal">Collection Type</a>
                             </li>
                             <li class="nav-item">
