@@ -296,7 +296,6 @@
                                     </select>
                                 </td>
                                 <td>
-                                     <input type="number" class="form-control editGarbageVolumne" required name="beat_number[]" value="${value['beat_number']}" />
                                       <select name="beat_number[]" class="form-select AddFormvBeatNumber" required>
                                         <option value="">Select BeatNumber</option>
                                         ${BeatNumberOptions}
