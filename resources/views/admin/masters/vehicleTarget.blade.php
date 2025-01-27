@@ -128,7 +128,7 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>SR.NO</th>
+                                        <th>Sr.No</th>
                                         <th>Target From Date</th>
                                         <th>Target To Date</th>
                                         <th>Action</th>
@@ -302,7 +302,10 @@
                                     </select>
                                 </td>
                                 <td>
+                                    <div class="input-group">
                                     <input type="number" class="form-control editGarbageVolumne" required name="garbage_volumne[]" value="${value['garbage_volumne']}" />
+                                     <span class="input-group-text">kg</span>
+                                    </div>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
@@ -359,7 +362,10 @@
                           </select>
                 </td>
                 <td>
-                  <input type="number" class="form-control editGarbageVolumne" required name="garbage_volumne[]" value="${value['garbage_volumne']}" />
+                  <div class="input-group">
+                                    <input type="number" class="form-control editGarbageVolumne" required name="garbage_volumne[]" value="${value['garbage_volumne']}" />
+                                     <span class="input-group-text">kg</span>
+                                    </div>
                  </td>
                 <td>
                     <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
@@ -491,9 +497,20 @@
                                 @endforeach
                                 </select>
                                 </td>
-                                <td>
-                                    <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
-                                </td>
+                                 <td>
+                                <div class="input-group">
+                                    <!-- Input field for garbage volume -->
+                                    <input
+                                        type="number"
+                                        name="garbage_volumne[]"
+                                        class="form-control"
+                                        placeholder="Enter garbage volume"
+                                        required
+                                    >
+                                    <!-- Unit display -->
+                                    <span class="input-group-text">kg</span>
+                                </div>
+                            </td>
                                 <td>
                                     <button type="button" class="btn btn-danger btn-sm removevehicletargetRow" data-id="${vehicletargetRowCount}">Remove</button>
                                 </td>
@@ -520,8 +537,19 @@
                                 @endforeach
                             </select>
                             </td>
-                            <td>
-                                <input type="number" name="garbage_volumne[]" class="form-control" placeholder="Enter garbage volume" required>
+                             <td>
+                                <div class="input-group">
+                                    <!-- Input field for garbage volume -->
+                                    <input
+                                        type="number"
+                                        name="garbage_volumne[]"
+                                        class="form-control"
+                                        placeholder="Enter garbage volume"
+                                        required
+                                    >
+                                    <!-- Unit display -->
+                                    <span class="input-group-text">kg</span>
+                                </div>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-sm removevehicletargetRow" data-id="${vehicletargetRowCount}">Remove</button>

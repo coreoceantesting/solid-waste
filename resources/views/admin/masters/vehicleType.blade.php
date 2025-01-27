@@ -93,7 +93,7 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>SR.NO</th>
+                                        <th>Sr.No</th>
                                         <th>Name</th>
                                         <th>Initial</th>
                                         <th>Action</th>

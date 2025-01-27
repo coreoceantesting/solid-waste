@@ -73,7 +73,7 @@
                 <span class="text-danger is-invalid beat_animal_count_err"></span>
             </div>
             <div class="col-md-4">
-                <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing compost<span class="text-danger">*</span></label>
+                <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing Compost<span class="text-danger">*</span></label>
                 <input class="form-control" id="Estimated_No_of_house" name="estimated_number_of_house" type="number" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
                 <span class="text-danger is-invalid estimated_number_of_house_err"></span>
             </div>
@@ -95,7 +95,7 @@
             <span class="text-danger is-invalid estimated_beat_commercial_count_err"></span>
         </div>
     <div class="col-md-4">
-        <label class="col-form-label" for="Estimated  establishment Count">Estimated establishment Count<span class="text-danger">*</span></label>
+        <label class="col-form-label" for="Estimated  establishment Count">Estimated Establishment Count<span class="text-danger">*</span></label>
         <input class="form-control" id="Estimated_establishment_Count" name="estimated_establishment_count" type="number" placeholder="Enter Estimated  establishment Count">
         <span class="text-danger is-invalid estimated_establishment_count_err"></span>
     </div>
@@ -111,7 +111,7 @@
                     <th>Area Name</th>
                     <th>Household Count</th>
                     <th>Shop Count</th>
-                    <th>Total</th>
+                    <th>Total Count</th>
                     <th>
                         <button class="btn btn-primary btn-sm" type="button" id="addMoreAreaButton">Add More</button>
                     </th>
@@ -200,7 +200,7 @@
                         <span class="text-danger is-invalid beat_animal_count_err"></span>
                     </div>
                     <div class="col-md-4">
-                        <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing compost<span class="text-danger">*</span></label>
+                        <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing Compost<span class="text-danger">*</span></label>
                         <input class="form-control" id="Estimated No.of house/Establishment Preparing compost" name="estimated_number_of_house" type="number" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
                         <span class="text-danger is-invalid estimated_number_of_house_err"></span>
                     </div>
@@ -222,7 +222,7 @@
                     <span class="text-danger is-invalid estimated_beat_commercial_count_err"></span>
                 </div>
             <div class="col-md-4">
-                <label class="col-form-label" for="Estimated establishment Count">Estimated establishment Count<span class="text-danger">*</span></label>
+                <label class="col-form-label" for="Estimated establishment Count">Estimated Establishment Count<span class="text-danger">*</span></label>
                 <input class="form-control" id="Estimated establishment Count" name="estimated_establishment_count" type="number" placeholder="Enter Estimated establishment Count">
                 <span class="text-danger is-invalid estimated_establishment_count_err"></span>
             </div>
@@ -237,7 +237,7 @@
                                                 <th>Area Name</th>
                                                 <th>Household count</th>
                                                 <th>Shop count</th>
-                                                <th>Total</th>
+                                                <th>Total Count</th>
                                                 <th><button class="btn btn-primary btn-sm" type="button" id="editMoreEditAreaRow">Add More</button></th>
                                             </tr>
                                         </thead>
@@ -275,7 +275,7 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>SR.NO</th>
+                                        <th>Sr.No</th>
                                         <th>Name</th>
                                         <th>Beat No.</th>
                                         <th>Beat Name</th>

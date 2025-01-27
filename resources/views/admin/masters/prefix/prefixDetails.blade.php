@@ -135,9 +135,9 @@
                                         <th>Sr No.</th>
                                         <th>Prefix Name</th>
                                         <th>Description</th>
-                                        <th>Description_regional</th>
+                                        <th>Description Regional</th>
                                         <th>Value</th>
-                                        <th>other_value</th>
+                                        <th>Other Value</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

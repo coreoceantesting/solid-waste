@@ -129,7 +129,7 @@
                             <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>SR.NO</th>
+                                        <th>Sr.No</th>
                                         <th>Contract Number</th>
                                         <th>Action</th>
                                     </tr>
