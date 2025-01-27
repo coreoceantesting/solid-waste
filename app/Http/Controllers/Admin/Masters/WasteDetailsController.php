@@ -26,7 +26,7 @@ class WasteDetailsController extends Controller
         $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();
 
-        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Un')->whereNull('deleted_at')->first();
+        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'UNT')->whereNull('deleted_at')->first();
         $ZoneDetails = [];
         if ($ZonePrefix) {
             $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();

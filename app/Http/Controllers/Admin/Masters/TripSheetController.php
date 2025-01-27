@@ -31,7 +31,7 @@ class TripSheetController extends Controller
         // $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
         // $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
 
-        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'Un')->whereNull('deleted_at')->first();
+        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'UNT')->whereNull('deleted_at')->first();
         $ZoneDetails = [];
         if ($ZonePrefix) {
             $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();
