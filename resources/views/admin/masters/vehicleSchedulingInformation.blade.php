@@ -374,7 +374,10 @@
                         vehicledetail += `
                             <tr id="editRow${key}">
                                 <td>
-                                    <input type="number" class="form-control editEmployeeName" name="beat_number[]" value="${value['beat_number']}" required />
+                                    <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
+                                     <option value="">Select BeatNumber</option>
+                                    ${beatNumberOptions}
+                                   </select>
                                 </td>
                                 <td>
                                     <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required  oninput="validateEmployeeName(this)"/>
@@ -430,8 +433,13 @@
         let html = `
             <tr id="editRow${editRowCounter}">
                 <td>
-                 <input type="number" class="form-control editEmployeeName" name="beat_number[]" value="${value['beat_number']}" required />
-                </td>
+                    <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
+                                    <option value="">Select Beat Number</option>
+                                  @foreach($Ward as $Wa)
+                                     <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
+                                  @endforeach
+                     </select>
+                    </td>
                 <td>
                     <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required oninput="validateEmployeeName(this)"/>
                 </td>
@@ -561,7 +569,12 @@
         function appendVehicleRow() {
             let html = `<tr id="vehicleRow${vehicleRowCount}">
                             <td>
-                                <input type="number" name="beat_number[]" class="form-control" placeholder="Enter employee name" required >
+                               <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
+                                    <option value="">Select Beat Number</option>
+                                  @foreach($Ward as $Wa)
+                                     <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
+                                  @endforeach
+                            </select>
                             </td>
                             <td>
                                 <input type="text" name="employee_name[]" class="form-control" placeholder="Enter employee name" required oninput="validateEmployeeName(this)">
