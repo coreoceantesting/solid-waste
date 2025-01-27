@@ -65,7 +65,7 @@
                         <label class="col-form-label" for="Collection Mode">Collection Mode<span class="text-danger">*</span></label>
                         {{-- <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode"> --}}
                         <select name="collection_mode" id="collection_mode" class="form-select">
-                            <option value="">Select Vehicle Type </option>
+                            <option value="">Select Collection Mode</option>
                             @foreach ($VehicleType as $Vehicle )
                                 <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
                             @endforeach
@@ -184,23 +184,23 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="End Point">End Point<span class="text-danger">*</span></label>
-                                <div class="input-group">
-                                    <!-- Input field for total distance -->
-                                    <input
-                                        class="form-control"
-                                        id="Total_Distance"
-                                        name="total_distance"
-                                        type="number"
-                                        placeholder="Enter Total Distance"
-                                    >
-                                    <!-- Kilometer unit display -->
-                                    <span class="input-group-text">km</span>
-                                </div>
+                                <input class="form-control" id="End_Point" name="end_point" type="text" placeholder="Enter End Point" >
                                 <span class="text-danger is-invalid end_point_err"></span>
                             </div>
                         <div class="col-md-4">
                             <label class="col-form-label" for="Total Distance">Total Distance<span class="text-danger">*</span></label>
-                            <input class="form-control" id="Total_Distance" name="total_distance" type="number" placeholder="Enter Total Distance" >
+                            <div class="input-group">
+                                <!-- Input field for total distance -->
+                                <input
+                                    class="form-control"
+                                    id="Total_Distance"
+                                    name="total_distance"
+                                    type="number"
+                                    placeholder="Enter Total Distance"
+                                >
+                                <!-- Kilometer unit display -->
+                                <span class="input-group-text">km</span>
+                            </div>
                             <span class="text-danger is-invalid total_distance_err"></span>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
                             {{-- <label class="col-form-label" for="Collection Mode">Collection Mode<span class="text-danger">*</span></label> --}}
                         {{-- <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode"> --}}
                         <select name="collection_mode" id="collection_mode" class="form-select">
-                            <option value="">Select Vehicle Type </option>
+                            <option value="">Select Collection Mode</option>
                             @foreach ($VehicleType as $Vehicle )
                                 <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
                             @endforeach
