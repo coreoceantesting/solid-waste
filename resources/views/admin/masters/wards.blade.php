@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Beat No.">Beat No.<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Beat_number" name="beat_number" type="text" placeholder="Enter Ward Initial" >
+                                    <input class="form-control" id="Beat_number" name="beat_number" type="number" placeholder="Enter Ward Initial" >
                                     <span class="text-danger is-invalid beat_number_err"></span>
                                 </div>
                             <div class="col-md-4">
@@ -35,17 +35,17 @@
                         <div class="mb-3 row">
                         <div class="col-md-4">
                             <label class="col-form-label" for="Starting Point">Starting Point<span class="text-danger">*</span></label>
-                            <input class="form-control" id="Starting_Point" name="start_point" type="text" placeholder="Enter Starting Point">
+                            <input class="form-control" id="Starting_Point" name="start_point" type="number" placeholder="Enter Starting Point">
                             <span class="text-danger is-invalid start_point_err"></span>
                         </div>
                         <div class="col-md-4">
                             <label class="col-form-label" for="End Point">End Point<span class="text-danger">*</span></label>
-                            <input class="form-control" id="End_Point" name="end_point" type="text" placeholder="Enter End Point">
+                            <input class="form-control" id="End_Point" name="end_point" type="number" placeholder="Enter End Point">
                             <span class="text-danger is-invalid end_point_err"></span>
                         </div>
                     <div class="col-md-4">
                         <label class="col-form-label" for="Total Distance">Total Distance<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Total_Distance" name="total_distance" type="text" placeholder="Enter Total Distance">
+                        <input class="form-control" id="Total_Distance" name="total_distance" type="number" placeholder="Enter Total Distance">
                         <span class="text-danger is-invalid total_distance_err"></span>
                     </div>
                 </div>
@@ -57,46 +57,46 @@
                     </div>
                     <div class="col-md-4">
                         <label class="col-form-label" for="Nearest Collection Center">Nearest Collection Center<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="text" placeholder="Enter Nearest Collection Center">
+                        <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="number" placeholder="Enter Nearest Collection Center">
                         <span class="text-danger is-invalid nearest_collection_center_err"></span>
                     </div>
                 <div class="col-md-4">
                     <label class="col-form-label" for="Distance From Collection Center">Distance From Collection Center<span class="text-danger">*</span></label>
-                    <input class="form-control" id="Distance_From _Collection_Center" name="distance_from_collection_center" type="text" placeholder="Enter Distance From Collection Center">
+                    <input class="form-control" id="Distance_From _Collection_Center" name="distance_from_collection_center" type="number" placeholder="Enter Distance From Collection Center">
                     <span class="text-danger is-invalid distance_from_collection_center_err"></span>
                 </div>
             </div>
         <div class="mb-3 row">
             <div class="col-md-4">
                 <label class="col-form-label" for="Beat Animal Count">Beat Animal Count<span class="text-danger">*</span></label>
-                <input class="form-control" id="Beat_Animal_Count" name="beat_animal_count" type="text" placeholder="Enter Beat Animal Count">
+                <input class="form-control" id="Beat_Animal_Count" name="beat_animal_count" type="number" placeholder="Enter Beat Animal Count">
                 <span class="text-danger is-invalid beat_animal_count_err"></span>
             </div>
             <div class="col-md-4">
                 <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing compost<span class="text-danger">*</span></label>
-                <input class="form-control" id="Estimated_No_of_house" name="estimated_number_of_house" type="text" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
+                <input class="form-control" id="Estimated_No_of_house" name="estimated_number_of_house" type="number" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
                 <span class="text-danger is-invalid estimated_number_of_house_err"></span>
             </div>
         <div class="col-md-4">
             <label class="col-form-label" for="Beat Population">Beat Population<span class="text-danger">*</span></label>
-            <input class="form-control" id="Beat_Population" name="beat_population" type="text" placeholder="Enter Beat Population">
+            <input class="form-control" id="Beat_Population" name="beat_population" type="number" placeholder="Enter Beat Population">
             <span class="text-danger is-invalid beat_population_err"></span>
         </div>
     </div>
     <div class="mb-3 row">
         <div class="col-md-4">
             <label class="col-form-label" for="Estimated Beat Residential Count">Estimated Beat Residential Count<span class="text-danger">*</span></label>
-            <input class="form-control" id="Estimated_Beat_Residential_Count" name="estimated_beat_residential_count" type="text" placeholder="Enter Estimated Beat Residential Count">
+            <input class="form-control" id="Estimated_Beat_Residential_Count" name="estimated_beat_residential_count" type="number" placeholder="Enter Estimated Beat Residential Count">
             <span class="text-danger is-invalid estimated_beat_residential_count_err"></span>
         </div>
         <div class="col-md-4">
             <label class="col-form-label" for="Estimated Beat Commercial Count">Estimated Beat Commercial Count<span class="text-danger">*</span></label>
-            <input class="form-control" id="Estimated_Beat_Commercial_Count" name="estimated_beat_commercial_count" type="text" placeholder="Enter Estimated Beat Commercial Count">
+            <input class="form-control" id="Estimated_Beat_Commercial_Count" name="estimated_beat_commercial_count" type="number" placeholder="Enter Estimated Beat Commercial Count">
             <span class="text-danger is-invalid estimated_beat_commercial_count_err"></span>
         </div>
     <div class="col-md-4">
         <label class="col-form-label" for="Estimated  establishment Count">Estimated establishment Count<span class="text-danger">*</span></label>
-        <input class="form-control" id="Estimated_establishment_Count" name="estimated_establishment_count" type="text" placeholder="Enter Estimated  establishment Count">
+        <input class="form-control" id="Estimated_establishment_Count" name="estimated_establishment_count" type="number" placeholder="Enter Estimated  establishment Count">
         <span class="text-danger is-invalid estimated_establishment_count_err"></span>
     </div>
 </div>
@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Beat No.">Beat No.<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Beat_number" name="beat_number" type="text" placeholder="Enter Beat No.">
+                                    <input class="form-control" id="Beat_number" name="beat_number" type="number" placeholder="Enter Beat No.">
                                     <span class="text-danger is-invalid beat_number_err"></span>
                                 </div>
                             <div class="col-md-4">
@@ -162,17 +162,17 @@
                         <div class="mb-3 row">
                             <div class="col-md-4">
                                 <label class="col-form-label" for="Starting Point">Starting Point<span class="text-danger">*</span></label>
-                                <input class="form-control" id="Starting_Point" name="start_point" type="text" placeholder="Enter Starting Point" >
+                                <input class="form-control" id="Starting_Point" name="start_point" type="number" placeholder="Enter Starting Point" >
                                 <span class="text-danger is-invalid start_point_err"></span>
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="End Point">End Point<span class="text-danger">*</span></label>
-                                <input class="form-control" id="End_Point" name="end_point" type="text" placeholder="Enter End Point" >
+                                <input class="form-control" id="End_Point" name="end_point" type="number" placeholder="Enter End Point" >
                                 <span class="text-danger is-invalid end_point_err"></span>
                             </div>
                         <div class="col-md-4">
                             <label class="col-form-label" for="Total Distance">Total Distance<span class="text-danger">*</span></label>
-                            <input class="form-control" id="Total_Distance" name="total_distance" type="text" placeholder="Enter Total Distance" >
+                            <input class="form-control" id="Total_Distance" name="total_distance" type="number" placeholder="Enter Total Distance" >
                             <span class="text-danger is-invalid total_distance_err"></span>
                         </div>
                     </div>
@@ -184,46 +184,46 @@
                         </div>
                         <div class="col-md-4">
                             <label class="col-form-label" for="Nearest Collection Center">Nearest Collection Center<span class="text-danger">*</span></label>
-                            <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="text" placeholder="Enter Nearest Collection Center" >
+                            <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="number" placeholder="Enter Nearest Collection Center" >
                             <span class="text-danger is-invalid nearest_collection_center_err"></span>
                         </div>
                     <div class="col-md-4">
                         <label class="col-form-label" for="Distance From Collection Center">Distance From Collection Center<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Distance_From_Collection Center" name="distance_from_collection_center" type="text" placeholder="Enter Distance From Collection Center" >
+                        <input class="form-control" id="Distance_From_Collection Center" name="distance_from_collection_center" type="number" placeholder="Enter Distance From Collection Center" >
                         <span class="text-danger is-invalid distance_from_collection_center_err"></span>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <div class="col-md-4">
                         <label class="col-form-label" for="Beat Animal Count">Beat Animal Count<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Beat Animal Count" name="beat_animal_count" type="text" placeholder="Enter Beat Animal Count">
+                        <input class="form-control" id="Beat Animal Count" name="beat_animal_count" type="number" placeholder="Enter Beat Animal Count">
                         <span class="text-danger is-invalid beat_animal_count_err"></span>
                     </div>
                     <div class="col-md-4">
                         <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing compost<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Estimated No.of house/Establishment Preparing compost" name="estimated_number_of_house" type="text" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
+                        <input class="form-control" id="Estimated No.of house/Establishment Preparing compost" name="estimated_number_of_house" type="number" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
                         <span class="text-danger is-invalid estimated_number_of_house_err"></span>
                     </div>
                 <div class="col-md-4">
                     <label class="col-form-label" for="Beat Population">Beat Population<span class="text-danger">*</span></label>
-                    <input class="form-control" id="Beat Population" name="beat_population" type="text" placeholder="Enter Beat Population">
+                    <input class="form-control" id="Beat Population" name="beat_population" type="number" placeholder="Enter Beat Population">
                     <span class="text-danger is-invalid beat_population_err"></span>
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="col-md-4">
                     <label class="col-form-label" for="Estimated Beat Residential Count">Estimated Beat Residential Count<span class="text-danger">*</span></label>
-                    <input class="form-control" id="Estimated Beat Residential Count" name="estimated_beat_residential_count" type="text" placeholder="Enter Estimated Beat Residential Count">
+                    <input class="form-control" id="Estimated Beat Residential Count" name="estimated_beat_residential_count" type="number" placeholder="Enter Estimated Beat Residential Count">
                     <span class="text-danger is-invalid estimated_beat_residential_count_err"></span>
                 </div>
                 <div class="col-md-4">
                     <label class="col-form-label" for="Estimated Beat Commercial Count">Estimated Beat Commercial Count<span class="text-danger">*</span></label>
-                    <input class="form-control" id="Estimated Beat Commercial Count" name="estimated_beat_commercial_count" type="text" placeholder="Enter Estimated Beat Commercial Count">
+                    <input class="form-control" id="Estimated Beat Commercial Count" name="estimated_beat_commercial_count" type="number" placeholder="Enter Estimated Beat Commercial Count">
                     <span class="text-danger is-invalid estimated_beat_commercial_count_err"></span>
                 </div>
             <div class="col-md-4">
                 <label class="col-form-label" for="Estimated establishment Count">Estimated establishment Count<span class="text-danger">*</span></label>
-                <input class="form-control" id="Estimated establishment Count" name="estimated_establishment_count" type="text" placeholder="Enter Estimated establishment Count">
+                <input class="form-control" id="Estimated establishment Count" name="estimated_establishment_count" type="number" placeholder="Enter Estimated establishment Count">
                 <span class="text-danger is-invalid estimated_establishment_count_err"></span>
             </div>
         </div>
