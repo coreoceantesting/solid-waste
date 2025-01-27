@@ -172,17 +172,17 @@
                                     <span class="text-danger is-invalid p_code_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="project_cost">Project cost(In rs)<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="project_cost">Project Cost(In rs)<span class="text-danger">*</span></label>
                                     <input class="form-control" id="p_cost" name="p_cost" type="number" placeholder="Enter Project cost(In rs)">
                                     <span class="text-danger is-invalid p_cost_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="project_progress">project progress<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="project_progress">Project Progress<span class="text-danger">*</span></label>
                                     <input class="form-control" id="p_prog" name="p_prog" type="number" placeholder="Enter project progress">
                                     <span class="text-danger is-invalid p_prog_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="Assest_code">Assest code<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="Assest_code">Assest Code<span class="text-danger">*</span></label>
                                     <input class="form-control" id="a_code" name="a_code" type="number" placeholder="Enter Assest code">
                                     <span class="text-danger is-invalid a_code_err"></span>
                                 </div>
@@ -244,7 +244,7 @@
                                         <tr id="employeeRow0">
                                             <td>
                                                 <select name="designation[]" class="form-select AddFormSelectDesignation" required>
-                                                    <option value="">Select designation</option>
+                                                    <option value="">Select Designation</option>
                                                     @foreach($Designation as $Desi)
                                                         <option value="{{ $Desi->id }}">{{ $Desi->name }}</option>
                                                     @endforeach
@@ -305,7 +305,7 @@
                                         <span class="text-danger is-invalid p_cat_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="date_of_operation">Date of operation<span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="date_of_operation">Date Of Operation<span class="text-danger">*</span></label>
                                         <input class="form-control" id="date_of_operation" name="d_of_op" type="date" placeholder="Enter Date of operation">
                                         <span class="text-danger is-invalid d_of_op_err"></span>
                                     </div>
@@ -433,17 +433,17 @@
                                         <span class="text-danger is-invalid p_code_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="project_cost">Project cost(In rs)<span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="project_cost">Project Cost(In rs)<span class="text-danger">*</span></label>
                                         <input class="form-control" id="p_cost" name="p_cost" type="text" placeholder="Enter Project cost(In rs)">
                                         <span class="text-danger is-invalid p_cost_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="project_progress">project progress<span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="project_progress">Project Progress<span class="text-danger">*</span></label>
                                         <input class="form-control" id="p_prog" name="p_prog" type="text" placeholder="Enter project progress">
                                         <span class="text-danger is-invalid p_prog_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="Assest_code">Assest code<span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="Assest_code">Assest Code<span class="text-danger">*</span></label>
                                         <input class="form-control" id="a_code" name="a_code" type="text" placeholder="Enter Assest code">
                                         <span class="text-danger is-invalid a_code_err"></span>
                                     </div>

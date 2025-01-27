@@ -51,7 +51,7 @@
                                     <label class="col-form-label">Recurrence<span class="text-danger">*</span></label>
                                     <div>
                                         <select name="recurrence" class="form-select" id="recurrence">
-                                            <option value="">Recurrence select</option> <!-- Default placeholder option -->
+                                            <option value="">Recurrence Select</option> <!-- Default placeholder option -->
                                             <option value="daily">Daily</option>
                                             <option value="weekly">Weekly</option>
                                             <option value="monthly">Monthly</option>
@@ -70,7 +70,7 @@
                                             <tr>
                                                 <th>Beat Number</th>
                                                 <th>Employee Name</th>
-                                                <th>Waste Generated type</th>
+                                                <th>Waste Generated Type</th>
                                                 <th>In Time</th>
                                                 <th>Out Time</th>
                                                 <th>
@@ -109,7 +109,7 @@
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
                                       <select class="form-select" name="vehicle_type" id="vehicle_type">
-                                        <option value="">select vehicle type</option>
+                                        <option value="">Select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
                                          @endforeach
@@ -120,7 +120,7 @@
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
                                        <select class="form-select" name="vehicle_number" id="vehicle_number">
-                                        <option value="">select vehicle number</option>
+                                        <option value="">Select Vehicle Number</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
                                          @endforeach
@@ -141,7 +141,7 @@
                                     <label class="col-form-label">Recurrence<span class="text-danger">*</span></label>
                                     <div>
                                         <select name="recurrence" class="form-select" id="recurrence">
-                                            <option value="">Recurrence select</option> <!-- Default placeholder option -->
+                                            <option value="">Recurrence Select</option> <!-- Default placeholder option -->
                                             <option value="daily">Daily</option>
                                             <option value="weekly">Weekly</option>
                                             <option value="monthly">Monthly</option>

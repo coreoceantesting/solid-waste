@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">vehicle Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Vehicle Name <span class="text-danger">*</span></label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder="Enter vehicle Name">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>

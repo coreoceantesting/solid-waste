@@ -43,16 +43,33 @@
                             <input class="form-control" id="End_Point" name="end_point" type="text" placeholder="Enter End Point">
                             <span class="text-danger is-invalid end_point_err"></span>
                         </div>
-                    <div class="col-md-4">
+                      <div class="col-md-4">
                         <label class="col-form-label" for="Total Distance">Total Distance<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Total_Distance" name="total_distance" type="number" placeholder="Enter Total Distance">
+                        <div class="input-group">
+                            <!-- Input field for total distance -->
+                            <input
+                                class="form-control"
+                                id="Total_Distance"
+                                name="total_distance"
+                                type="number"
+                                placeholder="Enter Total Distance"
+                            >
+                            <!-- Kilometer unit display -->
+                            <span class="input-group-text">km</span>
+                        </div>
                         <span class="text-danger is-invalid total_distance_err"></span>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <div class="col-md-4">
                         <label class="col-form-label" for="Collection Mode">Collection Mode<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode">
+                        {{-- <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode"> --}}
+                        <select name="collection_mode" id="collection_mode" class="form-select">
+                            <option value="">Select Vehicle Type </option>
+                            @foreach ($VehicleType as $Vehicle )
+                                <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
+                            @endforeach
+                        </select>
                         <span class="text-danger is-invalid collection_mode_err"></span>
                     </div>
                     <div class="col-md-4">
@@ -167,7 +184,18 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="End Point">End Point<span class="text-danger">*</span></label>
-                                <input class="form-control" id="End_Point" name="end_point" type="text" placeholder="Enter End Point" >
+                                <div class="input-group">
+                                    <!-- Input field for total distance -->
+                                    <input
+                                        class="form-control"
+                                        id="Total_Distance"
+                                        name="total_distance"
+                                        type="number"
+                                        placeholder="Enter Total Distance"
+                                    >
+                                    <!-- Kilometer unit display -->
+                                    <span class="input-group-text">km</span>
+                                </div>
                                 <span class="text-danger is-invalid end_point_err"></span>
                             </div>
                         <div class="col-md-4">
@@ -179,7 +207,15 @@
                     <div class="mb-3 row">
                         <div class="col-md-4">
                             <label class="col-form-label" for="Collection Mode">Collection Mode<span class="text-danger">*</span></label>
-                            <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode" >
+                            {{-- <label class="col-form-label" for="Collection Mode">Collection Mode<span class="text-danger">*</span></label> --}}
+                        {{-- <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode"> --}}
+                        <select name="collection_mode" id="collection_mode" class="form-select">
+                            <option value="">Select Vehicle Type </option>
+                            @foreach ($VehicleType as $Vehicle )
+                                <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
+                            @endforeach
+                        </select>
+                        <span class="text-danger is-invalid collection_mode_err"></span>
                             <span class="text-danger is-invalid collection_mode_err"></span>
                         </div>
                         <div class="col-md-4">
@@ -235,8 +271,8 @@
                                             <tr>
                                                 <th>Area Type</th>
                                                 <th>Area Name</th>
-                                                <th>Household count</th>
-                                                <th>Shop count</th>
+                                                <th>Household Count</th>
+                                                <th>Shop Count</th>
                                                 <th>Total Count</th>
                                                 <th><button class="btn btn-primary btn-sm" type="button" id="editMoreEditAreaRow">Add More</button></th>
                                             </tr>
@@ -450,7 +486,7 @@
                     $("#editForm input[name='end_point']").val(data.wards.end_point);
                     $("#editForm input[name='total_distance']").val(data.wards.total_distance);
                     $("#editForm input[name='start_point']").val(data.wards.start_point);
-                    $("#editForm input[name='collection_mode']").val(data.wards.collection_mode);
+                    $("#editForm select[name='collection_mode']").val(data.wards.collection_mode);
                     $("#editForm input[name='nearest_collection_center']").val(data.wards.nearest_collection_center);
                     $("#editForm input[name='distance_from_collection_center']").val(data.wards.distance_from_collection_center);
                     $("#editForm input[name='beat_animal_count']").val(data.wards.beat_animal_count);

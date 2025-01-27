@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Masters\UpdateWardRequest;
 use App\Models\Ward;
 use App\Models\AreaType;
 use App\Models\AreaDetails;
+use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -23,8 +24,9 @@ class WardController extends Controller
         $wards = Ward::whereNull('deleted_by')->get();
         $areaDetails = AreaDetails::whereNull('deleted_by')->get();
         $areatypes = AreaType::whereNull('deleted_at')->get();
+        $VehicleType = VehicleType::whereNull('deleted_at')->get();
 
-        return view('admin.masters.wards')->with(['wards'=> $wards,'AreaDetails'=>$areaDetails,'AreaType'=>$areatypes]);
+        return view('admin.masters.wards')->with(['wards'=> $wards,'AreaDetails'=>$areaDetails,'AreaType'=>$areatypes,'VehicleType'=>$VehicleType]);
     }
 
     /**
