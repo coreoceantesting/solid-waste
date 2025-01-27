@@ -481,7 +481,7 @@
                     $("#editForm input[name='total_garbage']").val(data.TripSheet.total_garbage);
                     $("#editForm input[name='driver_name']").val(data.TripSheet.driver_name);
                     $("#editForm input[name='weight_slip_number']").val(data.TripSheet.weight_slip_number);
-                    $("#editForm input[name='waste_segregated']").val(data.TripSheet.waste_segregated);
+                    $("#editForm select[name='waste_segregated']").val(data.TripSheet.waste_segregated);
                     $('#editForm #fileupload').attr('href', "{{ asset('storage') }}/"+data.TripSheet.file_upload)
 
 
