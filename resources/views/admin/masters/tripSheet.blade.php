@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="beat_number">Beat Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number">
+                                    {{-- <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number"> --}}
                                     <select class="form-control" name="beat_number" id="beat_number">
                                         <option value="">select Beat Number</option>
                                          @foreach ($Ward as $Wa)
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="beat_number">Beat Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number">
+                                    {{-- <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number"> --}}
                                      <select class="form-control" name="beat_number" id="beat_number">
                                         <option value="">select Beat Number</option>
                                          @foreach ($Ward as $Wa)
