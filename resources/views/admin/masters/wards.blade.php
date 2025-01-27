@@ -79,7 +79,19 @@
                     </div>
                 <div class="col-md-4">
                     <label class="col-form-label" for="Distance From Collection Center">Distance From Collection Center<span class="text-danger">*</span></label>
-                    <input class="form-control" id="Distance_From _Collection_Center" name="distance_from_collection_center" type="number" placeholder="Enter Distance From Collection Center">
+                    {{-- <input class="form-control" id="Distance_From _Collection_Center" name="distance_from_collection_center" type="number" placeholder="Enter Distance From Collection Center"> --}}
+                    <div class="input-group">
+                        <!-- Input field for total distance -->
+                        <input
+                            class="form-control"
+                            id="distance_from_collection_center"
+                            name="distance_from_collection_center"
+                            type="number"
+                            placeholder="Enter Total Distance"
+                        >
+                        <!-- Kilometer unit display -->
+                        <span class="input-group-text">km</span>
+                    </div>
                     <span class="text-danger is-invalid distance_from_collection_center_err"></span>
                 </div>
             </div>
@@ -225,7 +237,19 @@
                         </div>
                     <div class="col-md-4">
                         <label class="col-form-label" for="Distance From Collection Center">Distance From Collection Center<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Distance_From_Collection Center" name="distance_from_collection_center" type="number" placeholder="Enter Distance From Collection Center" >
+                        {{-- <input class="form-control" id="Distance_From_Collection Center" name="distance_from_collection_center" type="number" placeholder="Enter Distance From Collection Center"> --}}
+                        <div class="input-group">
+                            <!-- Input field for total distance -->
+                            <input
+                                class="form-control"
+                                id="distance_from_collection_center"
+                                name="distance_from_collection_center"
+                                type="number"
+                                placeholder="Enter Total Distance"
+                            >
+                            <!-- Kilometer unit display -->
+                            <span class="input-group-text">km</span>
+                        </div>
                         <span class="text-danger is-invalid distance_from_collection_center_err"></span>
                     </div>
                 </div>
