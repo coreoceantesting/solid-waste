@@ -35,12 +35,12 @@
                         <div class="mb-3 row">
                         <div class="col-md-4">
                             <label class="col-form-label" for="Starting Point">Starting Point<span class="text-danger">*</span></label>
-                            <input class="form-control" id="Starting_Point" name="start_point" type="number" placeholder="Enter Starting Point">
+                            <input class="form-control" id="Starting_Point" name="start_point" type="text" placeholder="Enter Starting Point">
                             <span class="text-danger is-invalid start_point_err"></span>
                         </div>
                         <div class="col-md-4">
                             <label class="col-form-label" for="End Point">End Point<span class="text-danger">*</span></label>
-                            <input class="form-control" id="End_Point" name="end_point" type="number" placeholder="Enter End Point">
+                            <input class="form-control" id="End_Point" name="end_point" type="text" placeholder="Enter End Point">
                             <span class="text-danger is-invalid end_point_err"></span>
                         </div>
                     <div class="col-md-4">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-4">
                         <label class="col-form-label" for="Nearest Collection Center">Nearest Collection Center<span class="text-danger">*</span></label>
-                        <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="number" placeholder="Enter Nearest Collection Center">
+                        <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="text" placeholder="Enter Nearest Collection Center">
                         <span class="text-danger is-invalid nearest_collection_center_err"></span>
                     </div>
                 <div class="col-md-4">
@@ -162,12 +162,12 @@
                         <div class="mb-3 row">
                             <div class="col-md-4">
                                 <label class="col-form-label" for="Starting Point">Starting Point<span class="text-danger">*</span></label>
-                                <input class="form-control" id="Starting_Point" name="start_point" type="number" placeholder="Enter Starting Point" >
+                                <input class="form-control" id="Starting_Point" name="start_point" type="text" placeholder="Enter Starting Point" >
                                 <span class="text-danger is-invalid start_point_err"></span>
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="End Point">End Point<span class="text-danger">*</span></label>
-                                <input class="form-control" id="End_Point" name="end_point" type="number" placeholder="Enter End Point" >
+                                <input class="form-control" id="End_Point" name="end_point" type="text" placeholder="Enter End Point" >
                                 <span class="text-danger is-invalid end_point_err"></span>
                             </div>
                         <div class="col-md-4">
@@ -184,7 +184,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="col-form-label" for="Nearest Collection Center">Nearest Collection Center<span class="text-danger">*</span></label>
-                            <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="number" placeholder="Enter Nearest Collection Center" >
+                            <input class="form-control" id="Nearest_Collection_Center" name="nearest_collection_center" type="text" placeholder="Enter Nearest Collection Center" >
                             <span class="text-danger is-invalid nearest_collection_center_err"></span>
                         </div>
                     <div class="col-md-4">

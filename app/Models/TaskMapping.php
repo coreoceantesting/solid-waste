@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PrefixDetails;
-
+use App\Models\Ward;
 
 class TaskMapping extends Model
 {
@@ -23,6 +23,9 @@ class TaskMapping extends Model
         return $this->belongsTo(PrefixDetails::class, 'waste_type', 'id');
     }
 
+    public function BeatNumber(){
+        return $this->belongsTo(Ward::class, 'beat_number', 'id');
+    }
     public static function booted()
     {
         static::created(function (self $user)

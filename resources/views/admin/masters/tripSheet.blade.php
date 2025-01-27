@@ -585,7 +585,7 @@
                 {
                     $("#editForm input[id='edit_model_id']").val(data.TripSheet.id);
                     $("#editForm input[name='trip_date']").val(data.TripSheet.trip_date);
-                    $("#editForm input[name='beat_number']").val(data.TripSheet.beat_number);
+                    $("#editForm select[name='beat_number']").val(data.TripSheet.beat_number);
                     $("#editForm select[name='vehicle_number']").val(data.TripSheet.vehicle_number);
                     $("#editForm select[name='collection_center']").val(data.TripSheet.collection_center);
                     $("#editForm input[name='in_time']").val(data.TripSheet.in_time);

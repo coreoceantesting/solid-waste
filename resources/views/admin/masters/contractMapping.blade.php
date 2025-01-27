@@ -283,7 +283,7 @@
                  let BeatNumberOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                  @foreach($Ward as $Wa)
-                 BeatNumberOptions += `<option value="{{ $Wa->beat_number }}" ${value['beat_number'] == "{{ $Wa->beat_number }}" ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
+                 BeatNumberOptions += `<option value="{{ $Wa->id }}" ${value['beat_number'] == "{{ $Wa->id }}" ? 'selected' : ''}>{{ $Wa->beat_number }}</option>`;
                  @endforeach
 
              // Append HTML for each row dynamically
@@ -662,7 +662,7 @@
                                     <td>${task.task || 'N/A'}</td>
                                     <td>${task?.waste_type?.value || 'N/A'}</td>
                                     <td>${task.garbage_volume || 'N/A'}</td>
-                                    <td>${task.beat_number || 'N/A'}</td>
+                                    <td>${task?.beat_number?.beat_number || 'N/A'}</td>
                                     <td>${task.employee_count || 'N/A'}</td>
                                     <td>${task.vehicle_count || 'N/A'}</td>
                                 </tr>
