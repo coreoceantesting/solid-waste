@@ -234,7 +234,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="waste_segregated">Waste Segregated<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="waste_segregated" name="waste_segregated" type="text" placeholder="Enter Waste Segregated">
+                                    <select name="waste_segregated" id="waste_segregated" class="form-select">
+                                        <option value="" >Select Waste Segregated</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
                                     <span class="text-danger is-invalid waste_segregated_err"></span>
                                 </div>
                             </div>
