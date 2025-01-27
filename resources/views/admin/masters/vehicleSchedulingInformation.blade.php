@@ -365,7 +365,7 @@
 
                         // Loop through VehicleType data dynamically from the controller
                         @foreach($Ward as $Wa)
-                            beatNumberOptions+= `<option value="{{ $Wa->beat_number }}" ${value['beat_number'] == {{ $Wa->beat_number }} ? 'selected' : ''}>{{ $Wa->beat_number}}</option>`;
+                            beatNumberOptions+= `<option value="{{ $Wa->id }}" ${value['beat_number'] == "{{ $Wa->id }}" ? 'selected' : ''}>{{ $Wa->beat_number}}</option>`;
                         @endforeach
 
 
