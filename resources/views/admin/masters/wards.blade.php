@@ -102,7 +102,7 @@
                 <span class="text-danger is-invalid beat_animal_count_err"></span>
             </div>
             <div class="col-md-4">
-                <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing Compost<span class="text-danger">*</span></label>
+                <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of House/Establishment Preparing Compost<span class="text-danger">*</span></label>
                 <input class="form-control" id="Estimated_No_of_house" name="estimated_number_of_house" type="number" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
                 <span class="text-danger is-invalid estimated_number_of_house_err"></span>
             </div>
@@ -260,7 +260,7 @@
                         <span class="text-danger is-invalid beat_animal_count_err"></span>
                     </div>
                     <div class="col-md-4">
-                        <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of house/Establishment Preparing Compost<span class="text-danger">*</span></label>
+                        <label class="col-form-label" for="Estimated No.of house/Establishment Preparing compost">Estimated No.of House/Establishment Preparing Compost<span class="text-danger">*</span></label>
                         <input class="form-control" id="Estimated No.of house/Establishment Preparing compost" name="estimated_number_of_house" type="number" placeholder="Enter Estimated No.of house/Establishment Preparing compost">
                         <span class="text-danger is-invalid estimated_number_of_house_err"></span>
                     </div>
@@ -434,7 +434,7 @@
                                             <th>Area Name</th>
                                             <th>Household Count</th>
                                             <th>Shop Count</th>
-                                            <th>Total</th>
+                                            <th>Total Count</th>
                                         </tr>
                                     </thead>
                                     <tbody id="areadetailsModel">

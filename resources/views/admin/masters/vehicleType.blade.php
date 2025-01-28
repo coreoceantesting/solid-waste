@@ -17,12 +17,12 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Vehicle Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Vehicle Name<span class="text-danger">*</span></label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder="Enter vehicle Name">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="initial">Initial<span class="text-danger">*</span></label>
                                     <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Initial">
                                     <span class="text-danger is-invalid initial_err"></span>
                                 </div>
@@ -53,12 +53,12 @@
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="name">Vehicle Name <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="name">Vehicle Name<span class="text-danger">*</span></label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder=" Enter Vehicle Name ">
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="initial">Initial <span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="initial">Initial<span class="text-danger">*</span></label>
                                     <input class="form-control" id="initial" name="initial" type="text" placeholder="Enter Initial">
                                     <span class="text-danger is-invalid initial_err"></span>
                                 </div>
@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="">
-                                    <button id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></button>
+                                    <button id="addToTable" class="btn btn-primary">Add<i class="fa fa-plus"></i></button>
                                     <button id="btnCancel" class="btn btn-danger" style="display:none;">Cancel</button>
                                 </div>
                             </div>

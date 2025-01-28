@@ -42,7 +42,7 @@
                                     <span class="text-danger is-invalid p_cat_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="date_of_operation">Date of Operation<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="date_of_operation">Date Of Operation<span class="text-danger">*</span></label>
                                     <input class="form-control" id="date_of_operation" name="d_of_op" type="date">
                                     <span class="text-danger is-invalid d_of_op_err"></span>
                                 </div>
@@ -124,9 +124,9 @@
                                     <span class="text-danger is-invalid rdf_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="its_integrated_with_C_T_y_n">Its Integrated With C T (Y/N)<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="its_integrated_with_C_T_y_n">Its Integrated With C&T (Y/N)<span class="text-danger">*</span></label>
                                     <select class="form-select" name="inte_c_t" id="its_integrated_with_C_T(y/n)">
-                                        <option value="" >Select Integrated With C T (Y/N)</option>
+                                        <option value="" >Select Integrated With C&T (Y/N)</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -173,7 +173,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="project_cost">Project Cost(In rs)<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="p_cost" name="p_cost" type="number" placeholder="Enter Project cost(In rs)">
+                                    <input class="form-control" id="p_cost" name="p_cost" type="number" placeholder="Enter Project cost">
                                     <span class="text-danger is-invalid p_cost_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -385,9 +385,9 @@
                                         <span class="text-danger is-invalid rdf_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="its_integrated_with_C_T">Its Integrated With C T (Y/N)<span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="its_integrated_with_C_T">Its Integrated With C&T (Y/N)<span class="text-danger">*</span></label>
                                         <select name="inte_c_t" id="its_integrated_with_C_T(y/n)" class="form-select">
-                                            <option value="" >Select Plant Category</option>
+                                            <option value="" >Select Integrated With C&T (Y/N)</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -434,7 +434,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="project_cost">Project Cost(In rs)<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="p_cost" name="p_cost" type="text" placeholder="Enter Project cost(In rs)">
+                                        <input class="form-control" id="p_cost" name="p_cost" type="text" placeholder="Enter Project cost">
                                         <span class="text-danger is-invalid p_cost_err"></span>
                                     </div>
                                     <div class="col-md-4">

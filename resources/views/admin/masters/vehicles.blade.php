@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">vehicles</x-slot>
-    <x-slot name="heading">vehicles</x-slot>
+    <x-slot name="title">Vehicles</x-slot>
+    <x-slot name="heading">Vehicles</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="card-header">
-                            <h4 class="card-title">Add vehicles</h4>
+                            <h4 class="card-title">Add Vehicles</h4>
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
@@ -131,7 +131,7 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit vehicle</h4>
+                            <h4 class="card-title">Edit Vehicle</h4>
                         </div>
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
@@ -173,7 +173,7 @@
                                     <span class="text-danger is-invalid Manufacturer_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="vehicle_tracking">vehicle Tracking<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="vehicle_tracking">Vehicle Tracking<span class="text-danger">*</span></label>
                                     <input class="form-control" id="vehicle_tracking" name="vehicle_tracking" type="text" placeholder="Enter vehicle Tracking">
                                     <span class="text-danger is-invalid vehicle_tracking_err"></span>
                                 </div>
