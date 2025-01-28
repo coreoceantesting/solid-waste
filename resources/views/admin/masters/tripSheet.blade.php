@@ -73,8 +73,6 @@
                                             name="entry_weight"
                                             type="number"
                                             placeholder="Enter Entry Weight"
-                                            min="0"
-                                            max="1000"
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
@@ -97,8 +95,6 @@
                                             name="exit_weight"
                                             type="number"
                                             placeholder="Enter Exit Weight"
-                                            min="0"
-                                            max="1000"
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
@@ -122,8 +118,6 @@
                                             type="number"
                                             readonly
                                             placeholder="Enter Exit Weight"
-                                            min="0"
-                                            max="1000"
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
@@ -292,8 +286,6 @@
                                             name="exit_weight"
                                             type="number"
                                             placeholder="Enter Exit Weight"
-                                            min="0"
-                                            max="1000"
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
@@ -317,8 +309,6 @@
                                             type="number"
                                             readonly
                                             placeholder="Enter Exit Weight"
-                                            min="0"
-                                            max="1000"
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
