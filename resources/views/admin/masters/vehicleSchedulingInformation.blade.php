@@ -31,9 +31,9 @@
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle number"> --}}
                                     <select class="form-select" name="vehicle_number" id="vehicle_number">
                                         <option value="">select vehicle number</option>
-                                         @foreach ($vehicles as $vehicle)
+                                         {{-- @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
-                                         @endforeach
+                                         @endforeach --}}
                                     </select>
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
@@ -681,7 +681,7 @@
     }
     </script>
 
-{{-- <script>
+<script>
     $(document).ready(function(){
     $('#vehicle_type').on('change', function(){
         let SelectedValue = $(this).val();
@@ -693,7 +693,12 @@
             processData: false,
             success: function(data)
             {
-                console.log(data)
+                let html = `<option value="">select vehicle number</option>`;
+                $.each(data.data, function(key, val){
+                    html += `<option value="${val.Vehicle_number}">${val.Vehicle_number}</option>`;
+                });
+                $('#vehicle_number').html(html)
+
             },
             statusCode: {
                 422: function(responseObject, textStatus, jqXHR) {
@@ -709,4 +714,4 @@
         });
         });
     });
-    </script> --}}
+    </script>

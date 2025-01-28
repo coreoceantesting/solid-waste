@@ -204,11 +204,16 @@ public function show(string $id)
 
         }
     }
-}
 
-//     // public function getVehicalDetails(Request $request){
-//     //     if($request->ajax()){
-//     //         // dd($request->all());
-//     //     }
-//     // }
-// }
+
+    public function getVehicalDetails(Request $request){
+        if($request->ajax()){
+            $data = DB::table('vehicles')->where('Vehicle_Type', $request->id)->whereNull('deleted_at')->get();
+
+            return response()->json([
+                'data' => $data
+            ]);
+        }
+    }
+
+}

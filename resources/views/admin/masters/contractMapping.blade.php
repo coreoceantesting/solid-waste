@@ -312,16 +312,16 @@
                 </select>
              </td>
              <td>
-                <input type="text" class="form-control editWard" required name="ward[]" value="${value['ward']}" required oninput="validateEmployeeName(this)"/>
+                <input type="text" class="form-control editWard" required name="ward[]" value="${value['ward']}" required />
              </td>
              <td>
-                <input type="text" class="form-control editColony" required name="colony[]" value="${value['colony']}" required oninput="validateEmployeeName(this)"/>
+                <input type="text" class="form-control editColony" required name="colony[]" value="${value['colony']}" required />
              </td>
              <td>
-                <input type="text" class="form-control editSociety" required name="society[]" value="${value['society']}" required oninput="validateEmployeeName(this)"/>
+                <input type="text" class="form-control editSociety" required name="society[]" value="${value['society']}" required />
              </td>
              <td>
-                <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
+                <input type="text" class="form-control editTask" required name="task[]" value="${value['task']}" required />
              </td>
             <td>
                   <select name="waste_type[]" class="form-select AddFormWasteType" required>
@@ -397,16 +397,16 @@
                      </select>
                 </td>
                  <td>
-                    <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required oninput="validateEmployeeName(this)"/>
+                    <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required />
                 </td>
                  <td>
-                    <input type="text" class="form-control editcolony" name="colony[]" value="${value['colony']}" required oninput="validateEmployeeName(this)" />
+                    <input type="text" class="form-control editcolony" name="colony[]" value="${value['colony']}" required />
                 </td>
                  <td>
-                    <input type="text" class="form-control editsociety" name="society[]" value="${value['society']}" required oninput="validateEmployeeName(this)" />
+                    <input type="text" class="form-control editsociety" name="society[]" value="${value['society']}" required />
                 </td>
                 <td>
-                    <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required oninput="validateEmployeeName(this)"/>
+                    <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required />
                 </td>
                 <td>
                     <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
@@ -558,16 +558,16 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="ward[]" class="form-control" placeholder="Enter ward" required oninput="validateEmployeeName(this)"/>
+                                <input type="text" name="ward[]" class="form-control" placeholder="Enter ward" required/>
                             </td>
                             <td>
-                                <input type="text" name="colony[]" class="form-control" placeholder="Enter colony" required oninput="validateEmployeeName(this)"/>
+                                <input type="text" name="colony[]" class="form-control" placeholder="Enter colony" required />
                             </td>
                             <td>
-                                <input type="text" name="society[]" class="form-control" placeholder="Enter society" required oninput="validateEmployeeName(this)"/>
+                                <input type="text" name="society[]" class="form-control" placeholder="Enter society" required />
                             </td>
                             <td>
-                                <input type="text" name="task[]" class="form-control" placeholder="Enter task" required oninput="validateEmployeeName(this)"/>
+                                <input type="text" name="task[]" class="form-control" placeholder="Enter task" required />
                             </td>
                             <td>
                                 <select name="waste_type[]" class="form-select AddFormSelectzone" required/>

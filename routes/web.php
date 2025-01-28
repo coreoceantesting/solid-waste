@@ -107,7 +107,7 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::resource('population', App\Http\Controllers\Admin\Masters\PopulationController::class);
 
-    Route::get('vehicle-scheduling-information/getVehicalDetails/{id}', [VehicleSchedulingInformationController::class, 'getVehicalDetails'])->name('vehicle-scheduling-information.get-vehical-number');
+    Route::get('vehicle-scheduling-information/getVehicalDetails/{id}', [App\Http\Controllers\Admin\Masters\VehicleSchedulingInformationController::class, 'getVehicalDetails'])->name('vehicle-scheduling-information.get-vehical-number');
     Route::resource('vehicle-scheduling-information', App\Http\Controllers\Admin\Masters\VehicleSchedulingInformationController::class);
 
     Route::resource('contract-mapping', App\Http\Controllers\Admin\Masters\ContractMappingController::class);
