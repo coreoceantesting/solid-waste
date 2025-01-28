@@ -57,7 +57,6 @@ class TripSheetController extends Controller
                 $DocPath = $Doc->store('file_upload', 'public');
                 $input['file_upload'] = $DocPath;
             }
-
             $TripSheet = TripSheet::create($input);
 
             if (isset($request->waste_type) && count($request->volume) > 0) {

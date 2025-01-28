@@ -120,8 +120,12 @@ public function show(string $id)
 
         $VehicleInformation = DB::table('vehicle_information')->whereNull('deleted_at')->where('vehicle_scheduling_id', $id)->get();
 
-        // $data = DB::table('vehicles')->where('Vehicle_Type', $request->vehicle_type)->whereNull('deleted_at')->first();
-        // dd($data);
+        $datas = DB::table('vehicles')->where('Vehicle_Type', $vehicleSchedulingInformation->vehicle_type)->whereNull('deleted_at')->get();
+        $vehicalNumberHtml = "";
+        foreach($datas as $data){
+            $isSelected = ($data->Vehicle_number == $vehicleSchedulingInformation->vehicle_number) ? 'selected' : '';
+            $vehicalNumberHtml .= "<option ".$isSelected." value='".$data->Vehicle_number."'>".$data->Vehicle_number."</option>";
+        }
 
         if ($vehicleSchedulingInformation)
         {
@@ -129,7 +133,7 @@ public function show(string $id)
                 'result' => 1,
                 'vehicleSchedulingInformation' => $vehicleSchedulingInformation,
                 'VehicleInformation' => $VehicleInformation,
-                // 'data' => $data
+                'vehicalNumberHtml' => $vehicalNumberHtml
             ];
         }
         else

@@ -600,7 +600,7 @@
                                 <tr>
                                     <td>${value.vehicle_number || 'N/A'}</td>
                                     <td>${value.beat_number || 'N/A'}</td>
-                                    <td>${value.garbage_volumne || 'N/A'}</td> <!-- Fixed typo -->
+                                    <td>${value.garbage_volumne || 'N/A'}kg</td> <!-- Fixed typo -->
                                 </tr>
                             `;
                         });

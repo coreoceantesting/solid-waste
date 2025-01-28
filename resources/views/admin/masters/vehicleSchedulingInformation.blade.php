@@ -121,9 +121,7 @@
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
                                        <select class="form-select" name="vehicle_number" id="vehicles_numbers">
                                         <option value="">Select Vehicle Number</option>
-                                         @foreach ($vehicles as $vehicle)
-                                            <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
-                                         @endforeach
+
                                     </select>
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
@@ -353,7 +351,7 @@
                 {
                     $("#editForm input[name='edit_model_id']").val(data.vehicleSchedulingInformation.id);
                     $("#editForm select[name='vehicle_type']").val(data.vehicleSchedulingInformation.vehicle_type);
-                    $("#editForm select[name='vehicle_number']").val(data.vehicleSchedulingInformation.vehicle_number);
+                    $("#editForm select[name='vehicle_number']").html(data.vehicalNumberHtml);
                     $("#editForm input[name='schedule_form']").val(data.vehicleSchedulingInformation.schedule_form);
                     $("#editForm input[name='schedule_to']").val(data.vehicleSchedulingInformation.schedule_to);
                     $("#editForm select[name='recurrence']").val(data.vehicleSchedulingInformation.recurrence);

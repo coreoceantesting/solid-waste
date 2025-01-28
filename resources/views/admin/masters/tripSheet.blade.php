@@ -78,7 +78,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="weight_unit" style="max-width: 120px;">
+                                        <select class="form-control" id="weight_unit" name="weight_unit1" style="max-width: 120px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -102,7 +102,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="exit_weight" style="max-width: 120px;">
+                                        <select class="form-control" id="add_exit_weight" name="exit_weigh1t" style="max-width: 120px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -127,7 +127,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="total_garbage" style="max-width: 120px;">
+                                        <select class="form-control" id="add_total_garbage" name="total_garbage1" style="max-width: 120px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -273,7 +273,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="weight_unit" style="max-width: 120px;">
+                                        <select class="form-control" id="edit_entry_weight" name="weight" style="max-width: 120px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -297,7 +297,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="exit_weight" style="max-width: 120px;">
+                                        <select class="form-control" id="edit_exit_weight" name="exit" style="max-width: 120px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -322,7 +322,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="total_garbage" style="max-width: 120px;">
+                                        <select class="form-control" id="edit_total_garbage" name="total" style="max-width: 120px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -972,7 +972,7 @@
                         BreakUpHtml = `<tr><td colspan="2" class="text-center">No data available</td></tr>`;
                     }
                     $('#BreakUpModel').html(BreakUpHtml);
-                    $('#totalViewVolume').html(totalVolume)
+                    $('#totalViewVolume').html(totalVolume+ "kg")
                     $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");
