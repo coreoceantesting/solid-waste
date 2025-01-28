@@ -962,7 +962,7 @@
                         BreakUpHtml = `<tr><td colspan="2" class="text-center">No data available</td></tr>`;
                     }
                     $('#BreakUpModel').html(BreakUpHtml);
-                    $('#totalViewVolume').html(totalVolume+ "kg")
+                    $('#totalViewVolume').html(totalVolume+ " kg")
                     $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");
