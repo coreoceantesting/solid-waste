@@ -202,7 +202,13 @@ public function show(string $id)
         {
             return $this->respondWithAjax($e, 'deleting', 'Collection Scheduling');
 
-    }
-
+        }
     }
 }
+
+//     // public function getVehicalDetails(Request $request){
+//     //     if($request->ajax()){
+//     //         // dd($request->all());
+//     //     }
+//     // }
+// }

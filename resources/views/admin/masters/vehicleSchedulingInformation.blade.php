@@ -681,3 +681,32 @@
     }
     </script>
 
+{{-- <script>
+    $(document).ready(function(){
+    $('#vehicle_type').on('change', function(){
+        let SelectedValue = $(this).val();
+        var url = "{{ route('vehicle-scheduling-information.get-vehical-number', ':model_id') }}";
+        $.ajax({
+            url: url.replace(':model_id', SelectedValue),
+            type: 'GET',
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+                console.log(data)
+            },
+            statusCode: {
+                422: function(responseObject, textStatus, jqXHR) {
+                    $("#addSubmit").prop('disabled', false);
+                    resetErrors();
+                    printErrMsg(responseObject.responseJSON.errors);
+                },
+                500: function(responseObject, textStatus, errorThrown) {
+                    $("#addSubmit").prop('disabled', false);
+                    swal("Error occured!", "Something went wrong please try again", "error");
+                }
+            }
+        });
+        });
+    });
+    </script> --}}

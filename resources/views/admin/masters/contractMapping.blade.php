@@ -17,7 +17,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="contract_number">Contract Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="contract_number" name="contract_number" type="number" placeholder="Enter Contract Number">
+                                    <input class="form-control" id="contract_number" name="contract_number" type="text" placeholder="Enter Contract Number">
                                     <span class="text-danger is-invalid contract_number_err"></span>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="contract_number">Contract Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="contract_number" name="contract_number" type="number" placeholder="Enter contract number">
+                                    <input class="form-control" id="contract_number" name="contract_number" type="text" placeholder="Enter contract number">
                                     <span class="text-danger is-invalid contract_number_err"></span>
                                 </div>
                             </div>
