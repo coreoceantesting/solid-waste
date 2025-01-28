@@ -37,7 +37,7 @@
                                     max="1000"
                                     step="0.01">
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="total_garbage" style="max-width: 120px;">
+                                        <select class="form-control" id="weight_unit" name="total_garbage" style="max-width: 75px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach

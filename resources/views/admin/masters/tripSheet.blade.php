@@ -76,7 +76,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="weight_unit" name="weight_unit1" style="max-width: 120px;">
+                                        <select class="form-control" id="weight_unit" name="weight_unit1" style="max-width: 75px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -98,7 +98,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="add_exit_weight" name="exit_weigh1t" style="max-width: 120px;">
+                                        <select class="form-control" id="add_exit_weight" name="exit_weigh1t" style="max-width: 75px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -121,7 +121,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="add_total_garbage" name="total_garbage1" style="max-width: 120px;">
+                                        <select class="form-control" id="add_total_garbage" name="total_garbage1" style="max-width: 75px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -267,7 +267,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="edit_entry_weight" name="weight" style="max-width: 120px;">
+                                        <select class="form-control" id="edit_entry_weight" name="weight" style="max-width: 75px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -289,7 +289,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="edit_exit_weight" name="exit" style="max-width: 120px;">
+                                        <select class="form-control" id="edit_exit_weight" name="exit" style="max-width: 75px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -312,7 +312,7 @@
                                             step="0.01"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
-                                        <select class="form-control" id="edit_total_garbage" name="total" style="max-width: 120px;">
+                                        <select class="form-control" id="edit_total_garbage" name="total" style="max-width: 75px;">
                                          @foreach ($ZoneDetails as $Zone)
                                             <option value="{{$Zone->id}}">{{$Zone->value}}</option>
                                          @endforeach
@@ -996,3 +996,25 @@
     })
 </script>
 
+{{-- <script>
+    document.getElementById('trip_date').addEventListener('input', function(event) {
+        let value = event.target.value;
+
+        // Allow only numbers and dashes
+        value = value.replace(/[^0-9-]/g, '');
+
+        // Limit the length of the value to 10 characters (YYYY-MM-DD format)
+        if (value.length > 10) {
+            value = value.slice(0, 10);
+        }
+
+        // Restrict the year to 4 digits (YYYY)
+        let parts = value.split('-');
+        if (parts[0] && parts[0].length > 4) {
+            parts[0] = parts[0].slice(0, 4); // Keep only the first 4 digits for the year
+        }
+
+        // Reassemble the value in YYYY-MM-DD format
+        event.target.value = parts.join('-');
+    });
+    </script> --}}
