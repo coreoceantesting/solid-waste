@@ -693,7 +693,7 @@
             processData: false,
             success: function(data)
             {
-                let html = `<option value="">select vehicle number</option>`;
+                let html = ``;
                 $.each(data.data, function(key, val){
                     html += `<option value="${val.Vehicle_number}">${val.Vehicle_number}</option>`;
                 });
