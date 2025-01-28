@@ -108,7 +108,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
-                                      <select class="form-select" name="vehicle_type" id="vehicle_type">
+                                      <select class="form-select" name="vehicle_type" id="vehicles_types">
                                         <option value="">Select vehicle type</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
@@ -119,7 +119,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
-                                       <select class="form-select" name="vehicle_number" id="vehicle_number">
+                                       <select class="form-select" name="vehicle_number" id="vehicles_numbers">
                                         <option value="">Select Vehicle Number</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
@@ -680,7 +680,7 @@
         input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
     }
     </script>
-
+{{-- For The Add --}}
 <script>
     $(document).ready(function(){
     $('#vehicle_type').on('change', function(){
@@ -698,6 +698,41 @@
                     html += `<option value="${val.Vehicle_number}">${val.Vehicle_number}</option>`;
                 });
                 $('#vehicle_number').html(html)
+
+            },
+            statusCode: {
+                422: function(responseObject, textStatus, jqXHR) {
+                    $("#addSubmit").prop('disabled', false);
+                    resetErrors();
+                    printErrMsg(responseObject.responseJSON.errors);
+                },
+                500: function(responseObject, textStatus, errorThrown) {
+                    $("#addSubmit").prop('disabled', false);
+                    swal("Error occured!", "Something went wrong please try again", "error");
+                }
+            }
+        });
+        });
+    });
+    </script>
+{{-- For the Edit --}}
+<script>
+    $(document).ready(function(){
+    $('#vehicles_types').on('change', function(){
+        let SelectedValue = $(this).val();
+        var url = "{{ route('vehicle-scheduling-information.get-vehical-number', ':model_id') }}";
+        $.ajax({
+            url: url.replace(':model_id', SelectedValue),
+            type: 'GET',
+            contentType: false,
+            processData: false,
+            success: function(data)
+            {
+                let html = ``;
+                $.each(data.data, function(key, val){
+                    html += `<option value="${val.Vehicle_number}">${val.Vehicle_number}</option>`;
+                });
+                $('#vehicles_numbers').html(html)
 
             },
             statusCode: {

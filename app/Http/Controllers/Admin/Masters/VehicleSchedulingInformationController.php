@@ -114,18 +114,22 @@ public function show(string $id)
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
         $vehicleSchedulingInformation=DB::table('vehicle_scheduling_information')->where('id', $id)->first();
 
         $VehicleInformation = DB::table('vehicle_information')->whereNull('deleted_at')->where('vehicle_scheduling_id', $id)->get();
+
+        // $data = DB::table('vehicles')->where('Vehicle_Type', $request->vehicle_type)->whereNull('deleted_at')->first();
+        // dd($data);
 
         if ($vehicleSchedulingInformation)
         {
             $response = [
                 'result' => 1,
                 'vehicleSchedulingInformation' => $vehicleSchedulingInformation,
-                'VehicleInformation' => $VehicleInformation
+                'VehicleInformation' => $VehicleInformation,
+                // 'data' => $data
             ];
         }
         else
