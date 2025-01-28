@@ -49,7 +49,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="decentralize">Decentralize<span class="text-danger">*</span></label>
                                     <select class="form-select" name="decentral" id="decentralize">
-                                        <option value=""  >Select Decentralize</option>
+                                        <option value="" >Select Decentralize</option>
                                         <option value="X">X</option>
                                         <option value="Y">Y</option>
                                         <option value="Z">Z</option>
@@ -124,9 +124,9 @@
                                     <span class="text-danger is-invalid rdf_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="its_integrated_with_C_T_y_n">Its Integrated With C&T (Y/N)<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="its_integrated_with_C_T_y_n">Its Integrated With C and T (Y/N)<span class="text-danger">*</span></label>
                                     <select class="form-select" name="inte_c_t" id="its_integrated_with_C_T(y/n)">
-                                        <option value="" >Select Integrated With C&T (Y/N)</option>
+                                        <option value="" >Select Integrated With C and T (Y/N)</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -385,9 +385,9 @@
                                         <span class="text-danger is-invalid rdf_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="its_integrated_with_C_T">Its Integrated With C&T (Y/N)<span class="text-danger">*</span></label>
+                                        <label class="col-form-label" for="its_integrated_with_C_T">Its Integrated With C and T (Y/N)<span class="text-danger">*</span></label>
                                         <select name="inte_c_t" id="its_integrated_with_C_T(y/n)" class="form-select">
-                                            <option value="" >Select Integrated With C&T (Y/N)</option>
+                                            <option value="" >Select Integrated With C and T (Y/N)</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
