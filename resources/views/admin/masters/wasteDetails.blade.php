@@ -739,7 +739,7 @@
                     }
 
                     $('#SegregationModel').html(segregationHtml);
-                    $('#totalViewVolume').html(totalVolume + "kg")
+                    $('#totalViewVolume').html(totalVolume + "  kg")
                     $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");
