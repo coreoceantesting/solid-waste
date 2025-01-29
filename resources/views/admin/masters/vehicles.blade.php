@@ -455,8 +455,8 @@
 
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
-                       @foreach($PrefixDetails as $Prefix)
-                       wastetypeOptions += `<option value="{{ $Prefix->id }}" ${value['waste_types'] == "{{ $Prefix->id }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                       @foreach($ZoneDetails as $Zone)
+                       wastetypeOptions += `<option value="{{ $Zone->id }}" ${value['waste_types'] == "{{ $Zone->id }}" ? 'selected' : ''}>{{ $Zone->value }}</option>`;
                        @endforeach
 
                         html += `
@@ -504,8 +504,8 @@
                 <td>
                     <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
-                                  @foreach($PrefixDetails as $Prefix)
-                                     <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
+                                  @foreach($ZoneDetails as $Zone)
+                                     <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
                                   @endforeach
                         </select>
                 </td>
@@ -669,8 +669,8 @@
                     <td>
                         <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
-                                  @foreach($PrefixDetails as $Prefix)
-                                     <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
+                                  @foreach($ZoneDetails as $Zone)
+                                     <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
                                   @endforeach
                         </select>
                     </td>
