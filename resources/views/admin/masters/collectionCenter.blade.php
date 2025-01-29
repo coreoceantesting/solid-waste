@@ -293,9 +293,9 @@
                                         <label class="col-form-label" for="plant_category">Plant Category<span class="text-danger">*</span></label>
                                         <select name="p_cat" id="plant_category" class="form-select">
                                             <option value="" >Select Plant Category</option>
-                                            <option value="X">A</option>
-                                            <option value="Y">B</option>
-                                            <option value="Z">C</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
                                         </select>
                                         <span class="text-danger is-invalid p_cat_err"></span>
                                     </div>
