@@ -44,7 +44,24 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_standard_weight">Vehicle Standard Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
+                                    {{-- <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight"> --}}
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="vehicle_standard_weight"
+                                            name="vehicle_standard_weight"
+                                            type="text"
+                                            placeholder="Enter Vehicle Standard Weight"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" style="max-width: 75px;">
+                                         @foreach ($WasteTypeDetails as $WasteType)
+                                            <option value="{{$WasteType->id}}">{{$WasteType->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid vehicle_standard_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -164,7 +181,24 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_standard_weight">Vehicle Standard Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
+                                    {{-- <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight"> --}}
+                                    <div class="input-group">
+                                        <!-- Input field for weight -->
+                                        <input
+                                            class="form-control"
+                                            id="vehicle_standard_weight"
+                                            name="vehicle_standard_weight"
+                                            type="text"
+                                            placeholder="Enter Vehicle Standard Weight"
+                                            step="0.01"
+                                        >
+                                        <!-- Dropdown for selecting weight unit -->
+                                        <select class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" style="max-width: 75px;">
+                                         @foreach ($WasteTypeDetails as $WasteType)
+                                            <option value="{{$WasteType->id}}">{{$WasteType->value}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
                                     <span class="text-danger is-invalid vehicle_standard_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -455,8 +489,8 @@
 
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
-                       @foreach($WasteTypeDetails as $WasteType)
-                       wastetypeOptions += `<option value="{{ $WasteType->id }}" ${value['waste_types'] == "{{ $WasteType->id }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
+                       @foreach($PrefixDetails as $Prefix)
+                       wastetypeOptions += `<option value="{{ $Prefix->id }}" ${value['waste_types'] == "{{ $Prefix->id }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
                        @endforeach
 
                         html += `
@@ -504,8 +538,8 @@
                 <td>
                     <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
-                                  @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
+                                  @foreach($PrefixDetails as $Prefix)
+                                     <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
                                   @endforeach
                         </select>
                 </td>
@@ -669,8 +703,8 @@
                     <td>
                         <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
-                                  @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
+                                  @foreach($PrefixDetails as $Prefix)
+                                     <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
                                   @endforeach
                         </select>
                     </td>

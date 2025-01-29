@@ -28,19 +28,19 @@ class VehiclesController extends Controller
         // $Prefix = DB::table('prefixes')->where('Prefix_Name','WST')->whereNull('deleted_at')->first();
         // $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
 
-        $ZonePrefix = DB::table('prefixes')->where('Prefix_Name', 'UNT')->whereNull('deleted_at')->first();
-        $ZoneDetails = [];
-        if ($ZonePrefix) {
-            $ZoneDetails = DB::table('prefix_details')->where('Main_Prefix', $ZonePrefix->id)->whereNull('deleted_at')->get();
+        $Prefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->whereNull('deleted_at')->first();
+        $PrefixDetails = [];
+        if ($Prefix) {
+            $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix', $Prefix->id)->whereNull('deleted_at')->get();
         }
 // Retrieve Waste Type Prefix Details
-        $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'WST')->whereNull('deleted_at')->first();
+        $WasteTypePrefix = DB::table('prefixes')->where('Prefix_Name', 'UNT')->whereNull('deleted_at')->first();
         $WasteTypeDetails = [];
         if ($WasteTypePrefix) {
             $WasteTypeDetails = DB::table('prefix_details')->where('Main_Prefix', $WasteTypePrefix->id)->whereNull('deleted_at')->get();
         }
 
-        return view('admin.masters.vehicles')->with(['vehicles'=> $vehicles, 'VehicleType' => $vehicleType,'ZonePrefix' =>$ZonePrefix ,'ZoneDetails'=>$ZoneDetails,'WasteTypePrefix'=>$WasteTypeDetails]);
+        return view('admin.masters.vehicles')->with(['vehicles'=> $vehicles, 'VehicleType' => $vehicleType,'Prefix' =>$Prefix ,'PrefixDetails'=>$PrefixDetails,'WasteTypePrefix'=>$WasteTypePrefix,'WasteTypeDetails'=>$WasteTypeDetails]);
     }
 
     /**
