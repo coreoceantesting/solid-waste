@@ -1,6 +1,6 @@
 <x-admin.layout>
-    <x-slot name="title">Vehicles</x-slot>
-    <x-slot name="heading">Vehicles</x-slot>
+    <x-slot name="title">Vehicles Information</x-slot>
+    <x-slot name="heading">Vehicles Information</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
 
