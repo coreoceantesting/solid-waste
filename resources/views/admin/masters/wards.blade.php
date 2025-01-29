@@ -22,7 +22,7 @@
                                     <select name="name" class="form-select AddFormSelectWard" required/>
                                      <option value="">Select Ward</option>
                                     @foreach($PrefixDetails as $Prefix)
-                                        <option value="{{ $Prefix->value }}">{{ $Prefix->value}}</option>
+                                        <option value="{{ $Prefix->Description }}">{{ $Prefix->Description}}</option>
                                     @endforeach
                                     </select>
                                     <span class="text-danger is-invalid name_err"></span>
@@ -184,7 +184,7 @@
                                     <select name="name" class="form-select AddFormSelectWard" required>
                                     <option value="">Select Ward</option>
                                    @foreach($PrefixDetails as $Prefix)
-                                       <option value="{{ $Prefix->value }}">{{ $Prefix->value}}</option>
+                                       <option value="{{ $Prefix->Description }}">{{ $Prefix->Description}}</option>
                                    @endforeach
                                    </select>
                                     <span class="text-danger is-invalid Ward name_err"></span>
