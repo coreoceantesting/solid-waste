@@ -455,8 +455,8 @@
 
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
-                       @foreach($ZoneDetails as $Zone)
-                       wastetypeOptions += `<option value="{{ $Zone->id }}" ${value['waste_types'] == "{{ $Zone->id }}" ? 'selected' : ''}>{{ $Zone->value }}</option>`;
+                       @foreach($WasteTypeDetails as $WasteType)
+                       wastetypeOptions += `<option value="{{ $WasteType->id }}" ${value['waste_types'] == "{{ $WasteType->id }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
                        @endforeach
 
                         html += `
@@ -504,8 +504,8 @@
                 <td>
                     <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
-                                  @foreach($ZoneDetails as $Zone)
-                                     <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
+                                  @foreach($WasteTypeDetails as $WasteType)
+                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                   @endforeach
                         </select>
                 </td>
@@ -669,8 +669,8 @@
                     <td>
                         <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
-                                  @foreach($ZoneDetails as $Zone)
-                                     <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
+                                  @foreach($WasteTypeDetails as $WasteType)
+                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                   @endforeach
                         </select>
                     </td>
