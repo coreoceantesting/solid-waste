@@ -22,8 +22,8 @@ class StoreTripSheet extends FormRequest
     public function rules(): array
     {
         return [
-            // 'trip_date'=>'required',
-           'trip_date' => 'required|date_format:Y-m-d|regex:/^\d{4}-\d{2}-\d{2}$/',
+            'trip_date'=>'required',
+        //    'trip_date' => 'required|date_format:Y-m-d|regex:/^\d{4}-\d{2}-\d{2}$/',
             'beat_number'=>'required',
             'vehicle_number' => 'required',
             'collection_center' => 'required',

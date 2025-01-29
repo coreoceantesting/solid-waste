@@ -18,7 +18,13 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="name">Ward Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter Ward Name" >
+                                    {{-- <input class="form-control" id="name" name="name" type="text" placeholder="Enter Ward Name" > --}}
+                                    <select name="name" class="form-select AddFormSelectWard" required/>
+                                     <option value="">Select Ward</option>
+                                    @foreach($PrefixDetails as $Prefix)
+                                        <option value="{{ $Prefix->value }}">{{ $Prefix->value}}</option>
+                                    @endforeach
+                                    </select>
                                     <span class="text-danger is-invalid name_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -174,7 +180,13 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Ward Name ">Ward Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Ward Name" name="name" type="text" placeholder="Enter Ward Name ">
+                                    {{-- <input class="form-control" id="Ward Name" name="name" type="text" placeholder="Enter Ward Name "> --}}
+                                    <select name="name" class="form-select AddFormSelectWard" required>
+                                    <option value="">Select Ward</option>
+                                   @foreach($PrefixDetails as $Prefix)
+                                       <option value="{{ $Prefix->value }}">{{ $Prefix->value}}</option>
+                                   @endforeach
+                                   </select>
                                     <span class="text-danger is-invalid Ward name_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -504,7 +516,7 @@
                 if (!data.error)
                 {
                     $("#editForm input[id='edit_model_id']").val(data.wards.id);
-                    $("#editForm input[name='name']").val(data.wards.name);
+                    $("#editForm select[name='name']").val(data.wards.name);
                     $("#editForm input[name='beat_number']").val(data.wards.beat_number);
                     $("#editForm input[name='beat_name']").val(data.wards.beat_name);
                     $("#editForm input[name='end_point']").val(data.wards.end_point);

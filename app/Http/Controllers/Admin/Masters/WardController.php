@@ -9,6 +9,8 @@ use App\Models\Ward;
 use App\Models\AreaType;
 use App\Models\AreaDetails;
 use App\Models\VehicleType;
+use App\Models\Prefix;
+use App\Models\PrefixDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +28,11 @@ class WardController extends Controller
         $areatypes = AreaType::whereNull('deleted_at')->get();
         $VehicleType = VehicleType::whereNull('deleted_at')->get();
 
-        return view('admin.masters.wards')->with(['wards'=> $wards,'AreaDetails'=>$areaDetails,'AreaType'=>$areatypes,'VehicleType'=>$VehicleType]);
+        $Prefix = DB::table('prefixes')->where('Prefix_Name','WARD')->whereNull('deleted_at')->first();
+        $PrefixDetails = DB::table('prefix_details')->where('Main_Prefix',$Prefix->id)->whereNull('deleted_at')->get();
+
+
+        return view('admin.masters.wards')->with(['wards'=> $wards,'AreaDetails'=>$areaDetails,'AreaType'=>$areatypes,'VehicleType'=>$VehicleType,'Prefix'=>$Prefix,'PrefixDetails'=>$PrefixDetails]);
     }
 
     /**
