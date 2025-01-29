@@ -35,9 +35,9 @@
                                     <label class="col-form-label" for="plant_category">Plant Category<span class="text-danger">*</span></label>
                                     <select class="form-select" name="p_cat" id="plant_category" >
                                         <option value="" >Select Plant Category</option>
-                                        <option value="X">X</option>
-                                        <option value="Y">Y</option>
-                                        <option value="Z">Z</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
                                     </select>
                                     <span class="text-danger is-invalid p_cat_err"></span>
                                 </div>
@@ -50,9 +50,8 @@
                                     <label class="col-form-label" for="decentralize">Decentralize<span class="text-danger">*</span></label>
                                     <select class="form-select" name="decentral" id="decentralize">
                                         <option value="" >Select Decentralize</option>
-                                        <option value="X">X</option>
-                                        <option value="Y">Y</option>
-                                        <option value="Z">Z</option>
+                                        <option value="X">Yes</option>
+                                        <option value="Y">No</option>
                                     </select>
                                     <span class="text-danger is-invalid decentral_err"></span>
                                 </div>
@@ -60,9 +59,8 @@
                                     <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
                                     <select class="form-select" name="p_own" id="plant_ownership">
                                         <option value=""  >Select Plant Ownership</option>
-                                        <option value="X">X</option>
-                                        <option value="Y">Y</option>
-                                        <option value="Z">Z</option>
+                                        <option value="X">Yes</option>
+                                        <option value="Y">No</option>
                                     </select>
                                     <span class="text-danger is-invalid p_own_err"></span>
                                 </div>
@@ -70,9 +68,8 @@
                                     <label class="col-form-label" for="location">Location<span class="text-danger">*</span></label>
                                     <select class="form-select" name="location" id="location">
                                         <option value="" >Select Location</option>
-                                        <option value="X">X</option>
-                                        <option value="Y">Y</option>
-                                        <option value="Z">Z</option>
+                                        <option value="X">Taloja</option>
+                                        <option value="Y">Khargar</option>
                                     </select>
                                     <span class="text-danger is-invalid location_err"></span>
                                 </div>
@@ -103,9 +100,8 @@
                                     <label class="col-form-label" for="integrated_with_plant_id">Integrated With Plant ID<span class="text-danger">*</span></label>
                                     <select class="form-select" name="inte_with_id" id="integrated_with_plant_id">
                                         <option value="" >Select Integrated With Plant ID</option>
-                                        <option value="X">X</option>
-                                        <option value="Y">Y</option>
-                                        <option value="Z">Z</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                     <span class="text-danger is-invalid inte_with_id_err"></span>
                                 </div>
@@ -136,9 +132,8 @@
                                     <label class="col-form-label" for="arrangement_if_integrated">Arrangement if Integrated<span class="text-danger">*</span></label>
                                     <select class="form-select" name="Arrangement" id="Arrangement_if_integrated">
                                         <option value="" >Select Arrangement if Integrated</option>
-                                        <option value="X">X</option>
-                                        <option value="Y">Y</option>
-                                        <option value="Z">Z</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                     <span class="text-danger is-invalid Arrangement_err"></span>
                                 </div>
@@ -298,9 +293,9 @@
                                         <label class="col-form-label" for="plant_category">Plant Category<span class="text-danger">*</span></label>
                                         <select name="p_cat" id="plant_category" class="form-select">
                                             <option value="" >Select Plant Category</option>
-                                            <option value="X">X</option>
-                                            <option value="Y">Y</option>
-                                            <option value="Z">Z</option>
+                                            <option value="X">A</option>
+                                            <option value="Y">B</option>
+                                            <option value="Z">C</option>
                                         </select>
                                         <span class="text-danger is-invalid p_cat_err"></span>
                                     </div>
@@ -313,9 +308,8 @@
                                         <label class="col-form-label" for="decentralize">Decentralize<span class="text-danger">*</span></label>
                                         <select name="decentral" id="decentralize" class="form-select">
                                             <option value="" >Select Decentralize</option>
-                                            <option value="X">X</option>
-                                            <option value="Y">Y</option>
-                                            <option value="Z">Z</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
                                         </select>
                                         <span class="text-danger is-invalid decentral_err"></span>
                                     </div>
@@ -323,9 +317,8 @@
                                         <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
                                         <select name="p_own" id="plant_ownership" class="form-select">
                                             <option value="" >Select Plant Ownership</option>
-                                            <option value="X">X</option>
-                                            <option value="Y">Y</option>
-                                            <option value="Z">Z</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
                                         </select>
                                         <span class="text-danger is-invalid p_own_err"></span>
                                     </div>
@@ -333,9 +326,8 @@
                                         <label class="col-form-label" for="location">Location<span class="text-danger">*</span></label>
                                         <select name="location" id="location" class="form-select">
                                             <option value="" >Select Location</option>
-                                            <option value="X">X</option>
-                                            <option value="Y">Y</option>
-                                            <option value="Z">Z</option>
+                                            <option value="Taloja">Taloja</option>
+                                            <option value="Khargar">Khargar</option>
                                         </select>
                                         <span class="text-danger is-invalid location_err"></span>
                                     </div>
@@ -364,9 +356,8 @@
                                         <label class="col-form-label" for="integrated_with_plant_id">Integrated With Plant ID<span class="text-danger">*</span></label>
                                         <select name="inte_with_id" id="integrated_with_plant_id" class="form-select">
                                             <option value="">Select Integrated With Plant ID</option>
-                                            <option value="X">X</option>
-                                            <option value="Y">Y</option>
-                                            <option value="Z">Z</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
                                         </select>
                                         <span class="text-danger is-invalid inte_with_id_err"></span>
                                     </div>
@@ -397,9 +388,8 @@
                                         <label class="col-form-label" for="Arrangement_if_integrated">Arrangement If Integrated<span class="text-danger">*</span></label>
                                         <select name="Arrangement" id="Arrangement_if_integrated" class="form-select">
                                             <option value="">Select Arrangement If Integrated</option>
-                                            <option value="X">X</option>
-                                            <option value="Y">Y</option>
-                                            <option value="Z">Z</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
                                         </select>
                                         <span class="text-danger is-invalid Arrangement_err"></span>
                                     </div>

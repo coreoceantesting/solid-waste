@@ -87,7 +87,7 @@
                                 <a href="{{ route('vehicle-type.index') }}" class="nav-link {{ request()->routeIs('vehicle-type.index') ? 'active' : '' }}" data-key="t-horizontal">Vehicle Type</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('vehicles.index') }}" class="nav-link {{ request()->routeIs('vehicles.index') ? 'active' : '' }}" data-key="t-horizontal">Vehicles</a>
+                                <a href="{{ route('vehicles.index') }}" class="nav-link {{ request()->routeIs('vehicles.index') ? 'active' : '' }}" data-key="t-horizontal">Vehicle Information</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations.index') ? 'active' : '' }}" data-key="t-horizontal">Designations</a>
