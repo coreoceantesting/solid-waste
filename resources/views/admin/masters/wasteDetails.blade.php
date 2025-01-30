@@ -358,7 +358,7 @@
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
                // Loop through VehicleType data dynamically from the controller
                        @foreach($WasteTypeDetails as $WasteType)
-                       wastetypeOptions += `<option value="{{ $WasteType->id }}" ${value['waste_type'] == "{{ $WasteType->id }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
+                       wastetypeOptions += `<option value="{{ $WasteType->value }}" ${value['waste_type'] == "{{ $WasteType->value }}" ? 'selected' : ''}>{{ $WasteType->value }}</option>`;
                        @endforeach
 
                         // Append HTML for each row dynamically
@@ -435,7 +435,7 @@
                  <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
                                   @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
+                                     <option value="{{ $WasteType->value }}">{{ $WasteType->value}}</option>
                                   @endforeach
                                 </select>
                 </td>
@@ -588,7 +588,7 @@
                              <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
                                   @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->id}}">{{ $WasteType->value}}</option>
+                                     <option value="{{ $WasteType->value}}">{{ $WasteType->value}}</option>
                                   @endforeach
                                 </select>
                         </td>
@@ -626,7 +626,7 @@
                                   <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
                                   @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
+                                     <option value="{{ $WasteType->value }}">{{ $WasteType->value}}</option>
                                   @endforeach
                                 </select>
                             </td>
