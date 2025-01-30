@@ -9,23 +9,37 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="button-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
+                            <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Sr.No</th>
                                     <th>Target From Date</th>
                                     <th>Target To Date</th>
+                                    <th>Vehicle Number</th>
+                                    <th>Beat Number</th>
+                                    <th>Garbage Volume</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($vehicles as $vehicle)
+                                @foreach ($VehicleTarget as $vehicle)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$vehicle->target_from_date}}</td>
                                     <td>{{$vehicle->target_to_date}}</td>
+                                    <td>{{$vehicle->vehicle_number}}</td>
+                                    <td>{{$vehicle->beat_number}}</td>
+                                    <td>{{$vehicle->garbage_volumne}}</td>
                                 </tr>
                                 @endforeach
+                                {{-- @foreach ($vehicleTarget as $vehicle)
+                                <tr>
+                                    <td>{{$vehicle->vehicle_number}}</td>
+                                    <td>{{$vehicle->beat_number}}</td>
+                                    <td>{{$vehicle->garbage_volumne}}</td>
+                                </tr>
+                                @endforeach --}}
                             </tbody>
+
                         </table>
                     </div>
                 </div>

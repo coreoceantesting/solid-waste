@@ -10,24 +10,26 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="button-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
+                        <table id="buttons-datatables" class="table table-bordered nowrap align-middle" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Sr.No</th>
-                                    <th>Collection Center</th>
-                                    <th>Inspector Name</th>
-                                    <th>Total Garbage Collected</th>
                                     <th>Date</th>
+                                    <th>Waste Type</th>
+                                    <th>Waste Sub Type1</th>
+                                    <th>Waste Sub Type2</th>
+                                    <th>Volume in Kg</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($waste as $wast)
+                                @foreach ($WasteDetails as $Waste)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$wast->collection_center}}</td>
-                                        <td>{{$wast->inspector_name}}</td>
-                                        <td>{{$wast->total_garbage_collected}}</td>
-                                        <td>{{$wast->date}}</td>
+                                        <td>{{$Waste->date}}</td>
+                                        <td>{{$Waste->waste_type}}</td>
+                                        <td>{{$Waste->waste_sub_type1}}</td>
+                                        <td>{{$Waste->waste_sub_type2}}</td>
+                                        <td>{{$Waste->volume}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

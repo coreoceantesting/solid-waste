@@ -588,7 +588,7 @@
                              <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
                                   @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
+                                     <option value="{{ $WasteType->id}}">{{ $WasteType->value}}</option>
                                   @endforeach
                                 </select>
                         </td>
@@ -626,7 +626,7 @@
                                   <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">Select waste type</option>
                                   @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->Main_Prefix }}">{{ $WasteType->value}}</option>
+                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                   @endforeach
                                 </select>
                             </td>

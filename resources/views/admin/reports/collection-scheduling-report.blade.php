@@ -15,20 +15,24 @@
                                         <th>Sr No.</th>
                                         <th>Vehical Type</th>
                                         <th>Vehical Number</th>
-                                        <th>Schedule From</th>
-                                        <th>Schedule To</th>
-                                        <th>recurrence</th>
+                                        <th>Employee Name</th>
+                                        <th>Schedule Date</th>
+                                        <th>Beat</th>
+                                        <th>From Time</th>
+                                        <th>To Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($collections as $collection)
+                                    @foreach($VehicleSchedulingInformation as $Vehicle)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $collection->vehicle_type }}</td>
-                                        <td>{{ $collection->vehicle_number }}</td>
-                                        <td>{{ $collection->schedule_form }}</td>
-                                        <td>{{ $collection->schedule_to }}</td>
-                                        <td>{{ $collection->recurrence }}</td>
+                                        <td>{{ $Vehicle->vehicle_type }}</td>
+                                        <td>{{ $Vehicle->vehicle_number }}</td>
+                                        <td>{{ $Vehicle->employee_name }}</td>
+                                        <td>{{ $Vehicle->schedule_form }}</td>
+                                        <td>{{ $Vehicle->beat_number }}</td>
+                                        <td>{{ $Vehicle->in_time }}</td>
+                                        <td>{{ $Vehicle->out_time }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
