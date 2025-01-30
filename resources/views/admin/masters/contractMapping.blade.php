@@ -329,7 +329,10 @@
                 </select>
              </td>
              <td>
+                <div class="input-group">
                 <input type="number" class="form-control editGarbageVolume" required name="garbage_volume[]" value="${value['garbage_volume']}" required/>
+                 <span class="input-group-text">Kg</span>
+                 </div>
              </td>
              <td>
                   <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
@@ -416,7 +419,10 @@
                      </select>
                 </td>
                 <td>
+                     <div class="input-group">
                     <input type="number" class="form-control editGarbageVolume" name="garbage_volume[]" value="${value['garbage_volume']}" required />
+                    <span class="input-group-text">Kg</span>
+                     </div>
                 </td>
                 <td>
                       <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
@@ -577,7 +583,10 @@
                                 </select>
                             </td>
                             <td>
+                                <div class="input-group">
                                 <input type="number" name="garbage_volume[]" class="form-control" placeholder="Enter Garbage Volume" required/>
+                                <span class="input-group-text">Kg</span>
+                                </div>
                             </td>
                              <td>
                                 <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
