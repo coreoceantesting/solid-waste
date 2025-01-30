@@ -44,8 +44,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_standard_weight">Vehicle Standard Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
-                                    {{-- <div class="input-group">
+                                    <div class="input-group">
+                                        <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
+                                        <span class="input-group-text ">kg</span>
+                                    </div>
+{{--
+                                     <div class="input-group">
                                         <!-- Input field for weight -->
                                         <input
                                             class="form-control"
@@ -181,8 +185,12 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_standard_weight">Vehicle Standard Weight<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
-                                    {{-- <div class="input-group">
+                                    <div class="input-group">
+                                        <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
+                                        <span class="input-group-text ">kg</span>
+                                    </div>
+{{--
+                                    <div class="input-group">
                                         <!-- Input field for weight -->
                                         <input
                                             class="form-control"
