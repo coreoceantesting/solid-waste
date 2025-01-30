@@ -58,7 +58,7 @@
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" style="max-width: 75px;">
                                          @foreach ($WasteTypeDetails as $WasteType)
-                                            <option value="{{$WasteType->id}}">{{$WasteType->value}}</option>
+                                            <option value="{{$WasteType->value}}">{{$WasteType->value}}</option>
                                          @endforeach
                                         </select>
                                     </div>
@@ -195,7 +195,7 @@
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" style="max-width: 75px;">
                                          @foreach ($WasteTypeDetails as $WasteType)
-                                            <option value="{{$WasteType->id}}">{{$WasteType->value}}</option>
+                                            <option value="{{$WasteType->value}}">{{$WasteType->value}}</option>
                                          @endforeach
                                         </select>
                                     </div>
