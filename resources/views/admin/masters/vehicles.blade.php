@@ -44,8 +44,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_standard_weight">Vehicle Standard Weight<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight"> --}}
-                                    <div class="input-group">
+                                    <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
+                                    {{-- <div class="input-group">
                                         <!-- Input field for weight -->
                                         <input
                                             class="form-control"
@@ -58,10 +58,10 @@
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" style="max-width: 75px;">
                                          @foreach ($WasteTypeDetails as $WasteType)
-                                            <option value="{{$WasteType->value}}">{{$WasteType->value}}</option>
+                                            <option value="{{$WasteType->id}}">{{$WasteType->value}}</option>
                                          @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <span class="text-danger is-invalid vehicle_standard_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -181,8 +181,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="vehicle_standard_weight">Vehicle Standard Weight<span class="text-danger">*</span></label>
-                                    {{-- <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight"> --}}
-                                    <div class="input-group">
+                                    <input class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" type="text" placeholder="Enter Vehicle Standard Weight">
+                                    {{-- <div class="input-group">
                                         <!-- Input field for weight -->
                                         <input
                                             class="form-control"
@@ -195,10 +195,10 @@
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="vehicle_standard_weight" name="vehicle_standard_weight" style="max-width: 75px;">
                                          @foreach ($WasteTypeDetails as $WasteType)
-                                            <option value="{{$WasteType->value}}">{{$WasteType->value}}</option>
+                                            <option value="{{$WasteType->id}}">{{$WasteType->value}}</option>
                                          @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <span class="text-danger is-invalid vehicle_standard_weight_err"></span>
                                 </div>
                                 <div class="col-md-4">
