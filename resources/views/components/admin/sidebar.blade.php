@@ -106,19 +106,41 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('collection-centers.index') }}" class="nav-link {{ request()->routeIs('collection-centers.index') ? 'active' : '' }}" data-key="t-horizontal">Collection Centers</a>
-                            </li> --}}
-                            {{-- <li class="nav-item">
+                            </li>
+                             <li class="nav-item">
                                 <a href="{{ route('slrm-employee-details.index') }}" class="nav-link {{ request()->routeIs('slrm-employee-details.index') ? 'active' : '' }}" data-key="t-horizontal">SLRM Employee Details</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('population.index') }}" class="nav-link {{ request()->routeIs('population.index') ? 'active' : '' }}" data-key="t-horizontal">Population</a>
-                            </li> -
+                            </li>
                              <li class="nav-item">
                                 <a href="{{ route('form17.index') }}" class="nav-link {{ request()->routeIs('form17.index') ? 'active' : '' }}" data-key="t-horizontal">Form 17</a>
                             </li> --}}
                         </ul>
                     </div>
                 </li>
+                @canany(['users.view', 'roles.view'])
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('users.index') || request()->routeIs('roles.index')  ? 'active' : 'collapsed' }}" href="#usermanagementnew" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="usermanagement">
+                        <i class="bx bx-user-circle"></i>
+                        <span data-key="t-layouts">User Management</span>
+                    </a>
+                    <div class="collapse menu-dropdown {{ request()->routeIs('users.index') ||  request()->routeIs('roles.index')  ? 'show' : '' }}" id="usermanagementnew">
+                        <ul class="nav nav-sm flex-column">
+                            @can('users.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.index') ? 'active' : '' }}" data-key="t-horizontal">Users</a>
+                                </li>
+                            @endcan
+                            @can('roles.view')
+                                <li class="nav-item">
+                                    <a href="{{ route('roles.index') }}" class="nav-link {{ request()->routeIs('roles.index') ? 'active' : '' }}" data-key="t-horizontal">Roles</a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </div>
+                </li>
+                @endcan
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('vehicle-scheduling-information.index') || request()->routeIs('contract-mapping.index') || request()->routeIs('waste-details.index') || request()->routeIs('trip-sheet.index') || request()->routeIs('vehicle-target.index') ? 'active' : 'collapsed' }}" href="#transactions" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="transactions">
                         <i class="ri-exchange-line"></i>
@@ -169,7 +191,7 @@
                 </li>
 
 
-                @canany(['users.view', 'roles.view'])
+                {{-- @canany(['users.view', 'roles.view'])
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('users.index') || request()->routeIs('roles.index')  ? 'active' : 'collapsed' }}" href="#usermanagementnew" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="usermanagement">
                         <i class="bx bx-user-circle"></i>
@@ -190,7 +212,7 @@
                         </ul>
                     </div>
                 </li>
-                @endcan
+                @endcan --}}
 
             </ul>
         </div>
