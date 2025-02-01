@@ -15,7 +15,7 @@
             }
 
             .bg-img{
-                background-image: url('{{ asset('admin/images/Solid Waste.jpg') }}');
+                background-image: url('{{ asset('admin/images/solid_waste.jpg') }}');
                 background-repeat: no-repeat;
                 background-position: 0%;
                 background-size: cover;
