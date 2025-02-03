@@ -61,7 +61,7 @@
             </tr>
         </table>
     </section>
-    <hr style="border: 0; border-top: 2px solid #ccc; margin: 20px 0;">
+    <hr style="border: 0; border-top: 2px solid #0e0808; margin: 20px 0;">
     <section id="content">
         <h6>{{ $VehicleSchedulingInformation->isNotEmpty() ? $VehicleSchedulingInformation->first()->department_name : 'All' }}</h6>
         <table>
