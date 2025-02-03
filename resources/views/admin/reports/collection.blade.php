@@ -61,9 +61,9 @@
             </tr>
         </table>
     </section>
-
+    <hr>
     <section id="content">
-        <h6>Department : {{ $VehicleSchedulingInformation->isNotEmpty() ? $VehicleSchedulingInformation->first()->department_name : 'All' }}</h6>
+        <h6>{{ $VehicleSchedulingInformation->isNotEmpty() ? $VehicleSchedulingInformation->first()->department_name : 'All' }}</h6>
         <table>
             <thead>
                 <tr>
@@ -84,10 +84,10 @@
                     <td align="center">{{ $Vehicle->vehicle_type }}</td>
                     <td align="center">{{ $Vehicle->vehicle_number }}</td>
                     <td align="center">{{ $Vehicle->employee_name }}</td>
-                    <td align="center">{{ date('d-m-Y', strtotime($Vehicle->schedule_date)) }}</td>
+                    <td align="center">{{ date('d-m-Y', strtotime($Vehicle->schedule_form)) }}</td>
                     <td align="center">{{ $Vehicle->beat_number }}</td>
-                    <td align="center">{{ date('h:i A', strtotime($Vehicle->from_time)) }}</td>
-                    <td align="center">{{ date('h:i A', strtotime($Vehicle->to_time)) }}</td>
+                    <td align="center">{{ date('h:i A', strtotime($Vehicle->in_time)) }}</td>
+                    <td align="center">{{ date('h:i A', strtotime($Vehicle->out_time)) }}</td>
                 </tr>
                 @endforeach
             </tbody>
