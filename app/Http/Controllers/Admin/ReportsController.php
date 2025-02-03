@@ -105,7 +105,7 @@ class ReportsController extends Controller
             $pdf = SnappyPdf::loadView('admin.reports.collection', compact('VehicleSchedulingInformation'))
             ->setPaper('a4');
 
-        return $pdf->inline('test.pdf');
+        // return $pdf->inline('test.pdf');
         }
 
 
