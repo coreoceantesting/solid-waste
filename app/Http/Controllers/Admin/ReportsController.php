@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\VehicleTarget;
 use App\Models\VehicleSchedulingInformation;
 use App\Models\WasteDetails;
+use App\Models\VehicleInformation;
+use Barryvdh\Snappy\Facades\SnappyPdf;
+
 
 class ReportsController extends Controller
 {
@@ -18,10 +21,29 @@ class ReportsController extends Controller
         //     ->select('vehicle_targets.target_from_date', 'vehicle_targets.target_to_date', 'vehicle_target_details.vehicle_number', 'vehicle_target_details.beat_number', 'vehicle_target_details.garbage_volumne') // Ensure correct column names
         //     ->get();
 
-        $VehicleSchedulingInformation = VehicleSchedulingInformation::join('vehicle_information','vehicle_scheduling_information.id','=','vehicle_information.vehicle_scheduling_id')
+        $VehicleSchedulingInformation = VehicleSchedulingInformation::join('vehicle_information', 'vehicle_scheduling_information.id', '=', 'vehicle_information.vehicle_scheduling_id')
         ->whereNull('vehicle_information.deleted_at')
         ->whereNull('vehicle_scheduling_information.deleted_at')
-        ->select('vehicle_information.beat_number','vehicle_information.employee_name','vehicle_information.in_time','vehicle_information.out_time','vehicle_scheduling_information.vehicle_type','vehicle_scheduling_information.vehicle_number','vehicle_scheduling_information.schedule_form')
+        ->select(
+            'vehicle_information.beat_number',
+            'vehicle_information.employee_name',
+            'vehicle_information.in_time',
+            'vehicle_information.out_time',
+            'vehicle_scheduling_information.vehicle_type',
+            'vehicle_scheduling_information.vehicle_number',
+            'vehicle_scheduling_information.schedule_form'
+        );
+
+
+        if(isset($request->from_date) && $request->from_date != ""){
+            $VehicleSchedulingInformation = $VehicleSchedulingInformation->where('vehicle_scheduling_information.schedule_form', '>=', $request->from_date);
+        }
+
+        if(isset($request->to_date) && $request->to_date != ""){
+            $VehicleSchedulingInformation = $VehicleSchedulingInformation->where('vehicle_scheduling_information.schedule_form', '<=', $request->to_date);
+        }
+
+        $VehicleSchedulingInformation = $VehicleSchedulingInformation->select('vehicle_information.beat_number','vehicle_information.employee_name','vehicle_information.in_time','vehicle_information.out_time','vehicle_scheduling_information.vehicle_type','vehicle_scheduling_information.vehicle_number','vehicle_scheduling_information.schedule_form')
         ->get();
 
 
@@ -29,6 +51,63 @@ class ReportsController extends Controller
 
         return view('admin.reports.collection-scheduling-report', compact('VehicleSchedulingInformation'));
     }
+
+    // public function collection(Request $request){
+
+    //     $VehicleSchedulingInformation = VehicleSchedulingInformation::whereNull('deleted_by')->get();
+    //     return view('admin.reports.collection',compact('VehicleSchedulingInformation'));
+    //     $html = view('admin.reports.collection')->render();
+    //     $mpdf = new Mpdf(
+    //         [
+    //             'mode' => 'utf-8',
+    //             'format' => 'A4',
+    //             'orientation' => 'L'
+    //         ]
+    //     );
+    //     $pdf  = pdf::loadView('collection.pdf', $mpdf);
+
+    //     return $pdf->stream('collection.pdf');
+
+    //     // $mpdf->WriteHTML($html);
+    //     // $mpdf->Output('collection.pdf', 'I');
+
+    // }
+
+    // use Mpdf\Mpdf;
+
+        public function collection(Request $request)
+        {
+            $VehicleSchedulingInformation = VehicleSchedulingInformation::join('vehicle_information', 'vehicle_scheduling_information.id', '=', 'vehicle_information.vehicle_scheduling_id')
+        ->whereNull('vehicle_information.deleted_at')
+        ->whereNull('vehicle_scheduling_information.deleted_at')
+        ->select(
+            'vehicle_information.beat_number',
+            'vehicle_information.employee_name',
+            'vehicle_information.in_time',
+            'vehicle_information.out_time',
+            'vehicle_scheduling_information.vehicle_type',
+            'vehicle_scheduling_information.vehicle_number',
+            'vehicle_scheduling_information.schedule_form'
+        );
+
+
+        if(isset($request->from_date) && $request->from_date != ""){
+            $VehicleSchedulingInformation = $VehicleSchedulingInformation->where('vehicle_scheduling_information.schedule_form', '>=', $request->from_date);
+        }
+
+        if(isset($request->to_date) && $request->to_date != ""){
+            $VehicleSchedulingInformation = $VehicleSchedulingInformation->where('vehicle_scheduling_information.schedule_form', '<=', $request->to_date);
+        }
+
+        $VehicleSchedulingInformation = $VehicleSchedulingInformation->select('vehicle_information.beat_number','vehicle_information.employee_name','vehicle_information.in_time','vehicle_information.out_time','vehicle_scheduling_information.vehicle_type','vehicle_scheduling_information.vehicle_number','vehicle_scheduling_information.schedule_form')
+        ->get();
+            // Initialize mPDF with the desired configuration
+            $pdf = SnappyPdf::loadView('admin.reports.collection', compact('VehicleSchedulingInformation'))
+            ->setPaper('a4');
+
+        return $pdf->inline('test.pdf');
+        }
+
 
     public function TripSheetReport(Request $request)
     {

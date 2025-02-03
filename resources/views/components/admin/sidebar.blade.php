@@ -112,10 +112,10 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('population.index') }}" class="nav-link {{ request()->routeIs('population.index') ? 'active' : '' }}" data-key="t-horizontal">Population</a>
-                            </li>
+                            </li> --}}
                              <li class="nav-item">
                                 <a href="{{ route('form17.index') }}" class="nav-link {{ request()->routeIs('form17.index') ? 'active' : '' }}" data-key="t-horizontal">Form 17</a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </div>
                 </li>

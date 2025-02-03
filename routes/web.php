@@ -138,6 +138,8 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
     // route for report
     Route::get('reports/collection-scheduling-report', [App\Http\Controllers\Admin\ReportsController::class, 'collectionSchedulingReport'])->name('report.collection-scheduling-report');
 
+    Route::get('reports/collection',[App\Http\Controllers\Admin\ReportsController::class,'collection'])->name('reports.collection.pdf');
+
     Route::get('reports/trip-sheet-report', [App\Http\Controllers\Admin\ReportsController::class, 'TripSheetReport'])->name('report.trip-sheet-report');
 
     Route::get('reports/waste-details-report', [App\Http\Controllers\Admin\ReportsController::class, 'WasteDetailsReport'])->name('report.waste-details-report');
