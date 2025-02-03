@@ -47,11 +47,11 @@
                                     <span class="text-danger is-invalid d_of_op_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="decentralize">Decentralize<span class="text-danger">*</span></label>
-                                    <select class="form-select" name="decentral" id="decentralize">
+                                    <label class="col-form-label" for="decentral">Decentralize<span class="text-danger">*</span></label>
+                                    <select class="form-select" name="decentral" id="decentral">
                                         <option value="" >Select Decentralize</option>
-                                        <option value="X">Yes</option>
-                                        <option value="Y">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                     <span class="text-danger is-invalid decentral_err"></span>
                                 </div>
@@ -59,8 +59,8 @@
                                     <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
                                     <select class="form-select" name="p_own" id="plant_ownership">
                                         <option value=""  >Select Plant Ownership</option>
-                                        <option value="X">Yes</option>
-                                        <option value="Y">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                     <span class="text-danger is-invalid p_own_err"></span>
                                 </div>
@@ -68,8 +68,8 @@
                                     <label class="col-form-label" for="location">Location<span class="text-danger">*</span></label>
                                     <select class="form-select" name="location" id="location">
                                         <option value="" >Select Location</option>
-                                        <option value="X">Taloja</option>
-                                        <option value="Y">Khargar</option>
+                                        <option value="Taloja">Taloja</option>
+                                        <option value="Khargar">Khargar</option>
                                     </select>
                                     <span class="text-danger is-invalid location_err"></span>
                                 </div>
@@ -163,22 +163,22 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="project_code">Project Code<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="p_code" name="p_code" type="number" placeholder="Enter Project Code">
+                                    <input class="form-control" id="p_code" name="p_code" type="text" placeholder="Enter Project Code">
                                     <span class="text-danger is-invalid p_code_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="project_cost">Project Cost(In rs)<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="p_cost" name="p_cost" type="number" placeholder="Enter Project cost">
+                                    <input class="form-control" id="p_cost" name="p_cost" type="text" placeholder="Enter Project cost">
                                     <span class="text-danger is-invalid p_cost_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="project_progress">Project Progress<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="p_prog" name="p_prog" type="number" placeholder="Enter project progress">
+                                    <input class="form-control" id="p_prog" name="p_prog" type="text" placeholder="Enter project progress">
                                     <span class="text-danger is-invalid p_prog_err"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Assest_code">Assest Code<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="a_code" name="a_code" type="number" placeholder="Enter Assest code">
+                                    <input class="form-control" id="a_code" name="a_code" type="text" placeholder="Enter Assest code">
                                     <span class="text-danger is-invalid a_code_err"></span>
                                 </div>
                             </div>
@@ -305,8 +305,8 @@
                                         <span class="text-danger is-invalid d_of_op_err"></span>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="col-form-label" for="decentralize">Decentralize<span class="text-danger">*</span></label>
-                                        <select name="decentral" id="decentralize" class="form-select">
+                                        <label class="col-form-label" for="decentral">Decentralize<span class="text-danger">*</span></label>
+                                        <select name="decentral" id="decentral" class="form-select">
                                             <option value="" >Select Decentralize</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -315,7 +315,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
-                                        <select name="p_own" id="plant_ownership" class="form-select">
+                                        <select name="p_own" id="p_own" class="form-select">
                                             <option value="" >Select Plant Ownership</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
