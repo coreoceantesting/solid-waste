@@ -140,6 +140,12 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::get('reports/collection',[App\Http\Controllers\Admin\ReportsController::class,'collection'])->name('reports.collection.pdf');
 
+    Route::get('reports/trip',[App\Http\Controllers\Admin\ReportsController::class,'trip'])->name('reports.trip.pdf');
+
+    Route::get('reports/waste',[App\Http\Controllers\Admin\ReportsController::class,'waste'])->name('reports.waste.pdf');
+
+    Route::get('reports/vehicle',[App\Http\Controllers\Admin\ReportsController::class,'vehicle'])->name('reports.vehicle.pdf');
+
     Route::get('reports/trip-sheet-report', [App\Http\Controllers\Admin\ReportsController::class, 'TripSheetReport'])->name('report.trip-sheet-report');
 
     Route::get('reports/waste-details-report', [App\Http\Controllers\Admin\ReportsController::class, 'WasteDetailsReport'])->name('report.waste-details-report');

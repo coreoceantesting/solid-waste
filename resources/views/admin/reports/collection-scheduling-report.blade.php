@@ -19,7 +19,7 @@
                 <div class="col-md-4 d-flex align-items-end">
                     <div class="d-flex gap-2 w-100">
                         <button class="btn btn-primary w-20" id="submit">Search</button>
-                        <button class="btn btn-danger w-20" id="download">Download PDF</button>
+                        <button class="btn btn-danger w-20" id="download" style="background-color: rgb(26, 177, 26); color: white; border: 1px solid rgb(23, 121, 23);">Download PDF</button>
                         {{-- <button class="btn btn-secondary w-50" id="refresh">Refresh</button> --}}
                     </div>
                 </div>
