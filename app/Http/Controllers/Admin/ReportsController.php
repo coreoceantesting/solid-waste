@@ -101,6 +101,7 @@ class ReportsController extends Controller
 
         $VehicleSchedulingInformation = $VehicleSchedulingInformation->select('vehicle_information.beat_number','vehicle_information.employee_name','vehicle_information.in_time','vehicle_information.out_time','vehicle_scheduling_information.vehicle_type','vehicle_scheduling_information.vehicle_number','vehicle_scheduling_information.schedule_form')
         ->get();
+        // return $VehicleSchedulingInformation;
             // Initialize mPDF with the desired configuration
             $pdf = SnappyPdf::loadView('admin.reports.collection', compact('VehicleSchedulingInformation'))
             ->setPaper('a4');
