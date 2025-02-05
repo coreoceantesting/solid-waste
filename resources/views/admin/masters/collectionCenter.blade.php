@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="date_of_operation">Date Of Operation<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="date_of_operation" name="d_of_op" type="date">
+                                    <input class="form-control" id="date_of_operation" name="d_of_op" type="date" onkeydown="return false;">
                                     <span class="text-danger is-invalid d_of_op_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -301,7 +301,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="date_of_operation">Date Of Operation<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="date_of_operation" name="d_of_op" type="date" placeholder="Enter Date of operation">
+                                        <input class="form-control" id="date_of_operation" name="d_of_op" type="date" placeholder="Enter Date of operation" onkeydown="return false;">
                                         <span class="text-danger is-invalid d_of_op_err"></span>
                                     </div>
                                     <div class="col-md-4">

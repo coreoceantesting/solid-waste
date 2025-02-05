@@ -36,6 +36,15 @@
                             <span class="text-danger is-invalid schedule_form_err"></span>
                         </div>
                         <div class="col-md-4">
+                        <div class="input-group date" id="schedule_form">
+                            <label class="col-form-label" for="schedule_form">Schedule Form<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="schedule_form" name="schedule_form" required readonly="readonly" />
+                            <span class="input-group-addon">
+                              <span class="text-danger is-invalid schedule_form_err"></span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
                             <label class="col-form-label" for="schedule_to">Schedule To<span class="text-danger">*</span></label>
                             <input class="form-control" id="schedule_to" name="schedule_to" type="date" placeholder="Enter schedule_to">
                             <span class="text-danger is-invalid schedule_to_err"></span>

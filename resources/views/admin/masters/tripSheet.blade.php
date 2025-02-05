@@ -17,7 +17,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="trip_date">Trip Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="trip_date" name="trip_date" type="date" placeholder="Enter Trip Date">
+                                    <input class="form-control" id="trip_date" name="trip_date" type="date" placeholder="Enter Trip Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid trip_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -206,7 +206,7 @@
                             <div class="mb-3 row">
                             <div class="col-md-4">
                                     <label class="col-form-label" for="trip_date">Trip Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="trip_date" name="trip_date" type="date" placeholder="Enter Trip Date">
+                                    <input class="form-control" id="trip_date" name="trip_date" type="date" placeholder="Enter Trip Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid trip_date_err"></span>
                                 </div>
                                 <div class="col-md-4">

@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="date">Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="date" name="date" type="date" placeholder="Enter date">
+                                    <input class="form-control" id="date" name="date" type="date" placeholder="Enter date" onkeydown="return false;">
                                     <span class="text-danger is-invalid date_err"></span>
                                 </div>
                                </div>
@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="date">Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="date" name="date" type="date" placeholder="Enter date">
+                                    <input class="form-control" id="date" name="date" type="date" placeholder="Enter date" onkeydown="return false;">
                                     <span class="text-danger is-invalid date_err"></span>
                                 </div>
                                 </div>

@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="purchase_date">Purchase Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="purchase_date" name="purchase_date" type="date" placeholder="Enter Purchase Date">
+                                    <input class="form-control" id="purchase_date" name="purchase_date" type="date" placeholder="Enter Purchase Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid purchase_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Source_of_purchase_date">Source Of Purchase Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="date" placeholder="Enter Source Of Purchase Date">
+                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="date" placeholder="Enter Source Of Purchase Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid Source_of_purchase_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -226,7 +226,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="purchase_date">Purchase Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="purchase_date" name="purchase_date" type="date" placeholder="Enter Purchase Date">
+                                    <input class="form-control" id="purchase_date" name="purchase_date" type="date" placeholder="Enter Purchase Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid purchase_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
@@ -236,7 +236,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="Source_of_purchase_date">Source Of Purchase Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="date" placeholder="Enter Source Of Purchase Date">
+                                    <input class="form-control" id="Source_of_purchase_date" name="Source_of_purchase_date" type="date" placeholder="Enter Source Of Purchase Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid Source_of_purchase_date_err"></span>
                                 </div>
                                 <div class="col-md-4">

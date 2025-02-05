@@ -37,9 +37,9 @@ return [
         'enabled' => true,
         //  'binary' => 'C:/wkhtmltopdf/wkhtmltopdf.exe',
         // 'binary'  => env('WKHTML_PDF_BINARY', '/usr/local/bin/wkhtmltopdf'),
-        'binary'  => base_path('vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'),
+        // 'binary'  => base_path('vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'),
         // 'binary'  => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"',
-        // 'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"',
+        'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"',
         // 'binary' => 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe',
       // Update to your correct path
         'timeout' => false,
