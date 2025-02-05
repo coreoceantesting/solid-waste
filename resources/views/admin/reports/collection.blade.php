@@ -32,6 +32,11 @@
             margin: 5px 0;
             padding: 0;
         }
+
+        /* .date-time {
+            text-align: right;
+        } */
+
     </style>
 </head>
 <body>
@@ -93,5 +98,10 @@
             </tbody>
         </table>
     </section>
+    <td class="date-time">
+        <p style="color: black ">Generated-by : </p>
+        {{-- <p style="text-align: right">Date : {{ date('d-m-Y') }}</p>
+        <p style="text-align:right">Time : {{ date('h:i:s A') }}</p> --}}
+    </td>
 </body>
 </html>

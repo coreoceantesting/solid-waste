@@ -80,7 +80,9 @@ class ReportsController extends Controller
         // return $VehicleSchedulingInformation;
             // Initialize mPDF with the desired configuration
          $pdf = SnappyPdf::loadView('admin.reports.collection', compact('VehicleSchedulingInformation'))
-         ->setPaper('a4');
+         ->setPaper('a4')
+         ->setOption('footer-right', now()->format('d-m-Y h:i:s'))
+         ->setOption('footer-left', 'Page: [page] of [toPage]');
 
         return $pdf->inline('test.pdf');
         }
@@ -118,7 +120,9 @@ class ReportsController extends Controller
             }
 
             $pdf = SnappyPdf::loadView('admin.reports.trip', compact('trip'))
-                ->setPaper('a4');
+                ->setPaper('a4')
+                ->setOption('footer-right', now()->format('d-m-Y h:i:s'))
+                ->setOption('footer-left', 'Page: [page] of [toPage]');
 
             return $pdf->inline('trip-sheet.pdf');
         }
@@ -155,7 +159,9 @@ class ReportsController extends Controller
             }
 
             $pdf = SnappyPdf::loadView('admin.reports.waste', compact('WasteDetails'))
-                ->setPaper('a4');
+                ->setPaper('a4')
+                ->setOption('footer-right', now()->format('d-m-Y h:i:s'))
+                ->setOption('footer-left', 'Page: [page] of [toPage]');
 
             return $pdf->inline('waste-details.pdf');
         }
@@ -188,9 +194,11 @@ class ReportsController extends Controller
             if ($VehicleTarget->isEmpty()) {
                 return back()->with('error', 'No vehicle records found for the selected date range.');
             }
-
+            
             $pdf = SnappyPdf::loadView('admin.reports.vehicle', compact('VehicleTarget'))
-                ->setPaper('a4');
+                ->setPaper('a4')
+                ->setOption('footer-right', now()->format('d-m-Y h:i:s'))
+                ->setOption('footer-left', 'Page: [page] of [toPage]');
 
             return $pdf->inline('vehicle-targets.pdf');
         }
