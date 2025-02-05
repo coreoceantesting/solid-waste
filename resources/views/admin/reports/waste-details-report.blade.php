@@ -20,7 +20,7 @@
                         <div class="d-flex gap-2 w-100">
                             <button class="btn btn-primary w-20" id="submit">Search</button>
                             <button class="btn btn-danger w-20" id="download" style="background-color: rgb(26, 177, 26); color: white; border: 1px solid rgb(23, 121, 23);">Download PDF</button>
-                            <a href="{{route('report.waste-details-report')}}" class="btn btn-primary w-20" style="background-color: red;color:white;border:1px solid red;" >Refresh</a>
+                            {{-- <a href="{{route('report.waste-details-report')}}" class="btn btn-primary w-20" style="background-color: red;color:white;border:1px solid red;" >Refresh</a> --}}
                         </div>
                     </div>
                 </div>
@@ -49,6 +49,12 @@
         window.open(downloadUrl, '_blank');
     });
 
+    window.onload = function() {
+        // Clear the query parameters after a refresh to show all data
+        if (window.location.search) {
+            history.replaceState({}, document.title, window.location.pathname);
+        }
+    };
 
 </script>
 

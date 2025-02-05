@@ -21,7 +21,7 @@
                           <button type="button" class="btn w-20" id="download" style="background-color: rgb(26, 177, 26); color: white; border: 1px solid rgb(23, 121, 23);">
                               Download PDF
                         </button>
-                        <a href="{{ route('report.trip-sheet-report') }}" class="btn btn-primary w-20" style="background-color: red;color:white;border:1px solid red">Refresh</a>
+                        {{-- <a href="{{ route('report.trip-sheet-report') }}" class="btn btn-primary w-20" style="background-color: red;color:white;border:1px solid red">Refresh</a> --}}
                         </div>
                   </div>
               </div>
@@ -53,6 +53,13 @@
         var downloadUrl = "{{ route('reports.trip.pdf') }}" + '?' + formData;
         window.open(downloadUrl, '_blank');
     });
+
+    window.onload = function() {
+        // Clear the query parameters after a refresh to show all data
+        if (window.location.search) {
+            history.replaceState({}, document.title, window.location.pathname);
+        }
+    };
 </script>
 {{--
     <div class="row" id="addContainer">
