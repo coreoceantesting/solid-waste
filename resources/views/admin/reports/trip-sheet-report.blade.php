@@ -6,22 +6,23 @@
           <div class="col-sm-12">
               <div class="row mb-3">
                   <div class="col-md-4">
-                      <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
-                      <input class="form-control" id="from_date" name="from_date" type="date"  placeholder="Enter Schedule From" onkeydown="return false;">
+                      <label class="col-form-label" for="from_date">From Date<span class="text-danger"></span></label>
+                      <input class="form-control" id="from_date" name="from_date" type="date"  placeholder="Enter Schedule From" value="{{request('from_date')}}" onkeydown="return false;">
                       <span class="text-danger is-invalid from_date_err"></span>
                   </div>
                   <div class="col-md-4">
-                      <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
-                      <input class="form-control" id="to_date" name="to_date" type="date"  placeholder="Enter Schedule To" onkeydown="return false;">
+                      <label class="col-form-label" for="to_date">To Date<span class="text-danger"></span></label>
+                      <input class="form-control" id="to_date" name="to_date" type="date"  placeholder="Enter Schedule To" value="{{request('to_date')}}" onkeydown="return false;">
                       <span class="text-danger is-invalid to_date_err"></span>
                   </div>
                   <div class="col-md-4 d-flex align-items-end">
                       <div class="d-flex gap-2 w-100">
                           <button type="button" class="btn btn-primary w-20" id="Search">Search</button>
                           <button type="button" class="btn w-20" id="download" style="background-color: rgb(26, 177, 26); color: white; border: 1px solid rgb(23, 121, 23);">
-                            Download PDF
+                              Download PDF
                         </button>
-                      </div>
+                        <a href="{{ route('report.trip-sheet-report') }}" class="btn btn-primary w-20" style="background-color: red;color:white;border:1px solid red">Refresh</a>
+                        </div>
                   </div>
               </div>
           </div>

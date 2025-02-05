@@ -17,12 +17,12 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="target_from_date">Target From Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="target_from_date" name="target_from_date" type="date" placeholder="Enter Target From Date" onkeydown ="return false;">
+                                    <label class="col-form-label" for="target_from_date">Target From Date<span class="text-danger"></span></label>
+                                    <input class="form-control" id="target_from_date" name="target_from_date" type="date" placeholder="Enter Target From Date"  onkeydown ="return false;">
                                     <span class="text-danger is-invalid target_from_date_err"></span>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="target_to_date">Target To Date<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="target_to_date">Target To Date<span class="text-danger"></span></label>
                                     <input class="form-control" id="target_to_date" name="target_to_date" type="date" placeholder="Enter target_to_date" onkeydown="return false;">
                                     <span class="text-danger is-invalid target_to_date_err"></span>
                                 </div>

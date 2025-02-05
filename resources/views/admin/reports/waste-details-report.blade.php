@@ -7,20 +7,20 @@
             <div class="col-sm-12">
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
-                        <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter Schedule From" onkeydown="return false;">
+                        <label class="col-form-label" for="from_date">From Date<span class="text-danger"></span></label>
+                        <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter Schedule From" value="{{request('from_date')}}" onkeydown="return false;">
                         <span class="text-danger is-invalid from_date_err"></span>
                     </div>
                     <div class="col-md-4">
-                        <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
-                        <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Schedule To" onkeydown="return false;">
+                        <label class="col-form-label" for="to_date">To Date<span class="text-danger"></span></label>
+                        <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Schedule To" value="{{request('to_date')}}" onkeydown="return false;">
                         <span class="text-danger is-invalid to_date_err"></span>
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <div class="d-flex gap-2 w-100">
                             <button class="btn btn-primary w-20" id="submit">Search</button>
                             <button class="btn btn-danger w-20" id="download" style="background-color: rgb(26, 177, 26); color: white; border: 1px solid rgb(23, 121, 23);">Download PDF</button>
-                            {{-- <button class="btn btn-secondary w-50" id="refresh">Refresh</button> --}}
+                            <a href="{{route('report.waste-details-report')}}" class="btn btn-primary w-20" style="background-color: red;color:white;border:1px solid red;" >Refresh</a>
                         </div>
                     </div>
                 </div>
@@ -31,11 +31,7 @@
     // Submit Form and Serialize Data to URL
     document.getElementById('submit').addEventListener('click', function(event) {
         event.preventDefault();
-
-        // Serialize form data
         var formData = $('#dateForm').serialize();
-
-        // Redirect with query params
         var baseUrl = window.location.origin + window.location.pathname;
         var url = baseUrl + '?' + formData; // Append query string
         window.location.href = url; // Redirect to URL
@@ -45,13 +41,15 @@
     document.getElementById('download').addEventListener('click', function(event) {
         event.preventDefault();
 
-        // Serialize form data
+
         var formData = $('#dateForm').serialize();
 
         // Generate the download URL with query params
         var downloadUrl = "{{ route('reports.waste.pdf') }}" + '?' + formData;
         window.open(downloadUrl, '_blank');
     });
+
+
 </script>
 
 {{--

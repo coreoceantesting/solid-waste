@@ -8,19 +8,19 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
-                        <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter from date" onkeydown="return false;">
+                        <input class="form-control" id="from_date" name="from_date" type="date" placeholder="Enter from date" value="{{request('from_date')}}" onkeydown="return false;">
                         <span class="text-danger is-invalid from_date_err"></span>
                     </div>
                     <div class="col-md-4">
                         <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
-                        <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Schedule To" onkeydown="return false;">
+                        <input class="form-control" id="to_date" name="to_date" type="date" placeholder="Enter Schedule To" value="{{request('to_date')}}" onkeydown="return false;">
                         <span class="text-danger is-invalid to_date_err"></span>
                     </div>
                     <div class="col-md-4 d-flex align-items-end">
                         <div class="d-flex gap-2 w-100">
                             <button class="btn btn-primary w-20" id="submit">Search</button>
                             <button class="btn btn-danger w-20" id="download" style="background-color: rgb(26, 177, 26); color: white; border: 1px solid rgb(23, 121, 23);">Download PDF</button>
-                            {{-- <button class="btn btn-secondary w-50" id="refresh">Refresh</button> --}}
+                            <a href="{{route('report.vehicle-target-report')}}" class="btn btn-primary w-20" style="background-color: red;color:white;border:1px solid red;">Refresh</a>
                         </div>
                     </div>
                 </div>

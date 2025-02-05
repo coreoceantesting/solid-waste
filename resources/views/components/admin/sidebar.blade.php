@@ -175,7 +175,7 @@
                     <div class="collapse menu-dropdown {{ request()->routeIs('report.collection-scheduling-report') || request()->routeIs('report.trip-sheet-report') || request()->routeIs('report.waste-details-report') || request()->routeIs('report.vehicle-target-report') ? 'show' : '' }}" id="reports">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('report.collection-scheduling-report') }}" class="nav-link {{ request()->routeIs('report.collection-scheduling-report') ? 'active' : '' }}" data-key="t-monthly-report">Vehicle Collection Scheduling</a>
+                                <a href="{{ route('report.collection-scheduling-report') }}" class="nav-link {{ request()->routeIs('report.collection-scheduling-report') ? 'active' : '' }}" data-key="t-monthly-report">Collection Scheduling</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('report.trip-sheet-report') }}" class="nav-link {{ request()->routeIs('report.trip-sheet-report') ? 'active' : '' }}" data-key="t-annual-report">Trip Sheet</a>
