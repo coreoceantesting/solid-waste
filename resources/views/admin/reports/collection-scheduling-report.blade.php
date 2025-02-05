@@ -55,6 +55,14 @@
         var downloadUrl = "{{ route('reports.collection.pdf') }}" + '?' + formData;
         window.open(downloadUrl, '_blank');
     });
+
+    // On page load, reset filters after page refresh
+    window.onload = function() {
+        // Clear the query parameters after a refresh to show all data
+        if (window.location.search) {
+            history.replaceState({}, document.title, window.location.pathname);
+        }
+    };
 </script>
 
 
