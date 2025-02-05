@@ -7,12 +7,12 @@
               <div class="row mb-3">
                   <div class="col-md-4">
                       <label class="col-form-label" for="from_date">From Date<span class="text-danger">*</span></label>
-                      <input class="form-control" id="from_date" name="from_date" type="date" value="{{ request()->from_date }}" placeholder="Enter Schedule From" onkeydown="return false;">
+                      <input class="form-control" id="from_date" name="from_date" type="date"  placeholder="Enter Schedule From" onkeydown="return false;">
                       <span class="text-danger is-invalid from_date_err"></span>
                   </div>
                   <div class="col-md-4">
                       <label class="col-form-label" for="to_date">To Date<span class="text-danger">*</span></label>
-                      <input class="form-control" id="to_date" name="to_date" type="date" value="{{ request()->to_date }}"  placeholder="Enter Schedule To" onkeydown="return false;">
+                      <input class="form-control" id="to_date" name="to_date" type="date"  placeholder="Enter Schedule To" onkeydown="return false;">
                       <span class="text-danger is-invalid to_date_err"></span>
                   </div>
                   <div class="col-md-4 d-flex align-items-end">
@@ -42,14 +42,6 @@
         window.location.href = url; // Redirect to URL
     });
 
-    // document.getElementById('Search').addEventListener('click', function(event) {
-    //     event.preventDefault();
-    //     var formData = $('#dateForm').serialize();
-    //     var baseUrl = window.location.origin + window.location.pathname;
-    //     var url = baseUrl + '?' + formData;
-    //     window.location.href = url;
-    // });
-    // Handle Download PDF
     document.getElementById('download').addEventListener('click', function(event) {
         event.preventDefault();
 
