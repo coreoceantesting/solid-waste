@@ -91,17 +91,19 @@ class ReportsController extends Controller
         public function trip(Request $request)
         {
             $trip = TripSheet::join('break_ups', 'trip_sheets.id', '=', 'break_ups.trip_sheet_id')
-                ->whereNull('break_ups.deleted_at')
-                ->whereNull('trip_sheets.deleted_at')
-                ->select(
-                    'trip_sheets.trip_date',
-                    'trip_sheets.beat_number',
-                    'trip_sheets.vehicle_number',
-                    'trip_sheets.collection_center',
-                    'trip_sheets.in_time',
-                    'trip_sheets.out_time',
-                    'trip_sheets.entry_weight'
-                );
+            ->whereNull('break_ups.deleted_at')
+            ->whereNull('trip_sheets.deleted_at')
+            ->select(
+                'trip_sheets.trip_date',
+                'trip_sheets.beat_number',
+                'trip_sheets.vehicle_number',
+                'trip_sheets.collection_center',
+                'trip_sheets.in_time',
+                'trip_sheets.out_time',
+                'trip_sheets.entry_weight'
+            )
+            ->distinct() // This will ensure unique records
+            ->get();
 
             // Apply date filters before executing query
             if (!empty($request->from_date)) {
