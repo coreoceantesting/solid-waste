@@ -114,7 +114,7 @@ class ReportsController extends Controller
                 $trip->where('trip_sheets.trip_date', '<=', $request->to_date);
             }
 
-            $trip = $trip->get(); // Execute query after filtering
+            // $trip = $trip->get(); // Execute query after filtering
 
             // Check if there is data before generating the PDF
             if ($trip->isEmpty()) {
