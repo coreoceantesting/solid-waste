@@ -367,9 +367,8 @@
         });
     });
 </script>
-
 {{-- add more Task Maping in edit --}}
-<script>
+ <script>
     // Global counter for row IDs
     let editRowCounter = 100;
 
@@ -448,11 +447,129 @@
     });
 
     // Event to remove a vehicle row (fixed event binding)/
+    // $('body').on('click', '.removeRow', function() {
+    //     let rowId = $(this).data('id');
+    //     $(`#editRow${rowId}`).remove();
+    // });
+
+
+     // Add More Button functionality (after the default row)
+       $('#editmoretaskmapping').on('click', function () {
+            appendVehicleRow(); // Add a new row when the button is clicked
+        });
+
+        // Event to remove a vehicle row
+        $('body').on('click', '.removeRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#edittaskmappingBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
+</script>
+
+{{-- <script>
+    // Global counter for row IDs
+    let editRowCounter = 100;
+
+    // Event to add more vehicle rows (fixed event binding)
+    $('body').on('click', '#editmoretaskmapping', function() {
+        let value = {
+            zone: '',      // Default empty value or dynamically populated
+            ward: '',      // Default empty value or dynamically populated
+            colony: '',    // Default empty value or dynamically populated
+            society: '',   // Default empty value or dynamically populated
+            task: '',      // Default empty value or dynamically populated
+            waste_type: '',
+            garbage_volume: '',    // Default empty value or dynamically populated
+            beat_number: '',      // Default empty value or dynamically populated
+            employee_count: '',   // Default empty value or dynamically populated
+            vehicle_count: '',
+        };
+
+        let html = `
+            <tr id="editRow${editRowCounter}">
+                <td>
+                    <select name="zone[]" class="form-select AddFormSelectzone" required>
+                        <option value="">Select zone</option>
+                        @foreach($ZoneDetails as $Zone)
+                            <option value="{{ $Zone->id }}">{{ $Zone->value }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control editward" name="ward[]" value="${value['ward']}" required />
+                </td>
+                <td>
+                    <input type="text" class="form-control editcolony" name="colony[]" value="${value['colony']}" required />
+                </td>
+                <td>
+                    <input type="text" class="form-control editsociety" name="society[]" value="${value['society']}" required />
+                </td>
+                <td>
+                    <input type="text" class="form-control edittask" name="task[]" value="${value['task']}" required />
+                </td>
+                <td>
+                    <select name="waste_type[]" class="form-select AddFormSelectzone" required>
+                        <option value="">Select waste type</option>
+                        @foreach($WasteTypeDetails as $WasteType)
+                            <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <div class="input-group">
+                        <input type="number" class="form-control editGarbageVolume" name="garbage_volume[]" value="${value['garbage_volume']}" required />
+                        <span class="input-group-text">Kg</span>
+                    </div>
+                </td>
+                <td>
+                    <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required>
+                        <option value="">Select Beat Number</option>
+                        @foreach($Ward as $Wa)
+                            <option value="{{ $Wa->id }}">{{ $Wa->beat_number }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="number" class="form-control editEmployeeCount" name="employee_count[]" value="${value['employee_count']}" required />
+                </td>
+                <td>
+                    <input type="number" class="form-control editVehicleCount" name="vehicle_count[]" value="${value['vehicle_count']}" required />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
+                </td>
+            </tr>
+        `;
+
+        // Append the new row to the table body
+        $('#edittaskmappingBody').append(html);
+        editRowCounter++;
+    });
+
+    // Event to remove a vehicle row (fixed event binding)
     $('body').on('click', '.removeRow', function() {
         let rowId = $(this).data('id');
-        $(`#editRow${rowId}`).remove();
+
+        // Check if the row has been edited before allowing removal
+        let isRowEdited = $(`#editRow${rowId}`).find('input, select').toArray().some(input => $(input).val() !== '');
+
+        if (isRowEdited) {
+            // If the row has been edited, allow removal
+            $(`#editRow${rowId}`).remove();
+        } else {
+            // If not edited, you may show an alert or prevent removal
+            alert('You need to edit this row before removing it.');
+        }
     });
+
 </script>
+ --}}
+
+
 <!-- Update -->
 <script>
     $(document).ready(function() {
@@ -546,7 +663,7 @@
     });
 </script>
 {{-- Add more functionality in task mapping  --}}
-<script>
+{{-- <script>
     $(document).ready(function () {
         let taskRowCount = 1; // Counter for unique row IDs
         let defaultRowAdded = false; // Flag to check if default row is already added
@@ -626,6 +743,94 @@
         $('body').on('click', '.removetaskRow', function () {
             const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
             $(`#taskRow${rowId}`).remove(); // Remove the corresponding row
+        });
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let taskRowCount = 1; // Counter for unique row IDs
+        let defaultRowAdded = false; // Flag to check if default row is already added
+
+        // Function to append the default or new task row
+        function appendTaskRow() {
+            let html = `<tr id="taskRow${taskRowCount}">
+                            <td>
+                                <select name="zone[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select zone</option>
+                                  @foreach($ZoneDetails as $Zone)
+                                     <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
+                                  @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" name="ward[]" class="form-control" placeholder="Enter ward" required/>
+                            </td>
+                            <td>
+                                <input type="text" name="colony[]" class="form-control" placeholder="Enter colony" required />
+                            </td>
+                            <td>
+                                <input type="text" name="society[]" class="form-control" placeholder="Enter society" required />
+                            </td>
+                            <td>
+                                <input type="text" name="task[]" class="form-control" placeholder="Enter task" required />
+                            </td>
+                            <td>
+                                <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
+                                    <option value="">Select waste type</option>
+                                  @foreach($WasteTypeDetails as $WasteType)
+                                     <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
+                                  @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                <input type="number" name="garbage_volume[]" class="form-control" placeholder="Enter Garbage Volume" required/>
+                                <span class="input-group-text">Kg</span>
+                                </div>
+                            </td>
+                             <td>
+                                <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
+                                    <option value="">Select Beat Number</option>
+                                  @foreach($Ward as $Wa)
+                                     <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
+                                  @endforeach
+                             </select>
+                            </td>
+                            <td>
+                                <input type="number" name="employee_count[]" class="form-control" placeholder="Enter Employee Count" required/>
+                            </td>
+                            <td>
+                                <input type="number" name="vehicle_count[]" class="form-control" placeholder="Enter vehicle Count" required/>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm removetaskRow" data-id="${taskRowCount}">Remove</button>
+                            </td>
+                        </tr>`;
+
+            $('#taskmappingBody').append(html); // Append the new row to the table body
+            taskRowCount++; // Increment the row counter for unique IDs
+        }
+
+        // Initially add the first row by default when the page loads
+        if (!defaultRowAdded) {
+            appendTaskRow(); // Add the default row initially
+            defaultRowAdded = true; // Set the flag to true to prevent adding more rows by default
+        }
+
+        // Add More Button functionality (after the default row)
+        $('#addtaskmapping').on('click', function () {
+            appendTaskRow(); // Add a new row when the button is clicked
+        });
+
+        // Remove Row functionality
+        $('body').on('click', '.removetaskRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#taskmappingBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#taskRow${rowId}`).remove(); // Remove the corresponding row
+            }
         });
     });
 </script>

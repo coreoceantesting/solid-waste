@@ -604,7 +604,7 @@
 </script>
 
 {{-- add more vehicle details in edit --}}
-<script>
+{{-- <script>
     // Global counter for row IDs
     let editRowCounter = 100;
 
@@ -655,7 +655,66 @@
         const rowId = $(this).data('id');
         $(`#editRow${rowId}`).remove();
     });
+</script> --}}
+<script>
+    // Global counter for row IDs
+    let editRowCounter = 100;
+
+    // Event to add more rows
+    $('body').on('click', '#editMoreEditAreaRow', function () {
+        let value = {
+            area_type: '',      // Default empty value or dynamically populated
+            area_name: '',      // Default empty value or dynamically populated
+            household_count: '',
+            shop_count: '',
+            total: '',          // Default empty value or dynamically populated
+        };
+
+        let html = `
+            <tr id="editRow${editRowCounter}">
+                <td>
+                    <select name="area_type[]" class="form-select AddFormSelectVehicle" required>
+                        <option value="">Select Area Type</option>
+                        @foreach($AreaType as $Area)
+                            <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control areaName" name="area_name[]" value="${value['area_name']}" placeholder="Enter Area Name" required />
+                </td>
+                <td>
+                    <input type="number" class="form-control householdCount" name="household_count[]" value="${value['household_count']}" placeholder="Enter Household Count" required />
+                </td>
+                <td>
+                    <input type="number" class="form-control shopCount" name="shop_count[]" value="${value['shop_count']}" placeholder="Enter Shop Count" required />
+                </td>
+                <td>
+                    <input type="number" class="form-control totalField" name="total[]" value="${value['total']}" placeholder="Total" readonly required />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
+                </td>
+            </tr>
+        `;
+
+        $('#editAreaTableBody').append(html);
+        editRowCounter++;
+    });
+
+    // Event to remove a row, but prevent the last row from being removed
+    $('body').on('click', '.removeRow', function () {
+        const rowId = $(this).data('id');
+        const rowCount = $('#editAreaTableBody tr').length;
+
+        // Check if there's more than one row
+        if (rowCount > 1) {
+            $(`#editRow${rowId}`).remove();
+        }
+    });
+
 </script>
+
 {{-- update --}}
 <script>
     $(document).ready(function() {
@@ -747,7 +806,7 @@
     });
 </script>
 {{----Add more functionality in the wards----}}
-<script>
+{{-- <script>
     $(document).ready(function () {
         let areaRowCount = 1; // Counter for row IDs
 
@@ -794,6 +853,67 @@
         $('body').on('click', '.removeAreaRow', function () {
             const rowId = $(this).data('id');
             $(`#areaRow${rowId}`).remove();
+        });
+
+        // Automatically calculate the total for each row
+        $('body').on('input', '.householdCount, .shopCount', function () {
+            const row = $(this).closest('tr');
+            const householdCount = parseInt(row.find('.householdCount').val()) || 0;
+            const shopCount = parseInt(row.find('.shopCount').val()) || 0;
+            const total = householdCount + shopCount;
+            row.find('.totalField').val(total);
+        });
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let areaRowCount = 1; // Counter for row IDs
+
+        // Function to create a new row
+        function createNewRow(rowId) {
+            return `<tr id="areaRow${rowId}">
+                        <td>
+                            <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
+                                <option value="">Select Area Type</option>
+                                @foreach($AreaType as $Area)
+                                <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" name="area_name[]" class="form-control" placeholder="Enter Area Name" required>
+                        </td>
+                        <td>
+                            <input type="number" name="household_count[]" class="form-control householdCount" placeholder="Enter Household Count" required>
+                        </td>
+                        <td>
+                            <input type="number" name="shop_count[]" class="form-control shopCount" placeholder="Enter Shop Count" required>
+                        </td>
+                        <td>
+                            <input type="number" name="total[]" class="form-control totalField" placeholder="Total" required readonly>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm removeAreaRow" data-id="${rowId}">Remove</button>
+                        </td>
+                    </tr>`;
+        }
+
+        // Automatically add one row on page load
+        $('#areaTableBody').append(createNewRow(areaRowCount));
+        areaRowCount++;
+
+        // Add More Button Functionality
+        $('#addMoreAreaButton').on('click', function () {
+            $('#areaTableBody').append(createNewRow(areaRowCount));
+            areaRowCount++;
+        });
+
+        // Prevent deleting the last remaining row
+        $('body').on('click', '.removeAreaRow', function () {
+            if ($('#areaTableBody tr').length > 1) {
+                const rowId = $(this).data('id');
+                $(`#areaRow${rowId}`).remove();
+            }
         });
 
         // Automatically calculate the total for each row

@@ -422,7 +422,8 @@
                                     @foreach ($TripSheet as $Trip)
                                         <tr>
                                             <td>{{ $loop->iteration}}</td>
-                                            <td>{{ $Trip->trip_date }}</td>
+                                            {{-- <td>{{ $Trip->trip_date }}</td> --}}
+                                            <td>{{ date('d-m-Y', strtotime($Trip->trip_date))}}</td>
                                             <td>{{ $Trip->beat_number }}</td>
                                             <td>{{ $Trip->vehicle_number }}</td>
                                             <td>{{ $Trip->collection_center }}</td>
@@ -652,7 +653,7 @@
 
 {{--  --}}
 {{-- add more vehicle details in edit --}}
-<script>
+ {{-- <script>
     // Global counter for row IDs
     let editBreakupCounter = 100;
 
@@ -706,10 +707,99 @@
         calculateTotalVolumeEdit();
     });
 
+        // Initially add the first row by default when the page loads
+        $('#editMoreBreakUpButton').on('click', function () {
+            appendBreakupRow(); // Add a new row when the button is clicked
+        });
+
+        // Event to remove a vehicle row
+        $('body').on('click', '.removeRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#editBreakUpTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
     function calculateTotalVolumeEdit() {
         let totalVolume = 0;
         // Iterate through each volume field and sum up the values
         $('input[name="volume[]"]').each(function () {
+            let volume = parseFloat($(this).val());
+            if (!isNaN(volume)) {
+                totalVolume += volume;
+            }
+        });
+        // Update the total volume field
+        $('#editTotalVolumeField').val(totalVolume.toFixed(2)); // Display total volume with 2 decimal places
+    }
+
+</script> --}}
+<script>
+    // Global counter for row IDs
+    let editBreakupCounter = 100;
+
+    // Event to add more vehicle rows (fixed event binding)
+    $('body').on('click', '#editMoreBreakUpButton', function() {
+        let value = {
+            waste_type: '',  // Default empty value or dynamically populated
+            volume: '',      // Default empty value or dynamically populated
+        };
+
+        let html = `
+            <tr id="editRow${editBreakupCounter}">
+                <td>
+                    <select name="waste_type[]" class="form-select AddFormSelectzone" required>
+                        <option value="">Select waste type</option>
+                        @foreach($WasteTypeDetails as $WasteType)
+                            <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <div class="input-group">
+                        <input
+                            type="number"
+                            name="volume[]"
+                            class="form-control volumeInput"
+                            placeholder="Enter volume"
+                            required
+                        >
+                        <span class="input-group-text">Kg</span>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeRow" data-id="${editBreakupCounter}">Remove</button>
+                </td>
+            </tr>
+        `;
+        $('#editBreakUpTableBody').append(html);
+        editBreakupCounter++;
+    });
+
+    // Event to remove a row (ensure at least one row remains)
+    $('body').on('click', '.removeRow', function() {
+        const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+        const rowCount = $('#editBreakUpTableBody tr').length; // Get the total number of rows in the table
+
+        // Ensure at least one row remains
+        if (rowCount > 1) {
+            $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            calculateTotalVolumeEdit(); // Recalculate the total volume after removing a row
+        }
+    });
+
+    // Event to recalculate the total volume when any volume field is updated
+    $('body').on('input', 'input[name="volume[]"]', function() {
+        calculateTotalVolumeEdit(); // Recalculate total volume when input changes
+    });
+
+    // Function to calculate total volume
+    function calculateTotalVolumeEdit() {
+        let totalVolume = 0;
+        // Iterate through each volume field and sum up the values
+        $('input[name="volume[]"]').each(function() {
             let volume = parseFloat($(this).val());
             if (!isNaN(volume)) {
                 totalVolume += volume;
@@ -813,10 +903,8 @@
         });
     });
 </script>
-
-
 {{-- Add form for trip sheet  --}}
-<script>
+ {{-- <script>
     $(document).ready(function () {
         let tripsheetRowCount = 1; // Counter for unique row IDs
 
@@ -888,6 +976,125 @@
             calculateTotalVolume(); // Recalculate total volume after removal
         });
 
+        // Initially add the first row by default when the page loads
+        if (!defaultRowAdded) {
+            appendTripRow(); // Add the default row initially
+            defaultRowAdded = true; // Set the flag to true to prevent adding more rows by default
+        }
+
+        // Add More Button functionality (after the default row)
+        $('#addMoreBreakUpButton').on('click', function () {
+            appendTripRow(); // Add a new row when the button is clicked
+        });
+
+        // Remove Row functionality
+        $('body').on('click', '.removetripsheetRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#BreakUpTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#taskRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
+        // Event listener to calculate total volume when the volume input field is updated
+        $('body').on('input', '.volumeInput', function () {
+            calculateTotalVolume(); // Recalculate total volume whenever a volume input changes
+        });
+
+        // Function to calculate and update the total volume
+        function calculateTotalVolume() {
+            let totalVolume = 0;
+            // Iterate through each volume field and sum up the values
+            $('input[name="volume[]"]').each(function () {
+                let volume = parseFloat($(this).val());
+                if (!isNaN(volume)) {
+                    totalVolume += volume;
+                }
+            });
+            // Update the total volume field
+            $('#totalVolumeField').val(totalVolume.toFixed(2)); // Display total volume with 2 decimal places
+        }
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let tripsheetRowCount = 1; // Counter for unique row IDs
+        let defaultRowAdded = false; // Flag to track if the default row has been added
+
+        // Automatically add the first row when the page loads
+        let initialHtml = `<tr id="tripsheetRow${tripsheetRowCount}">
+                                <td>
+                                        <select name="waste_type[]" class="form-select AddFormSelectzone" required>
+                                        <option value="">Select waste type</option>
+                                        @foreach($WasteTypeDetails as $WasteType)
+                                            <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
+                                        @endforeach
+                                        </select>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="volume[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- Apply btn-danger class for red remove button for the first row -->
+                                    <button type="button" class="btn btn-danger btn-sm removetripsheetRow" data-id="${tripsheetRowCount}">Remove</button>
+                                </td>
+                            </tr>`;
+        $('#BreakUpTableBody').append(initialHtml); // Append the first row to the table body
+        tripsheetRowCount++; // Increment the row counter for unique IDs
+        defaultRowAdded = true; // Mark that the default row has been added
+
+        // Add More Button Functionality
+        $('#addMoreBreakUpButton').on('click', function () {
+            let html = `<tr id="tripsheetRow${tripsheetRowCount}">
+                            <td>
+                                    <select name="waste_type[]" class="form-select AddFormSelectzone" required>
+                                        <option value="">Select waste type</option>
+                                        @foreach($WasteTypeDetails as $WasteType)
+                                            <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
+                                        @endforeach
+                                    </select>
+                            </td>
+                             <td>
+                                    <div class="input-group">
+                                        <input
+                                            type="number"
+                                            name="volume[]"
+                                            class="form-control volumeInput"
+                                            placeholder="Enter volume"
+                                            required
+                                        >
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm removetripsheetRow" data-id="${tripsheetRowCount}">Remove</button>
+                            </td>
+                        </tr>`;
+
+            $('#BreakUpTableBody').append(html); // Append the new row to the table body
+            tripsheetRowCount++; // Increment the row counter for unique IDs
+        });
+
+        // Remove Row Functionality
+        $('body').on('click', '.removetripsheetRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            if (rowId > 1) { // Prevent removing the first row
+                $(`#tripsheetRow${rowId}`).remove(); // Remove the corresponding row
+                calculateTotalVolume(); // Recalculate total volume after removal
+            }
+        });
+
+
         // Event listener to calculate total volume when the volume input field is updated
         $('body').on('input', '.volumeInput', function () {
             calculateTotalVolume(); // Recalculate total volume whenever a volume input changes
@@ -908,7 +1115,9 @@
         }
     });
 </script>
+
 {{-- view --}}
+
 <script>
     $('body').on('click', '.view-element', function () {
         var model_id = $(this).data("id");
@@ -925,7 +1134,8 @@
                     // Populate the First Table: Waste Details
                     let mainDataHtml = `
                         <tr>
-                            <td>${data.TripSheet.trip_date || 'N/A'}</td>
+                            <td>${data.TripSheet.trip_date  ? new Date(data.TripSheet.trip_date).toLocaleDateString('en-GB')
+                            : 'N/A'}</td>
                             <td>${data.TripSheet.beat_number || 'N/A'}</td>
                             <td>${data.TripSheet.vehicle_number || 'N/A'}</td>
                             <td>${data.TripSheet.collection_center || 'N/A'}</td>

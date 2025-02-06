@@ -214,7 +214,8 @@
                                         <td>{{$Waste->collection_center}}</td>
                                         <td>{{$Waste->inspector_name}}</td>
                                         <td>{{$Waste->total_garbage_collected}}</td>
-                                        <td>{{$Waste->date}}</td>
+                                        {{-- <td>{{$Waste->date}}</td> --}}
+                                        <td>{{ date('d-m-Y', strtotime($Waste->date))}}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit Waste" data-id="{{ $Waste->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete Waste" data-id="{{ $Waste->id }}"><i data-feather="trash-2"></i></button>
@@ -416,7 +417,7 @@
     });
 </script>
 {{-- add more Segregation in edit --}}
-<script>
+{{-- <script>
     // Global counter for row IDs
     let editRowCounter = 100;
 
@@ -463,10 +464,27 @@
         calculateTotalVolumeEdit(); // Recalculate the total volume after removing a row
     });
 
+
     // Event to recalculate the total volume when any volume field is updated
     $('body').on('input', 'input[name="volume[]"]', function () {
         calculateTotalVolumeEdit();
     });
+
+    // Add More Button functionality (after the default row)
+    $('#editMoreSegregationButton').on('click', function () {
+            appendSegregationRow(); // Add a new row when the button is clicked
+        });
+
+        // Event to remove a vehicle row
+        $('body').on('click', '.removeRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#editSegregationTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
 
     function calculateTotalVolumeEdit() {
         let totalVolume = 0;
@@ -480,8 +498,79 @@
         // Update the total volume field
         $('#editTotalVolumeField').val(totalVolume.toFixed(2)); // Display total volume with 2 decimal places
     }
-</script>
+</script> --}}
+<script>
+    // Global counter for row IDs
+    let editRowCounter = 100;
 
+    // Event to add more vehicle rows (fixed event binding)
+    $('body').on('click', '#editMoreSegregationButton', function() {
+        let value = {
+            waste_type: '',      // Default empty value or dynamically populated
+            waste_sub_type1: '',   // Default empty value or dynamically populated
+            waste_sub_type2: '',
+            volume: ''    // Default empty value or dynamically populated
+        };
+
+        let html = `
+            <tr id="editRow${editRowCounter}">
+                <td>
+                    <select name="waste_type[]" class="form-select AddFormSelectzone" required>
+                        <option value="">Select waste type</option>
+                        @foreach($WasteTypeDetails as $WasteType)
+                            <option value="{{ $WasteType->value }}">{{ $WasteType->value }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control editWasteSubType1" name="waste_sub_type1[]" value="${value['waste_sub_type1']}" required />
+                </td>
+                <td>
+                    <input type="text" class="form-control editWasteSubType2" name="waste_sub_type2[]" value="${value['waste_sub_type2']}" required />
+                </td>
+                <td>
+                    <input type="number" class="form-control editvolume" name="volume[]" value="${value['volume']}" required />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
+                </td>
+            </tr>
+        `;
+        $('#editSegregationTableBody').append(html);
+        editRowCounter++;  // Increment the counter to ensure unique row IDs
+    });
+
+    // Event to remove a vehicle row and recalculate total volume
+    $('body').on('click', '.removeRow', function () {
+        let rowId = $(this).data('id');
+        const rowCount = $('#editSegregationTableBody tr').length; // Get the total number of rows
+
+        // Ensure at least one row remains
+        if (rowCount > 1) {
+            $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            calculateTotalVolumeEdit(); // Recalculate the total volume after removing a row
+        }
+    });
+
+    // Event to recalculate the total volume when any volume field is updated
+    $('body').on('input', 'input[name="volume[]"]', function () {
+        calculateTotalVolumeEdit(); // Recalculate total volume when any volume input changes
+    });
+
+    // Function to calculate and update the total volume
+    function calculateTotalVolumeEdit() {
+        let totalVolume = 0;
+        // Iterate through each volume field and sum up the values
+        $('input[name="volume[]"]').each(function () {
+            let volume = parseFloat($(this).val());
+            if (!isNaN(volume)) {
+                totalVolume += volume;
+            }
+        });
+        // Update the total volume field with 2 decimal places
+        $('#editTotalVolumeField').val(totalVolume.toFixed(2));
+    }
+</script>
 
 <!-- Update -->
 
@@ -580,90 +669,62 @@
 {{-- Add More form for Segregation --}}
 <script>
     $(document).ready(function () {
-        let SegregationRowCount = 1; // Counter for unique row IDs
+        let defaultRowAdded = false; // Flag to prevent adding multiple default rows
 
-        // Automatically show the first row when the page loads
-        let html = `<tr id="SegregationRow${SegregationRowCount}">
-                        <td>
-                             <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select waste type</option>
-                                  @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->value}}">{{ $WasteType->value}}</option>
-                                  @endforeach
-                                </select>
-                        </td>
-                        <td>
-                            <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>
-                        </td>
-                        <td>
-                            <input type="text" name="waste_sub_type2[]" class="form-control" placeholder="Enter waste sub type2" required>
-                        </td>
-                         <td>
-                            <div class="input-group">
-                                <!-- Input field for volume -->
-                                <input
-                                    type="number"
-                                    name="volume[]"
-                                    class="form-control volumeInput"
-                                    placeholder="Enter volume"
-                                    required
-                                />
-                                <!-- Kilogram unit display -->
-                                <span class="input-group-text">Kg</span>
-                            </div>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-sm removeSegregationRow" data-id="${SegregationRowCount}">Remove</button>
-                        </td>
-                    </tr>`;
-        $('#SegregationTableBody').append(html); // Append the first row to the table body
-        SegregationRowCount++; // Increment the row counter for unique IDs
+        // Function to append a new segregation row
+        function appendSegregationRow() {
+            const rowCount = $('#SegregationTableBody tr').length + 1; // Calculate the row ID based on existing rows
+            let rowHtml = `
+                <tr id="SegregationRow${rowCount}">
+                    <td>
+                        <select name="waste_type[]" class="form-select AddFormSelectzone" required>
+                            <option value="">Select waste type</option>
+                            @foreach($WasteTypeDetails as $WasteType)
+                                <option value="{{ $WasteType->value }}">{{ $WasteType->value }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>
+                    </td>
+                    <td>
+                        <input type="text" name="waste_sub_type2[]" class="form-control" placeholder="Enter waste sub type2" required>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <input type="number" name="volume[]" class="form-control volumeInput" placeholder="Enter volume" required />
+                            <span class="input-group-text">Kg</span>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm removeSegregationRow" data-id="${rowCount}">Remove</button>
+                    </td>
+                </tr>
+            `;
+            $('#SegregationTableBody').append(rowHtml); // Append the row to the table
+        }
 
-        // Add More Button Functionality (now only for adding extra rows after initial load)
+        // Initially add the first row by default when the page loads
+        if (!defaultRowAdded) {
+            appendSegregationRow(); // Add the default row initially
+            defaultRowAdded = true; // Set the flag to true to prevent adding more rows by default
+        }
+
+        // Add More Button functionality (after the default row)
         $('#addMoreSegregationButton').on('click', function () {
-            let html = `<tr id="SegregationRow${SegregationRowCount}">
-                            <td>
-                                  <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select waste type</option>
-                                  @foreach($WasteTypeDetails as $WasteType)
-                                     <option value="{{ $WasteType->value }}">{{ $WasteType->value}}</option>
-                                  @endforeach
-                                </select>
-                            </td>
-                            <td>
-                                <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>
-                            </td>
-                            <td>
-                                <input type="text" name="waste_sub_type2[]" class="form-control" placeholder="Enter waste sub type2" required>
-                            </td>
-                                                        <td>
-                                <div class="input-group">
-                                    <!-- Input field for volume -->
-                                    <input
-                                        type="number"
-                                        name="volume[]"
-                                        class="form-control volumeInput"
-                                        placeholder="Enter volume"
-                                        required
-                                    />
-                                    <!-- Kilogram unit display -->
-                                    <span class="input-group-text">Kg</span>
-                                </div>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-danger btn-sm removeSegregationRow" data-id="${SegregationRowCount}">Remove</button>
-                            </td>
-                        </tr>`;
-
-            $('#SegregationTableBody').append(html); // Append the new row to the table body
-            SegregationRowCount++; // Increment the row counter for unique IDs
+            appendSegregationRow(); // Add a new row when the button is clicked
         });
 
-        // Remove Row Functionality
+        // Remove Row functionality (ensure at least one row remains)
         $('body').on('click', '.removeSegregationRow', function () {
             const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
-            $(`#SegregationRow${rowId}`).remove(); // Remove the corresponding row
-            calculateTotalVolume(); // Recalculate total volume after removal
+            const rowCount = $('#SegregationTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#SegregationRow${rowId}`).remove(); // Remove the corresponding row
+                calculateTotalVolume(); // Recalculate total volume after removal
+            }
         });
 
         // Event listener to calculate total volume when the volume input field is updated
@@ -710,7 +771,8 @@
                             <td>${data.WasteDetails.collection_center || 'N/A'}</td>
                             <td>${data.WasteDetails.inspector_name || 'N/A'}</td>
                             <td>${data.WasteDetails.total_garbage_collected || 'N/A'}</td>
-                            <td>${data.WasteDetails.date || 'N/A'}</td>
+                            <td>${data.WasteDetails.date   ? new Date(data.WasteDetails.date ).toLocaleDateString('en-GB')
+                            : 'N/A'}</td>
                         </tr>
                     `;
                     $('#wastedetailsModel').html(mainDataHtml);

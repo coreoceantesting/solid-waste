@@ -222,8 +222,10 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$vehicle->vehicle_type}}</td>
                                         <td>{{$vehicle->vehicle_number}}</td>
-                                        <td>{{$vehicle->schedule_form}}</td>
-                                        <td>{{$vehicle->schedule_to}}</td>
+                                        {{-- <td>{{$vehicle->schedule_form}}</td> --}}
+                                        <td>{{ date('d-m-Y', strtotime($vehicle->schedule_form))}}</td>
+                                        {{-- <td>{{$vehicle->schedule_to}}</td> --}}
+                                        <td>{{ date('d-m-Y', strtotime($vehicle->schedule_to))}}</td>
                                         <td>{{$vehicle->recurrence}}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit vehicles" data-id="{{ $vehicle->id }}"><i data-feather="edit"></i></button>
@@ -422,7 +424,7 @@
 </script>
 
 {{-- add more vehicleschedulinginformation details in edit --}}
-
+{{--
 <script>
     // Global counter for row IDs
     let editRowCounter = 100;
@@ -472,6 +474,69 @@
     $('body').on('click', '.removeRow', function() {
         let rowId = $(this).data('id');
         $(`#editRow${rowId}`).remove();
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        // Global counter for row IDs
+        let editRowCounter = 100;
+
+        // Function to append a new row
+        function appendVehicleRow() {
+            let value = {
+                beat_number: '',
+                employee_name: '',
+                waste_gen_type: '',
+                in_time: '',
+                out_time: ''
+            };
+
+            let html = `
+                <tr id="editRow${editRowCounter}">
+                    <td>
+                        <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
+                            <option value="">Select Beat Number</option>
+                            @foreach($Ward as $Wa)
+                                <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number}}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control editEmployeeName" name="employee_name[]" value="${value['employee_name']}" required oninput="validateEmployeeName(this)"/>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control editWasteGenerationType" name="waste_gen_type[]" value="${value['waste_gen_type']}" required oninput="validateEmployeeName(this)" />
+                    </td>
+                    <td>
+                        <input type="Time" class="form-control editInTime" name="in_time[]" value="${value['in_time']}" required />
+                    </td>
+                    <td>
+                        <input type="Time" class="form-control editInTime" name="out_time[]" value="${value['out_time']}" required />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger removeRow" data-id="${editRowCounter}">Remove</button>
+                    </td>
+                </tr>
+            `;
+            $('#editVehicleTableBody').append(html); // Append the row to the table body
+            editRowCounter++; // Increment the row counter for unique IDs
+        }
+
+        // Add More Button functionality (after the default row)
+        $('#editMoreVehicleButton').on('click', function () {
+            appendVehicleRow(); // Add a new row when the button is clicked
+        });
+
+        // Event to remove a vehicle row
+        $('body').on('click', '.removeRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#editVehicleTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            } 
+        });
     });
 </script>
 <!-- Update -->
@@ -567,7 +632,7 @@
     });
 </script>
 {{-- Add form for Vehicle Information details --}}
-<script>
+{{-- <script>
     $(document).ready(function () {
         let vehicleRowCount = 1; // Counter for unique row IDs
         let defaultRowAdded = false; // Flag to check if default row is already added
@@ -620,6 +685,65 @@
             $(`#vehicleRow${rowId}`).remove(); // Remove the corresponding row
         });
     });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let vehicleRowCount = 1; // Counter for unique row IDs
+        let defaultRowAdded = false; // Flag to check if default row is already added
+
+        // Function to append the default or new vehicle row
+        function appendVehicleRow() {
+            let html = `<tr id="vehicleRow${vehicleRowCount}">
+                            <td>
+                               <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
+                                    <option value="">Select Beat Number</option>
+                                  @foreach($Ward as $Wa)
+                                     <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number}}</option>
+                                  @endforeach
+                            </select>
+                            </td>
+                            <td>
+                                <input type="text" name="employee_name[]" class="form-control" placeholder="Enter employee name" required oninput="validateEmployeeName(this)">
+                            </td>
+                            <td>
+                                <input type="text" name="waste_gen_type[]" class="form-control" placeholder="Enter waste generated type" required oninput="validateEmployeeName(this)">
+                            </td>
+                            <td>
+                                <input type="time" name="in_time[]" class="form-control" required>
+                            </td>
+                            <td>
+                                <input type="time" name="out_time[]" class="form-control" required>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm removeVehicleRow" data-id="${vehicleRowCount}">Remove</button>
+                            </td>
+                        </tr>`;
+            $('#vehicleTableBody').append(html); // Append the row to the table body
+            vehicleRowCount++; // Increment the row counter for unique IDs
+        }
+
+        // Add the first row by default when the page loads
+        if (!defaultRowAdded) {
+            appendVehicleRow(); // Add the default row initially
+            defaultRowAdded = true; // Set the flag to true to prevent adding more rows by default
+        }
+
+        // Add More Button functionality (after the default row)
+        $('#addMoreVehicleButton').on('click', function () {
+            appendVehicleRow(); // Add a new row when the button is clicked
+        });
+
+        // Remove Row functionality
+        $('body').on('click', '.removeVehicleRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#vehicleTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#vehicleRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
+    });
 </script>
 
 {{-- view --}}
@@ -644,9 +768,11 @@
                     let mainDataHtml = `
                         <tr>
                             <td>${data.vehicleSchedulingInformation.vehicle_type}</td>
-                            <td>${data.vehicleSchedulingInformation.vehicle_number}</td>
-                            <td>${data.vehicleSchedulingInformation.schedule_form}</td>
-                            <td>${data.vehicleSchedulingInformation.schedule_to}</td>
+                            <td>${data.vehicleSchedulingInformation.vehicle_number }</td>
+                            <td>${data.vehicleSchedulingInformation.schedule_form  ? new Date(data.vehicleSchedulingInformation.schedule_form).toLocaleDateString('en-GB')
+                            : 'N/A'}</td>
+                            <td>${data.vehicleSchedulingInformation.schedule_to  ? new Date(data.vehicleSchedulingInformation.schedule_to).toLocaleDateString('en-GB')
+                            : 'N/A'}</td>
                             <td>${data.vehicleSchedulingInformation.recurrence}</td>
                         </tr>
                     `;

@@ -82,7 +82,8 @@
                                 @foreach ($WasteDetails as $Waste)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$Waste->date}}</td>
+                                        {{-- <td>{{$Waste->date}}</td> --}}
+                                        <td>{{ date('d-m-Y', strtotime($Waste->date))}}</td>
                                         <td>{{$Waste->waste_type}}</td>
                                         <td>{{$Waste->waste_sub_type1}}</td>
                                         <td>{{$Waste->waste_sub_type2}}</td>

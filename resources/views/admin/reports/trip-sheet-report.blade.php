@@ -87,7 +87,8 @@
                               @foreach ($trips as $trip)
                               <tr>
                               <td>{{$loop->iteration}}</td>
-                              <td>{{$trip->trip_date}}</td>
+                              {{-- <td>{{$trip->trip_date}}</td> --}}
+                              <td>{{ date('d-m-Y', strtotime($trip->trip_date))}}</td>
                               <td>{{$trip->beat_number}}</td>
                               <td>{{$trip->vehicle_number}}</td>
                               <td>{{$trip->collection_center}}</td>

@@ -86,8 +86,10 @@
                                 @foreach ($VehicleTarget as $vehicle)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$vehicle->target_from_date}}</td>
-                                    <td>{{$vehicle->target_to_date}}</td>
+                                    {{-- <td>{{$vehicle->target_from_date}}</td> --}}
+                                    <td>{{ date('d-m-Y', strtotime($vehicle->target_from_date))}}</td>
+                                    {{-- <td>{{$vehicle->target_to_date}}</td> --}}
+                                    <td>{{ date('d-m-Y', strtotime($vehicle->target_to_date))}}</td>
                                     <td>{{$vehicle->vehicle_number}}</td>
                                     <td>{{$vehicle->beat_number}}</td>
                                     <td>{{$vehicle->garbage_volumne}}</td>

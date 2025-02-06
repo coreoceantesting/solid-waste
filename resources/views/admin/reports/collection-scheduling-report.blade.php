@@ -92,7 +92,8 @@
                                         <td>{{ $Vehicle->vehicle_type }}</td>
                                         <td>{{ $Vehicle->vehicle_number }}</td>
                                         <td>{{ $Vehicle->employee_name }}</td>
-                                        <td>{{ $Vehicle->schedule_form }}</td>
+                                        {{-- <td>{{ $Vehicle->schedule_form }}</td> --}}
+                                        <td>{{ date('d-m-Y', strtotime( $Vehicle->schedule_form ))}}</td>
                                         <td>{{ $Vehicle->beat_number }}</td>
                                         <td>{{ $Vehicle->in_time }}</td>
                                         <td>{{ $Vehicle->out_time }}</td>

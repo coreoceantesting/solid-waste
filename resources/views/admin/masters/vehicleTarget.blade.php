@@ -138,8 +138,10 @@
                                     @foreach ($VehicleTarget as $Vehicle)
                                         <tr>
                                             <td>{{ $loop->iteration}}</td>
-                                            <td>{{ $Vehicle->target_from_date }}</td>
-                                            <td>{{ $Vehicle->target_to_date }}</td>
+                                            {{-- <td>{{ $Vehicle->target_from_date }}</td> --}}
+                                             <td>{{ date('d-m-Y', strtotime( $Vehicle->target_from_date))}}</td>
+                                            {{-- <td>{{ $Vehicle->target_to_date }}</td> --}}
+                                            <td>{{ date('d-m-Y', strtotime( $Vehicle->target_to_date ))}}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit VehicleTarget" data-id="{{ $Vehicle->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete VehicleTarget" data-id="{{ $Vehicle->id }}"><i data-feather="trash-2"></i> </button>
@@ -378,10 +380,25 @@
     });
 
     // Event to remove a vehicle row (fixed event binding)
-    $('body').on('click', '.removeRow', function() {
-        let rowId = $(this).data('id');
-        $(`#editRow${rowId}`).remove();
-    });
+    // $('body').on('click', '.removeRow', function() {
+    //     let rowId = $(this).data('id');
+    //     $(`#editRow${rowId}`).remove();
+    // });
+
+    // $('#editVehicleTargetButton').on('click', function () {
+    //         appendVehicleRow(); // Add a new row when the button is clicked
+    //     });
+
+        // Event to remove a vehicle row
+        $('body').on('click', '.removeRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#editVehicleTargetTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
 </script>
 <!-- Update -->
 <script>
@@ -476,7 +493,7 @@
     });
 </script>
 {{-- Add form for vehicle target details --}}
-<script>
+{{-- <script>
     $(document).ready(function () {
         let vehicletargetRowCount = 1; // Counter for unique row IDs
 
@@ -562,10 +579,119 @@
         });
 
         // Remove Row Functionality
+        // $('body').on('click', '.removevehicletargetRow', function () {
+        //     const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+        //     $(`#vehicletargetRow${rowId}`).remove(); // Remove the corresponding row
+        // });
+                                                       // Remove Row Functionality
         $('body').on('click', '.removevehicletargetRow', function () {
             const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
-            $(`#vehicletargetRow${rowId}`).remove(); // Remove the corresponding row
+            if (rowId > 1) { // Prevent removing the first row
+                $(`#removevehicletargetRow${rowId}`).remove(); // Remove the corresponding row
+
+            }
         });
+
+        // // Event listener to calculate total volume when the volume input field is updated
+        // $('body').on('input', '.volumeInput', function () {
+        //     calculateTotalVolume(); // Recalculate total volume whenever a volume input changes
+        // });
+
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let vehicletargetRowCount = 1; // Counter for unique row IDs
+
+        // Automatically add the first row when the page loads
+        let initialHtml = `<tr id="vehicletargetRow${vehicletargetRowCount}">
+                                <td>
+                                    <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select VehicleNumber</option>
+                                    @foreach($vehicles as $vehi)
+                                    <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                                @endforeach
+                                </select>
+                                </td>
+                                <td>
+                                    <select name="beat_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select beatNumber</option>
+                                    @foreach($Ward as $Wa)
+                                <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                                @endforeach
+                                </select>
+                                </td>
+                                 <td>
+                                <div class="input-group">
+                                    <!-- Input field for garbage volume -->
+                                    <input
+                                        type="number"
+                                        name="garbage_volumne[]"
+                                        class="form-control"
+                                        placeholder="Enter garbage volume"
+                                        required
+                                    >
+                                    <!-- Unit display -->
+                                    <span class="input-group-text">kg</span>
+                                </div>
+                            </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm removevehicletargetRow" data-id="${vehicletargetRowCount}">Remove</button>
+                                </td>
+                            </tr>`;
+        $('#VehicleTargetTableBody').append(initialHtml); // Append the first row to the table body
+        vehicletargetRowCount++; // Increment the row counter for unique IDs
+
+        // Add More Button Functionality
+        $('#addMoreVehicleTargetButton').on('click', function () {
+            let html = `<tr id="vehicletargetRow${vehicletargetRowCount}">
+                            <td>
+                                <select name="vehicle_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select VehicleNumber</option>
+                                    @foreach($vehicles as $vehi)
+                                <option value="{{ $vehi->Vehicle_number }}">{{ $vehi->Vehicle_number }}</option>
+                                @endforeach
+                            </select>
+                            </td>
+                            <td>
+                                <select name="beat_number[]" class="form-select AddFormSelectVehicleNumber" required>
+                                    <option value="">Select beatNumber</option>
+                                    @foreach($Ward as $Wa)
+                                <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number }}</option>
+                                @endforeach
+                            </select>
+                            </td>
+                             <td>
+                                <div class="input-group">
+                                    <!-- Input field for garbage volume -->
+                                    <input
+                                        type="number"
+                                        name="garbage_volumne[]"
+                                        class="form-control"
+                                        placeholder="Enter garbage volume"
+                                        required
+                                    >
+                                    <!-- Unit display -->
+                                    <span class="input-group-text">kg</span>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm removevehicletargetRow" data-id="${vehicletargetRowCount}">Remove</button>
+                            </td>
+                        </tr>`;
+
+            $('#VehicleTargetTableBody').append(html); // Append the new row to the table body
+            vehicletargetRowCount++; // Increment the row counter for unique IDs
+        });
+
+        // Remove Row Functionality (prevent removing the first row)
+        $('body').on('click', '.removevehicletargetRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            if (rowId > 1) { // Prevent removing the first row
+                $(`#vehicletargetRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
+
     });
 </script>
 
@@ -586,8 +712,10 @@
                     // Populate the First Table: Vehicle Target Dates
                     let mainDataHtml = `
                         <tr>
-                            <td>${data.VehicleTarget.target_from_date || 'N/A'}</td>
-                            <td>${data.VehicleTarget.target_to_date || 'N/A'}</td>
+                            <td>${data.VehicleTarget.target_from_date  ? new Date(data.VehicleTarget.target_from_date ).toLocaleDateString('en-GB')
+                            : 'N/A'}</td>
+                            <td>${data.VehicleTarget.target_to_date  ? new Date(data.VehicleTarget.target_to_date ).toLocaleDateString('en-GB')
+                            : 'N/A'}</td>
                         </tr>
                     `;
                     $('#vehicletargetModel').html(mainDataHtml); // Corrected ID

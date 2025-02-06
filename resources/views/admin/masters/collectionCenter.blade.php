@@ -46,6 +46,11 @@
                                     <input class="form-control" id="date_of_operation" name="d_of_op" type="date" onkeydown="return false;">
                                     <span class="text-danger is-invalid d_of_op_err"></span>
                                 </div>
+                                {{-- <div class="col-md-4">
+                                    <label class="col-form-label" for="date_of_operation">Date Of Operation<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="date_of_operation" name="d_of_op" type="text" onkeydown="return false;">
+                                    <span class="text-danger is-invalid d_of_op_err"></span>
+                                </div> --}}
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="decentral">Decentralize<span class="text-danger">*</span></label>
                                     <select class="form-select" name="decentral" id="decentral">
@@ -538,9 +543,9 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $collection->p_name }}</td>
                                             <td>{{ $collection->p_cat }}</td>
-                                            {{-- <td>{{ $collection->d_of_op}}</td> --}}
-                                            {{-- <td>{{ date('d-m-Y', strtotime($collection->d_of_op))}}</td> --}}
-                                            <td>{{ \Carbon\Carbon::parse($collection->d_of_op)->format('d-m-Y') }}</td>
+                                            {{-- <td>{{ \Carbon\Carbon::now($collection->date_of_operation)->format('d-m-Y') }}</td> --}}
+                                            <td>{{ date('d-m-Y', strtotime($collection->d_of_op))}}</td>
+                                            {{-- <td>{{ \Carbon\Carbon::parse($collection->d_of_op)->format('d-m-Y') }}</td> --}}
                                             <td>{{ $collection->decentral}}</td>
                                             <td>{{ $collection->p_own}}</td>
                                             <td>{{ $collection->location}}</td>
@@ -591,7 +596,8 @@
                                     <tr>
                                         <th>Plant Name</th>
                                         <th>Plant Category</th>
-                                        <th>Date Of Operation</th>
+                                        <th>Date Of Operation :{{date('d-m-y')}}</th>
+                                        <th>Date</th>
                                         <th>Decentralize</th>
                                         <th>Plant Ownership</th>
                                         <th>Location</th>
@@ -608,7 +614,7 @@
                                         <th>Project Code</th>
                                         <th>Project cost(In rs)</th>
                                         <th>Project progress</th>
-                                        <th>Asset code</th>
+                                        {{-- <th>Asset code</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody id="collectionModelTable">
@@ -832,7 +838,7 @@
     });
 </script>
 {{-- add more vehicle details in edit --}}
-<script>
+{{-- <script>
     // Global counter for row IDs
     let editVehicleDetials = 100;
 
@@ -875,9 +881,58 @@
         let rowId = $(this).data('id');
         $(`#editVehicleRow${rowId}`).remove();
     });
-</script>
-{{-- add more Employee details in edit --}}
+</script> --}}
 <script>
+    // Global counter for row IDs
+    let editVehicleDetials = 100;
+
+    // Event to add more vehicle rows (fixed event binding)
+    $('body').on('click', '#editMoreEditvehicleRow', function() {
+        let value = {
+            waste_type: '',      // Default empty value or dynamically populated
+            available_count: '',
+            required_count: '',   // Default empty value or dynamically populated
+        };
+
+        let html = `
+            <tr id="editVehicleRow${editVehicleDetials}">
+                 <td>
+                        <select name="vehicle_type[]" class="form-select" required>
+                            <option value="">Select Vehicle Type</option>
+                            @foreach($VehicleType as $Vehicle)
+                                <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="available_count[]" placeholder="Available Count" required />
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="required_count[]" placeholder="Required Count" required />
+                    </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeVehicleRow" data-id="${editVehicleDetials}">Remove</button>
+                </td>
+            </tr>
+        `;
+        $('#editVehicleTableBody').append(html);
+        editVehicleDetials++;
+    });
+
+    // Event to remove a vehicle row (fixed event binding)
+    $('body').on('click', '.removeVehicleRow', function() {
+        let rowId = $(this).data('id');
+        const rowCount = $('#editVehicleTableBody tr').length; // Table mein total rows ka count lo
+
+        // Ensure at least one row remains
+        if (rowCount > 1) {
+            $(`#editVehicleRow${rowId}`).remove(); // Corresponding row ko remove karo
+        }
+    });
+</script>
+
+{{-- add more Employee details in edit --}}
+{{-- <script>
     // Global counter for row IDs
     let editEmployeeDetials = 100;
 
@@ -919,6 +974,54 @@
     $('body').on('click', '.removeEmployeeRow', function() {
         let rowId = $(this).data('id');
         $(`#editEmployeeRow${rowId}`).remove();
+    });
+</script> --}}
+<script>
+    // Global counter for row IDs
+    let editEmployeeDetials = 100;
+
+    // Event to add more employee rows (fixed event binding)
+    $('body').on('click', '#editMoreEditemployeeRow', function() {
+        let value = {
+            designation: '',      // Default empty value or dynamically populated
+            emp_available_count: '',
+            emp_required_count: '',   // Default empty value or dynamically populated
+        };
+
+        let html = `
+            <tr id="editEmployeeRow${editEmployeeDetials}">
+                 <td>
+                    <select name="designation[]" class="form-select AddFormSelectdesignation" required>
+                        <option value="">Select Designation</option>
+                        @foreach($Designation as $Desi)
+                            <option value="{{ $Desi->id  }}">{{ $Desi->name }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="number" class="form-control editAvailbeCount" name="emp_available_count[]" placeholder="Available Count" value="" required />
+                </td>
+                <td>
+                    <input type="number" class="form-control editRequiredCount" name="emp_required_count[]" placeholder="Required Count" value="" required />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger removeEmployeeRow" data-id="${editEmployeeDetials}">Remove</button>
+                </td>
+            </tr>
+        `;
+        $('#editEmployeeTableBody').append(html);
+        editEmployeeDetials++;
+    });
+
+    // Event to remove a employee row (fixed event binding)
+    $('body').on('click', '.removeEmployeeRow', function() {
+        let rowId = $(this).data('id');
+        const rowCount = $('#editEmployeeTableBody tr').length; // Get the total number of rows in the table
+
+        // Ensure at least one row remains
+        if (rowCount > 1) {
+            $(`#editEmployeeRow${rowId}`).remove(); // Remove the selected row
+        }
     });
 </script>
 <!-- Update -->
@@ -1014,7 +1117,7 @@
     });
 </script>
 {{-- Add More form for Vehicle details --}}
-<script>
+{{-- <script>
     $(document).ready(function () {
         let vehicleRowCount = 1; // Start counting from 1 since row 0 is already visible
 
@@ -1051,9 +1154,53 @@
             $(`#vehicleRow${rowId}`).remove(); // Remove the corresponding row
         });
     });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let vehicleRowCount = 1; // Start counting from 1 since row 0 is already visible
+
+        // Add More Button functionality
+        $('#addMoreVehicleButton').click(function () {
+            let html = `
+                <tr id="vehicleRow${vehicleRowCount}">
+                    <td>
+                        <select name="vehicle_type[]" class="form-select AddFormSelectVehicleType" required>
+                            <option value="">Select Vehicle Type</option>
+                            @foreach($VehicleType as $Vehicle)
+                                <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" name="available_count[]" class="form-control" placeholder="Enter available count" required>
+                    </td>
+                    <td>
+                        <input type="number" name="required_count[]" class="form-control" placeholder="Enter required count" required>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm removeVehicleRow" data-id="${vehicleRowCount}">Remove</button>
+                    </td>
+                </tr>`;
+
+
+            $('#vehicleTableBody').append(html); // Append the new row to the table body
+            vehicleRowCount++; // Increment the row counter for unique IDs
+        });
+
+        // Remove Row Functionality
+        $(document).on('click', '.removeVehicleRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#vehicleTableBody tr').length; // Count the total rows
+
+            // Check if there's more than one row
+            if (rowCount > 1) {
+                $(`#vehicleRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
+    });
 </script>
 {{-- Add More form for Employee details --}}
-<script>
+{{-- <script>
     $(document).ready(function () {
         let employeeRowCount = 1; // Unique row IDs ke liye counter
 
@@ -1092,8 +1239,52 @@
             $(`#employeeRow${rowId}`).remove(); // Corresponding row ko remove karo
         });
     });
-</script>
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let employeeRowCount = 1; // Unique row IDs ke liye counter
 
+        // "Add More" Button ka functionality
+        $('#addMoreEmployeeButton').click(function () {
+            let html = `
+                <tr id="employeeRow${employeeRowCount}">
+                    <td>
+                        <select name="designation[]" class="form-select AddFormSelectDesignation" required>
+                            <option value="">Select designation</option>
+                            @foreach($Designation as $Desi)
+                                <option value="{{ $Desi->id }}">{{ $Desi->name }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" name="emp_available_count[]" class="form-control" placeholder="Enter available count" required>
+                    </td>
+                    <td>
+                        <input type="number" name="emp_required_count[]" class="form-control" placeholder="Enter required count" required>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm removeEmployeeRow" data-id="${employeeRowCount}">Remove</button>
+                    </td>
+                </tr>`;
+
+            $('#employeeTableBody').append(html); // Nayi row ko table body mein append karo
+
+            // Row counter ko increment karo
+            employeeRowCount++;
+        });
+
+        // Remove Row Functionality
+        $(document).on('click', '.removeEmployeeRow', function () {
+            const rowId = $(this).data('id'); // Button ke data-id attribute se row ID le lo
+            const rowCount = $('#employeeTableBody tr').length; // Table mein total rows ka count lo
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#employeeRow${rowId}`).remove(); // Corresponding row ko remove karo
+            }
+        });
+    });
+</script>
 {{-- views --}}
 <script>
     $('body').on('click', '.view-element', function() {
@@ -1117,7 +1308,9 @@
                         <tr>
                             <td>${data.collectionCenters.p_name}</td>
                             <td>${data.collectionCenters.p_cat}</td>
-                            <td>${data.collectionCenters.d_of_op}</td>
+                            <td> ${data.collectionCenters.d_of_op
+                             ? new Date(data.collectionCenters.d_of_op).toLocaleDateString('en-GB')
+                            : 'N/A'}</td>
                             <td>${data.collectionCenters.decentral}</td>
                             <td>${data.collectionCenters.p_own}</td>
                             <td>${data.collectionCenters.location}</td>
@@ -1178,3 +1371,4 @@
         });
     });
 </script>
+
