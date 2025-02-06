@@ -93,7 +93,7 @@
         </table>
     </section>
     <td class="date-time">
-        <p style="color: black ">Generated-by : </p>
+        <p style="color: black ">Generated-by  :  {{ Auth::user()->name }}</p>
     </td>
 </body>
 </html>

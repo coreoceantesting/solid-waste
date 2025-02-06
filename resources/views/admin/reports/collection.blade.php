@@ -99,9 +99,7 @@
         </table>
     </section>
     <td class="date-time">
-        <p style="color: black ">Generated-by : </p>
-        {{-- <p style="text-align: right">Date : {{ date('d-m-Y') }}</p>
-        <p style="text-align:right">Time : {{ date('h:i:s A') }}</p> --}}
+        <p style="color: black ">Generated-by  :  {{ Auth::user()->name }}</p>
     </td>
 </body>
 </html>
