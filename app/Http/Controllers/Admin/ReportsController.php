@@ -194,7 +194,7 @@ class ReportsController extends Controller
             if ($VehicleTarget->isEmpty()) {
                 return back()->with('error', 'No vehicle records found for the selected date range.');
             }
-            
+
             $pdf = SnappyPdf::loadView('admin.reports.vehicle', compact('VehicleTarget'))
                 ->setPaper('a4')
                 ->setOption('footer-right', now()->format('d-m-Y h:i:s'))
