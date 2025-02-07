@@ -17,7 +17,8 @@ class PrefixController extends Controller
      */
     public function index()
     {
-        $Prefix = Prefix::whereNull('deleted_by')->get();
+        // $Prefix = Prefix::latest()->get();
+        $Prefix = Prefix::whereNull('deleted_by')->latest()->get();
 
 
         return view('admin.masters.prefix.prefix')->with(['Prefix'=> $Prefix]);

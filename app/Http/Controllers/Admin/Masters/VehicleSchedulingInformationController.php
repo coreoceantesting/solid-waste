@@ -20,7 +20,8 @@ class VehicleSchedulingInformationController extends Controller
      */
     public function index()
     {
-        $VehicleSchedulingInformation = VehicleSchedulingInformation::whereNull('deleted_by')->get();
+        // $VehicleSchedulingInformation = VehicleSchedulingInformation::latest()->get();
+        $VehicleSchedulingInformation = VehicleSchedulingInformation::whereNull('deleted_by')->latest()->get();
         $vehicles = vehicles::whereNull('deleted_at')->get();
         $VehicleInformation = VehicleInformation::whereNull('deleted_at')->get();
         $Ward = Ward::whereNull('deleted_at')->get();

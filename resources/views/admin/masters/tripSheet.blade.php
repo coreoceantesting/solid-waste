@@ -24,7 +24,7 @@
                                     <label class="col-form-label" for="beat_number">Beat Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number"> --}}
                                     <select class="form-select" name="beat_number" id="beat_number">
-                                        <option value="">select Beat Number</option>
+                                        <option value="">--Select Beat Number--</option>
                                          @foreach ($Ward as $Wa)
                                             <option value="{{$Wa->beat_number}}">{{$Wa->beat_number}}</option>
                                          @endforeach
@@ -35,7 +35,7 @@
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
                                     <select class="form-select" name="vehicle_number" id="vehicle_number">
-                                        <option value="">select Vehicle Number</option>
+                                        <option value="">--Select Vehicle Number--</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
                                          @endforeach
@@ -46,7 +46,7 @@
                                     <label class="col-form-label" for="collection_center">Collection Center<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center"> --}}
                                     <select class="form-select" name="collection_center" id="collection_center">
-                                        <option value="">select collection center</option>
+                                        <option value="">--Select Collection Center--</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
@@ -148,7 +148,7 @@
                                     <label class="col-form-label" for="waste_segregated">Waste Segregated<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="waste_segregated" name="waste_segregated" type="text" placeholder="Enter Waste Segregated"> --}}
                                     <select name="waste_segregated" id="waste_segregated" class="form-select">
-                                        <option value="" >Select Waste Segregated</option>
+                                        <option value="" >--Select Waste Segregated--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -213,7 +213,7 @@
                                     <label class="col-form-label" for="beat_number">Beat Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="beat_number" name="beat_number" type="number" placeholder="Enter Beat Number"> --}}
                                      <select class="form-select" name="beat_number" id="beat_number">
-                                        <option value="">select Beat Number</option>
+                                        <option value="">--Select Beat Number--</option>
                                          @foreach ($Ward as $Wa)
                                             <option value="{{$Wa->beat_number}}">{{$Wa->beat_number}}</option>
                                          @endforeach
@@ -224,7 +224,7 @@
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
                                      <select class="form-select" name="vehicle_number" id="vehicle_number">
-                                        <option value="">select Vehicle Number</option>
+                                        <option value="">--Select Vehicle Number--</option>
                                          @foreach ($vehicles as $vehi)
                                             <option value="{{$vehi->Vehicle_number}}">{{$vehi->Vehicle_number}}</option>
                                          @endforeach
@@ -235,7 +235,7 @@
                                     <label class="col-form-label" for="collection_center">collection center<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter collection center"> --}}
                                     <select class="form-select" name="collection_center" id="collection_center">
-                                        <option value="">select collection center</option>
+                                        <option value="">--Select Collection Center--</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
@@ -1050,6 +1050,8 @@
                                 </td>
                             </tr>`;
         $('#BreakUpTableBody').append(initialHtml); // Append the first row to the table body
+
+        $('#BreakUpTableBody tr:first .removetripsheetRow').hide();
         tripsheetRowCount++; // Increment the row counter for unique IDs
         defaultRowAdded = true; // Mark that the default row has been added
 
@@ -1083,6 +1085,8 @@
 
             $('#BreakUpTableBody').append(html); // Append the new row to the table body
             tripsheetRowCount++; // Increment the row counter for unique IDs
+
+            $('#BreakUpTableBody tr:first .removetripsheetRow').hide();
         });
 
         // Remove Row Functionality

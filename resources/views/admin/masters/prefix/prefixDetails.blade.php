@@ -20,7 +20,7 @@
                                     <label class="col-form-label" for="Main_Prefix">Select Prefix<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description"> --}}
                                     <select class="form-control" name="Main_Prefix" id="Main_Prefix">
-                                        <option value="">select main prefix</option>
+                                        <option value="">--Select Main Prefix--</option>
                                          @foreach ($prefixs as $prefix)
                                             <option value="{{$prefix->id}}">{{$prefix->Prefix_Name}}</option>
                                          @endforeach
@@ -76,7 +76,7 @@
                                     <label class="col-form-label" for="Main_Prefix">Select Prefix<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="Description" name="Description" type="text" placeholder="Enter Description"> --}}
                                     <select class="form-control" name="Main_Prefix" id="Main_Prefix">
-                                        <option value="">select main prefix</option>
+                                        <option value="">--Select Main Prefix--</option>
                                          @foreach ($prefixs as $prefix)
                                             <option value="{{$prefix->id}}">{{$prefix->Prefix_Name}}</option>
                                          @endforeach

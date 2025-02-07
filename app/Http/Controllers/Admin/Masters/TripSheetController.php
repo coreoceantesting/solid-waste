@@ -21,7 +21,8 @@ class TripSheetController extends Controller
 {
     public function index()
     {
-        $TripSheet = TripSheet::whereNull('deleted_at')->get();
+        // $TripSheet = TripSheet::latest()->get();
+        $TripSheet = TripSheet::whereNull('deleted_at')->latest()->get();
         $BreakUp = BreakUp::whereNull('deleted_at')->get();
         $Ward = Ward::whereNull('deleted_at')->get();
         $vehicles = vehicles::whereNull('deleted_at')->get();

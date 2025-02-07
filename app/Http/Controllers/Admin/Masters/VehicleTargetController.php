@@ -19,7 +19,8 @@ class VehicleTargetController extends Controller
      */
     public function index()
     {
-        $VehicleTarget = VehicleTarget::whereNull('deleted_by')->get();
+        // $VehicleTarget = VehicleTarget::latest()->get();
+        $VehicleTarget = VehicleTarget::whereNull('deleted_by')->latest()->get();
         $VehicleTargetDetail = VehicleTargetDetail::whereNull('deleted_by')->get();
         $vehicles = vehicles::whereNull('deleted_by')->get();
         $Ward = Ward::whereNull('deleted_by')->get();

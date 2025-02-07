@@ -23,7 +23,8 @@ class WardController extends Controller
      */
     public function index()
     {
-        $wards = Ward::whereNull('deleted_by')->get();
+        // $wards = Ward::latest()->get();
+        $wards = Ward::whereNull('deleted_by')->latest()->get();
         $areaDetails = AreaDetails::whereNull('deleted_by')->get();
         $areatypes = AreaType::whereNull('deleted_at')->get();
         $VehicleType = VehicleType::whereNull('deleted_at')->get();
@@ -76,19 +77,19 @@ class WardController extends Controller
                         ]);
                     } else {
                         // Handle the case where the area_type ID is not found in AreaType
-                        throw new \Exception('Invalid Area Type provided.');
+                        throw new \Exception('Invalid ward provided.');
                     }
                 }
             }
 
             DB::commit();
 
-            return response()->json(['success'=> 'Office created successfully!']);
+            return response()->json(['success'=> 'ward created successfully!']);
         }
         catch(\Exception $e)
         {
             DB::rollBack();
-            return $this->respondWithAjax($e, 'creating', 'Office');
+            return $this->respondWithAjax($e, 'creating', 'ward');
         }
     }
 

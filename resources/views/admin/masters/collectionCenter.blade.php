@@ -1,13 +1,9 @@
+
 <x-admin.layout>
     <x-slot name="title">Collection Center</x-slot>
     <x-slot name="heading">Collection Center</x-slot>
     {{-- <x-slot name="subheading">Test</x-slot> --}}
 
-            {{-- <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> --}}
         <!-- Add Form -->
         <div class="row" id="addContainer" style="display:none;">
             <div class="col-sm-12">
@@ -34,7 +30,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="plant_category">Plant Category<span class="text-danger">*</span></label>
                                     <select class="form-select" name="p_cat" id="plant_category" >
-                                        <option value="" >Select Plant Category</option>
+                                        <option value="" >--Select Plant Category--</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                         <option value="C">C</option>
@@ -54,7 +50,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="decentral">Decentralize<span class="text-danger">*</span></label>
                                     <select class="form-select" name="decentral" id="decentral">
-                                        <option value="" >Select Decentralize</option>
+                                        <option value="" >--Select Decentralize--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -63,7 +59,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
                                     <select class="form-select" name="p_own" id="plant_ownership">
-                                        <option value=""  >Select Plant Ownership</option>
+                                        <option value=""  >--Select Plant Ownership--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -72,7 +68,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="location">Location<span class="text-danger">*</span></label>
                                     <select class="form-select" name="location" id="location">
-                                        <option value="" >Select Location</option>
+                                        <option value="" >--Select Location--</option>
                                         <option value="Taloja">Taloja</option>
                                         <option value="Khargar">Khargar</option>
                                     </select>
@@ -95,7 +91,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="whether_part_of_integrated_y_n">Whether Part Of Integrated (Y/N)<span class="text-danger">*</span></label>
                                     <select class="form-select" name="inte_with_plant" id="whether_part_of_integrated_y_n">
-                                        <option value="" >Select Whether Part Of Integrated (Y/N)</option>
+                                        <option value="" >--Select Whether Part Of Integrated (Y/N)--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -104,7 +100,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="integrated_with_plant_id">Integrated With Plant ID<span class="text-danger">*</span></label>
                                     <select class="form-select" name="inte_with_id" id="integrated_with_plant_id">
-                                        <option value="" >Select Integrated With Plant ID</option>
+                                        <option value="" >--Select Integrated With Plant ID--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -113,7 +109,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="is_rdf_also_wtc_y_n">Is RDF Also WTC (Y/N)<span class="text-danger">*</span></label>
                                     <select class="form-select" name="wtc" id="is_rdf_also_wtc_y_n">
-                                        <option value="" >Select Is RDF Also WTC (Y/N)</option>
+                                        <option value="" >--Select Is RDF Also WTC (Y/N)--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -127,7 +123,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="its_integrated_with_C_T_y_n">Its Integrated With C and T (Y/N)<span class="text-danger">*</span></label>
                                     <select class="form-select" name="inte_c_t" id="its_integrated_with_C_T(y/n)">
-                                        <option value="" >Select Integrated With C and T (Y/N)</option>
+                                        <option value="" >--Select Integrated With C and T (Y/N)--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -136,7 +132,7 @@
                                 <div class="col-md-4">
                                     <label class="col-form-label" for="arrangement_if_integrated">Arrangement if Integrated<span class="text-danger">*</span></label>
                                     <select class="form-select" name="Arrangement" id="Arrangement_if_integrated">
-                                        <option value="" >Select Arrangement if Integrated</option>
+                                        <option value="" >--Select Arrangement if Integrated--</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -297,7 +293,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="plant_category">Plant Category<span class="text-danger">*</span></label>
                                         <select name="p_cat" id="plant_category" class="form-select">
-                                            <option value="" >Select Plant Category</option>
+                                            <option value="" >--Select Plant Category--</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="C">C</option>
@@ -312,7 +308,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="decentral">Decentralize<span class="text-danger">*</span></label>
                                         <select name="decentral" id="decentral" class="form-select">
-                                            <option value="" >Select Decentralize</option>
+                                            <option value="" >--Select Decentralize--</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -321,7 +317,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="plant_ownership">Plant Ownership<span class="text-danger">*</span></label>
                                         <select name="p_own" id="p_own" class="form-select">
-                                            <option value="" >Select Plant Ownership</option>
+                                            <option value="" >--Select Plant Ownership--</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -330,7 +326,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="location">Location<span class="text-danger">*</span></label>
                                         <select name="location" id="location" class="form-select">
-                                            <option value="" >Select Location</option>
+                                            <option value="" >--Select Location--</option>
                                             <option value="Taloja">Taloja</option>
                                             <option value="Khargar">Khargar</option>
                                         </select>
@@ -360,7 +356,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="integrated_with_plant_id">Integrated With Plant ID<span class="text-danger">*</span></label>
                                         <select name="inte_with_id" id="integrated_with_plant_id" class="form-select">
-                                            <option value="">Select Integrated With Plant ID</option>
+                                            <option value="">--Select Integrated With Plant ID--</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -369,7 +365,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="is_rdf_also_wtc">Is RDF Also WTC (Y/N)<span class="text-danger">*</span></label>
                                         <select name="wtc" id="is_rdf_also_wtc" class="form-select">
-                                            <option value="" >Is RDF Also WTC (Y/N)</option>
+                                            <option value="" >--Is RDF Also WTC (Y/N)--</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -383,7 +379,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="its_integrated_with_C_T">Its Integrated With C and T (Y/N)<span class="text-danger">*</span></label>
                                         <select name="inte_c_t" id="its_integrated_with_C_T(y/n)" class="form-select">
-                                            <option value="" >Select Integrated With C and T (Y/N)</option>
+                                            <option value="" >--Select Integrated With C and T (Y/N)--</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -392,7 +388,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="Arrangement_if_integrated">Arrangement If Integrated<span class="text-danger">*</span></label>
                                         <select name="Arrangement" id="Arrangement_if_integrated" class="form-select">
-                                            <option value="">Select Arrangement If Integrated</option>
+                                            <option value="">--Select Arrangement If Integrated--</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -980,6 +976,7 @@
     // Global counter for row IDs
     let editEmployeeDetials = 100;
 
+    // $('#editEmployeeTableBody tr:first .removeEmployeeRow').hide();
     // Event to add more employee rows (fixed event binding)
     $('body').on('click', '#editMoreEditemployeeRow', function() {
         let value = {
@@ -1011,6 +1008,8 @@
         `;
         $('#editEmployeeTableBody').append(html);
         editEmployeeDetials++;
+
+        // $('#editEmployeeTableBody tr:first .removeEmployeeRow').hide();
     });
 
     // Event to remove a employee row (fixed event binding)
@@ -1022,6 +1021,8 @@
         if (rowCount > 1) {
             $(`#editEmployeeRow${rowId}`).remove(); // Remove the selected row
         }
+
+        // $('#editEmployeeTableBody tr:first .removeEmployeeRow').hide();
     });
 </script>
 <!-- Update -->
@@ -1159,6 +1160,8 @@
     $(document).ready(function () {
         let vehicleRowCount = 1; // Start counting from 1 since row 0 is already visible
 
+        $('#vehicleTableBody tr:first .removeVehicleRow').hide();
+
         // Add More Button functionality
         $('#addMoreVehicleButton').click(function () {
             let html = `
@@ -1185,6 +1188,10 @@
 
             $('#vehicleTableBody').append(html); // Append the new row to the table body
             vehicleRowCount++; // Increment the row counter for unique IDs
+
+
+            $('#vehicleTableBody tr:first .removeVehicleRow').hide();
+
         });
 
         // Remove Row Functionality
@@ -1196,6 +1203,9 @@
             if (rowCount > 1) {
                 $(`#vehicleRow${rowId}`).remove(); // Remove the corresponding row
             }
+
+            $('#vehicleTableBody tr:first .removeVehicleRow').hide();
+
         });
     });
 </script>
@@ -1244,6 +1254,8 @@
     $(document).ready(function () {
         let employeeRowCount = 1; // Unique row IDs ke liye counter
 
+        $('#employeeTableBody tr:first .removeEmployeeRow').hide();
+
         // "Add More" Button ka functionality
         $('#addMoreEmployeeButton').click(function () {
             let html = `
@@ -1271,6 +1283,8 @@
 
             // Row counter ko increment karo
             employeeRowCount++;
+
+            $('#employeeTableBody tr:first .removeEmployeeRow').hide();
         });
 
         // Remove Row Functionality
@@ -1282,6 +1296,8 @@
             if (rowCount > 1) {
                 $(`#employeeRow${rowId}`).remove(); // Corresponding row ko remove karo
             }
+
+           $('#employeeTableBody tr:first .removeEmployeeRow').hide();
         });
     });
 </script>
@@ -1371,4 +1387,11 @@
         });
     });
 </script>
+
+
+
+
+
+
+
 

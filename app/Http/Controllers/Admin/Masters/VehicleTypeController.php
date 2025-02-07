@@ -17,7 +17,8 @@ class VehicleTypeController extends Controller
      */
     public function index()
     {
-        $VehicleType = VehicleType::whereNull('deleted_by')->get();
+        // $VehicleType = VehicleType::latest()->get();
+        $VehicleType = VehicleType::whereNull('deleted_by')->latest()->get();
 
         return view('admin.masters.vehicleType')->with(['VehicleType'=> $VehicleType]);
 

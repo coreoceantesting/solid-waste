@@ -809,6 +809,9 @@
 
             $('#taskmappingBody').append(html); // Append the new row to the table body
             taskRowCount++; // Increment the row counter for unique IDs
+
+
+            $('#taskmappingBody tr:first .removetaskRow').hide();
         }
 
         // Initially add the first row by default when the page loads

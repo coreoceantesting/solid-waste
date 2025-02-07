@@ -22,7 +22,7 @@ class StoreDesignation extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:wards,name',
+            'name' => 'required|unique:designations,name',
             'initial' => 'required',
         ];
     }

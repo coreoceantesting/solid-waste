@@ -21,7 +21,8 @@ class WasteDetailsController extends Controller
      */
     public function index()
     {
-        $WasteDetails = WasteDetails::whereNull('deleted_at')->get();
+        // $WasteDetails = WasteDetails::latest()->get();
+        $WasteDetails = WasteDetails::whereNull('deleted_at')->latest()->get();
         $Segregation = Segregation::whereNull('deleted_at')->get();
         $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         $CapacityOfVehicle = CapacityOfVehicle::whereNull('deleted_at')->get();

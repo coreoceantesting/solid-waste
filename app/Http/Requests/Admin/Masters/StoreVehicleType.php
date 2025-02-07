@@ -22,7 +22,7 @@ class StoreVehicleType extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:wards,name',
+            'name' => 'required|unique:vehicle_types,name',
             'initial' => 'required',
         ];
     }

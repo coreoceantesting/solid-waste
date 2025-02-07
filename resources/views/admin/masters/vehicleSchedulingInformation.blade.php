@@ -19,7 +19,7 @@
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
                                         <select class="form-select" name="vehicle_type" id="vehicle_type">
-                                        <option value="">select vehicle type</option>
+                                        <option value="">--Select Vehicle Type--</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
                                          @endforeach
@@ -30,7 +30,7 @@
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle number"> --}}
                                     <select class="form-select" name="vehicle_number" id="vehicle_number">
-                                        <option value="">select vehicle number</option>
+                                        <option value="">--Select Vehicle Number--</option>
                                          {{-- @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_number}}">{{$vehicle->Vehicle_number}}</option>
                                          @endforeach --}}
@@ -60,7 +60,7 @@
                                     <label class="col-form-label">Recurrence<span class="text-danger">*</span></label>
                                     <div>
                                         <select name="recurrence" class="form-select" id="recurrence">
-                                            <option value="">Recurrence Select</option> <!-- Default placeholder option -->
+                                            <option value="">--Recurrence Select--</option> <!-- Default placeholder option -->
                                             <option value="daily">Daily</option>
                                             <option value="weekly">Weekly</option>
                                             <option value="monthly">Monthly</option>
@@ -118,7 +118,7 @@
                                     <label class="col-form-label" for="vehicle_type">Vehicle Type<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_type" name="vehicle_type" type="text" placeholder="Enter Vehicle Type"> --}}
                                       <select class="form-select" name="vehicle_type" id="vehicles_types">
-                                        <option value="">Select vehicle type</option>
+                                        <option value="">--Select Vehicle Type--</option>
                                          @foreach ($vehicles as $vehicle)
                                             <option value="{{$vehicle->Vehicle_Type}}">{{$vehicle->Vehicle_Type}}</option>
                                          @endforeach
@@ -129,8 +129,7 @@
                                     <label class="col-form-label" for="vehicle_number">Vehicle Number<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="vehicle_number" name="vehicle_number" type="number" placeholder="Enter Vehicle Number"> --}}
                                        <select class="form-select" name="vehicle_number" id="vehicles_numbers">
-                                        <option value="">Select Vehicle Number</option>
-
+                                        <option value="">--Select Vehicle Number--</option>
                                     </select>
                                     <span class="text-danger is-invalid vehicle_number_err"></span>
                                 </div>
@@ -148,7 +147,7 @@
                                     <label class="col-form-label">Recurrence<span class="text-danger">*</span></label>
                                     <div>
                                         <select name="recurrence" class="form-select" id="recurrence">
-                                            <option value="">Recurrence Select</option> <!-- Default placeholder option -->
+                                            <option value="">--Recurrence Select--</option> <!-- Default placeholder option -->
                                             <option value="daily">Daily</option>
                                             <option value="weekly">Weekly</option>
                                             <option value="monthly">Monthly</option>
@@ -520,6 +519,7 @@
             `;
             $('#editVehicleTableBody').append(html); // Append the row to the table body
             editRowCounter++; // Increment the row counter for unique IDs
+
         }
 
         // Add More Button functionality (after the default row)
@@ -535,7 +535,7 @@
             // Ensure at least one row remains
             if (rowCount > 1) {
                 $(`#editRow${rowId}`).remove(); // Remove the corresponding row
-            } 
+            }
         });
     });
 </script>
@@ -720,6 +720,8 @@
                         </tr>`;
             $('#vehicleTableBody').append(html); // Append the row to the table body
             vehicleRowCount++; // Increment the row counter for unique IDs
+
+            $('#vehicleTableBody tr:first .removeVehicleRow').hide();
         }
 
         // Add the first row by default when the page loads

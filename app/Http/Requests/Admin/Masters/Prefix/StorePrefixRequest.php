@@ -22,8 +22,9 @@ class StorePrefixRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Prefix_Name' => 'required',
-            'Description' => 'required',
+            // 'Prefix_Name' => 'required',
+            'Prefix_Name' => 'required|unique:prefixes,Prefix_Name',
+            'Description' => 'required|unique:prefixes,Description',
             // 'Zone' => 'required',
             'Status' => 'required'
         ];

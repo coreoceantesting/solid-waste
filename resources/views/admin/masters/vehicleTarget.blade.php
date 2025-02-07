@@ -641,6 +641,7 @@
                             </tr>`;
         $('#VehicleTargetTableBody').append(initialHtml); // Append the first row to the table body
         vehicletargetRowCount++; // Increment the row counter for unique IDs
+        $('#VehicleTargetTableBody tr:first .removevehicletargetRow').hide();
 
         // Add More Button Functionality
         $('#addMoreVehicleTargetButton').on('click', function () {
@@ -682,6 +683,8 @@
 
             $('#VehicleTargetTableBody').append(html); // Append the new row to the table body
             vehicletargetRowCount++; // Increment the row counter for unique IDs
+
+            $('#VehicleTargetTableBody tr:first .removevehicletargetRow').hide();
         });
 
         // Remove Row Functionality (prevent removing the first row)

@@ -18,6 +18,7 @@ class PrefixDetailsController extends Controller
      */
     public function index()
     {
+        // $PrefixDetails = PrefixDetails::latest()->get();
         $prefixDetails = PrefixDetails::leftJoin('prefixes', 'prefix_details.Main_Prefix', '=', 'prefixes.id')
                        ->select('prefix_details.Description', 'prefix_details.Description_regional', 'prefix_details.other_value', 'prefix_details.id', 'prefix_details.value', 'prefixes.Prefix_Name')
                        ->whereNull('prefix_details.deleted_by')

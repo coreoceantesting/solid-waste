@@ -18,7 +18,8 @@ class AreaTypeController extends Controller
      */
     public function index()
     {
-        $AreaType = AreaType::whereNull('deleted_by')->get();
+        // $AreaType = AreaType::latest()->get();
+        $AreaType = AreaType::whereNull('deleted_by')->latest()->get();
 
         return view('admin.masters.areaType')->with(['AreaType'=> $AreaType]);
     }

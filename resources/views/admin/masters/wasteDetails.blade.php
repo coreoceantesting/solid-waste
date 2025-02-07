@@ -15,10 +15,10 @@
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label" for="collection_center">collection Center<span class="text-danger">*</span></label>
+                                    <label class="col-form-label" for="collection_center">Collection Center<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter collection center"> --}}
                                     <select class="form-select" name="collection_center" id="collection_center">
-                                        <option value="">select Plant Name</option>
+                                        <option value="">--Select Plant Name--</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
@@ -107,7 +107,7 @@
                                     <label class="col-form-label" for="collection_center">Collection Center<span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="collection_center" name="collection_center" type="text" placeholder="Enter Collection Center"> --}}
                                     <select class="form-select" name="collection_center" id="collection_center">
-                                        <option value="">select Plant Name</option>
+                                        <option value="">--Select Plant Name--</option>
                                          @foreach ($collectionCenters as $collection)
                                             <option value="{{$collection->p_name}}">{{$collection->p_name}}</option>
                                          @endforeach
@@ -702,6 +702,8 @@
                 </tr>
             `;
             $('#SegregationTableBody').append(rowHtml); // Append the row to the table
+
+            $('#SegregationTableBody tr:first .removeSegregationRow').hide();
         }
 
         // Initially add the first row by default when the page loads

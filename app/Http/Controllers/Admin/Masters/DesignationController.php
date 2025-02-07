@@ -17,7 +17,8 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        $Designation = Designation::whereNull('deleted_by')->get();
+        // $Designation = Designation::latest()->get();
+        $Designation = Designation::whereNull('deleted_by')->latest()->get();
 
         return view('admin.masters.designation')->with(['Designation'=> $Designation]);
     }

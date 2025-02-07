@@ -21,7 +21,8 @@ class VehiclesController extends Controller
      */
     public function index()
     {
-        $vehicles = vehicles::whereNull('deleted_by')->get();
+        // $vehicles = vehicles::latest()->get();
+        $vehicles = vehicles::whereNull('deleted_by')->latest()->get();
 
         $vehicleType = VehicleType::whereNull('deleted_by')->get();
 

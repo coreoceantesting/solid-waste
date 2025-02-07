@@ -22,7 +22,8 @@ class StoreContractMapping extends FormRequest
     public function rules(): array
     {
         return [
-            'contract_number' => 'required',
+            // 'contract_number' => 'required',
+            'contract_number' => 'required|unique:contract_mappings,contract_number',
             'zone' => 'required',
             'ward' => 'required',
             'colony' => 'required',

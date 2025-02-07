@@ -20,7 +20,7 @@
                                     <label class="col-form-label" for="name">Ward Name <span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="name" name="name" type="text" placeholder="Enter Ward Name" > --}}
                                     <select name="name" class="form-select AddFormSelectWard" required/>
-                                     <option value="">Select Ward</option>
+                                     <option value="">--Select Ward--</option>
                                     @foreach($PrefixDetails as $Prefix)
                                         <option value="{{ $Prefix->Description }}">{{ $Prefix->Description}}</option>
                                     @endforeach
@@ -71,7 +71,7 @@
                         <label class="col-form-label" for="Collection Mode">Collection Mode<span class="text-danger">*</span></label>
                         {{-- <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode"> --}}
                         <select name="collection_mode" id="collection_mode" class="form-select">
-                            <option value="">Select Collection Mode</option>
+                            <option value="">--Select Collection Mode--</option>
                             @foreach ($VehicleType as $Vehicle )
                                 <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
                             @endforeach
@@ -182,7 +182,7 @@
                                     <label class="col-form-label" for="Ward Name ">Ward Name <span class="text-danger">*</span></label>
                                     {{-- <input class="form-control" id="Ward Name" name="name" type="text" placeholder="Enter Ward Name "> --}}
                                     <select name="name" class="form-select AddFormSelectWard" required>
-                                    <option value="">Select Ward</option>
+                                    <option value="">--Select Ward--</option>
                                    @foreach($PrefixDetails as $Prefix)
                                        <option value="{{ $Prefix->Description }}">{{ $Prefix->Description}}</option>
                                    @endforeach
@@ -234,7 +234,7 @@
                             {{-- <label class="col-form-label" for="Collection Mode">Collection Mode<span class="text-danger">*</span></label> --}}
                         {{-- <input class="form-control" id="Collection_Mode" name="collection_mode" type="text" placeholder="Enter Collection Mode"> --}}
                         <select name="collection_mode" id="collection_mode" class="form-select">
-                            <option value="">Select Collection Mode</option>
+                            <option value="">--Select Collection Mode--</option>
                             @foreach ($VehicleType as $Vehicle )
                                 <option value="{{ $Vehicle->name }}">{{ $Vehicle->name }} </option>
                             @endforeach
@@ -700,6 +700,9 @@
 
         $('#editAreaTableBody').append(html);
         editRowCounter++;
+
+
+
     });
 
     // Event to remove a row, but prevent the last row from being removed
@@ -902,6 +905,7 @@
         $('#areaTableBody').append(createNewRow(areaRowCount));
         areaRowCount++;
 
+        $('#areaTableBody tr:first .removeAreaRow').hide();
         // Add More Button Functionality
         $('#addMoreAreaButton').on('click', function () {
             $('#areaTableBody').append(createNewRow(areaRowCount));
