@@ -505,7 +505,7 @@
                             <tr id="editRow${key}">
                                 <td>
                                    <select name="waste_types[]" class="form-select AddFormWasteType" required>
-                                     <option value="">Select WasteType</option>
+                                     <option value="">--Select WasteType--</option>
                                     ${wastetypeOptions}
                                    </select>
                                 </td>
@@ -545,7 +545,7 @@
             <tr id="editRow${editRowCounter}">
                 <td>
                     <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select waste type</option>
+                                    <option value="">--Select waste type--</option>
                                   @foreach($PrefixDetails as $Prefix)
                                      <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
                                   @endforeach
@@ -710,7 +710,7 @@
                 <tr id="wasteRow${rowId}">
                     <td>
                         <select name="waste_types[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select waste type</option>
+                                    <option value="">--Select waste type--</option>
                                   @foreach($PrefixDetails as $Prefix)
                                      <option value="{{ $Prefix->id }}">{{ $Prefix->value}}</option>
                                   @endforeach

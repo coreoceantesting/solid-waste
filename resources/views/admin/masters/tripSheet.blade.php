@@ -606,7 +606,7 @@
                             <tr id="editRow${key}">
                                 <td>
                                     <select name="waste_type[]" class="form-select AddFormWasteType" required>
-                                     <option value="">Select WasteType</option>
+                                     <option value="">--Select WasteType--</option>
                                     ${wastetypeOptions}
                                    </select>
                                 </td>
@@ -751,7 +751,7 @@
             <tr id="editRow${editBreakupCounter}">
                 <td>
                     <select name="waste_type[]" class="form-select AddFormSelectzone" required>
-                        <option value="">Select waste type</option>
+                        <option value="">--Select waste type--</option>
                         @foreach($WasteTypeDetails as $WasteType)
                             <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
                         @endforeach
@@ -1026,7 +1026,7 @@
         let initialHtml = `<tr id="tripsheetRow${tripsheetRowCount}">
                                 <td>
                                         <select name="waste_type[]" class="form-select AddFormSelectzone" required>
-                                        <option value="">Select waste type</option>
+                                        <option value="">--Select waste type--</option>
                                         @foreach($WasteTypeDetails as $WasteType)
                                             <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
                                         @endforeach
@@ -1060,7 +1060,7 @@
             let html = `<tr id="tripsheetRow${tripsheetRowCount}">
                             <td>
                                     <select name="waste_type[]" class="form-select AddFormSelectzone" required>
-                                        <option value="">Select waste type</option>
+                                        <option value="">--Select waste type--</option>
                                         @foreach($WasteTypeDetails as $WasteType)
                                             <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
                                         @endforeach

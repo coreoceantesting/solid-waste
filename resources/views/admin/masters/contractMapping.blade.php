@@ -306,7 +306,7 @@
              <tr id="editRow${key}">
              <td>
                 <select name="zone[]" class="form-select AddFormZone" required>
-                    <option value="">Select zone</option>
+                    <option value="">--Select zone--</option>
                     ${ZoneOptions}
                 </select>
              </td>
@@ -324,7 +324,7 @@
              </td>
             <td>
                   <select name="waste_type[]" class="form-select AddFormWasteType" required>
-                    <option value="">Select WasteType</option>
+                    <option value="">--Select WasteType--</option>
                     ${wastetypeOptions}
                 </select>
              </td>
@@ -336,7 +336,7 @@
              </td>
              <td>
                   <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
-                    <option value="">Select WasteType</option>
+                    <option value="">--Select WasteType--</option>
                     ${BeatNumberOptions}
                 </select>
              </td>
@@ -391,7 +391,7 @@
             <tr id="editRow${editRowCounter}">
                 <td>
                     <select name="zone[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select zone</option>
+                                    <option value="">--Select zone--</option>
                                   @foreach($ZoneDetails as $Zone)
                                      <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
                                   @endforeach
@@ -411,7 +411,7 @@
                 </td>
                 <td>
                     <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select waste type</option>
+                                    <option value="">--Select waste type--</option>
                                   @foreach($WasteTypeDetails as $WasteType)
                                      <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                   @endforeach
@@ -425,7 +425,7 @@
                 </td>
                 <td>
                       <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
-                                    <option value="">Select Beat Number</option>
+                                    <option value="">--Select Beat Number--</option>
                                   @foreach($Ward as $Wa)
                                      <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
                                   @endforeach
@@ -756,7 +756,7 @@
             let html = `<tr id="taskRow${taskRowCount}">
                             <td>
                                 <select name="zone[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select zone</option>
+                                    <option value="">--Select zone--</option>
                                   @foreach($ZoneDetails as $Zone)
                                      <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
                                   @endforeach
@@ -776,7 +776,7 @@
                             </td>
                             <td>
                                 <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
-                                    <option value="">Select waste type</option>
+                                    <option value="">--Select waste type--</option>
                                   @foreach($WasteTypeDetails as $WasteType)
                                      <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                   @endforeach
@@ -790,7 +790,7 @@
                             </td>
                              <td>
                                 <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
-                                    <option value="">Select Beat Number</option>
+                                    <option value="">--Select Beat Number--</option>
                                   @foreach($Ward as $Wa)
                                      <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
                                   @endforeach

@@ -383,7 +383,7 @@
                             <tr id="editRow${key}">
                                 <td>
                                     <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
-                                     <option value="">Select BeatNumber</option>
+                                     <option value="">--Select BeatNumber--</option>
                                     ${beatNumberOptions}
                                    </select>
                                 </td>
@@ -494,7 +494,7 @@
                 <tr id="editRow${editRowCounter}">
                     <td>
                         <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
-                            <option value="">Select Beat Number</option>
+                            <option value="">--Select Beat Number--</option>
                             @foreach($Ward as $Wa)
                                 <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number}}</option>
                             @endforeach
@@ -696,7 +696,7 @@
             let html = `<tr id="vehicleRow${vehicleRowCount}">
                             <td>
                                <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
-                                    <option value="">Select Beat Number</option>
+                                    <option value="">--Select Beat Number--</option>
                                   @foreach($Ward as $Wa)
                                      <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number}}</option>
                                   @endforeach

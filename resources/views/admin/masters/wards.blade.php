@@ -547,7 +547,7 @@
                             <tr id="editRow${key}">
                                 <td>
                                     <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
-                                        <option value="">Select Area Type</option>
+                                        <option value="">--Select Area Type--</option>
                                         ${areaTypeOptions}
                                     </select>
                                 </td>
@@ -674,7 +674,7 @@
             <tr id="editRow${editRowCounter}">
                 <td>
                     <select name="area_type[]" class="form-select AddFormSelectVehicle" required>
-                        <option value="">Select Area Type</option>
+                        <option value="">--Select Area Type--</option>
                         @foreach($AreaType as $Area)
                             <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
                         @endforeach
@@ -877,7 +877,7 @@
             return `<tr id="areaRow${rowId}">
                         <td>
                             <select name="area_type[]" class="form-select AddFormSelectAreaType" required>
-                                <option value="">Select Area Type</option>
+                                <option value="">--Select Area Type--</option>
                                 @foreach($AreaType as $Area)
                                 <option value="{{ $Area->id }}">{{ $Area->Description }}</option>
                                 @endforeach
