@@ -745,88 +745,83 @@
                     $('#editForm #plantViewFile').attr('href', "{{ asset('storage') }}/"+data.collectionCenters.p_view)
 
                     // Dynamically generate vehicle details rows
-                    let vehicledetail = "";
-                    let count = 0;
-                    $.each(data.vehicleDetails, function(key, value) {
-                        let vehicleTypeOptions = ''; // Variable to hold vehicle type options
+                 // Dynamically generate vehicle details rows
+let vehicledetail = "";
+let count = 0;
+$.each(data.vehicleDetails, function(key, value) {
+    let vehicleTypeOptions = ''; // Variable to hold vehicle type options
 
-                        // Loop through VehicleType data dynamically from the controller
-                        @foreach($VehicleType as $Vehicle)
-                        console.log(value['vehicle_type']);
+    // Loop through VehicleType data dynamically from the controller
+    @foreach($VehicleType as $Vehicle)
+        // Dynamically add options to the select dropdown
+        vehicleTypeOptions += `<option value="{{ $Vehicle->id }}" ${value['vehicle_type'] == {{ $Vehicle->id }} ? 'selected' : ''}>{{ $Vehicle->name }}</option>`;
+    @endforeach
 
-                            vehicleTypeOptions+= `<option value="{{ $Vehicle->id }}" ${value['vehicle_type'] == {{ $Vehicle->id }} ? 'selected' : ''}>{{ $Vehicle->name }}</option>`;
-                        @endforeach
+    // Append HTML for each row dynamically
+    vehicledetail += `
+        <tr id="editVehicleRow${key}">
+            <td>
+                <select name="vehicle_type[]" class="form-select AddFormSelectvehicleType" required>
+                    <option value="">--Select vehicleType--</option>
+                    ${vehicleTypeOptions}
+                </select>
+            </td>
+            <td>
+                <input type="number" class="form-control editAvailableCount" name="available_count[]" value="${value['available_count']}" required />
+            </td>
+            <td>
+                <input type="number" class="form-control editRequiredCount" required name="required_count[]" value="${value['required_count']}" />
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger removeVehicleRow ${(count==0)?'d-none':''}" data-id="${key}">Remove</button>
+            </td>
+        </tr>
+    `;
+    count++;
+});
 
-                        // Append HTML for each row dynamically
-                        vehicledetail += `
-                            <tr id="editVehicleRow${key}">
-                                <td>
-                                    <select name="vehicle_type[]" class="form-select AddFormSelectvehicleType" required>
-                                        <option value="">--Select vehicleType--</option>
-                                        ${vehicleTypeOptions}
-                                    </select>
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control editAvailableCount" name="available_count[]" value="${value['available_count']}" required />
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control editRequiredCount" required name="required_count[]" value="${value['required_count']}" />
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger removeVehicleRow ${(count==0)?'d-none':''}" data-id="${key}">Remove</button>
-                                </td>
-                            </tr>
-                        `;
-                        count++
-                    });
-
-                    // Append the generated HTML to the vehicle table body
-                    $('#editVehicleTableBody').html(vehicledetail);
-
-
-
-                    // Dynamically generate employeedetails details rows
-                    let employeedetails = "";
-                    // let count = 0;
-                    $.each(data.employeedetails, function(key, value) {
-                        let designationOptions = ''; // Variable to hold vehicle type options
-
-                        // Loop through VehicleType data dynamically from the controller
-                        @foreach($Designation as $Desi)
-                            designationOptions+= `<option value="{{ $Desi->id }}" ${value['designation'] == {{ $Desi->id }} ? 'selected' : ''}>{{ $Desi->name }}</option>`;
-                        @endforeach
+// Append the generated HTML to the vehicle table body
+$('#editVehicleTableBody').html(vehicledetail);
 
 
-                        // Append HTML for each row dynamically
-                        employeedetails += `
-                            <tr id="editEmployeeRow${key}">
-                                <td>
-                                    <select name="designation[]" class="form-select AddFormdesignation" required>
-                                        <option value="">--Select vehicleType--</option>
-                                        ${designationOptions}
-                                    </select>
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control editAvailableCount" name="emp_available_count[]" value="${value['available_count']}" required />
-                                </td>
-                                <td>
-                                    <input type="number" class="form-control editRequiredCount" required name="emp_required_count[]" value="${value['required_count']}" />
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger removeEmployeeRow" data-id="${key}">Remove</button>
-                                </td>
-                            </tr>
-                        `;
+// Dynamically generate employee details rows
+let employeedetails = "";
+let empCount = 0;
+$.each(data.employeedetails, function(key, value) {
+    let designationOptions = ''; // Variable to hold designation options
 
-                        // count++
+    // Loop through Designation data dynamically from the controller
+    @foreach($Designation as $Desi)
+        // Dynamically add options to the select dropdown
+        designationOptions += `<option value="{{ $Desi->id }}" ${value['designation'] == {{ $Desi->id }} ? 'selected' : ''}>{{ $Desi->name }}</option>`;
+    @endforeach
 
-                    });
+    // Append HTML for each row dynamically
+    employeedetails += `
+        <tr id="editEmployeeRow${key}">
+            <td>
+                <select name="designation[]" class="form-select AddFormdesignation" required>
+                    <option value="">--Select Designation--</option>
+                    ${designationOptions}
+                </select>
+            </td>
+            <td>
+                <input type="number" class="form-control editAvailableCount" name="emp_available_count[]" value="${value['available_count']}" required />
+            </td>
+            <td>
+                <input type="number" class="form-control editRequiredCount" required name="emp_required_count[]" value="${value['required_count']}" />
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger removeEmployeeRow ${(empCount==0)?'d-none':''}" data-id="${key}">Remove</button>
+            </td>
+        </tr>
+    `;
+    empCount++;
+});
 
-                    console.log(employeedetails);
+// Append the generated HTML to the employee table body
+$('#editEmployeeTableBody').html(employeedetails);
 
-
-                    // Append the generated HTML to the vehicle table body
-                    $('#editEmployeeTableBody').html(employeedetails);
 
 
                 } else {
