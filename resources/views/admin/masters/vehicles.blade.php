@@ -522,7 +522,6 @@
                         `;
                     });
                     $('#editWasteTableBody').html(html);
-
                 }
                 else
                 {
@@ -566,10 +565,26 @@
     });
 
     // Event to remove a waste row (fixed event binding)
-    $('body').on('click', '.removeRow', function() {
-        let rowId = $(this).data('id');
-        $(`#editRow${rowId}`).remove();
-    });
+    // $('body').on('click', '.removeRow', function() {
+    //     let rowId = $(this).data('id');
+    //     $(`#editRow${rowId}`).remove();
+    // });
+
+      // Add More Button functionality (after the default row)
+      $('#editMoreEditWasteRow').on('click', function () {
+            appendWasteRow(); // Add a new row when the button is clicked
+        });
+
+        // Event to remove a vehicle row
+        $('body').on('click', '.removeRow', function () {
+            const rowId = $(this).data('id'); // Get the row ID from the button's data-id attribute
+            const rowCount = $('#editWasteTableBody tr').length; // Get the total number of rows in the table
+
+            // Ensure at least one row remains
+            if (rowCount > 1) {
+                $(`#editRow${rowId}`).remove(); // Remove the corresponding row
+            }
+        });
 
     // // Event to load and edit waste data (clicking the edit-waste button)
     // $('body').on('click', '.edit-waste', function(e) {
@@ -607,7 +622,6 @@
     // });
 
 </script>
-
 <!-- Update -->
 <script>
     $(document).ready(function() {
@@ -700,7 +714,7 @@
     });
 </script>
 {{-- add more functionality in the vehicle form --}}
-<script>
+{{-- <script>
     $(document).ready(function () {
         let wasteRowCount = 1; // Row counter
 
@@ -728,7 +742,6 @@
                 </tr>
             `;
         }
-
         // Add one default row on page load
         $('#wasteTableBody').append(createNewRow(wasteRowCount));
         wasteRowCount++;
@@ -736,6 +749,52 @@
         // Add More Button Functionality
         $('#addMoreWasteButton').on('click', function () {
             $('#wasteTableBody').append(createNewRow(wasteRowCount));
+            wasteRowCount++;
+        });
+
+        // Remove Row Functionality
+        $('body').on('click', '.removeWasteRow', function () {
+            const rowId = $(this).data('id');
+            $(`#wasteRow${rowId}`).remove();
+        });
+    });
+</script> --}}
+<script>
+    $(document).ready(function () {
+        let wasteRowCount = 1; // Row counter
+
+        // Function to create a new row
+        function createNewRow(rowId, showRemoveButton = true) {
+            return `
+                <tr id="wasteRow${rowId}">
+                    <td>
+                        <select name="waste_types[]" class="form-select AddFormSelectzone" required>
+                            <option value="">--Select waste type--</option>
+                            @foreach($PrefixDetails as $Prefix)
+                                <option value="{{ $Prefix->id }}">{{ $Prefix->value }}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" name="capacity_in_kg[]" class="form-control" placeholder="Enter Capacity (kg)" required>
+                    </td>
+                    <td>
+                        <input type="number" name="total_capacity[]" class="form-control" placeholder="Enter Total Capacity" required>
+                    </td>
+                    <td>
+                        ${showRemoveButton ? `<button type="button" class="btn btn-danger btn-sm removeWasteRow" data-id="${rowId}">Remove</button>` : ''}
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Add one default row on page load (without remove button)
+        $('#wasteTableBody').append(createNewRow(wasteRowCount, false));
+        wasteRowCount++;
+
+        // Add More Button Functionality
+        $('#addMoreWasteButton').on('click', function () {
+            $('#wasteTableBody').append(createNewRow(wasteRowCount, true));
             wasteRowCount++;
         });
 
@@ -814,3 +873,4 @@
         });
     });
 </script>
+
