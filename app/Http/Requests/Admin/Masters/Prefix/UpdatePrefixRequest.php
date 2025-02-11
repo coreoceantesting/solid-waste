@@ -20,12 +20,13 @@ class UpdatePrefixRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        // $id = $this->route('prefixes');
-        return [
-            'Prefix_Name' => 'required',
-            'Description' => 'required',
-            'Status' => 'required'
-        ];
-    }
+     {
+     $id = $this->route('prefix'); // This should match the route parameter name in the route definition
+    return [
+        'Prefix_Name' => "required|unique:prefixes,Prefix_Name,$id,id,deleted_at,NULL", // Correct unique rule
+        'Description' => 'required',
+        'Status' => 'required',
+    ];
+   }
+
 }

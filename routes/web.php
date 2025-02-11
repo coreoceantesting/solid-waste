@@ -120,6 +120,9 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::resource('form17', App\Http\Controllers\Admin\Masters\form17controller::class);
 
+    // Route::put('prefixes/{prefixes}', [App\Http\Controllers\Admin\Masters\Prefix\PrefixController::class, 'update']);
+
+
 
     // Route::resource('load.waste.items', App\Http\Controllers\Admin\Masters\DesignationController::class);
     // Route::post('/store', [SlrmEmployeeDetailController::class, 'store']);
