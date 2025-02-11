@@ -23,7 +23,7 @@ class StoreContractMapping extends FormRequest
     {
         return [
             // 'contract_number' => 'required',
-            'contract_number' => 'required|unique:contract_mappings,contract_number',
+            'contract_number' => 'required|unique:contract_mappings,contract_number,NULL,NULL,deleted_at,NULL',
             'zone' => 'required',
             'ward' => 'required',
             'colony' => 'required',

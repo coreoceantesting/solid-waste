@@ -21,10 +21,10 @@ class UpdatePrefixRequest extends FormRequest
      */
     public function rules(): array
     {
+        // $id = $this->route('prefixes');
         return [
             'Prefix_Name' => 'required',
             'Description' => 'required',
-            // 'Zone' => 'required',
             'Status' => 'required'
         ];
     }

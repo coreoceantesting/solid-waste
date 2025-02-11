@@ -21,8 +21,10 @@ class UpdateContractMapping extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('ContractMapping');
         return [
-            'contract_number' => 'required|unique:contract_mappings,contract_number',
+             'contract_number' => "required",
+            // 'contract_number' => "required|unique:contract_mappings,contract_number,$id,id,deleted_at,NULL",
             'zone' => 'required',
             'ward' => 'required',
             'colony' => 'required',

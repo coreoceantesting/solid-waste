@@ -23,7 +23,7 @@ class StorePrefixRequest extends FormRequest
     {
         return [
             // 'Prefix_Name' => 'required',
-            'Prefix_Name' => 'required|unique:prefixes,Prefix_Name',
+            'Prefix_Name' => 'required|unique:prefixes,Prefix_Name,NULL,NULL,deleted_at,NULL',
             'Description' => 'required|unique:prefixes,Description',
             // 'Zone' => 'required',
             'Status' => 'required'
