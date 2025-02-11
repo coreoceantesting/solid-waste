@@ -493,21 +493,23 @@
                     $("#editForm input[name='Remarks']").val(data.vehicles.Remarks);
 
                     let html = "";
-                    $.each(data.wasteManagements, function(key, value){
-
+                    let count = 0;
+                    $.each(data.wasteManagements, function(key, value) {
                         let wastetypeOptions = ''; // Variable to hold vehicle type options
-               // Loop through VehicleType data dynamically from the controller
-                       @foreach($PrefixDetails as $Prefix)
-                       wastetypeOptions += `<option value="{{ $Prefix->id }}" ${value['waste_types'] == "{{ $Prefix->id }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
-                       @endforeach
 
+                        // Loop through VehicleType data dynamically from the controller
+                        @foreach($PrefixDetails as $Prefix)
+                            wastetypeOptions += `<option value="{{ $Prefix->id }}" ${value['waste_types'] == "{{ $Prefix->id }}" ? 'selected' : ''}>{{ $Prefix->value }}</option>`;
+                        @endforeach
+
+                        // Add row to html with conditional Remove button visibility
                         html += `
                             <tr id="editRow${key}">
                                 <td>
-                                   <select name="waste_types[]" class="form-select AddFormWasteType" required>
-                                     <option value="">--Select WasteType--</option>
-                                    ${wastetypeOptions}
-                                   </select>
+                                    <select name="waste_types[]" class="form-select AddFormWasteType" required>
+                                        <option value="">--Select WasteType--</option>
+                                        ${wastetypeOptions}
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="number" class="form-control editWasteQuantity" name="capacity_in_kg[]" value="${value['capacity_in_kg']}" required />
@@ -516,13 +518,15 @@
                                     <input type="number" class="form-control editWasteUnit" required name="total_capacity[]" value="${value['total_capacity']}" />
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
+                                    <button type="button" class="btn btn-danger removeRow ${count === 0 ? 'd-none' : ''}" data-id="${key}">Remove</button>
                                 </td>
                             </tr>
                         `;
 
+                        count++; // Increment count after each iteration
                     });
                     $('#editWasteTableBody').html(html);
+
                 }
                 else
                 {
