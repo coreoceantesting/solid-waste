@@ -271,6 +271,7 @@
 
                     // Dynamically generate vehicle details rows
                    let taskmapping = "";
+                   let count = 0;
                    $.each(data.TaskMapping, function(key, value) {
                    let CapacityOfVehicleOptions = ''; // Variable to hold vehicle type options
                    // Loop through VehicleType data dynamically from the controller
@@ -347,10 +348,11 @@
                 <input type="number" class="form-control editVehicleCount" required name="vehicle_count[]" value="${value['vehicle_count']}" required/>
              </td>
              <td>
-                <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
+                <button type="button" class="btn btn-danger removeRow ${(count==0)?'d-none':''}" data-id="${key}">Remove</button>
             </td>
         </tr>
      `;
+     count++;
     });
 
 // Append the generated HTML to the vehicle table body

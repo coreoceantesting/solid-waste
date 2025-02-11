@@ -353,6 +353,7 @@
 
                       // Dynamically generate vehicle details rows
                       let Segregation = "";
+                      let count=0;
                       let totalVolum = 0;
                       $.each(data.Segregation, function(key, value) {
 
@@ -393,10 +394,11 @@
                         </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
+                                    <button type="button" class="btn btn-danger removeRow ${(count==0)?'d-none':''}" data-id="${key}">Remove</button>
                                 </td>
                             </tr>
                         `;
+                        count++
                         totalVolum = totalVolum + parseInt(value['volume']);
                     });
 

@@ -534,6 +534,7 @@
 
                       // Dynamically generate vehicle details rows
                     let areaDetails = "";
+                    let count = 0;
                     $.each(data.areaDetails, function(key, value) {
                         let areaTypeOptions = ''; // Variable to hold vehicle type options
 
@@ -564,10 +565,11 @@
                                     <input type="number" class="form-control editTotal" required name="total[]" value="${value['total']}" readonly />
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
+                                    <button type="button" class="btn btn-danger removeRow ${(count==0)?'d-none':''}" data-id="${key}">Remove</button>
                                 </td>
                             </tr>
                         `;
+                        count++
                     });
 
                     // Append the generated HTML to the table body

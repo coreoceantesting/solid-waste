@@ -272,6 +272,7 @@
 
                         // Dynamically generate vehicle details rows
                         let VehicleTarget = "";
+                        let count = 0;
                         $.each(data.VehicleTargetDetail, function(key, value) {
                             let VehicleNumberOptions = ''; // Variable to hold vehicle type options
 
@@ -311,10 +312,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeRow" data-id="${key}">Remove</button>
+                                    <button type="button" class="btn btn-danger removeRow ${(count==0)?'d-none':''}" data-id="${key}">Remove</button>
                                 </td>
                             </tr>
                         `;
+                        count++
                     });
 
                     // Append the generated HTML to the vehicle table body
