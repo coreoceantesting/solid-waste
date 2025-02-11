@@ -1,5 +1,4 @@
 
----removing--button-local
 <x-admin.layout>
     <x-slot name="title">Collection Center</x-slot>
     <x-slot name="heading">Collection Center</x-slot>
@@ -348,7 +347,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label" for="whether_part_of_integrated">Whether Part Of Integrated (Y/N)<span class="text-danger">*</span></label>
                                         <select name="inte_with_plant" id="whether_part_of_integrated" class="form-select">
-                                            <option value="" >Select Plant Category</option>
+                                            <option value="" >--Select Plant Category--</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -762,7 +761,7 @@
                             <tr id="editVehicleRow${key}">
                                 <td>
                                     <select name="vehicle_type[]" class="form-select AddFormSelectvehicleType" required>
-                                        <option value="">Select vehicleType</option>
+                                        <option value="">--Select vehicleType--</option>
                                         ${vehicleTypeOptions}
                                     </select>
                                 </td>
@@ -800,7 +799,7 @@
                             <tr id="editEmployeeRow${key}">
                                 <td>
                                     <select name="designation[]" class="form-select AddFormdesignation" required>
-                                        <option value="">Select vehicleType</option>
+                                        <option value="">--Select vehicleType--</option>
                                         ${designationOptions}
                                     </select>
                                 </td>
@@ -815,6 +814,7 @@
                                 </td>
                             </tr>
                         `;
+
                     });
 
                     console.log(employeedetails);
@@ -895,7 +895,7 @@
             <tr id="editVehicleRow${editVehicleDetials}">
                  <td>
                         <select name="vehicle_type[]" class="form-select" required>
-                            <option value="">Select Vehicle Type</option>
+                            <option value="">--Select Vehicle Type--</option>
                             @foreach($VehicleType as $Vehicle)
                                 <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
                             @endforeach
@@ -990,7 +990,7 @@
             <tr id="editEmployeeRow${editEmployeeDetials}">
                  <td>
                     <select name="designation[]" class="form-select AddFormSelectdesignation" required>
-                        <option value="">Select Designation</option>
+                        <option value="">--Select Designation--</option>
                         @foreach($Designation as $Desi)
                             <option value="{{ $Desi->id  }}">{{ $Desi->name }}</option>
                         @endforeach
@@ -1169,7 +1169,7 @@
                 <tr id="vehicleRow${vehicleRowCount}">
                     <td>
                         <select name="vehicle_type[]" class="form-select AddFormSelectVehicleType" required>
-                            <option value="">Select Vehicle Type</option>
+                            <option value="">--Select Vehicle Type--</option>
                             @foreach($VehicleType as $Vehicle)
                                 <option value="{{ $Vehicle->id }}">{{ $Vehicle->name }}</option>
                             @endforeach
@@ -1263,7 +1263,7 @@
                 <tr id="employeeRow${employeeRowCount}">
                     <td>
                         <select name="designation[]" class="form-select AddFormSelectDesignation" required>
-                            <option value="">Select designation</option>
+                            <option value="">--Select designation--</option>
                             @foreach($Designation as $Desi)
                                 <option value="{{ $Desi->id }}">{{ $Desi->name }}</option>
                             @endforeach
