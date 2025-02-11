@@ -520,6 +520,7 @@
                                 </td>
                             </tr>
                         `;
+
                     });
                     $('#editWasteTableBody').html(html);
                 }
