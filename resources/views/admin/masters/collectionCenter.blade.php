@@ -787,7 +787,7 @@
 
                     // Dynamically generate employeedetails details rows
                     let employeedetails = "";
-                    let count = 0;
+                    // let count = 0;
                     $.each(data.employeedetails, function(key, value) {
                         let designationOptions = ''; // Variable to hold vehicle type options
 
@@ -813,11 +813,11 @@
                                     <input type="number" class="form-control editRequiredCount" required name="emp_required_count[]" value="${value['required_count']}" />
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger removeEmployeeRow ${(count==0)?'d-none':''}" data-id="${key}">Remove</button>
+                                    <button type="button" class="btn btn-danger removeEmployeeRow" data-id="${key}">Remove</button>
                                 </td>
                             </tr>
                         `;
-                        count++
+                        // count++
 
                     });
 
