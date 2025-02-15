@@ -67,13 +67,26 @@
                                     <label class="col-form-label" for="add_entry_weight">Entry Weight <span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <!-- Input field for weight -->
+                                        {{-- <input
+                                            class="form-control"
+                                            id="add_entry_weight"
+                                            name="entry_weight"
+                                            type="number"
+                                            min="0"
+                                            max="1000"
+                                            placeholder="Enter Entry Weight"
+                                            step="0.01"
+                                        > --}}
                                         <input
                                             class="form-control"
                                             id="add_entry_weight"
                                             name="entry_weight"
                                             type="number"
+                                            min="0"
+                                            max="1000"
                                             placeholder="Enter Entry Weight"
                                             step="0.01"
+                                            oninput="if(this.value < 0) this.value = 0; if(this.value > 1000) this.value = 1000;"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="weight_unit" name="weight_unit1" style="max-width: 75px;">
@@ -94,8 +107,11 @@
                                             id="add_exit_weight"
                                             name="exit_weight"
                                             type="number"
+                                            min="0"
+                                            max="500"
                                             placeholder="Enter Exit Weight"
                                             step="0.01"
+                                            oninput="if(this.value < 0) this.value = 0; if(this.value > 1000) this.value = 500;"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="add_exit_weight" name="exit_weigh1t" style="max-width: 75px;">
@@ -265,6 +281,7 @@
                                             min="0"
                                             max="1000"
                                             step="0.01"
+                                            oninput="if(this.value < 0) this.value = 0; if(this.value > 1000) this.value = 1000;"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="edit_entry_weight" name="weight" style="max-width: 75px;">
@@ -287,6 +304,7 @@
                                             type="number"
                                             placeholder="Enter Exit Weight"
                                             step="0.01"
+                                            oninput="if(this.value < 0) this.value = 0; if(this.value > 1000) this.value = 500;"
                                         >
                                         <!-- Dropdown for selecting weight unit -->
                                         <select class="form-control" id="edit_exit_weight" name="exit" style="max-width: 75px;">
