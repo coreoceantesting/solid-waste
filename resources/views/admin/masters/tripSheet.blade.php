@@ -193,7 +193,7 @@
                                             <td colspan="1" class="text-right"><strong> Total Volume</strong></td>
                                             <td id="totalVolume" class="text-center">
                                                 <input type="text" id="totalVolumeField" class="form-control" readonly>
-                                                <p id="volumeErrorMessage" style="color: red; display: none;">
+                                                <p id="volumeErrorMessage" style="color: red; display: none; text-align: left; margin-left: 0;">
                                                     Note: Total volume must be equal to total garbage volume.
                                                 </p>
                                             </td>
