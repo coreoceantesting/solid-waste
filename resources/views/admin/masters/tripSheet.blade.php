@@ -193,6 +193,9 @@
                                             <td colspan="1" class="text-right"><strong> Total Volume</strong></td>
                                             <td id="totalVolume" class="text-center">
                                                 <input type="text" id="totalVolumeField" class="form-control" readonly>
+                                                <p id="volumeErrorMessage" style="color: red; display: none;">
+                                                    Note: Total volume must be equal to total garbage volume.
+                                                </p>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -1143,12 +1146,13 @@
             // Update the total volume field
             $('#totalVolumeField').val(totalVolume.toFixed(2)); // Display total volume with 2 decimal places
 
-            if(addTotalGarbage == totalVolume){
-                $('#addSubmit').prop('disabled', false);
-            }else{
-                $('#addSubmit').prop('disabled', true);
-            }
-        }
+            if (addTotalGarbage === totalVolume) {
+        $('#addSubmit').prop('disabled', false);
+        $('#volumeErrorMessage').hide(); // Hide the error message if valid
+    } else {
+        $('#addSubmit').prop('disabled', true);
+        $('#volumeErrorMessage').show(); // Show error message if invalid
+    }        }
     });
 
 </script>
