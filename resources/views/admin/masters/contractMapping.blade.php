@@ -91,7 +91,7 @@
                             <div class="mb-3 row">
                                 <div class="col-md-2">
                                     <label class="col-form-label" for="contract_number">Contract Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="contract_number" name="contract_number" type="text" placeholder="Enter contract number">
+                                    <input class="form-control" id="contract_number" name="contract_number" type="text"  placeholder="Enter contract number">
                                     <span class="text-danger is-invalid contract_number_err"></span>
                                 </div>
                                 <div class="col-md-2">
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label class="col-form-label" for="contact_number">Contact Number<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="contact_number" name="contact_number" type="number" maxlength="10" placeholder="Enter Contact Number">
+                                    <input class="form-control" id="contact_number" name="contact_number" type="text" maxlength="10" placeholder="Enter Contact Number">
                                     <span class="text-danger is-invalid contact_number_err"></span>
                                 </div>
                                 <div class="col-md-2">
