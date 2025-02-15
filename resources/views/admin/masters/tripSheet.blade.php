@@ -174,7 +174,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td colspan="1" class="text-right"><strong>Total Volume</strong></td>
+                                            <td colspan="1" class="text-right"><strong> Total Volume</strong></td>
                                             <td id="totalVolume" class="text-center">
                                                 <input type="text" id="totalVolumeField" class="form-control" readonly>
                                             </td>
@@ -501,7 +501,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="1" class="text-right"><strong>Total Volume</strong></td>
+                                        <td colspan="1" class="text-right"><strong>ALL Total Volume</strong></td>
                                         <td id="totalViewVolume"></td> <!-- Total Volume will be displayed here -->
                                     </tr>
                                 </tfoot>
@@ -608,6 +608,7 @@
                                 <td>
                                     <select name="waste_type[]" class="form-select AddFormWasteType" required>
                                      <option value="">--Select WasteType--</option>
+                                     <option value="">ALL</option>
                                     ${wastetypeOptions}
                                    </select>
                                 </td>
@@ -754,6 +755,7 @@
                 <td>
                     <select name="waste_type[]" class="form-select AddFormSelectzone" required>
                         <option value="">--Select waste type--</option>
+                        <option value="">ALL</option>
                         @foreach($WasteTypeDetails as $WasteType)
                             <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
                         @endforeach
@@ -1029,6 +1031,7 @@
                                 <td>
                                         <select name="waste_type[]" class="form-select AddFormSelectzone" required>
                                         <option value="">--Select waste type--</option>
+                                        <option value="">ALL</option>
                                         @foreach($WasteTypeDetails as $WasteType)
                                             <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
                                         @endforeach
@@ -1063,6 +1066,7 @@
                             <td>
                                     <select name="waste_type[]" class="form-select AddFormSelectzone" required>
                                         <option value="">--Select waste type--</option>
+                                         <option value="">ALL</option>
                                         @foreach($WasteTypeDetails as $WasteType)
                                             <option value="{{ $WasteType->id }}">{{ $WasteType->value }}</option>
                                         @endforeach
@@ -1109,6 +1113,8 @@
         // Function to calculate and update the total volume
         function calculateTotalVolume() {
             let totalVolume = 0;
+            let addTotalGarbage = parseFloat($('#add_total_garbage').val());
+
             // Iterate through each volume field and sum up the values
             $('input[name="volume[]"]').each(function () {
                 let volume = parseFloat($(this).val());
@@ -1118,8 +1124,15 @@
             });
             // Update the total volume field
             $('#totalVolumeField').val(totalVolume.toFixed(2)); // Display total volume with 2 decimal places
+
+            if(addTotalGarbage == totalVolume){
+                $('#addSubmit').prop('disabled', false);
+            }else{
+                $('#addSubmit').prop('disabled', true);
+            }
         }
     });
+
 </script>
 
 {{-- view --}}
@@ -1179,7 +1192,7 @@
                     }
                     $('#BreakUpModel').html(BreakUpHtml);
                     $('#totalViewVolume').html(totalVolume+ " kg")
-                    $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
+                    $('#totalVolume').text(totalVolume?.toFixed(2)); // Display Total Volume
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");
                 }
@@ -1201,6 +1214,7 @@
             let exitWeight = parseInt($('#add_exit_weight').val());
             let total = entryWeight - exitWeight;
             $('#add_total_garbage').val(total)
+            calculateTotalVolume()
         });
 
         $('body').on('keyup', '#edit_entry_weight, #edit_exit_weight', function(){
@@ -1208,7 +1222,9 @@
             let exitWeight = parseInt($('#edit_exit_weight').val());
             let total = entryWeight - exitWeight;
             $('#edit_total_garbage').val(total)
+            calculateTotalVolume()
         });
+
     })
 </script>
 

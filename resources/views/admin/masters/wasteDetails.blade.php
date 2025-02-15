@@ -59,9 +59,9 @@
                                         <thead>
                                             <tr>
                                                 <th>Waste Type</th>
-                                                <th>Waste Sub-Type1</th>
-                                                <th>Waste Sub-Type2</th>
-                                                <th>Volume</th>
+                                                <th>Dry Waste</th>
+                                                <th>Wet Waste</th>
+                                                <th>Waste Volume</th>
                                                 <th>
                                                     <button class="btn btn-primary btn-sm" type="button" id="addMoreSegregationButton">Add More</button>
                                                 </th>
@@ -150,9 +150,9 @@
                                         <thead>
                                             <tr>
                                                 <th>Waste Type</th>
-                                                <th>Waste Sub-Type1</th>
-                                                <th>Waste Sub-Type2</th>
-                                                <th>Volume</th>
+                                                <th>Dry Waste</th>
+                                                <th>Wet Waste</th>
+                                                <th>Waste Volume</th>
                                                 <th>
                                                     <button class="btn btn-primary btn-sm" type="button" id="editMoreSegregationButton">Add More</button>
                                                 </th>
@@ -265,9 +265,9 @@
                                     <thead>
                                         <tr>
                                             <th>Waste Type</th>
-                                            <th>Waste Sub-Type1</th>
-                                            <th>Waste Sub-Type2</th>
-                                            <th>Volume</th>
+                                            <th>Dry Waste</th>
+                                            <th>Wet Waste</th>
+                                            <th>Total Volume</th>
                                         </tr>
                                     </thead>
                                     <tbody id="SegregationModel">
@@ -369,6 +369,7 @@
                                 <td>
                                      <select name="waste_type[]" class="form-select AddFormWasteType" required>
                                      <option value="">--Select WasteType--</option>
+                                     <option value="">ALL</option>
                                     ${wastetypeOptions}
                                    </select>
                                 </td>
@@ -519,6 +520,7 @@
                 <td>
                     <select name="waste_type[]" class="form-select AddFormSelectzone" required>
                         <option value="">--Select waste type--</option>
+                         <option value="">ALL</option>
                         @foreach($WasteTypeDetails as $WasteType)
                             <option value="{{ $WasteType->value }}">{{ $WasteType->value }}</option>
                         @endforeach
@@ -681,16 +683,17 @@
                     <td>
                         <select name="waste_type[]" class="form-select AddFormSelectzone" required>
                             <option value="">--Select waste type--</option>
+                             <option value="">ALL</option>
                             @foreach($WasteTypeDetails as $WasteType)
                                 <option value="{{ $WasteType->value }}">{{ $WasteType->value }}</option>
                             @endforeach
                         </select>
                     </td>
                     <td>
-                        <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter waste sub type1" required>
+                        <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter Dry Waste" required>
                     </td>
                     <td>
-                        <input type="text" name="waste_sub_type2[]" class="form-control" placeholder="Enter waste sub type2" required>
+                        <input type="text" name="waste_sub_type2[]" class="form-control" placeholder="Enter Wet Waste" required>
                     </td>
                     <td>
                         <div class="input-group">

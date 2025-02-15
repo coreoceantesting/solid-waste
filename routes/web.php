@@ -120,6 +120,8 @@ Route::middleware(['auth', 'PreventBackHistory', 'firewall.all'])->group(functio
 
     Route::resource('form17', App\Http\Controllers\Admin\Masters\form17controller::class);
 
+    Route::resource('school', App\Http\Controllers\Admin\Masters\SchoolController::class);
+
     // Route::put('prefixes/{prefixes}', [App\Http\Controllers\Admin\Masters\Prefix\PrefixController::class, 'update']);
 
 

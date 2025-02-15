@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
-// use App\Models\collectionCenters;
+use App\Models\collectionCenters;
 use DB;
 
 class DashboardController extends Controller
@@ -15,10 +15,11 @@ class DashboardController extends Controller
     {
         $vehicalScheduleInformationCount = DB::table('vehicle_scheduling_information')->whereNull('deleted_at')->count();
 
-        // $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
+        $collectionCenters = collectionCenters::whereNull('deleted_at')->get();
         // 'collectionCenters'=>$collectionCenters
         return view('admin.dashboard')->with([
-            'vehicalScheduleInformationCount' => $vehicalScheduleInformationCount
+            'vehicalScheduleInformationCount' => $vehicalScheduleInformationCount,
+            'collectionCenters'=>$collectionCenters
         ]);
     }
 

@@ -15,10 +15,30 @@
                         </div>
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label class="col-form-label" for="contract_number">Contract Number<span class="text-danger">*</span></label>
                                     <input class="form-control" id="contract_number" name="contract_number" type="text" placeholder="Enter Contract Number">
                                     <span class="text-danger is-invalid contract_number_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="contract_name">Contract Name<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contract_name" name="contract_name" type="text" placeholder="Enter Contract Name">
+                                    <span class="text-danger is-invalid contract_name_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="contact_number">Contact Number<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contact_number" name="contact_number" maxlength="10" type="text" placeholder="Enter contact Number">
+                                    <span class="text-danger is-invalid contact_number_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="contract_date">Contract Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contract_date" name="contract_date" type="Date" placeholder="Enter Contract Date">
+                                    <span class="text-danger is-invalid contract_date_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="expiry_date">Expiry Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="expiry_date" name="expiry_date" type="Date" placeholder="Enter Expiery Date">
+                                    <span class="text-danger is-invalid expiry_date_err"></span>
                                 </div>
                             </div>
                         </div>
@@ -69,10 +89,30 @@
                         <div class="card-body py-2">
                             <input type="hidden" id="edit_model_id" name="edit_model_id" value="">
                             <div class="mb-3 row">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label class="col-form-label" for="contract_number">Contract Number<span class="text-danger">*</span></label>
                                     <input class="form-control" id="contract_number" name="contract_number" type="text" placeholder="Enter contract number">
                                     <span class="text-danger is-invalid contract_number_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="contract_name">Contract Name<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contract_name" name="contract_name" type="text"  placeholder="Enter Contract Name">
+                                    <span class="text-danger is-invalid contract_name_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="contact_number">Contact Number<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contact_number" name="contact_number" type="number" maxlength="10" placeholder="Enter Contact Number">
+                                    <span class="text-danger is-invalid contact_number_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="contract_date">Contract Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="contract_date" name="contract_date" type="Date" placeholder="Enter Contract Date">
+                                    <span class="text-danger is-invalid contract_date_err"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="col-form-label" for="expiry_date">Expiry Date<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="expiry_date" name="expiry_date" type="Date" placeholder="Enter Expiry Date">
+                                    <span class="text-danger is-invalid expiry_date_err"></span>
                                 </div>
                             </div>
                         </div>
@@ -131,6 +171,10 @@
                                     <tr>
                                         <th>Sr.No</th>
                                         <th>Contract Number</th>
+                                        <th>Contract Name</th>
+                                        <th>contact Number</th>
+                                        <th>contract Date</th>
+                                        <th>Expiry  Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -139,6 +183,10 @@
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$Contract->contract_number}}</td>
+                                        <td>{{$Contract->contract_name}}</td>
+                                        <td>{{$Contract->contact_number}}</td>
+                                        <td>{{$Contract->contract_date}}</td>
+                                        <td>{{$Contract->expiry_date}}</td>
                                             <td>
                                                 <button class="edit-element btn text-secondary px-2 py-1" title="Edit Designation" data-id="{{ $Contract->id }}"><i data-feather="edit"></i></button>
                                                 <button class="btn text-danger rem-element px-2 py-1" title="Delete Designation" data-id="{{ $Contract->id }}"><i data-feather="trash-2"></i> </button>
@@ -170,6 +218,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Contract Number</th>
+                                                <th>Contract Name</th>
+                                                <th>Contact Number</th>
+                                                <th>Contract Date</th>
+                                                <th>Expiry Date</th>
                                             </tr>
                                         </thead>
                                         <tbody id="ContractMappingModel">
@@ -268,6 +320,10 @@
                 {
                     $("#editForm input[name='edit_model_id']").val(data.ContractMapping.id);
                     $("#editForm input[name='contract_number']").val(data.ContractMapping.contract_number);
+                    $("#editForm input[name='contract_name']").val(data.ContractMapping.contract_name);
+                    $("#editForm input[name='contact_number']").val(data.ContractMapping.contact_number);
+                    $("#editForm input[name='contract_date']").val(data.ContractMapping.contract_date);
+                    $("#editForm input[name='expiry_date']").val(data.ContractMapping.expiry_date);
 
                     // Dynamically generate vehicle details rows
                    let taskmapping = "";
@@ -308,6 +364,7 @@
              <td>
                 <select name="zone[]" class="form-select AddFormZone" required>
                     <option value="">--Select zone--</option>
+                    <option value="">ALL</option>
                     ${ZoneOptions}
                 </select>
              </td>
@@ -326,6 +383,7 @@
             <td>
                   <select name="waste_type[]" class="form-select AddFormWasteType" required>
                     <option value="">--Select WasteType--</option>
+                    <option value="">ALL</option>
                     ${wastetypeOptions}
                 </select>
              </td>
@@ -759,6 +817,7 @@
                             <td>
                                 <select name="zone[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">--Select zone--</option>
+                                    <option value="">ALL</option>
                                   @foreach($ZoneDetails as $Zone)
                                      <option value="{{ $Zone->id }}">{{ $Zone->value}}</option>
                                   @endforeach
@@ -779,6 +838,7 @@
                             <td>
                                 <select name="waste_type[]" class="form-select AddFormSelectzone" required/>
                                     <option value="">--Select waste type--</option>
+                                    <option value="">ALL</option>
                                   @foreach($WasteTypeDetails as $WasteType)
                                      <option value="{{ $WasteType->id }}">{{ $WasteType->value}}</option>
                                   @endforeach
@@ -793,6 +853,7 @@
                              <td>
                                 <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
                                     <option value="">--Select Beat Number--</option>
+                                    <option value="">ALL</option>
                                   @foreach($Ward as $Wa)
                                      <option value="{{ $Wa->id }}">{{ $Wa->beat_number}}</option>
                                   @endforeach
@@ -863,6 +924,10 @@
                     let mainDataHtml = `
                         <tr>
                             <td>${response.ContractMapping.contract_number || 'N/A'}</td>
+                            <td>${response.ContractMapping.contract_name || 'N/A'}</td>
+                            <td>${response.ContractMapping.contact_number || 'N/A'}</td>
+                            <td>${response.ContractMapping.contract_date || 'N/A'}</td>
+                            <td>${response.ContractMapping.expiry_date || 'N/A'}</td>
                         </tr>
                     `;
                     $('#ContractMappingModel').html(mainDataHtml);
@@ -912,3 +977,6 @@
         input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
     }
     </script>
+<script>
+
+

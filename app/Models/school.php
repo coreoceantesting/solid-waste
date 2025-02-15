@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
-
-class ContractMapping extends Model
+class school extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['contract_number','contract_name','contact_number','contract_date','expiry_date'];
+    protected $fillable = ['emp_id', 'emp_name','emp_dep','emp_pos','emp_contract_number','emp_email','emp_d_of_j','status'];
 
     public static function booted()
     {
@@ -22,6 +21,7 @@ class ContractMapping extends Model
             {
                 self::where('id', $user->id)->update([
                     'created_by'=> Auth::user()->id,
+                    'ip_address'=> $_SERVER['REMOTE_ADDR'],
                 ]);
             }
         });
@@ -44,4 +44,5 @@ class ContractMapping extends Model
             }
         });
     }
+
 }

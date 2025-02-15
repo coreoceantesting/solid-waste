@@ -26,6 +26,10 @@ class UpdateContractMapping extends FormRequest
             //  'contract_number' => "required",
             //
             'contract_number' => "required|unique:contract_mappings,contract_number,$id,id,deleted_at,NULL",
+            'contract_name' => "required|unique:contract_mappings,contract_name,$id,id,deleted_at,NULL",
+            'contact_number' => "required|unique:contract_mappings,contact_number,$id,id,deleted_at,NULL",
+            'contract_date' => "required|unique:contract_mappings,contract_date,$id,id,deleted_at,NULL",
+            'expiry_date' => "required|unique:contract_mappings,expiry_date,$id,id,deleted_at,NULL",
             'zone' => 'required',
             'ward' => 'required',
             'colony' => 'required',

@@ -102,6 +102,9 @@
                                 <a href="{{ route('prefix-details.index') }}" class="nav-link {{ request()->routeIs('prefix-details.index') ? 'active' : '' }}" data-key="t-horizontal">Prefix Details</a>
                             </li>
                             {{-- <li class="nav-item">
+                                <a href="{{ route('school.index') }}" class="nav-link {{ request()->routeIs('school.index') ? 'active' : '' }}" data-key="t-horizontal">Employee Information</a>
+                            </li> --}}
+                            {{-- <li class="nav-item">
                                 <a href="{{ route('designations.index') }}" class="nav-link {{ request()->routeIs('designations.index') ? 'active' : '' }}" data-key="t-horizontal">Designations</a>
                             </li>
                             <li class="nav-item">
@@ -155,14 +158,20 @@
                                 <a href="{{ route('contract-mapping.index') }}" class="nav-link {{ request()->routeIs('contract-mapping.index') ? 'active' : '' }}" data-key="t-transaction-details">Contract Mapping</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('waste-details.index') }}" class="nav-link {{ request()->routeIs('waste-details.index') ? 'active' : '' }}" data-key="t-transaction-type">Waste Details</a>
+                                <a href="{{ route('vehicle-target.index') }}" class="nav-link {{ request()->routeIs('vehicle-target.index') ? 'active' : '' }}" data-key="t-transaction-category">Vehicle Target</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('trip-sheet.index') }}" class="nav-link {{ request()->routeIs('trip-sheet.index') ? 'active' : '' }}" data-key="t-transaction-status">Trip Sheet</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('vehicle-target.index') }}" class="nav-link {{ request()->routeIs('vehicle-target.index') ? 'active' : '' }}" data-key="t-transaction-category">Vehicle Target</a>
+                                <a href="{{ route('waste-details.index') }}" class="nav-link {{ request()->routeIs('waste-details.index') ? 'active' : '' }}" data-key="t-transaction-type">Waste Details</a>
                             </li>
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('trip-sheet.index') }}" class="nav-link {{ request()->routeIs('trip-sheet.index') ? 'active' : '' }}" data-key="t-transaction-status">Trip Sheet</a>
+                            </li> --}}
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('vehicle-target.index') }}" class="nav-link {{ request()->routeIs('vehicle-target.index') ? 'active' : '' }}" data-key="t-transaction-category">Vehicle Target</a>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

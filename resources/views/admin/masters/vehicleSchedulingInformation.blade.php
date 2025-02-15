@@ -385,6 +385,7 @@
                                 <td>
                                     <select name="beat_number[]" class="form-select AddFormBeatNumber" required>
                                      <option value="">--Select BeatNumber--</option>
+                                        <option value="">ALL</option>
                                     ${beatNumberOptions}
                                    </select>
                                 </td>
@@ -699,6 +700,7 @@
                             <td>
                                <select name="beat_number[]" class="form-select AddFormSelectBeatNumber" required/>
                                     <option value="">--Select Beat Number--</option>
+                                      <option value="">ALL</option>
                                   @foreach($Ward as $Wa)
                                      <option value="{{ $Wa->beat_number }}">{{ $Wa->beat_number}}</option>
                                   @endforeach
