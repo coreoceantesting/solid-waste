@@ -32,12 +32,12 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label class="col-form-label" for="contract_date">Contract Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="contract_date" name="contract_date" type="Date" placeholder="Enter Contract Date">
+                                    <input class="form-control" id="contract_date" name="contract_date" type="Date" placeholder="Enter Contract Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid contract_date_err"></span>
                                 </div>
                                 <div class="col-md-2">
                                     <label class="col-form-label" for="expiry_date">Expiry Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="expiry_date" name="expiry_date" type="Date" placeholder="Enter Expiery Date">
+                                    <input class="form-control" id="expiry_date" name="expiry_date" type="Date" placeholder="Enter Expiery Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid expiry_date_err"></span>
                                 </div>
                             </div>
@@ -106,12 +106,12 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label class="col-form-label" for="contract_date">Contract Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="contract_date" name="contract_date" type="Date" placeholder="Enter Contract Date">
+                                    <input class="form-control" id="contract_date" name="contract_date" type="Date" placeholder="Enter Contract Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid contract_date_err"></span>
                                 </div>
                                 <div class="col-md-2">
                                     <label class="col-form-label" for="expiry_date">Expiry Date<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="expiry_date" name="expiry_date" type="Date" placeholder="Enter Expiry Date">
+                                    <input class="form-control" id="expiry_date" name="expiry_date" type="Date" placeholder="Enter Expiry Date" onkeydown="return false;">
                                     <span class="text-danger is-invalid expiry_date_err"></span>
                                 </div>
                             </div>
