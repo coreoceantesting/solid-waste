@@ -61,7 +61,7 @@
                                                 <th>Waste Type</th>
                                                 <th>Dry Waste</th>
                                                 <th>Wet Waste</th>
-                                                <th>Waste Volume</th>
+                                                <th>Waste Total Volume</th>
                                                 <th>
                                                     <button class="btn btn-primary btn-sm" type="button" id="addMoreSegregationButton">Add More</button>
                                                 </th>
@@ -70,7 +70,7 @@
                                         <tbody id="SegregationTableBody">
                                             <!-- Dynamic rows will be appended here -->
                                         </tbody>
-                                        <tfoot>
+                                        {{-- <tfoot>
                                             <tr>
                                                 <td colspan="3" class="text-right"><strong>Total Volume</strong></td>
                                                 <td id="totalVolume" class="text-center">
@@ -78,7 +78,7 @@
                                                 </td>
                                                 <td></td>
                                             </tr>
-                                        </tfoot>
+                                        </tfoot> --}}
                                     </table>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                                 <th>Waste Type</th>
                                                 <th>Dry Waste</th>
                                                 <th>Wet Waste</th>
-                                                <th>Waste Volume</th>
+                                                <th>Waste Total Volume</th>
                                                 <th>
                                                     <button class="btn btn-primary btn-sm" type="button" id="editMoreSegregationButton">Add More</button>
                                                 </th>
@@ -161,7 +161,7 @@
                                         <tbody id="editSegregationTableBody">
                                             <!-- Dynamic rows will be appended here -->
                                         </tbody>
-                                        <tfoot>
+                                        {{-- <tfoot>
                                             <tr>
                                                 <td colspan="3" class="text-right"><strong>Total Volume</strong></td>
                                                 <td id="totalVolume" class="text-center">
@@ -169,7 +169,7 @@
                                                 </td>
                                                 <td></td>
                                             </tr>
-                                        </tfoot>
+                                        </tfoot> --}}
                                     </table>
                                 </div>
                             </div>
@@ -273,12 +273,12 @@
                                     <tbody id="SegregationModel">
                                         <!-- Additional data will be injected here -->
                                     </tbody>
-                                    <tfoot>
+                                    {{-- <tfoot>
                                         <tr>
                                             <td colspan="3" class="text-right"><strong>Total Volume</strong></td>
                                             <td id="totalViewVolume"></td> <!-- Total Volume will be displayed here -->
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> --}}
                                 </table>
                             </div>
                         </div>
@@ -407,6 +407,8 @@
                     $('#editTotalVolumeField').val(totalVolum)
                     $('#editSegregationTableBody').html(Segregation);
 
+                    recalculateTotal();
+
                  }
                 else
                 {
@@ -417,6 +419,20 @@
                 alert("Some thing went wrong");
             },
         });
+    });
+
+    function recalculateTotal(){
+        $('body').on('input', '.editWasteSubType1, .editWasteSubType2', function() {
+            const row = $(this).closest('tr');
+            const wastesubtype1 = parseInt(row.find('.editWasteSubType1').val()) || 0;
+            const wastesubtype2 = parseInt(row.find('.editWasteSubType2').val()) || 0;
+            const total = wastesubtype1 + wastesubtype2;
+            row.find('.editVolume').val(total); // Update the total field
+        });
+    }
+
+    $(document).ready(function() {
+        recalculateTotal();
     });
 </script>
 {{-- add more Segregation in edit --}}
@@ -690,10 +706,10 @@
                         </select>
                     </td>
                     <td>
-                        <input type="text" name="waste_sub_type1[]" class="form-control" placeholder="Enter Dry Waste" required>
+                        <input type="text" name="waste_sub_type1[]" class="form-control AddWasteSubType1" placeholder="Enter Dry Waste" required>
                     </td>
                     <td>
-                        <input type="text" name="waste_sub_type2[]" class="form-control" placeholder="Enter Wet Waste" required>
+                        <input type="text" name="waste_sub_type2[]" class="form-control AddWasteSubType2" placeholder="Enter Wet Waste" required>
                     </td>
                     <td>
                         <div class="input-group">
@@ -739,6 +755,13 @@
             calculateTotalVolume(); // Recalculate total volume whenever a volume input changes
         });
 
+        $('body').on('input', '.AddWasteSubType1, .AddWasteSubType2', function () {
+            const row = $(this).closest('tr');
+            const AddWasteSubType1 = parseInt(row.find('.AddWasteSubType1').val()) || 0;
+            const AddWasteSubType2 = parseInt(row.find('.AddWasteSubType2').val()) || 0;
+            const total = AddWasteSubType1 + AddWasteSubType2;
+            row.find('.volumeInput').val(total);
+        });
         // Function to calculate and update the total volume
         function calculateTotalVolume() {
             let totalVolume = 0;
@@ -808,8 +831,8 @@
                     }
 
                     $('#SegregationModel').html(segregationHtml);
-                    $('#totalViewVolume').html(totalVolume + "  kg")
-                    $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
+                    // $('#totalViewVolume').html(totalVolume + "  kg")
+                    // $('#totalVolume').text(totalVolume.toFixed(2)); // Display Total Volume
                 } else {
                     swal("Error!", data.message || "Data not found.", "error");
                 }
